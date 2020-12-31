@@ -2516,7 +2516,7 @@ d-appendix d-footnote-list a.footnote-backlink {
 <li><p>If the user has entered a character string, it will check it against the hard-coded coin values and give a warning if whatever they have specified is not included.</p></li>
 <li><p>If the user has entered a numeric vector, it will set the <code>coins</code> vector to be equal to it. To avoid infinite loops, it will also append the number 1.</p></li>
 </ul>
-<p>For the sake of this example, I’m going to hard-code the Great British Pound, the Euro, the US Dollar, and the Japanese Yen as three common currencies. This is the reason I did not use decimals - the Japanese Yen does not, and it would only serve to introduce awkwardness if we want to make comparisons between the different coin types (spoilers: that is coming next!).</p>
+<p>For the sake of this example, I’m going to hard-code the Great British Pound, the Euro, the US Dollar, and the Japanese Yen as four common currencies. This is the reason I did not use decimals - the Japanese Yen does not, and it would only serve to introduce awkwardness if we want to make comparisons between the different coin types (spoilers: that is coming next!).</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre><code><span class='va'>count_coins</span> <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>v</span>, <span class='va'>return_coins</span> <span class='op'>=</span> <span class='cn'>F</span>, <span class='va'>coin_vals</span> <span class='op'>=</span> <span class='st'>"GBP"</span><span class='op'>)</span><span class='op'>{</span>

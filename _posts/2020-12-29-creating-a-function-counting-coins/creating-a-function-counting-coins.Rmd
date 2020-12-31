@@ -148,7 +148,7 @@ There is no reason, however, to not do both! Such is the flexibility of writing 
 
 - If the user has entered a numeric vector, it will set the `coins` vector to be equal to it. To avoid infinite loops, it will also append the number 1.
 
-For the sake of this example, I'm going to hard-code the Great British Pound, the Euro, the US Dollar, and the Japanese Yen as three common currencies. This is the reason I did not use decimals - the Japanese Yen does not, and it would only serve to introduce awkwardness if we want to make comparisons between the different coin types (spoilers: that is coming next!).
+For the sake of this example, I'm going to hard-code the Great British Pound, the Euro, the US Dollar, and the Japanese Yen as four common currencies. This is the reason I did not use decimals - the Japanese Yen does not, and it would only serve to introduce awkwardness if we want to make comparisons between the different coin types (spoilers: that is coming next!).
 
 ```{r}
 
