@@ -1,8 +1,9 @@
 name: "jd-blog"
 title: "Jack Davison R"
+theme: theme.css 
 description: |
   Assorted adventures and visualisations using the R programming language.
-output_dir: "_site"
+output_dir: "."
 navbar:
   right:
     - text: "Home"
