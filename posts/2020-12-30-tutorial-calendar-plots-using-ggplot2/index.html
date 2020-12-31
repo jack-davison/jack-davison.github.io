@@ -89,6 +89,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <meta property="description" itemprop="description" content="A ggplot2 recreation of an uncommon heat-map visualisation."/>
 
+<link rel="canonical" href="https://jack-davison.github.io/posts/2020-12-30-tutorial-calendar-plots-using-ggplot2/"/>
 
 <!--  https://schema.org/Article -->
 <meta property="article:published" itemprop="datePublished" content="2021-01-01"/>
@@ -99,19 +100,33 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <meta property="og:title" content="Jack Davison R: Tutorial: Calendar Plots using ggplot2"/>
 <meta property="og:type" content="article"/>
 <meta property="og:description" content="A ggplot2 recreation of an uncommon heat-map visualisation."/>
+<meta property="og:url" content="https://jack-davison.github.io/posts/2020-12-30-tutorial-calendar-plots-using-ggplot2/"/>
+<meta property="og:image" content="https://jack-davison.github.io/posts/2020-12-30-tutorial-calendar-plots-using-ggplot2/tutorial-calendar-plots-using-ggplot2_files/figure-html5/unnamed-chunk-14-1.png"/>
+<meta property="og:image:width" content="1344"/>
+<meta property="og:image:height" content="1152"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:site_name" content="Jack Davison R"/>
 
 <!--  https://dev.twitter.com/cards/types/summary -->
-<meta property="twitter:card" content="summary"/>
+<meta property="twitter:card" content="summary_large_image"/>
 <meta property="twitter:title" content="Jack Davison R: Tutorial: Calendar Plots using ggplot2"/>
 <meta property="twitter:description" content="A ggplot2 recreation of an uncommon heat-map visualisation."/>
+<meta property="twitter:url" content="https://jack-davison.github.io/posts/2020-12-30-tutorial-calendar-plots-using-ggplot2/"/>
+<meta property="twitter:image" content="https://jack-davison.github.io/posts/2020-12-30-tutorial-calendar-plots-using-ggplot2/tutorial-calendar-plots-using-ggplot2_files/figure-html5/unnamed-chunk-14-1.png"/>
+<meta property="twitter:image:width" content="1344"/>
+<meta property="twitter:image:height" content="1152"/>
 
+<!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->
+<meta name="citation_title" content="Jack Davison R: Tutorial: Calendar Plots using ggplot2"/>
+<meta name="citation_fulltext_html_url" content="https://jack-davison.github.io/posts/2020-12-30-tutorial-calendar-plots-using-ggplot2/"/>
+<meta name="citation_online_date" content="2021/01/01"/>
+<meta name="citation_publication_date" content="2021/01/01"/>
+<meta name="citation_author" content="Jack Davison"/>
 <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","categories","output"]}},"value":[{"type":"character","attributes":{},"value":["Tutorial: Calendar Plots using ggplot2"]},{"type":"character","attributes":{},"value":["A ggplot2 recreation of an uncommon heat-map visualisation."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Jack Davison"]}]}]},{"type":"character","attributes":{},"value":["01-01-2021"]},{"type":"character","attributes":{},"value":["tutorial","ggplot2"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","code_folding","toc","toc_depth","toc_float"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[2]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","categories","output","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["Tutorial: Calendar Plots using ggplot2"]},{"type":"character","attributes":{},"value":["A ggplot2 recreation of an uncommon heat-map visualisation."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Jack Davison"]}]}]},{"type":"character","attributes":{},"value":["01-01-2021"]},{"type":"character","attributes":{},"value":["tutorial","ggplot2"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","code_folding","toc","toc_depth","toc_float"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[2]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"character","attributes":{},"value":["https://jack-davison.github.io/posts/2020-12-30-tutorial-calendar-plots-using-ggplot2/"]},{"type":"character","attributes":{},"value":["https://jack-davison.github.io/posts/2020-12-30-tutorial-calendar-plots-using-ggplot2/"]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -2784,6 +2799,16 @@ Toronto shelters for this week’s <a href="https://twitter.com/hashtag/TidyTues
 <p>So perhaps calendar plots aren’t going to be useful for every project, but they’re a useful one to have in your back pocket!</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
+<div class="article-footer">
+  <p class="social_footer">
+    <span class="article-sharing">
+      Share: &nbsp;
+      <a href="https://twitter.com/share?text=Tutorial%3A%20Calendar%20Plots%20using%20ggplot2&amp;url=https%3A%2F%2Fjack-davison.github.io%2Fposts%2F2020-12-30-tutorial-calendar-plots-using-ggplot2%2F">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </span>
+  </p>
+</div>
 <!--/radix_placeholder_article_footer-->
 </div>
 
@@ -2794,7 +2819,18 @@ Toronto shelters for this week’s <a href="https://twitter.com/hashtag/TidyTues
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->
 <!--radix_placeholder_appendices-->
-<div class="appendix-bottom"></div>
+<div class="appendix-bottom">
+  <h3 id="citation">Citation</h3>
+  <p>For attribution, please cite this work as</p>
+  <pre class="citation-appendix short">Davison (2021, Jan. 1). Jack Davison R: Tutorial: Calendar Plots using ggplot2. Retrieved from https://jack-davison.github.io/posts/2020-12-30-tutorial-calendar-plots-using-ggplot2/</pre>
+  <p>BibTeX citation</p>
+  <pre class="citation-appendix long">@misc{davison2021tutorial:,
+  author = {Davison, Jack},
+  title = {Jack Davison R: Tutorial: Calendar Plots using ggplot2},
+  url = {https://jack-davison.github.io/posts/2020-12-30-tutorial-calendar-plots-using-ggplot2/},
+  year = {2021}
+}</pre>
+</div>
 <!--/radix_placeholder_appendices-->
 <!--radix_placeholder_navigation_after_body-->
 <!--/radix_placeholder_navigation_after_body-->

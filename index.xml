@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>Jack Davison R</title>
+    <link>https://jack-davison.github.io/</link>
+    <atom:link href="https://jack-davison.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <description>Assorted adventures and visualisations using the R programming language.
+</description>
+    <generator>Distill</generator>
+    <lastBuildDate>Fri, 01 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Tutorial: Calendar Plots using ggplot2</title>
+      <dc:creator>Jack Davison</dc:creator>
+      <link>https://jack-davison.github.io/posts/2020-12-30-tutorial-calendar-plots-using-ggplot2</link>
+      <description>&lt;p&gt;A ggplot2 recreation of an uncommon heat-map visualisation.&lt;/p&gt;
+</description>
+      <category>tutorial</category>
+      <category>ggplot2</category>
+      <guid>https://jack-davison.github.io/posts/2020-12-30-tutorial-calendar-plots-using-ggplot2</guid>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://jack-davison.github.io/posts/2020-12-30-tutorial-calendar-plots-using-ggplot2/tutorial-calendar-plots-using-ggplot2_files/figure-html5/unnamed-chunk-14-1.png" medium="image" type="image/png" width="1344" height="1152"/>
+    </item>
+    <item>
+      <title>The Minimum Coins Problem in Base R</title>
+      <dc:creator>Jack Davison</dc:creator>
+      <link>https://jack-davison.github.io/posts/2020-12-29-creating-a-function-counting-coins</link>
+      <description>&lt;p&gt;An R-based solution to a common programming challenge - for a given value of money, what is the minimum number of coins to make the change?&lt;/p&gt;
+</description>
+      <category>tutorial</category>
+      <guid>https://jack-davison.github.io/posts/2020-12-29-creating-a-function-counting-coins</guid>
+      <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
+      <media:content url="https://jack-davison.github.io/posts/2020-12-29-creating-a-function-counting-coins/creating-a-function-counting-coins_files/figure-html5/unnamed-chunk-17-1.png" medium="image" type="image/png" width="1344" height="1152"/>
+    </item>
+  </channel>
+</rss>
