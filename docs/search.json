@@ -1,0 +1,20 @@
+{
+  "articles": [
+    {
+      "path": "about.html",
+      "title": "About this blog",
+      "description": "I am Jack.\n ",
+      "author": [],
+      "contents": "\r\nWho am I?\r\nI am an Atmospheric Chemistry PhD Student in the Wolfson Atmospheric Chemistry Laboratories at the University of York, UK. My main research interests lie in the remote measurements and modelling of road transport exhaust emissions.\r\nI’ve been using and refining my R skills over the past three years, with particular attention to the Tidyverse suite of R packages.\r\nI have contributed to the #TidyTuesday Project since Summer 2020. My submissions can be found on my GitHub or Twitter.\r\n\r\n\r\n\r\n",
+      "last_modified": "2020-12-31T19:31:37+00:00"
+    },
+    {
+      "path": "index.html",
+      "title": "Blog Posts",
+      "author": [],
+      "contents": "\r\n\r\n\r\n\r\n",
+      "last_modified": "2020-12-31T19:31:37+00:00"
+    }
+  ],
+  "collections": ["posts/posts.json"]
+}
