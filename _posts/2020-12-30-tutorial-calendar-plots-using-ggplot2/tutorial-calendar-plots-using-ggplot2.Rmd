@@ -22,8 +22,6 @@ output:
 knitr::opts_chunk$set(echo = TRUE, fig.width=7, fig.height=6, fig.align="center")
 ```
 
-# Setting the scene
-
 <details><summary>If you're less interested in the journey and just want the finished code, you can find it here.</summary> 
 
 ```{r eval = F}
@@ -90,8 +88,10 @@ cal_df %>%
 
 ```
 
-
 </details>
+
+
+# Setting the scene
 
 Calendar plots are a relatively uncommon "heat-map" style visualisation, the key benefit of which is that they are an extremely readable and familiar format, even for folks less familiar with more esoteric chart types. After all, even your nan has a calendar up in her kitchen! As an air quality scientist I am most familiar with them from the [`openair`](https://davidcarslaw.github.io/openair/) package, which helpfully includes a dummy data-set named `mydata` and a purpose-built `calendarPlot()` function.
 
