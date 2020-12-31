@@ -1,0 +1,20 @@
+---
+title: "About this blog"
+description: |
+  I am Jack.
+   
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+### Who am I?
+
+- I am an Atmospheric Chemistry PhD Student in the [Wolfson Atmospheric Chemistry Laboratories](https://www.york.ac.uk/chemistry/research/wacl/) at the University of York, UK. My main research interests lie in the remote measurements and modelling of road transport exhaust emissions.
+
+- I've been using and refining my R skills over the past three years, with particular attention to the [Tidyverse](https://www.tidyverse.org/) suite of R packages.
+
+- I have contributed to the [#TidyTuesday Project](https://github.com/rfordatascience/tidytuesday/blob/master/README.md) since Summer 2020. My submissions can be found on my [GitHub](https://github.com/jack-davison) or [Twitter](https://twitter.com/JDavison_).
+
+
