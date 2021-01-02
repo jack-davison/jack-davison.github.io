@@ -11,7 +11,13 @@ navbar:
       href: index.html
     - text: "About"
       href: about.html
-output: distill::distill_article
+    - icon: fab fa-twitter
+      href: https://twitter.com/JDavison_
+    - icon: fab fa-github
+      href: https://github.com/jack-davison
+    - icon: fa fa-linkedin
+      href: https://www.linkedin.com/in/jack-davison/
+output: distill::distill_article 
 collections:
   posts:
     share: [twitter]
