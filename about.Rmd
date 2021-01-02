@@ -1,5 +1,6 @@
 ---
 title: "About this blog"
+theme: theme.css 
 description: |
   I am Jack.
    
