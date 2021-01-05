@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
   <meta name="generator" content="distill" />
-  <link rel="alternate" type="application/rss+xml" href="https://jack-davison.github.io/index.xml" />
 
   <style type="text/css">
   /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
@@ -86,635 +85,39 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Jack Davison R: Blog Posts</title>
+  <title>TidyTuesday 2021 Week 2: Global Transit Costs</title>
+
+  <meta property="description" itemprop="description" content="A Leaflet map of global transit costs on a per-city basis."/>
 
 
-
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2021-01-05"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-01-05"/>
+  <meta name="article:author" content="Jack Davison"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Jack Davison R: Blog Posts"/>
+  <meta property="og:title" content="TidyTuesday 2021 Week 2: Global Transit Costs"/>
   <meta property="og:type" content="article"/>
+  <meta property="og:description" content="A Leaflet map of global transit costs on a per-city basis."/>
   <meta property="og:locale" content="en_US"/>
-  <meta property="og:site_name" content="Jack Davison R"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Jack Davison R: Blog Posts"/>
+  <meta property="twitter:title" content="TidyTuesday 2021 Week 2: Global Transit Costs"/>
+  <meta property="twitter:description" content="A Leaflet map of global transit costs on a per-city basis."/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","site","listing"]}},"value":[{"type":"character","attributes":{},"value":["Blog Posts"]},{"type":"character","attributes":{},"value":["distill::distill_website"]},{"type":"character","attributes":{},"value":["posts"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","categories","author","date","output","preview"]}},"value":[{"type":"character","attributes":{},"value":["TidyTuesday 2021 Week 2: Global Transit Costs"]},{"type":"character","attributes":{},"value":["A Leaflet map of global transit costs on a per-city basis.\n"]},{"type":"character","attributes":{},"value":["tidytuesday"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Jack Davison"]}]}]},{"type":"character","attributes":{},"value":["01-05-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","code_folding"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"character","attributes":{},"value":["transit.png"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["tidytuesday-2021-week-2-global-transit-costs_files/anchor-4.2.2/anchor.min.js","tidytuesday-2021-week-2-global-transit-costs_files/bowser-1.9.3/bowser.min.js","tidytuesday-2021-week-2-global-transit-costs_files/distill-2.2.21/template.v2.js","tidytuesday-2021-week-2-global-transit-costs_files/header-attrs-2.6.4/header-attrs.js","tidytuesday-2021-week-2-global-transit-costs_files/htmlwidgets-1.5.3/htmlwidgets.js","tidytuesday-2021-week-2-global-transit-costs_files/jquery-1.12.4/jquery.min.js","tidytuesday-2021-week-2-global-transit-costs_files/leaflet-1.3.1/images/layers-2x.png","tidytuesday-2021-week-2-global-transit-costs_files/leaflet-1.3.1/images/layers.png","tidytuesday-2021-week-2-global-transit-costs_files/leaflet-1.3.1/images/marker-icon-2x.png","tidytuesday-2021-week-2-global-transit-costs_files/leaflet-1.3.1/images/marker-icon.png","tidytuesday-2021-week-2-global-transit-costs_files/leaflet-1.3.1/images/marker-shadow.png","tidytuesday-2021-week-2-global-transit-costs_files/leaflet-1.3.1/leaflet.css","tidytuesday-2021-week-2-global-transit-costs_files/leaflet-1.3.1/leaflet.js","tidytuesday-2021-week-2-global-transit-costs_files/leaflet-binding-2.0.3/leaflet.js","tidytuesday-2021-week-2-global-transit-costs_files/leaflet-markercluster-1.0.5/leaflet.markercluster.freezable.js","tidytuesday-2021-week-2-global-transit-costs_files/leaflet-markercluster-1.0.5/leaflet.markercluster.js","tidytuesday-2021-week-2-global-transit-costs_files/leaflet-markercluster-1.0.5/leaflet.markercluster.layersupport.js","tidytuesday-2021-week-2-global-transit-costs_files/leaflet-markercluster-1.0.5/MarkerCluster.css","tidytuesday-2021-week-2-global-transit-costs_files/leaflet-markercluster-1.0.5/MarkerCluster.Default.css","tidytuesday-2021-week-2-global-transit-costs_files/leaflet-markercluster-1.0.5/MIT-LICENCE.txt","tidytuesday-2021-week-2-global-transit-costs_files/leaflet-markercluster-1.0.5/package.json","tidytuesday-2021-week-2-global-transit-costs_files/leafletfix-1.0.0/leafletfix.css","tidytuesday-2021-week-2-global-transit-costs_files/Proj4Leaflet-1.0.1/proj4-compressed.js","tidytuesday-2021-week-2-global-transit-costs_files/Proj4Leaflet-1.0.1/proj4leaflet.js","tidytuesday-2021-week-2-global-transit-costs_files/rstudio_leaflet-1.3.1/images/1px.png","tidytuesday-2021-week-2-global-transit-costs_files/rstudio_leaflet-1.3.1/rstudio_leaflet.css","tidytuesday-2021-week-2-global-transit-costs_files/webcomponents-2.0.0/webcomponents.js","transit.png","worldcities.csv"]}
+  </script>
   <!--radix_placeholder_navigation_in_header-->
-  <meta name="distill:offset" content=""/>
-
-  <script type="application/javascript">
-
-    window.headroom_prevent_pin = false;
-
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-
-      // initialize headroom for banner
-      var header = $('header').get(0);
-      var headerHeight = header.offsetHeight;
-      var headroom = new Headroom(header, {
-        tolerance: 5,
-        onPin : function() {
-          if (window.headroom_prevent_pin) {
-            window.headroom_prevent_pin = false;
-            headroom.unpin();
-          }
-        }
-      });
-      headroom.init();
-      if(window.location.hash)
-        headroom.unpin();
-      $(header).addClass('headroom--transition');
-
-      // offset scroll location for banner on hash change
-      // (see: https://github.com/WickyNilliams/headroom.js/issues/38)
-      window.addEventListener("hashchange", function(event) {
-        window.scrollTo(0, window.pageYOffset - (headerHeight + 25));
-      });
-
-      // responsive menu
-      $('.distill-site-header').each(function(i, val) {
-        var topnav = $(this);
-        var toggle = topnav.find('.nav-toggle');
-        toggle.on('click', function() {
-          topnav.toggleClass('responsive');
-        });
-      });
-
-      // nav dropdowns
-      $('.nav-dropbtn').click(function(e) {
-        $(this).next('.nav-dropdown-content').toggleClass('nav-dropdown-active');
-        $(this).parent().siblings('.nav-dropdown')
-           .children('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $("body").click(function(e){
-        $('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $(".nav-dropdown").click(function(e){
-        e.stopPropagation();
-      });
-    });
-  </script>
-
-  <style type="text/css">
-
-  /* Theme (user-documented overrideables for nav appearance) */
-
-  .distill-site-nav {
-    color: rgba(255, 255, 255, 0.8);
-    background-color: #0F2E3D;
-    font-size: 15px;
-    font-weight: 300;
-  }
-
-  .distill-site-nav a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .distill-site-nav a:hover {
-    color: white;
-  }
-
-  @media print {
-    .distill-site-nav {
-      display: none;
-    }
-  }
-
-  .distill-site-header {
-
-  }
-
-  .distill-site-footer {
-
-  }
-
-
-  /* Site Header */
-
-  .distill-site-header {
-    width: 100%;
-    box-sizing: border-box;
-    z-index: 3;
-  }
-
-  .distill-site-header .nav-left {
-    display: inline-block;
-    margin-left: 8px;
-  }
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header .nav-left {
-      margin-left: 0;
-    }
-  }
-
-
-  .distill-site-header .nav-right {
-    float: right;
-    margin-right: 8px;
-  }
-
-  .distill-site-header a,
-  .distill-site-header .title {
-    display: inline-block;
-    text-align: center;
-    padding: 14px 10px 14px 10px;
-  }
-
-  .distill-site-header .title {
-    font-size: 18px;
-    min-width: 150px;
-  }
-
-  .distill-site-header .logo {
-    padding: 0;
-  }
-
-  .distill-site-header .logo img {
-    display: none;
-    max-height: 20px;
-    width: auto;
-    margin-bottom: -4px;
-  }
-
-  .distill-site-header .nav-image img {
-    max-height: 18px;
-    width: auto;
-    display: inline-block;
-    margin-bottom: -3px;
-  }
-
-
-
-  @media screen and (min-width: 1000px) {
-    .distill-site-header .logo img {
-      display: inline-block;
-    }
-    .distill-site-header .nav-left {
-      margin-left: 20px;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 20px;
-    }
-    .distill-site-header .title {
-      padding-left: 12px;
-    }
-  }
-
-
-  .distill-site-header .nav-toggle {
-    display: none;
-  }
-
-  .nav-dropdown {
-    display: inline-block;
-    position: relative;
-  }
-
-  .nav-dropdown .nav-dropbtn {
-    border: none;
-    outline: none;
-    color: rgba(255, 255, 255, 0.8);
-    padding: 16px 10px;
-    background-color: transparent;
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    margin: 0;
-    margin-top: 1px;
-    z-index: 2;
-  }
-
-  .nav-dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 200px;
-    border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 4px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
-    z-index: 1;
-    margin-top: 2px;
-    white-space: nowrap;
-    padding-top: 4px;
-    padding-bottom: 4px;
-  }
-
-  .nav-dropdown-content hr {
-    margin-top: 4px;
-    margin-bottom: 4px;
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  .nav-dropdown-active {
-    display: block;
-  }
-
-  .nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
-    color: black;
-    padding: 6px 24px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-
-  .nav-dropdown-content .nav-dropdown-header {
-    display: block;
-    padding: 5px 24px;
-    padding-bottom: 0;
-    text-transform: uppercase;
-    font-size: 14px;
-    color: #999999;
-    white-space: nowrap;
-  }
-
-  .nav-dropdown:hover .nav-dropbtn {
-    color: white;
-  }
-
-  .nav-dropdown-content a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-
-  .nav-right .nav-dropdown-content {
-    margin-left: -45%;
-    right: 0;
-  }
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header a, .distill-site-header .nav-dropdown  {display: none;}
-    .distill-site-header a.nav-toggle {
-      float: right;
-      display: block;
-    }
-    .distill-site-header .title {
-      margin-left: 0;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 0;
-    }
-    .distill-site-header {
-      overflow: hidden;
-    }
-    .nav-right .nav-dropdown-content {
-      margin-left: 0;
-    }
-  }
-
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header.responsive {position: relative; min-height: 500px; }
-    .distill-site-header.responsive a.nav-toggle {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .distill-site-header.responsive a,
-    .distill-site-header.responsive .nav-dropdown {
-      display: block;
-      text-align: left;
-    }
-    .distill-site-header.responsive .nav-left,
-    .distill-site-header.responsive .nav-right {
-      width: 100%;
-    }
-    .distill-site-header.responsive .nav-dropdown {float: none;}
-    .distill-site-header.responsive .nav-dropdown-content {position: relative;}
-    .distill-site-header.responsive .nav-dropdown .nav-dropbtn {
-      display: block;
-      width: 100%;
-      text-align: left;
-    }
-  }
-
-  /* Site Footer */
-
-  .distill-site-footer {
-    width: 100%;
-    overflow: hidden;
-    box-sizing: border-box;
-    z-index: 3;
-    margin-top: 30px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    text-align: center;
-  }
-
-  /* Headroom */
-
-  d-title {
-    padding-top: 6rem;
-  }
-
-  @media print {
-    d-title {
-      padding-top: 4rem;
-    }
-  }
-
-  .headroom {
-    z-index: 1000;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-
-  .headroom--transition {
-    transition: all .4s ease-in-out;
-  }
-
-  .headroom--unpinned {
-    top: -100px;
-  }
-
-  .headroom--pinned {
-    top: 0;
-  }
-
-  /* adjust viewport for navbar height */
-  /* helps vertically center bootstrap (non-distill) content */
-  .min-vh-100 {
-    min-height: calc(100vh - 100px) !important;
-  }
-
-  </style>
-
-  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
-  <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
-  <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
-  <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
-  <script src="site_libs/autocomplete-0.37.1/autocomplete.min.js"></script>
-  <script src="site_libs/fuse-6.4.1/fuse.min.js"></script>
-
-  <script type="application/javascript">
-
-  function getMeta(metaName) {
-    var metas = document.getElementsByTagName('meta');
-    for (let i = 0; i < metas.length; i++) {
-      if (metas[i].getAttribute('name') === metaName) {
-        return metas[i].getAttribute('content');
-      }
-    }
-    return '';
-  }
-
-  function offsetURL(url) {
-    var offset = getMeta('distill:offset');
-    return offset ? offset + '/' + url : url;
-  }
-
-  function createFuseIndex() {
-
-    // create fuse index
-    var options = {
-      keys: [
-        { name: 'title', weight: 20 },
-        { name: 'categories', weight: 15 },
-        { name: 'description', weight: 10 },
-        { name: 'contents', weight: 5 },
-      ],
-      ignoreLocation: true,
-      threshold: 0
-    };
-    var fuse = new window.Fuse([], options);
-
-    // fetch the main search.json
-    return fetch(offsetURL('search.json'))
-      .then(function(response) {
-        if (response.status == 200) {
-          return response.json().then(function(json) {
-            // index main articles
-            json.articles.forEach(function(article) {
-              fuse.add(article);
-            });
-            // download collections and index their articles
-            return Promise.all(json.collections.map(function(collection) {
-              return fetch(offsetURL(collection)).then(function(response) {
-                if (response.status === 200) {
-                  return response.json().then(function(articles) {
-                    articles.forEach(function(article) {
-                      fuse.add(article);
-                    });
-                  })
-                } else {
-                  return Promise.reject(
-                    new Error('Unexpected status from search index request: ' +
-                              response.status)
-                  );
-                }
-              });
-            })).then(function() {
-              return fuse;
-            });
-          });
-
-        } else {
-          return Promise.reject(
-            new Error('Unexpected status from search index request: ' +
-                        response.status)
-          );
-        }
-      });
-  }
-
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-
-    // get search element (bail if we don't have one)
-    var searchEl = window.document.getElementById('distill-search');
-    if (!searchEl)
-      return;
-
-    createFuseIndex()
-      .then(function(fuse) {
-
-        // make search box visible
-        searchEl.classList.remove('hidden');
-
-        // initialize autocomplete
-        var options = {
-          autoselect: true,
-          hint: false,
-          minLength: 2,
-        };
-        window.autocomplete(searchEl, options, [{
-          source: function(query, callback) {
-            const searchOptions = {
-              isCaseSensitive: false,
-              shouldSort: true,
-              minMatchCharLength: 2,
-              limit: 10,
-            };
-            var results = fuse.search(query, searchOptions);
-            callback(results
-              .map(function(result) { return result.item; })
-              .filter(function(item) { return !!item.description; })
-            );
-          },
-          templates: {
-            suggestion: function(suggestion) {
-              var img = suggestion.preview && Object.keys(suggestion.preview).length > 0
-                ? `<img src="${offsetURL(suggestion.preview)}"</img>`
-                : '';
-              var html = `
-                <div class="search-item">
-                  <h3>${suggestion.title}</h3>
-                  <div class="search-item-description">
-                    ${suggestion.description}
-                  </div>
-                  <div class="search-item-preview">
-                    ${img}
-                  </div>
-                </div>
-              `;
-              return html;
-            }
-          }
-        }]).on('autocomplete:selected', function(event, suggestion) {
-          window.location.href = offsetURL(suggestion.path);
-        });
-        // remove inline display style on autocompleter (we want to
-        // manage responsive display via css)
-        $('.algolia-autocomplete').css("display", "");
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-
-  });
-
-  </script>
-
-  <style type="text/css">
-
-  .nav-search {
-    font-size: x-small;
-  }
-
-  /* Algolioa Autocomplete */
-
-  .algolia-autocomplete {
-    display: inline-block;
-    margin-left: 10px;
-    vertical-align: sub;
-    background-color: white;
-    color: black;
-    padding: 6px;
-    padding-top: 8px;
-    padding-bottom: 0;
-    border-radius: 6px;
-    border: 1px #0F2E3D solid;
-    width: 180px;
-  }
-
-
-  @media screen and (max-width: 768px) {
-    .distill-site-nav .algolia-autocomplete {
-      display: none;
-      visibility: hidden;
-    }
-    .distill-site-nav.responsive .algolia-autocomplete {
-      display: inline-block;
-      visibility: visible;
-    }
-    .distill-site-nav.responsive .algolia-autocomplete .aa-dropdown-menu {
-      margin-left: 0;
-      width: 400px;
-      max-height: 400px;
-    }
-  }
-
-  .algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
-    width: 90%;
-    outline: none;
-    border: none;
-  }
-
-  .algolia-autocomplete .aa-hint {
-    color: #999;
-  }
-  .algolia-autocomplete .aa-dropdown-menu {
-    width: 550px;
-    max-height: 70vh;
-    overflow-x: visible;
-    overflow-y: scroll;
-    padding: 5px;
-    margin-top: 3px;
-    margin-left: -150px;
-    background-color: #fff;
-    border-radius: 5px;
-    border: 1px solid #999;
-    border-top: none;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
-    cursor: pointer;
-    padding: 5px 4px;
-    border-bottom: 1px solid #eee;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion:last-of-type {
-    border-bottom: none;
-    margin-bottom: 2px;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item {
-    overflow: hidden;
-    font-size: 0.8em;
-    line-height: 1.4em;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item h3 {
-    margin-block-start: 0;
-    margin-block-end: 5px;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-description {
-    display: inline-block;
-    overflow: hidden;
-    height: 2.8em;
-    width: 80%;
-    margin-right: 4%;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview {
-    display: inline-block;
-    width: 15%;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img {
-    height: 3em;
-    width: auto;
-    display: none;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img[src] {
-    display: initial;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
-    background-color: #eee;
-  }
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
-    font-weight: bold;
-    font-style: normal;
-  }
-
-  </style>
-
-
   <!--/radix_placeholder_navigation_in_header-->
   <!--radix_placeholder_distill-->
 
@@ -1999,596 +1402,123 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   </script>
 
-  <style type="text/css">
-  /* base variables */
-
-  /* Edit the CSS properties in this file to create a custom
-     Distill theme. Only edit values in the right column
-     for each row; values shown are the CSS defaults.
-     To return any property to the default,
-     you may set its value to: unset
-     All rows must end with a semi-colon.                      */
-
-  /* Optional: embed custom fonts here with `@import`          */
-  /* This must remain at the top of this file.                 */
-
-
-
-  html {
-    /*-- Main font sizes --*/
-    --title-size:      50px;
-    --body-size:       1.06rem;
-    --code-size:       14px;
-    --aside-size:      12px;
-    --fig-cap-size:    13px;
-    /*-- Main font colors --*/
-    --title-color:     #000000;
-    --header-color:    rgba(0, 0, 0, 0.8);
-    --body-color:      rgba(0, 0, 0, 0.8);
-    --aside-color:     rgba(0, 0, 0, 0.6);
-    --fig-cap-color:   rgba(0, 0, 0, 0.6);
-    /*-- Specify custom fonts ~~~ must be imported above   --*/
-    --heading-font:    sans-serif;
-    --mono-font:       monospace;
-    --body-font:       sans-serif;
-    --navbar-font:     sans-serif;  /* websites + blogs only */
-  }
-
-  /*-- ARTICLE METADATA --*/
-  d-byline {
-    --heading-size:    0.6rem;
-    --heading-color:   rgba(0, 0, 0, 0.5);
-    --body-size:       0.8rem;
-    --body-color:      rgba(0, 0, 0, 0.8);
-  }
-
-  /*-- ARTICLE TABLE OF CONTENTS --*/
-  .d-contents {
-    --heading-size:    18px;
-    --contents-size:   13px;
-  }
-
-  /*-- ARTICLE APPENDIX --*/
-  d-appendix {
-    --heading-size:    15px;
-    --heading-color:   rgba(0, 0, 0, 0.65);
-    --text-size:       0.8em;
-    --text-color:      rgba(0, 0, 0, 0.5);
-  }
-
-  /*-- WEBSITE HEADER + FOOTER --*/
-  /* These properties only apply to Distill sites and blogs  */
-
-  .distill-site-header {
-    --title-size:       18px;
-    --text-color:       rgba(255, 255, 255, 0.8);
-    --text-size:        15px;
-    --hover-color:      white;
-    --bkgd-color:       #0F2E3D;
-  }
-
-  .distill-site-footer {
-    --text-color:       rgba(255, 255, 255, 0.8);
-    --text-size:        15px;
-    --hover-color:      white;
-    --bkgd-color:       #0F2E3D;
-  }
-
-  /*-- Additional custom styles --*/
-  /* Add any additional CSS rules below                      */
-  </style>
-  <style type="text/css">
-  /* base variables */
-
-  /* Edit the CSS properties in this file to create a custom
-     Distill theme. Only edit values in the right column
-     for each row; values shown are the CSS defaults.
-     To return any property to the default,
-     you may set its value to: unset
-     All rows must end with a semi-colon.                      */
-
-  /* Optional: embed custom fonts here with `@import`          */
-  /* This must remain at the top of this file.                 */
-
-
-
-  html {
-    /*-- Main font sizes --*/
-    --title-size:      50px;
-    --body-size:       1.06rem;
-    --code-size:       14px;
-    --aside-size:      12px;
-    --fig-cap-size:    13px;
-    /*-- Main font colors --*/
-    --title-color:     #000000;
-    --header-color:    rgba(0, 0, 0, 0.8);
-    --body-color:      rgba(0, 0, 0, 0.8);
-    --aside-color:     rgba(0, 0, 0, 0.6);
-    --fig-cap-color:   rgba(0, 0, 0, 0.6);
-    /*-- Specify custom fonts ~~~ must be imported above   --*/
-    --heading-font:    sans-serif;
-    --mono-font:       monospace;
-    --body-font:       sans-serif;
-    --navbar-font:     sans-serif;  /* websites + blogs only */
-  }
-
-  /*-- ARTICLE METADATA --*/
-  d-byline {
-    --heading-size:    0.6rem;
-    --heading-color:   rgba(0, 0, 0, 0.5);
-    --body-size:       0.8rem;
-    --body-color:      rgba(0, 0, 0, 0.8);
-  }
-
-  /*-- ARTICLE TABLE OF CONTENTS --*/
-  .d-contents {
-    --heading-size:    18px;
-    --contents-size:   13px;
-  }
-
-  /*-- ARTICLE APPENDIX --*/
-  d-appendix {
-    --heading-size:    15px;
-    --heading-color:   rgba(0, 0, 0, 0.65);
-    --text-size:       0.8em;
-    --text-color:      rgba(0, 0, 0, 0.5);
-  }
-
-  /*-- WEBSITE HEADER + FOOTER --*/
-  /* These properties only apply to Distill sites and blogs  */
-
-  .distill-site-header {
-    --title-size:       18px;
-    --text-color:       #EFE6DD;
-    --text-size:        15px;
-    --hover-color:      white;
-    --bkgd-color:       #36494E;
-  }
-
-  .distill-site-footer {
-    --text-color:       rgba(255, 255, 255, 0.8);
-    --text-size:        15px;
-    --hover-color:      white;
-    --bkgd-color:       #0F2E3D;
-  }
-
-  /*-- Additional custom styles --*/
-  /* Add any additional CSS rules below                      */
-  </style>
-  <style type="text/css">
-  /* base style */
-
-  /* FONT FAMILIES */
-
-  :root {
-    --heading-default: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
-    --mono-default: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    --body-default: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
-  }
-
-  body,
-  .posts-list .post-preview p,
-  .posts-list .description p {
-    font-family: var(--body-font), var(--body-default);
-  }
-
-  h1, h2, h3, h4, h5, h6,
-  .posts-list .post-preview h2,
-  .posts-list .description h2 {
-    font-family: var(--heading-font), var(--heading-default);
-  }
-
-  d-article div.sourceCode code,
-  d-article pre code {
-    font-family: var(--mono-font), var(--mono-default);
-  }
-
-
-  /*-- TITLE --*/
-  d-title h1,
-  .posts-list > h1 {
-    color: var(--title-color, black);
-  }
-
-  d-title h1 {
-    font-size: var(--title-size, 50px);
-  }
-
-  /*-- HEADERS --*/
-  d-article h1,
-  d-article h2,
-  d-article h3,
-  d-article h4,
-  d-article h5,
-  d-article h6 {
-    color: var(--header-color, rgba(0, 0, 0, 0.8));
-  }
-
-  /*-- BODY --*/
-  d-article > p,  /* only text inside of <p> tags */
-  d-article > ul, /* lists */
-  d-article > ol {
-    color: var(--body-color, rgba(0, 0, 0, 0.8));
-    font-size: var(--body-size, 1.06rem);
-  }
-
-
-  /*-- CODE --*/
-  d-article div.sourceCode code,
-  d-article pre code {
-    font-size: var(--code-size, 14px);
-  }
-
-  /*-- ASIDE --*/
-  d-article aside {
-    font-size: var(--aside-size, 12px);
-    color: var(--aside-color, rgba(0, 0, 0, 0.6));
-  }
-
-  /*-- FIGURE CAPTIONS --*/
-  figure .caption,
-  figure figcaption,
-  .figure .caption {
-    font-size: var(--fig-cap-size, 13px);
-    color: var(--fig-cap-color, rgba(0, 0, 0, 0.6));
-  }
-
-  /*-- METADATA --*/
-  d-byline h3 {
-    font-size: var(--heading-size, 0.6rem);
-    color: var(--heading-color, rgba(0, 0, 0, 0.5));
-  }
-
-  d-byline {
-    font-size: var(--body-size, 0.8rem);
-    color: var(--body-color, rgba(0, 0, 0, 0.8));
-  }
-
-  d-byline a,
-  d-article d-byline a {
-    color: var(--body-color, rgba(0, 0, 0, 0.8));
-  }
-
-  /*-- TABLE OF CONTENTS --*/
-  .d-contents nav h3 {
-    font-size: var(--heading-size, 18px);
-  }
-
-  .d-contents nav a {
-    font-size: var(--contents-size, 13px);
-  }
-
-  /*-- APPENDIX --*/
-  d-appendix h3 {
-    font-size: var(--heading-size, 15px);
-    color: var(--heading-color, rgba(0, 0, 0, 0.65));
-  }
-
-  d-appendix {
-    font-size: var(--text-size, 0.8em);
-    color: var(--text-color, rgba(0, 0, 0, 0.5));
-  }
-
-  d-appendix d-footnote-list a.footnote-backlink {
-    color: var(--text-color, rgba(0, 0, 0, 0.5));
-  }
-
-  /*-- WEBSITE HEADER + FOOTER --*/
-  .distill-site-header .title {
-    font-size: var(--title-size, 18px);
-    font-family: var(--navbar-font), var(--heading-default);
-  }
-
-  .distill-site-header a,
-  .nav-dropdown .nav-dropbtn {
-    font-family: var(--navbar-font), var(--heading-default);
-  }
-
-  .nav-dropdown .nav-dropbtn {
-    color: var(--text-color, rgba(255, 255, 255, 0.8));
-    font-size: var(--text-size, 15px);
-  }
-
-  .distill-site-header a:hover,
-  .nav-dropdown:hover .nav-dropbtn {
-    color: var(--hover-color, white);
-  }
-
-  .distill-site-header {
-    font-size: var(--text-size, 15px);
-    color: var(--text-color, rgba(255, 255, 255, 0.8));
-    background-color: var(--bkgd-color, #0F2E3D);
-  }
-
-  .distill-site-footer {
-    font-size: var(--text-size, 15px);
-    color: var(--text-color, rgba(255, 255, 255, 0.8));
-    background-color: var(--bkgd-color, #0F2E3D);
-  }
-
-  .distill-site-footer a:hover {
-    color: var(--hover-color, white);
-  }</style>
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.6.4/header-attrs.js"></script>
-  <script src="site_libs/anchor-4.2.2/anchor.min.js"></script>
-  <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
-  <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="site_libs/distill-2.2.21/template.v2.js"></script>
+  <script src="tidytuesday-2021-week-2-global-transit-costs_files/header-attrs-2.6.4/header-attrs.js"></script>
+  <script src="tidytuesday-2021-week-2-global-transit-costs_files/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+  <script src="tidytuesday-2021-week-2-global-transit-costs_files/jquery-1.12.4/jquery.min.js"></script>
+  <link href="tidytuesday-2021-week-2-global-transit-costs_files/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+  <script src="tidytuesday-2021-week-2-global-transit-costs_files/leaflet-1.3.1/leaflet.js"></script>
+  <link href="tidytuesday-2021-week-2-global-transit-costs_files/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+  <script src="tidytuesday-2021-week-2-global-transit-costs_files/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+  <script src="tidytuesday-2021-week-2-global-transit-costs_files/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+  <link href="tidytuesday-2021-week-2-global-transit-costs_files/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+  <script src="tidytuesday-2021-week-2-global-transit-costs_files/leaflet-binding-2.0.3/leaflet.js"></script>
+  <link href="tidytuesday-2021-week-2-global-transit-costs_files/leaflet-markercluster-1.0.5/MarkerCluster.css" rel="stylesheet" />
+  <link href="tidytuesday-2021-week-2-global-transit-costs_files/leaflet-markercluster-1.0.5/MarkerCluster.Default.css" rel="stylesheet" />
+  <script src="tidytuesday-2021-week-2-global-transit-costs_files/leaflet-markercluster-1.0.5/leaflet.markercluster.js"></script>
+  <script src="tidytuesday-2021-week-2-global-transit-costs_files/leaflet-markercluster-1.0.5/leaflet.markercluster.freezable.js"></script>
+  <script src="tidytuesday-2021-week-2-global-transit-costs_files/leaflet-markercluster-1.0.5/leaflet.markercluster.layersupport.js"></script>
+  <script src="tidytuesday-2021-week-2-global-transit-costs_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="tidytuesday-2021-week-2-global-transit-costs_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="tidytuesday-2021-week-2-global-transit-costs_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="tidytuesday-2021-week-2-global-transit-costs_files/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
 
 </head>
 
-<body class="layout-listing">
+<body>
 
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Blog Posts","authors":[]}
+{"title":"TidyTuesday 2021 Week 2: Global Transit Costs","description":"A Leaflet map of global transit costs on a per-city basis.","authors":[{"author":"Jack Davison","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-01-05T00:00:00.000+00:00","citationText":"Davison, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
 <!--radix_placeholder_navigation_before_body-->
-<header class="header header--fixed" role="banner">
-<nav class="distill-site-nav distill-site-header">
-<div class="nav-left">
-<a href="index.html" class="title">Jack Davison R</a>
-<input id="distill-search" class="nav-search hidden" type="text" placeholder="Search..."/>
-</div>
-<div class="nav-right">
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="https://twitter.com/JDavison_">
-<i class="fab fa-twitter" aria-hidden="true"></i>
-</a>
-<a href="https://github.com/jack-davison">
-<i class="fab fa-github" aria-hidden="true"></i>
-</a>
-<a href="https://www.linkedin.com/in/jack-davison/">
-<i class="fa fa-linkedin" aria-hidden="true"></i>
-</a>
-<a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
-</div>
-</nav>
-</header>
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
-<!--radix_placeholder_article_listing-->
-
-
-<script type="application/javascript">
-
-function init_posts_list() {
-
-  function load_image(img) {
-    var src = $(img).attr('data-src');
-    if (src) {
-      $(img).attr('src', src);
-      $(img).load(function() {
-        img.removeAttribute('data-src');
-      });
-    }
-  }
-
-  function set_posts_visible(posts, visible) {
-    if (visible) {
-
-      // show bottom border by default
-      $(posts).removeClass('post-preview-last');
-
-      // apply limits if need be
-      var max_posts = 25;
-      var apply_limits = $('.posts-container').hasClass('posts-apply-limit');
-      if (apply_limits && posts.length > max_posts) {
-        posts = $(posts).slice(0, max_posts);
-      } else {
-        $('.posts-more a').addClass('hidden');
-      }
-
-      // apply last style
-      $(posts.slice(-1)[0]).addClass('post-preview-last');
-
-      $(posts).removeClass('hidden');
-      $(posts).find('img[data-src]').each(function(i, img) {
-        load_image(img);
-      });
-    } else {
-      $(posts).addClass('hidden');
-    }
-  }
-
-  function apply_hash_filter() {
-
-    // clear active state
-    $('.categories .active').removeClass('active');
-
-    // mark all posts invisible to start
-    set_posts_visible($('.posts-list').children('a'), false);
-
-    // if we have a hash filter
-    if (window.location.hash && window.location.hash.startsWith("#category:")) {
-
-      // mark posts that match the category visible
-      var page_category = window.location.hash.replace(/^#category:/, "");
-      var posts = $('.post-metadata').map(function(idx, script) {
-        var metadata = $.parseJSON($(script).html());
-        var post = null;
-        $.each(metadata.categories, function(idx, category) {
-          category = category.replace(/ /g,"_");
-          if ((page_category || '').toLowerCase() === "articles" || category === page_category) {
-            post = $(script).parent().get();
-            return false;
-          }
-        });
-        return post;
-      });
-      set_posts_visible(posts, true);
-
-      // mark the hash active
-      $('.categories li>a[href="' + window.location.hash + '"]').addClass('active');
-
-      // update the list_caption
-      var list_caption = $('.posts-list-caption');
-      var caption = (page_category || '').toLowerCase() === "articles"
-        ? list_caption.attr('data-caption')
-        : ('Category: ' + page_category.replace(/_/g," "));
-      list_caption.text(caption);
-
-    } else {
-
-      // no hash filter, make all posts visible (subject to max display)
-      set_posts_visible($('.posts-list').children(), true);
-
-      // reset list caption
-      var list_caption = $('.posts-list-caption');
-      list_caption.text(list_caption.attr('data-caption'));
-
-
-    }
-  }
-
-  // more articles
-  function apply_post_limits(apply) {
-    if (apply) {
-      $('.posts-container').addClass('posts-apply-limit');
-      $('.posts-more a').removeClass('hidden');
-    } else {
-      $('.posts-container').removeClass('posts-apply-limit');
-      $('.posts-more a').addClass('hidden');
-    }
-  }
-
-  // click handling for tags
-  $('.dt-tag').click(function(ev) {
-    window.location.hash = '#category:' + $(this).text().replace(/ /g, "_");
-    return false;
-  })
-
-  // hash filter handling
-  apply_hash_filter();
-  $(window).on('hashchange',function() {
-    apply_post_limits(true);
-    apply_hash_filter();
-  });
-
-  // more articles link
-  $('.posts-more a').click(function(e) {
-    e.preventDefault();
-    apply_post_limits(false);
-    apply_hash_filter();
-    return false;
-  });
-
-}
-
-</script>
-
-
-
-<div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
-<div class="posts-list">
-<h1 class="posts-list-caption" data-caption="Blog Posts">Blog Posts</h1>
-<a href="posts/2021-01-05-tidytuesday-2021-week-2-global-transit-costs/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["tidytuesday"]}</script>
-<div class="metadata">
-<div class="publishedDate">Jan. 5, 2021</div>
-<div class="dt-authors">
-<div class="dt-author">Jack Davison</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="posts/2021-01-05-tidytuesday-2021-week-2-global-transit-costs/transit.png"/>
-</div>
-<div class="description">
-<h2>TidyTuesday 2021 Week 2: Global Transit Costs</h2>
-<div class="dt-tags">
-<div class="dt-tag">tidytuesday</div>
-</div>
-<p>A Leaflet map of global transit costs on a per-city basis.</p>
-</div>
-</a>
-<a href="posts/2020-12-30-tutorial-calendar-plots-using-ggplot2/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["tutorial","ggplot2"]}</script>
-<div class="metadata">
-<div class="publishedDate">Jan. 1, 2021</div>
-<div class="dt-authors">
-<div class="dt-author">Jack Davison</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="posts/2020-12-30-tutorial-calendar-plots-using-ggplot2/tutorial-calendar-plots-using-ggplot2_files/figure-html5/unnamed-chunk-14-1.png"/>
-</div>
-<div class="description">
-<h2>Tutorial: Calendar Plots using ggplot2</h2>
-<div class="dt-tags">
-<div class="dt-tag">tutorial</div>
-<div class="dt-tag">ggplot2</div>
-</div>
-<p>A ggplot2 recreation of an uncommon heat-map visualisation.</p>
-</div>
-</a>
-<a href="posts/2020-12-29-creating-a-function-counting-coins/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["tutorial"]}</script>
-<div class="metadata">
-<div class="publishedDate">Dec. 29, 2020</div>
-<div class="dt-authors">
-<div class="dt-author">Jack Davison</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="posts/2020-12-29-creating-a-function-counting-coins/creating-a-function-counting-coins_files/figure-html5/unnamed-chunk-17-1.png"/>
-</div>
-<div class="description">
-<h2>The Minimum Coins Problem in Base R</h2>
-<div class="dt-tags">
-<div class="dt-tag">tutorial</div>
-</div>
-<p>An R-based solution to a common programming challenge - for a given value of money, what is the minimum number of coins to make the change?</p>
-</div>
-</a>
-</div>
-<div class="posts-sidebar">
-<div class="sidebar-section categories">
-<h3>Categories</h3>
-<ul>
-<li>
-<a href="#category:articles">articles</a>
-<span class="category-count">(3)</span>
-</li>
-<li>
-<a href="#category:ggplot2">ggplot2</a>
-<span class="category-count">(1)</span>
-</li>
-<li>
-<a href="#category:tidytuesday">tidytuesday</a>
-<span class="category-count">(1)</span>
-</li>
-<li>
-<a href="#category:tutorial">tutorial</a>
-<span class="category-count">(2)</span>
-</li>
-</ul>
-</div>
-</div>
-<div class="posts-more">
-<a href="#">More articles &raquo;</a>
-</div>
-</div>
-<!--/radix_placeholder_article_listing-->
 
 <div class="d-title">
-<h1>Blog Posts</h1>
+<h1>TidyTuesday 2021 Week 2: Global Transit Costs</h1>
 <!--radix_placeholder_categories-->
+<div class="dt-tags">
+<div class="dt=tag">tidytuesday</div>
+</div>
 <!--/radix_placeholder_categories-->
-
+<p><p>A Leaflet map of global transit costs on a per-city basis.</p></p>
 </div>
 
+<div class="d-byline">
+  Jack Davison  
+  
+<br/>01-05-2021
+</div>
 
 <div class="d-article">
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>This week for TidyTuesday I produced a static map of distance-based road transit costs on a per-city basis. You can see it on my <a href="https://twitter.com/JDavison_">Twitter</a> and the code will be pushed to my <a href="https://github.com/jack-davison">GitHub</a>.</p>
+<p><img src="transit.png" /></p>
+<p>To compliment this, I thought I’d also try to go a step further and try to learn how to use Leaflet. I’ve long admired Leaflet and thought it would be a really hard job, but it’s actually really easy! The code and map are provided below, and you’ll note that the vast majority is just me cleaning and augmenting the data - only the last bit is the Leaflet code.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/thebioengineer/tidytuesdayR'>tidytuesdayR</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/vincentarelbundock/countrycode'>countrycode</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/ropenscilabs/rnaturalearth'>rnaturalearth</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://rstudio.github.io/leaflet/'>leaflet</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/rstudio/htmltools'>htmltools</a></span><span class='op'>)</span>
+
+<span class='va'>world</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/rnaturalearth/man/ne_countries.html'>ne_countries</a></span><span class='op'>(</span>scale <span class='op'>=</span> <span class='st'>"medium"</span>, returnclass <span class='op'>=</span> <span class='st'>"sf"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='va'>continent</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Antarctica"</span>, <span class='st'>"Seven seas (open ocean)"</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='va'>continents</span> <span class='op'>=</span> <span class='fu'>countrycode</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/countrycode/man/codelist.html'>codelist</a></span> <span class='op'>%&gt;%</span>
+  <span class='fu'>select</span><span class='op'>(</span><span class='va'>ecb</span>, <span class='va'>country.name.en</span>, <span class='va'>continent</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>rename</span><span class='op'>(</span>country <span class='op'>=</span> <span class='va'>country.name.en</span><span class='op'>)</span>
+
+<span class='va'>city_locs</span> <span class='op'>=</span> <span class='fu'>readr</span><span class='fu'>::</span><span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"worldcities.csv"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>select</span><span class='op'>(</span><span class='va'>city</span>, <span class='va'>country</span>, <span class='va'>lat</span>, <span class='va'>lng</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>country <span class='op'>=</span> <span class='fu'>if_else</span><span class='op'>(</span><span class='va'>country</span> <span class='op'>==</span> <span class='st'>"Korea, South"</span>, <span class='st'>"South Korea"</span>, <span class='va'>country</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='va'>data</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/tidytuesdayR/man/tt_load.html'>tt_load</a></span><span class='op'>(</span><span class='st'>"2021-01-05"</span><span class='op'>)</span><span class='op'>$</span><span class='va'>transit_cost</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>city</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>rename</span><span class='op'>(</span>ecb <span class='op'>=</span> <span class='va'>country</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>ecb <span class='op'>=</span> <span class='fu'>if_else</span><span class='op'>(</span><span class='va'>ecb</span> <span class='op'>==</span> <span class='st'>"UK"</span>, <span class='st'>"GB"</span>, <span class='va'>ecb</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>left_join</span><span class='op'>(</span><span class='va'>continents</span>, by <span class='op'>=</span> <span class='st'>"ecb"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>left_join</span><span class='op'>(</span><span class='va'>city_locs</span>, by <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"city"</span>, <span class='st'>"country"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>lat</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>start_year <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>start_year</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>start_year</span> <span class='op'>&gt;</span> <span class='fl'>2000</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>
+    Downloading file 1 of 1: `transit_cost.csv`</code></pre>
+<div class="sourceCode">
+<pre><code><span class='va'>avgs</span> <span class='op'>=</span> <span class='va'>data</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>select</span><span class='op'>(</span><span class='va'>city</span>, <span class='va'>country</span>, <span class='va'>continent</span>, <span class='va'>lat</span>, <span class='va'>lng</span>, <span class='va'>cost_km_millions</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>city</span>, <span class='va'>country</span>, <span class='va'>continent</span>, <span class='va'>lat</span>, <span class='va'>lng</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>summarise</span><span class='op'>(</span>avg <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/median.html'>median</a></span><span class='op'>(</span><span class='va'>cost_km_millions</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>ungroup</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span><span class='op'>(</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/leaflet.html'>leaflet</a></span><span class='op'>(</span><span class='va'>avgs</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/map-layers.html'>addTiles</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/map-layers.html'>addCircles</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>avgs</span>, lng <span class='op'>=</span> <span class='op'>~</span><span class='va'>lng</span>, lat <span class='op'>=</span> <span class='op'>~</span><span class='va'>lat</span>,
+             radius <span class='op'>=</span> <span class='op'>~</span><span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>avg</span>,<span class='fl'>0</span><span class='op'>)</span> <span class='op'>*</span> <span class='fl'>200</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/map-layers.html'>addMarkers</a></span><span class='op'>(</span>lng <span class='op'>=</span> <span class='op'>~</span><span class='va'>lng</span>, lat <span class='op'>=</span> <span class='op'>~</span><span class='va'>lat</span>, 
+             clusterOptions <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/leaflet/man/map-options.html'>markerClusterOptions</a></span><span class='op'>(</span><span class='op'>)</span>,
+             popup <span class='op'>=</span> <span class='op'>~</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>"&lt;b&gt;"</span>, <span class='va'>city</span>, <span class='st'>"&lt;/b&gt;, "</span>,<span class='va'>country</span>,<span class='st'>"&lt;br&gt;"</span>,
+                             <span class='st'>"$"</span>,<span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>avg</span>,<span class='fl'>0</span><span class='op'>)</span>,<span class='st'>" million / km"</span><span class='op'>)</span>
+  <span class='op'>)</span>
+</code></pre>
+</div>
+<div id="htmlwidget-f1698761b70f64ff79b9" style="width:624px;height:384px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f1698761b70f64ff79b9">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addCircles","args":[[52.35,39.93,37.9794,-36.85,12.9699,13.75,41.3825,39.905,52.5167,43.2622,42.3188,42.6528,50.8467,44.4,47.4983,-34.5997,35.1,30.0561,43.9,22.3762,28.1987,30.6636,13.0825,18.7889,29.55,50.9422,55.6786,28.66,23.7161,25.3,23.0475,25.2697,50.1136,33.5903,26.0769,27.9814,46.2,20.6767,23.1288,26.5794,28.45,53.55,30.25,21.0245,31.8639,60.1756,10.8167,41.01,-6.2146,21.5428,22.6167,49.0167,50,9.9667,3.1478,25.0433,29.375,50.45,31.5497,36.0617,51.35,-12.05,38.7452,51.5072,34.1139,47.0523,45.76,40.4189,14.5958,21.4225,-37.8136,19.4333,45.4669,55.7558,18.9667,28.6842,32.05,22.8192,40.6943,56.3269,49.4528,59.9111,45.4247,9,48.8566,-31.9522,41.1495,50.0833,-0.2186,24.65,41.8931,59.95,37.7562,37.3019,-33.45,47.6211,37.5833,31.1667,41.8039,22.535,1.3,42.6975,59.3294,31.304,33.6333,-33.865,24.15,22.9833,25.0478,37.8733,41.3,35.7,39.1467,35.6897,43.7417,43.6045,45.0667,49.25,48.2083,52.2167,27.9991,30.5872,24.4797,34.7492],[4.9166,32.85,23.7161,174.7833,77.598,100.5167,2.1769,116.3914,13.3833,-2.9533,-71.0846,-78.7555,4.3517,26.0833,19.0408,-58.3819,129.0403,31.2394,125.2,112.6877,112.9709,104.0667,80.275,98.9833,106.5069,6.9578,12.5635,77.23,90.3961,51.5333,113.7493,55.3094,8.6797,130.4019,119.2917,116.3577,6.15,-103.3475,113.259,106.7078,77.02,10,120.1675,105.8412,117.2808,24.9342,106.6333,28.9603,106.8451,39.1728,120.3,8.4,36.2292,76.2833,101.6953,102.7061,47.98,30.5236,74.3436,103.8318,12.3833,-77.0333,-9.1604,-0.1275,-118.4068,8.3059,4.84,-3.6919,120.9772,39.8261,144.9631,-99.1333,9.19,37.6178,72.8333,115.8872,118.7667,108.315,-73.9249,44.0075,11.0778,10.7528,-75.695,-79.5,2.3522,115.8589,-8.6108,14.4167,-78.5097,46.71,12.4828,30.3167,-122.443,-121.8486,-70.6667,-122.3244,127,121.4667,123.4258,114.054,103.8,23.3241,18.0686,120.6164,116.9683,151.2094,120.6667,120.1833,121.5319,112.5425,69.2667,51.4167,117.2056,139.6922,-79.3733,1.444,7.7,-123.1,16.3731,21.0333,120.6561,114.2881,118.0819,113.6605],[83000,23800,26200,171000,41400,35400,25200,44200,54200,12200,60200,60200,53200,54000,96800,46400,27600,null,29000,36800,36800,36800,47800,27600,32200,67600,45000,38000,107800,145200,30600,60800,36000,73400,39400,39400,24200,31000,38800,31600,32600,35600,36200,57800,37200,17000,107000,22000,37400,21400,71000,79000,85200,41400,69800,30200,38000,49600,44600,35400,69400,63400,28000,144000,113800,20000,32000,18000,81400,40600,168600,50800,29000,44200,38400,38800,39400,36200,358400,36000,59600,28400,27800,40800,47000,30200,13400,49800,33400,43000,38000,59000,123800,143800,33600,68800,20800,32400,32800,45600,131400,25600,27600,33000,33000,50600,47200,47600,46800,35400,31600,40000,48000,64200,93000,25800,24800,83400,33200,39800,18600,36800,35800,29200],null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]},{"method":"addMarkers","args":[[52.35,39.93,37.9794,-36.85,12.9699,13.75,41.3825,39.905,52.5167,43.2622,42.3188,42.6528,50.8467,44.4,47.4983,-34.5997,35.1,30.0561,43.9,22.3762,28.1987,30.6636,13.0825,18.7889,29.55,50.9422,55.6786,28.66,23.7161,25.3,23.0475,25.2697,50.1136,33.5903,26.0769,27.9814,46.2,20.6767,23.1288,26.5794,28.45,53.55,30.25,21.0245,31.8639,60.1756,10.8167,41.01,-6.2146,21.5428,22.6167,49.0167,50,9.9667,3.1478,25.0433,29.375,50.45,31.5497,36.0617,51.35,-12.05,38.7452,51.5072,34.1139,47.0523,45.76,40.4189,14.5958,21.4225,-37.8136,19.4333,45.4669,55.7558,18.9667,28.6842,32.05,22.8192,40.6943,56.3269,49.4528,59.9111,45.4247,9,48.8566,-31.9522,41.1495,50.0833,-0.2186,24.65,41.8931,59.95,37.7562,37.3019,-33.45,47.6211,37.5833,31.1667,41.8039,22.535,1.3,42.6975,59.3294,31.304,33.6333,-33.865,24.15,22.9833,25.0478,37.8733,41.3,35.7,39.1467,35.6897,43.7417,43.6045,45.0667,49.25,48.2083,52.2167,27.9991,30.5872,24.4797,34.7492],[4.9166,32.85,23.7161,174.7833,77.598,100.5167,2.1769,116.3914,13.3833,-2.9533,-71.0846,-78.7555,4.3517,26.0833,19.0408,-58.3819,129.0403,31.2394,125.2,112.6877,112.9709,104.0667,80.275,98.9833,106.5069,6.9578,12.5635,77.23,90.3961,51.5333,113.7493,55.3094,8.6797,130.4019,119.2917,116.3577,6.15,-103.3475,113.259,106.7078,77.02,10,120.1675,105.8412,117.2808,24.9342,106.6333,28.9603,106.8451,39.1728,120.3,8.4,36.2292,76.2833,101.6953,102.7061,47.98,30.5236,74.3436,103.8318,12.3833,-77.0333,-9.1604,-0.1275,-118.4068,8.3059,4.84,-3.6919,120.9772,39.8261,144.9631,-99.1333,9.19,37.6178,72.8333,115.8872,118.7667,108.315,-73.9249,44.0075,11.0778,10.7528,-75.695,-79.5,2.3522,115.8589,-8.6108,14.4167,-78.5097,46.71,12.4828,30.3167,-122.443,-121.8486,-70.6667,-122.3244,127,121.4667,123.4258,114.054,103.8,23.3241,18.0686,120.6164,116.9683,151.2094,120.6667,120.1833,121.5319,112.5425,69.2667,51.4167,117.2056,139.6922,-79.3733,1.444,7.7,-123.1,16.3731,21.0333,120.6561,114.2881,118.0819,113.6605],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["<b>Amsterdam<\/b>, Netherlands<br>$415 million / km","<b>Ankara<\/b>, Turkey<br>$119 million / km","<b>Athens<\/b>, Greece<br>$131 million / km","<b>Auckland<\/b>, New Zealand<br>$855 million / km","<b>Bangalore<\/b>, India<br>$207 million / km","<b>Bangkok<\/b>, Thailand<br>$177 million / km","<b>Barcelona<\/b>, Spain<br>$126 million / km","<b>Beijing<\/b>, China<br>$221 million / km","<b>Berlin<\/b>, Germany<br>$271 million / km","<b>Bilbao<\/b>, Spain<br>$61 million / km","<b>Boston<\/b>, United States<br>$301 million / km","<b>Boston<\/b>, United States<br>$301 million / km","<b>Brussels<\/b>, Belgium<br>$266 million / km","<b>Bucharest<\/b>, Romania<br>$270 million / km","<b>Budapest<\/b>, Hungary<br>$484 million / km","<b>Buenos Aires<\/b>, Argentina<br>$232 million / km","<b>Busan<\/b>, South Korea<br>$138 million / km","<b>Cairo<\/b>, Egypt<br>$NA million / km","<b>Changchun<\/b>, China<br>$145 million / km","<b>Changsha<\/b>, China<br>$184 million / km","<b>Changsha<\/b>, China<br>$184 million / km","<b>Chengdu<\/b>, China<br>$184 million / km","<b>Chennai<\/b>, India<br>$239 million / km","<b>Chiang Mai<\/b>, Thailand<br>$138 million / km","<b>Chongqing<\/b>, China<br>$161 million / km","<b>Cologne<\/b>, Germany<br>$338 million / km","<b>Copenhagen<\/b>, Denmark<br>$225 million / km","<b>Delhi<\/b>, India<br>$190 million / km","<b>Dhaka<\/b>, Bangladesh<br>$539 million / km","<b>Doha<\/b>, Qatar<br>$726 million / km","<b>Dongguan<\/b>, China<br>$153 million / km","<b>Dubai<\/b>, United Arab Emirates<br>$304 million / km","<b>Frankfurt<\/b>, Germany<br>$180 million / km","<b>Fukuoka<\/b>, Japan<br>$367 million / km","<b>Fuzhou<\/b>, China<br>$197 million / km","<b>Fuzhou<\/b>, China<br>$197 million / km","<b>Geneva<\/b>, Switzerland<br>$121 million / km","<b>Guadalajara<\/b>, Mexico<br>$155 million / km","<b>Guangzhou<\/b>, China<br>$194 million / km","<b>Guiyang<\/b>, China<br>$158 million / km","<b>Gurgaon<\/b>, India<br>$163 million / km","<b>Hamburg<\/b>, Germany<br>$178 million / km","<b>Hangzhou<\/b>, China<br>$181 million / km","<b>Hanoi<\/b>, Vietnam<br>$289 million / km","<b>Hefei<\/b>, China<br>$186 million / km","<b>Helsinki<\/b>, Finland<br>$85 million / km","<b>Ho Chi Minh City<\/b>, Vietnam<br>$535 million / km","<b>Istanbul<\/b>, Turkey<br>$110 million / km","<b>Jakarta<\/b>, Indonesia<br>$187 million / km","<b>Jeddah<\/b>, Saudi Arabia<br>$107 million / km","<b>Kaohsiung<\/b>, Taiwan<br>$355 million / km","<b>Karlsruhe<\/b>, Germany<br>$395 million / km","<b>Kharkiv<\/b>, Ukraine<br>$426 million / km","<b>Kochi<\/b>, India<br>$207 million / km","<b>Kuala Lumpur<\/b>, Malaysia<br>$349 million / km","<b>Kunming<\/b>, China<br>$151 million / km","<b>Kuwait City<\/b>, Kuwait<br>$190 million / km","<b>Kyiv<\/b>, Ukraine<br>$248 million / km","<b>Lahore<\/b>, Pakistan<br>$223 million / km","<b>Lanzhou<\/b>, China<br>$177 million / km","<b>Leipzig<\/b>, Germany<br>$347 million / km","<b>Lima<\/b>, Peru<br>$317 million / km","<b>Lisbon<\/b>, Portugal<br>$140 million / km","<b>London<\/b>, United Kingdom<br>$720 million / km","<b>Los Angeles<\/b>, United States<br>$569 million / km","<b>Lucerne<\/b>, Switzerland<br>$100 million / km","<b>Lyon<\/b>, France<br>$160 million / km","<b>Madrid<\/b>, Spain<br>$90 million / km","<b>Manila<\/b>, Philippines<br>$407 million / km","<b>Mecca<\/b>, Saudi Arabia<br>$203 million / km","<b>Melbourne<\/b>, Australia<br>$843 million / km","<b>Mexico City<\/b>, Mexico<br>$254 million / km","<b>Milan<\/b>, Italy<br>$145 million / km","<b>Moscow<\/b>, Russia<br>$221 million / km","<b>Mumbai<\/b>, India<br>$192 million / km","<b>Nanchang<\/b>, China<br>$194 million / km","<b>Nanjing<\/b>, China<br>$197 million / km","<b>Nanning<\/b>, China<br>$181 million / km","<b>New York<\/b>, United States<br>$1792 million / km","<b>Nizhniy Novgorod<\/b>, Russia<br>$180 million / km","<b>Nuremberg<\/b>, Germany<br>$298 million / km","<b>Oslo<\/b>, Norway<br>$142 million / km","<b>Ottawa<\/b>, Canada<br>$139 million / km","<b>Panama City<\/b>, Panama<br>$204 million / km","<b>Paris<\/b>, France<br>$235 million / km","<b>Perth<\/b>, Australia<br>$151 million / km","<b>Porto<\/b>, Portugal<br>$67 million / km","<b>Prague<\/b>, Czechia<br>$249 million / km","<b>Quito<\/b>, Ecuador<br>$167 million / km","<b>Riyadh<\/b>, Saudi Arabia<br>$215 million / km","<b>Rome<\/b>, Italy<br>$190 million / km","<b>Saint Petersburg<\/b>, Russia<br>$295 million / km","<b>San Francisco<\/b>, United States<br>$619 million / km","<b>San Jose<\/b>, United States<br>$719 million / km","<b>Santiago<\/b>, Chile<br>$168 million / km","<b>Seattle<\/b>, United States<br>$344 million / km","<b>Seoul<\/b>, South Korea<br>$104 million / km","<b>Shanghai<\/b>, China<br>$162 million / km","<b>Shenyang<\/b>, China<br>$164 million / km","<b>Shenzhen<\/b>, China<br>$228 million / km","<b>Singapore<\/b>, Singapore<br>$657 million / km","<b>Sofia<\/b>, Bulgaria<br>$128 million / km","<b>Stockholm<\/b>, Sweden<br>$138 million / km","<b>Suzhou<\/b>, China<br>$165 million / km","<b>Suzhou<\/b>, China<br>$165 million / km","<b>Sydney<\/b>, Australia<br>$253 million / km","<b>Taichung<\/b>, Taiwan<br>$236 million / km","<b>Tainan<\/b>, Taiwan<br>$238 million / km","<b>Taipei<\/b>, Taiwan<br>$234 million / km","<b>Taiyuan<\/b>, China<br>$177 million / km","<b>Tashkent<\/b>, Uzbekistan<br>$158 million / km","<b>Tehran<\/b>, Iran<br>$200 million / km","<b>Tianjin<\/b>, China<br>$240 million / km","<b>Tokyo<\/b>, Japan<br>$321 million / km","<b>Toronto<\/b>, Canada<br>$465 million / km","<b>Toulouse<\/b>, France<br>$129 million / km","<b>Turin<\/b>, Italy<br>$124 million / km","<b>Vancouver<\/b>, Canada<br>$417 million / km","<b>Vienna<\/b>, Austria<br>$166 million / km","<b>Warsaw<\/b>, Poland<br>$199 million / km","<b>Wenzhou<\/b>, China<br>$93 million / km","<b>Wuhan<\/b>, China<br>$184 million / km","<b>Xiamen<\/b>, China<br>$179 million / km","<b>Zhengzhou<\/b>, China<br>$146 million / km"],null,{"showCoverageOnHover":true,"zoomToBoundsOnClick":true,"spiderfyOnMaxZoom":true,"removeOutsideVisibleBounds":true,"spiderLegPolylineOptions":{"weight":1.5,"color":"#222","opacity":0.5},"freezeAtZoom":false},null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-37.8136,60.1756],"lng":[-123.1,174.7833]}},"evals":[],"jsHooks":[]}</script>
+</div>
+<p>See you next week!</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
