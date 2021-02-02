@@ -7,13 +7,23 @@
     <description>Assorted adventures and visualisations using the R programming language.
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Tue, 05 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 02 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>An Ode to Data Tidying (TidyTuesday 2021 Week 6: HBCU Enrolment)</title>
+      <dc:creator>Jack Davison</dc:creator>
+      <link>https://jack-davison.github.io/posts/2021-02-02-tidytuesday-2021-week-6-hbcu-enrollment-an-ode-to-data-cleaning</link>
+      <description>A disucssion on data tidying and cleaning, with applications to a messy, unfamiliar data set.</description>
+      <category>tidytuesday</category>
+      <category>tutorial</category>
+      <guid>https://jack-davison.github.io/posts/2021-02-02-tidytuesday-2021-week-6-hbcu-enrollment-an-ode-to-data-cleaning</guid>
+      <pubDate>Tue, 02 Feb 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://jack-davison.github.io/posts/2021-02-02-tidytuesday-2021-week-6-hbcu-enrollment-an-ode-to-data-cleaning/tidytuesday-2021-week-6-hbcu-enrollment-an-ode-to-data-cleaning_files/figure-html5/unnamed-chunk-12-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
     <item>
       <title>TidyTuesday 2021 Week 2: Global Transit Costs</title>
       <dc:creator>Jack Davison</dc:creator>
       <link>https://jack-davison.github.io/posts/2021-01-05-tidytuesday-2021-week-2-global-transit-costs</link>
-      <description>&lt;p&gt;A Leaflet map of global transit costs on a per-city basis.&lt;/p&gt;
-</description>
+      <description>A Leaflet map of global transit costs on a per-city basis.</description>
       <category>tidytuesday</category>
       <guid>https://jack-davison.github.io/posts/2021-01-05-tidytuesday-2021-week-2-global-transit-costs</guid>
       <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
@@ -23,8 +33,7 @@
       <title>Tutorial: Calendar Plots using ggplot2</title>
       <dc:creator>Jack Davison</dc:creator>
       <link>https://jack-davison.github.io/posts/2020-12-30-tutorial-calendar-plots-using-ggplot2</link>
-      <description>&lt;p&gt;A ggplot2 recreation of an uncommon heat-map visualisation.&lt;/p&gt;
-</description>
+      <description>A ggplot2 recreation of an uncommon heat-map visualisation.</description>
       <category>tutorial</category>
       <category>ggplot2</category>
       <guid>https://jack-davison.github.io/posts/2020-12-30-tutorial-calendar-plots-using-ggplot2</guid>
@@ -35,8 +44,7 @@
       <title>The Minimum Coins Problem in Base R</title>
       <dc:creator>Jack Davison</dc:creator>
       <link>https://jack-davison.github.io/posts/2020-12-29-creating-a-function-counting-coins</link>
-      <description>&lt;p&gt;An R-based solution to a common programming challenge - for a given value of money, what is the minimum number of coins to make the change?&lt;/p&gt;
-</description>
+      <description>An R-based solution to a common programming challenge - for a given value of money, what is the minimum number of coins to make the change?</description>
       <category>tutorial</category>
       <guid>https://jack-davison.github.io/posts/2020-12-29-creating-a-function-counting-coins</guid>
       <pubDate>Tue, 29 Dec 2020 00:00:00 +0000</pubDate>
