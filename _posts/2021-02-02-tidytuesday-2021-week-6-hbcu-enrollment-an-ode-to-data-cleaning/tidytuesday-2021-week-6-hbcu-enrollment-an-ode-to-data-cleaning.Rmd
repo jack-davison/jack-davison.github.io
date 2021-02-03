@@ -55,7 +55,7 @@ tab %>%
   kableExtra::kable_styling()
 ```
 
-There are benefits to having data in this format. For example, we could `sort_by()` the subject and `summarise()` a mean and standard deviation. We could `filter()` for the students who scored less than 50 in a subject who may need extra help. If we had another data set of the subject teachers and the students they teach, we could `left_join()` these on to see which teachers are helping the students to score the top marks. All of this would be much, much more difficult in the *wide* format we had the data in before.
+There are benefits to having data in this format. For example, we could `group_by()` the subject and `summarise()` a mean and standard deviation. We could `filter()` for the students who scored less than 50 in a subject who may need extra help. If we had another data set of the subject teachers and the students they teach, we could `left_join()` these on to see which teachers are helping the students to score the top marks. All of this would be much, much more difficult in the *wide* format we had the data in before.
 
 Note that there are some situations where we might want the data *wide* - for example, what if we wanted to plot english marks vs maths marks? Or perhaps perform correlations between all of the different subjects? In the former case we can easily `pivot_wider()` just for this job. In the latter case we could also `pivot_wider()`, but there is also the `widyr` package that can just do it from a *tidy* format anyway!
 
@@ -91,7 +91,7 @@ But in the form it is in, it is pretty *untidy* and *unclean*. Here are some iss
 * The names of the columns have spaces in them, are wordy and therefore generally difficult to use.
 * The `Total` column represents the year. The name is therefore a bit misleading.
 
-A note on the emboldened item above; in my experience, data "in the wild" that has been put together in Excel typically has a baggage like this as spreadsheets sadly are used for both data storage *and* presentation. This means that totals and the like are given alongside the data used to calculate them. I don't feel bad about removing data like this **as long as we are left with the tools to recalculate them**. In this case, we are! If we want to regroup the Asian/Pacific Islander data it'd be as easy as renaming them both as the same thing using `mutate()` and `if_else()`, and then `group_by()` and `summarise()` to re-calculate the total. It may even be that we want to combine more racial groups using a `fct_lump()` function.
+A note on the emboldened item above; in my experience, data "in the wild" that has been put together in Excel typically has baggage like this as spreadsheets are sadly used for both data storage *and* presentation. This means that totals and the like are given alongside the data used to calculate them. I don't feel bad about removing data like this **as long as we are left with the tools to recalculate them**. In this case, we are! If we want to regroup the Asian/Pacific Islander data it'd be as easy as renaming them both as the same thing using `mutate()` and `if_else()`, and then `group_by()` and `summarise()` to re-calculate the total. It may even be that we want to combine more racial groups using a `fct_lump()` function.
 
 ## Cleaning and Tidying
 
