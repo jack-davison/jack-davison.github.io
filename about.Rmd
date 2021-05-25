@@ -18,4 +18,4 @@ knitr::opts_chunk$set(echo = FALSE)
 
 - I have contributed to the [#TidyTuesday Project](https://github.com/rfordatascience/tidytuesday/blob/master/README.md) since Summer 2020. My submissions can be found on my [GitHub](https://github.com/jack-davison) or [Twitter](https://twitter.com/JDavison_).
 
-
+- In 2021, I became an [RStudio Certified Tidyverse Instructor](https://education.rstudio.com/trainers/).
