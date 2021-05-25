@@ -26,7 +26,7 @@ library(tidyverse)
 
 # Purpose
 
-This week's TidyTuesday comes from [Benedickt Claus](https://github.com/benediktclaus), and is all about Mario Kart 64 Speedrunning! Benedickt has also provided a set of *"fun questions to explore"*, so I thought I'd write up my answers. If you're just starting out using R, it might be a good idea to give the questions a go yourself and then come back here to compare approaches!
+This week's TidyTuesday comes from [Benedikt Claus](https://github.com/benediktclaus), and is all about Mario Kart 64 Speedrunning! Benedikt has also provided a set of *"fun questions to explore"*, so I thought I'd write up my answers. If you're just starting out using R, it might be a good idea to give the questions a go yourself and then come back here to compare approaches!
 
 # The Data
 
@@ -221,6 +221,6 @@ earliest_drivers %>%
 
 # Closing
 
-When you've been presented with a new data set, it can be overwhelming and difficult to think of a question to answer. Thanks very much Benedickt for easing us in with some nice data challenges to get our teeth into! Here I've used a tidyverse approach to solve every problem, but I'm sure there are a lot of different ways to tackle these questions. 
+When you've been presented with a new data set, it can be overwhelming and difficult to think of a question to answer. Thanks very much Benedikt for easing us in with some nice data challenges to get our teeth into! Here I've used a tidyverse approach to solve every problem, but I'm sure there are a lot of different ways to tackle these questions. 
 
 There's also, of course, no need to stop at just these questions, so I look forward to seeing loads of exciting visualisations and analysis for this week's TidyTuesday!
