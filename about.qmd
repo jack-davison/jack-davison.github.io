@@ -1,0 +1,29 @@
+---
+title: "About"
+image: profile.jpg
+about:
+  template: trestles
+  links:
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/jdavison_
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/jack-davison/
+    - icon: github
+      text: Github
+      href: https://github.com/jack-davison
+
+---
+
+### I am Jack.
+
+- I am an Air Quality Measurements Data Analyst and R Developer working for an Environmental Consultancy in Oxfordshire, UK. My main role is the development of R-based tools (dynamic documents, Shiny apps, packages, etc.), and in publicising the potential applications of R within the practice.
+
+- I was awarded a PhD in Atmospheric Chemistry, having studied in the [Wolfson Atmospheric Chemistry Laboratories](https://www.york.ac.uk/chemistry/research/wacl/) at the University of York, UK. My main research interests were in the remote measurements and modelling of road transport exhaust emissions.
+
+- I've been using and refining my R skills over the past five years, with particular attention to the [Tidyverse](https://www.tidyverse.org/) suite of R packages and the [openair](https://github.com/davidcarslaw/openair) family for air quality data analysis.
+
+- I have contributed to the [#TidyTuesday Project](https://github.com/rfordatascience/tidytuesday/blob/master/README.md) since Summer 2020. My submissions can be found on my [GitHub](https://github.com/jack-davison) or [Twitter](https://twitter.com/JDavison_).
+
+- In 2021, I became an [RStudio Certified Tidyverse Instructor](https://education.rstudio.com/trainers/).

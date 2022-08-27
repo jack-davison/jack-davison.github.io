@@ -1,0 +1,35 @@
+project:
+  type: website
+
+website:
+  title: "Jack Davison R"
+  description: "R Stuff"
+  repo-url: https://github.com/jack-davison/jack-davison.github.io
+  open-graph: true
+  site-url: https://jack-davison.github.io/
+  navbar:
+    search: true
+    right:
+      - text: "Blog"
+        file: index.qmd
+      - text: "About"
+        file: about.qmd
+      - icon: github
+        href: https://github.com/jack-davison
+      - icon: twitter
+        href: https://twitter.com/jdavison_
+format:
+  html:
+    toc: true
+    toc-location: "left"
+    code-link: true
+    code-overflow: wrap
+    anchor-sections: true
+    fig-cap-location: margin
+    reference-location: margin
+    footnotes-hover: true
+    fontsize: 1em
+    theme: yeti
+    css: styles.css
+execute:
+  freeze: auto

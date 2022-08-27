@@ -1,0 +1,275 @@
+---
+title: "An Ode to Data Tidying (TidyTuesday 2021 Week 6: HBCU Enrolment)"
+description: |
+  A disucssion on data tidying and cleaning, with applications to a messy, unfamiliar data set.
+image: students.jpg
+categories: [tidytuesday]
+author: "Jack Davison"
+date: 2021-02-02
+twitter-card:
+  image:  "students.jgp"
+  card-style: summary_large_image
+execute: 
+  warning: false
+  message: false
+  error: false
+editor_options: 
+  chunk_output_type: console
+---
+
+![](students.jpg)
+
+# Introduction (or, "What do we mean by Tidy?")
+
+This week's TidyTuesday is related to HBCU Enrolment. I will have to start by admitting my ignorance - I had no real idea what "HBCU" actually meant, which I attribute to being from the UK. However, datasets on American culture or politics that I'm not very familiar with has never stopped me before! So I sat down to give it a look. To my horror - or, perhaps, delight - the dataset was not particularly tidy. I will admit, there is something delightful about tackling a particularly untidy data set and turning it into something beautiful and easy to work with.
+
+What do I mean by *tidy data*? The [tidyr vingette](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html) defines it as follows:
+
+> Each variable forms a column. Each observation forms a row. Each type of observational unit forms a table.
+
+A *variable* contains all values that measure some unique feature - height, weight, length, temperature. An *observation* ties together the different values into one observational unit - a date, an object, a person. For the sake of example, say we have a data set of secondary school children who have all sat their end of year exams in several subjects that are all scored out of 100. We may be tempted to lay the data out in a *wide* format, as I have below:
+
+```{r echo = F}
+
+library(tidyverse)
+
+tab = data.frame(student = c("Amy", "Barry", "Colin"),
+                 english = round(rnorm(n = 3, mean = 50, sd = 20)),
+                 maths = round(rnorm(n = 3, mean = 50, sd = 20)),
+                 science = round(rnorm(n = 3, mean = 50, sd = 20)))
+
+knitr::kable(tab) %>%
+  kableExtra::kable_styling()
+
+```
+
+However, is this *tidy*? Our *observations* are the students, yes, but our *variables* are not **student**, **maths**, **english** and **history**. The "real" variables should be **student**, **subject** and **mark**.
+
+```{r echo = F}
+tab %>%
+  pivot_longer(-student, names_to = "subject", values_to = "mark") %>%
+  knitr::kable() %>%
+  kableExtra::kable_styling()
+```
+
+There are benefits to having data in this format. For example, we could `group_by()` the subject and `summarise()` a mean and standard deviation. We could `filter()` for the students who scored less than 50 in a subject who may need extra help. If we had another data set of the subject teachers and the students they teach, we could `left_join()` these on to see which teachers are helping the students to score the top marks. All of this would be much, much more difficult in the *wide* format we had the data in before.
+
+Note that there are some situations where we might want the data *wide* - for example, what if we wanted to plot english marks vs maths marks? Or perhaps perform correlations between all of the different subjects? In the former case we can easily `pivot_wider()` just for this job. In the latter case we could also `pivot_wider()`, but there is also the `widyr` package that can just do it from a *tidy* format anyway!
+
+# The HBCU Data
+## What are the issues?
+
+Let's read in the data and give it a look over.
+
+```{r include=F}
+library(tidyverse)
+
+bach_students <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-02-02/bach_students.csv')
+```
+The `bach_students` data set indicates...
+
+> The percentage of students broken down by race/ethnicity, aged 25 and over who have attained a bachelor's degree.
+
+But in the form it is in, it is pretty *untidy* and *unclean*. Here are some issues I can identify:
+
+* Our key variables are effectively **year**, **race**, **total** and **standard error**, but **race** is spread over multiple columns (remember - each column should represent a variable, not multiple columns representing one variable).
+* All of the columns should be numbers, but they have read in as characters.
+* **Asian people and Pacific Islanders are given twice - as a total of the two and individually.**
+* The names of the columns have spaces in them, are wordy and therefore generally difficult to use.
+* The `Total` column represents the year. The name is therefore a bit misleading.
+
+A note on the emboldened item above; in my experience, data "in the wild" that has been put together in Excel typically has baggage like this as spreadsheets are sadly used for both data storage *and* presentation. This means that totals and the like are given alongside the data used to calculate them. I don't feel bad about removing data like this **as long as we are left with the tools to recalculate them**. In this case, we are! If we want to regroup the Asian/Pacific Islander data it'd be as easy as renaming them both as the same thing using `mutate()` and `if_else()`, and then `group_by()` and `summarise()` to re-calculate the total. It may even be that we want to combine more racial groups using a `fct_lump()` function.
+
+## Cleaning and Tidying
+
+Let's start by making sure that all of the data is numeric. `dplyr v1.0.0` gave us the `across()` function that makes this a breeze.
+
+```{r warning=FALSE}
+
+bach_students %>%
+  mutate(across(.cols = where(is.character), 
+                .fns = parse_number)) %>%
+  head(16)
+
+```
+
+We could be tempted now to run `janitor::clean_names()`. For those unfamiliar, this function cleans the names of a data frame to make them easier to use - all lower-case, spaces replaced with underscores, and the like. Normally it's a good idea to use it as soon as possible, but as I am going to restructure my data I am not going to use it right away. As *race* will be one of my columns, I'd probably want words like "White" and "Black" to remain capitalised, so if I reported them in a table or use them in a legend label they'd look more presentable.
+
+Next, we can start restructuring. A good trick with `pivot_longer()` is that it behaves much the same as functions like `select()` - if we list a column name preceded with a minus sign (`-`) it effectively tells the function "everything but this column, please!" I'm not going to specify column names for the names or values here as we'll quickly get rid of them.
+
+```{r}
+
+bach_students %>%
+  mutate(across(.cols = where(is.character), 
+                .fns = parse_number)) %>%
+  pivot_longer(-Total) %>% 
+  head(16)
+
+```
+
+Now we can remove that Asian/Pacific Islander total we spoke about earlier. We will use `filter()` alongside the `str_detect()` function and the logical operator `!`.
+
+```{r}
+bach_students %>%
+  mutate(across(.cols = where(is.character), 
+                .fns = parse_number)) %>%
+  pivot_longer(-Total) %>%
+  filter(!str_detect(name, "Total - Asian/Pacific Islander")) %>%
+  head(16)
+
+```
+
+To separate the total values from the standard errors we can use the `separate()` function and the `" - "` string. Issues once again come from the Asian and Pacific Islander data as they have a second `" - "` in them, but this can be straightforwardly removed. For whatever reason, "White" and "Black" are listed with the number one (1) after them, so we can get rid of this while we're on the subject of cleaning strings.
+
+```{r}
+bach_students %>%
+  mutate(across(.cols = where(is.character), 
+                .fns = parse_number)) %>%
+  pivot_longer(-Total) %>%
+  filter(!str_detect(name, "Total - Asian/Pacific Islander")) %>%
+  mutate(name = str_remove(name, "Asian/Pacific Islander - |1")) %>%
+  head(16)
+```
+
+Now let's add that `separate()` step, which we need to give some column names for the **name** column to turn into, the separating character (space-dash-space), and the direction to fill in (in this case left).
+
+```{r}
+bach_students %>%
+  mutate(across(.cols = where(is.character), 
+                .fns = parse_number)) %>%
+  pivot_longer(-Total) %>%
+  filter(!str_detect(name, "Total - Asian/Pacific Islander")) %>%
+  mutate(name = str_remove(name, "Asian/Pacific Islander - |1")) %>%
+  separate(name, into = c("stat","race"), sep = " - ", fill = "left") %>%
+  head(16)
+```
+
+You'll notice that in the **stats** column we have some NA values that actually correspond to the "total" stat, so we'll fill those in using a `tidyr` function, `replace_na()`.
+
+```{r}
+bach_students %>%
+  mutate(across(.cols = where(is.character), 
+                .fns = parse_number)) %>%
+  pivot_longer(-Total) %>%
+  filter(!str_detect(name, "Total - Asian/Pacific Islander")) %>%
+  mutate(name = str_remove(name, "Asian/Pacific Islander - |1")) %>%
+  separate(name, into = c("stat","race"), sep = " - ", fill = "left") %>%
+  mutate(stat = replace_na(stat, "Total")) %>%
+  head(16)
+```
+
+Now we can `pivot_wider()` to get the total values and the standard errors in their own columns. We'll have to rename the existing **Total** column first, but that can be achieved using `dplyr`'s `rename()`.
+
+```{r}
+bach_students %>%
+  mutate(across(.cols = where(is.character), 
+                .fns = parse_number)) %>%
+  pivot_longer(-Total) %>%
+  filter(!str_detect(name, "Total - Asian/Pacific Islander")) %>%
+  mutate(name = str_remove(name, "Asian/Pacific Islander - |1")) %>%
+  separate(name, into = c("stat","race"), sep = " - ", fill = "left") %>%
+  mutate(stat = replace_na(stat, "Total")) %>%
+  rename(year = Total) %>%
+  pivot_wider(names_from = stat, values_from = value) %>%
+  head(8)
+```
+
+The data is now tidy! We can do some additional cleaning steps now - there seems to be something odd going on with the American Indian/Alaska Native string, and the "Total" string is a bit wordy. Let's sort that out, and finally throw in that `janitor` function I talked about right at the beginning.
+
+```{r}
+df = bach_students %>%
+  mutate(across(.cols = where(is.character), 
+                .fns = parse_number)) %>%
+  pivot_longer(-Total) %>%
+  filter(!str_detect(name, "Total - Asian/Pacific Islander")) %>%
+  mutate(name = str_remove(name, "Asian/Pacific Islander - |1")) %>%
+  separate(name, into = c("stat","race"), sep = " - ", fill = "left") %>%
+  mutate(stat = replace_na(stat, "Total")) %>%
+  rename(year = Total) %>%
+  pivot_wider(names_from = stat, values_from = value) %>%
+  janitor::clean_names() %>%
+  mutate(
+    race = str_remove_all(
+      race, 
+      ", percent of all persons age 25 and over|\r\n")
+  )
+
+df %>% head(8)
+```
+
+We did it! The data is now clean and tidy and ready to use. Let's do a bit of analysis just to demonstrate how straightforward it is to use now.
+
+## Data Analysis
+
+We can create some cool plots now we have access to this data. We can start with a simple timeseries.
+
+```{r}
+theme_set(theme_light())
+
+plot_data = df %>%
+  drop_na() %>%
+  mutate(across(total:standard_errors, ~.x/100))
+
+plot_data %>%
+  filter(race != "Total") %>%
+  mutate(race = fct_reorder(race, total, max, na.rm = T),
+         race = fct_rev(race)) %>%
+  ggplot(aes(
+    year,
+    y = total,
+    ymax = total + standard_errors,
+    ymin = total - standard_errors,
+    group = race
+  )) +
+  geom_ribbon(aes(fill = race), alpha = .25) +
+  geom_line(aes(color = race)) +
+  geom_line(data = filter(plot_data, race == "Total"), size = 2) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(x = "Year", y = NULL, color = "Race", fill = "Race",
+       title = "Bachelor's Degree Attainment",
+       subtitle = "The percentage of the population who have achieved a\nbachelor's degree in the US since 1980, split into racial groups.\nThe bold line represents the total population.") +
+  theme(plot.title.position = "plot")
+```
+
+Or we could just focus in on the most recent data.
+
+```{r}
+plot_data_2 = plot_data %>%
+  filter(year == max(year)) %>%
+  mutate(race = fct_reorder(race, total))
+
+tot = plot_data_2 %>%
+  filter(race == "Total") %>% 
+  pull(total)
+
+plot_data_2 %>%
+  mutate(flag = case_when(race == "Total" ~ "T",
+                          total > tot ~ "Y",
+                          total < tot ~ "X")) %>%
+  ggplot(aes(y = race, x = total, xmax = total+standard_errors, xmin = total-standard_errors, fill = flag)) +
+  geom_col(show.legend = F) +
+  geom_vline(xintercept = tot, size = 1) +
+  geom_pointrange(show.legend = F) +
+  scale_x_continuous(expand = expansion(mult = c(0,.1)), 
+                     labels = scales::percent) +
+  labs(y = NULL, x = "Bachelor's Degree Attainment in 2016")
+```
+```{r}
+plot_data_2 %>%
+  janitor::remove_constant() %>%
+  mutate(mutate(across(
+    where(is.numeric), ~ glue::glue("{abs(.x) * 100} %")
+  ))) %>%
+  knitr::kable(col.names = c("Race", "Total", "Std Err.")) %>%
+  kableExtra::kable_styling()
+```
+
+See how easy it is to use this data now? Incredible!
+
+# Conclusion
+
+In this post we explored the ideas of data tidying and cleaning using a messy, unfamiliar data set. We showed how the `tidyverse` packages can help us achieve this goal easily and quickly, and demonstrated how easy it is to then go on and perform some basic data analysis on our newly tidied data.
+
+I use this sort of process all the time, especially when data has been ripped from Excel spreadsheets that are trying to store and display data at the same time - a recipe for disaster when it comes to reading into R!
+
+Hopefully this post was interesting for newer R users, and I look forward to the visualisations that will come from this week's TidyTuesday data sets!
