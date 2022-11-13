@@ -1,6 +1,6 @@
 ---
 title: "About"
-image: profile.jpg
+image: selfie-zoomed.jpg
 about:
   template: trestles
   links:

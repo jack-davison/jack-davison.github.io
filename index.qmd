@@ -1,5 +1,6 @@
 ---
-title: "Jack Davison R"
+title: "We've got R at home"
+subtitle: "Personal projects and 'real-life' applications of R."
 theme: litera
 listing:
   contents: posts

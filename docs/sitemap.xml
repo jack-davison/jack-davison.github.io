@@ -2,14 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://jack-davison.github.io/about.html</loc>
-    <lastmod>2022-09-18T10:39:23.861Z</lastmod>
+    <lastmod>2022-11-13T18:00:17.174Z</lastmod>
   </url>
   <url>
     <loc>https://jack-davison.github.io/index.html</loc>
-    <lastmod>2022-09-18T10:39:24.626Z</lastmod>
+    <lastmod>2022-11-13T18:00:17.964Z</lastmod>
   </url>
   <url>
     <loc>https://jack-davison.github.io/posts/2021-02-02-tidytuesday-2021-week-6-hbcu-enrollment-an-ode-to-data-cleaning/index.html</loc>
-    <lastmod>2022-09-18T10:39:31.030Z</lastmod>
+    <lastmod>2022-11-13T18:00:23.152Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jack-davison.github.io/posts/2022-11-13-pastaEvangelists/index.html</loc>
+    <lastmod>2022-11-13T18:00:30.905Z</lastmod>
   </url>
 </urlset>
