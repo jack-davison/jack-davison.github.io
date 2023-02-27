@@ -2,134 +2,121 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-0.9.243">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Jack Davison">
 <meta name="dcterms.date" content="2022-11-13">
 <meta name="description" content="Overcoming the lack of a “filter” option on an experience booking website through web scraping.">
 <title>Scraping the Pasta Academy</title>
 <style>
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
-  vertical-align: middle;
-}
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 20,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
-  }
-}</script><script src="../../site_libs/htmlwidgets-1.6.1/htmlwidgets.js"></script><script src="../../site_libs/d3-bundle-5.16.0/d3-bundle.min.js"></script><script src="../../site_libs/d3-lasso-0.0.5/d3-lasso.min.js"></script><script src="../../site_libs/save-svg-as-png-1.4.17/save-svg-as-png.min.js"></script><script src="../../site_libs/flatbush-4.0.0/flatbush.min.js"></script><link href="../../site_libs/ggiraphjs-0.4.6/ggiraphjs.min.css" rel="stylesheet">
-<script src="../../site_libs/ggiraphjs-0.4.6/ggiraphjs.min.js"></script><script src="../../site_libs/girafe-binding-0.8.6/girafe.js"></script><link rel="stylesheet" href="../../styles.css">
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script><script src="../../site_libs/quarto-nav/headroom.min.js"></script><script src="../../site_libs/clipboard/clipboard.min.js"></script><meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script><script src="../../site_libs/quarto-search/fuse.min.js"></script><script src="../../site_libs/quarto-search/quarto-search.js"></script><script src="../../site_libs/quarto-html/quarto.js"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><script src="../../site_libs/quarto-html/anchor.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link id="quarto-text-highlighting-styles" href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script><link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+    "location": "navbar",
+    "copy-button": false,
+    "collapse-after": 3,
+    "panel-placement": "end",
+    "type": "overlay",
+    "limit": 20,
+    "language": {
+      "search-no-results-text": "No results",
+      "search-matching-documents-text": "matching documents",
+      "search-copy-link-title": "Copy link to search",
+      "search-hide-matches-text": "Hide additional matches",
+      "search-more-match-text": "more match in this document",
+      "search-more-matches-text": "more matches in this document",
+      "search-clear-button-title": "Clear",
+      "search-detached-cancel-button-title": "Cancel",
+      "search-submit-button-title": "Submit"
+    }
+  }</script><script src="../../site_libs/htmlwidgets-1.6.1/htmlwidgets.js"></script><script src="../../site_libs/d3-bundle-5.16.0/d3-bundle.min.js"></script><script src="../../site_libs/d3-lasso-0.0.5/d3-lasso.min.js"></script><script src="../../site_libs/save-svg-as-png-1.4.17/save-svg-as-png.min.js"></script><script src="../../site_libs/flatbush-4.0.0/flatbush.min.js"></script><link href="../../site_libs/ggiraphjs-0.4.6/ggiraphjs.min.css" rel="stylesheet">
+<script src="../../site_libs/ggiraphjs-0.4.6/ggiraphjs.min.js"></script><script src="../../site_libs/girafe-binding-0.8.6/girafe.js"></script><!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]--><link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="Scraping the Pasta Academy">
-<meta property="og:description" content="Overcoming the lack of a &quot;filter&quot; option on an experience booking website through web scraping.">
-<meta property="og:image" content="https://jack-davison.github.io/posts\2022-11-13-pastaEvangelists\pasta.jpg">
+<meta property="og:description" content="Overcoming the lack of a &quot;filter&quot; option on an experience booking website through web scraping.
+">
+<meta property="og:image" content="https://jack-davison.github.io//posts\2022-11-13-pastaEvangelists\pasta.jpg">
 <meta name="twitter:title" content="Scraping the Pasta Academy">
-<meta name="twitter:description" content="Overcoming the lack of a &quot;filter&quot; option on an experience booking website through web scraping.">
-<meta name="twitter:image" content="https://jack-davison.github.io/posts\2022-11-13-pastaEvangelists\pasta.jpg">
+<meta name="twitter:description" content="Overcoming the lack of a &quot;filter&quot; option on an experience booking website through web scraping.
+">
+<meta name="twitter:image" content="https://jack-davison.github.io//posts\2022-11-13-pastaEvangelists\pasta.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 <body class="floating nav-fixed">
-
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -138,86 +125,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
 <li class="nav-item">
-    <a class="nav-link" href="../../index.html">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../index.html">About</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../experience.html">
- <span class="menu-text">Experience</span></a>
+    <a class="nav-link" href="../../experience.html">Experience</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html">
- <span class="menu-text">Blog</span></a>
+    <a class="nav-link" href="../../blog.html">Blog</a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/jdavison_"><i class="bi bi-twitter" role="img">
 </i> 
- <span class="menu-text"></span></a>
+ </a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/jack-davison"><i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+ </a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://www.linkedin.com/in/jack-davison/"><i class="bi bi-linkedin" role="img">
 </i> 
- <span class="menu-text"></span></a>
+ </a>
   </li>  
 </ul>
 <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full"><div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">Scraping the Pasta Academy</h1>
-                  <div>
-        <div class="description">
-          <p>Overcoming the lack of a “filter” option on an experience booking website through web scraping.</p>
-        </div>
-      </div>
-                          <div class="quarto-categories">
-                <div class="quarto-category">rvest</div>
-                <div class="quarto-category">webscraping</div>
-              </div>
-                  </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full">
 
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Jack Davison </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">November 13, 2022</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+
+<div class="quarto-title-banner color-navbar page-columns page-full"><div class="quarto-title column-body"><h1 class="title display-7">Scraping the Pasta Academy</h1><div class="quarto-description"><p>Overcoming the lack of a "filter" option on an experience booking website through web scraping.
+</p></div><div class="quarto-categories"><div class="quarto-category">rvest</div><div class="quarto-category">webscraping</div></div></div></div><div class="quarto-title-meta"><div><div class="quarto-title-meta-heading">Author</div><div class="quarto-title-meta-contents"><div class="quarto-title-authors"><div><div>
+<p>Jack Davison</p>
+</div></div></div></div></div><div><div class="quarto-title-meta-heading">Published</div><div class="quarto-title-meta-contents"><p class="date">November 13, 2022</p></div></div></div></header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
-   
-  <ul>
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc"><h2 id="toc-title">On this page</h2>
+<ul>
 <li><a href="#purpose" id="toc-purpose" class="nav-link active" data-scroll-target="#purpose">Purpose</a></li>
-  <li><a href="#web-scraping-with-rvest" id="toc-web-scraping-with-rvest" class="nav-link" data-scroll-target="#web-scraping-with-rvest">Web Scraping with <code>{rvest}</code></a></li>
-  <li><a href="#tidying-data" id="toc-tidying-data" class="nav-link" data-scroll-target="#tidying-data">Tidying Data</a></li>
-  <li><a href="#using-the-data" id="toc-using-the-data" class="nav-link" data-scroll-target="#using-the-data">Using the data</a></li>
-  </ul></nav>
+<li><a href="#web-scraping-with-rvest" id="toc-web-scraping-with-rvest" class="nav-link" data-scroll-target="#web-scraping-with-rvest">Web Scraping with <code>{rvest}</code></a></li>
+<li><a href="#tidying-data" id="toc-tidying-data" class="nav-link" data-scroll-target="#tidying-data">Tidying Data</a></li>
+<li><a href="#using-the-data" id="toc-using-the-data" class="nav-link" data-scroll-target="#using-the-data">Using the data</a></li>
+</ul></nav>
 </nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content"><p><img src="pasta.jpg" class="img-fluid"></p>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><p data-sidebar-align="true"><img src="pasta.jpg" class="img-fluid"></p>
 <section id="purpose" class="level1"><h1>Purpose</h1>
 <p>Recently, my partner and I were looking to book a cooking experience as a Christmas treat, and we settled on the excellently reviewed <a href="https://pastaevangelists.com/collections/pasta-academy">Pasta Academy</a> in London. We were looking for a beginner class in early 2023, but we were immediately met with an issue — there was no way to filter the booking list!</p>
 <p>We could have sat and go through the list manually, perhaps noting down each of the beginner classes when we found them. This sounded like a bit of a faff, so I instead thought I’d scrape all of the courses and put them into a table. Some might argue that writing an R script to do this is <em>even more</em> of a faff, but I did it anyway!</p>
@@ -236,7 +189,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We’ll now need to pull each individual element of interest from the Pasta Academy website. One of the easiest ways of finding the correct HTML at which to aim your <a href="https://rvest.tidyverse.org/">rvest</a> functions is by using Chrome’s developer tools (CTRL-SHIFT-I on Windows) or your browser’s equivalent.</p>
 <div id="fig-devtools" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="developer-tools.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: A screenshot of the use of Chrome’s developer tools.</figcaption><p></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figure 1: A screenshot of the use of Chrome’s developer tools.</figcaption><p></p>
 </figure>
 </div>
 <p>Once we have identified the correct HTML tags to use, we can use <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code> to grab those items, and then <code><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2()</a></code> to extract the text from it. For example, the below line grabs each lesson title from the first page of the Pasta Academy website.</p>
@@ -492,32 +445,15 @@ $ button &lt;chr&gt; "BOOK NOW", "SEE INFO", "SEE INFO", "SEE INFO", "SEE INFO",
 <span><span class="fu"><a href="https://davidgohel.github.io/ggiraph/reference/girafe.html">girafe</a></span><span class="op">(</span>ggobj <span class="op">=</span> <span class="va">plt</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="fig-bars" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><div class="girafe html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-a10841024f5950ef0844" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-a10841024f5950ef0844">{"x":{"html":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='ggiraph-svg' role='img' id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae' viewBox='0 0 504 360'>\n <defs id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_defs'>\n  <clipPath id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_c1'>\n   <rect x='0' y='0' width='504' height='360'/>\n  <\/clipPath>\n  <clipPath id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_c2'>\n   <rect x='57.35' y='5.48' width='441.17' height='323.02'/>\n  <\/clipPath>\n <\/defs>\n <g id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_rootg' class='ggiraph-svg-rootg'>\n  <g clip-path='url(#svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_c1)'>\n   <rect x='0' y='0' width='504' height='360' fill='#FFFFFF' fill-opacity='1' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.75' stroke-linejoin='round' stroke-linecap='round' class='ggiraph-svg-bg'/>\n   <rect x='0' y='0' width='504' height='360' fill='#FFFFFF' fill-opacity='1' stroke='#FFFFFF' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='round'/>\n  <\/g>\n  <g clip-path='url(#svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_c2)'>\n   <rect x='57.35' y='5.48' width='441.17' height='323.02' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e1' x='57.35' y='6.98' width='441.17' height='9.03' fill='#56B1F7' fill-opacity='1' stroke='none' title='81'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e2' x='57.35' y='17.02' width='294.11' height='9.03' fill='#3E80B6' fill-opacity='1' stroke='none' title='54'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e3' x='57.35' y='27.05' width='152.5' height='9.03' fill='#28557B' fill-opacity='1' stroke='none' title='28'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e4' x='57.35' y='37.08' width='147.06' height='9.03' fill='#275379' fill-opacity='1' stroke='none' title='27'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e5' x='57.35' y='57.14' width='65.36' height='9.03' fill='#1B3B59' fill-opacity='1' stroke='none' title='12'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e6' x='57.35' y='47.11' width='65.36' height='9.03' fill='#1B3B59' fill-opacity='1' stroke='none' title='12'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e7' x='57.35' y='77.21' width='59.91' height='9.03' fill='#1B3A57' fill-opacity='1' stroke='none' title='11'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e8' x='57.35' y='67.18' width='59.91' height='9.03' fill='#1B3A57' fill-opacity='1' stroke='none' title='11'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e9' x='57.35' y='97.27' width='54.46' height='9.03' fill='#1A3855' fill-opacity='1' stroke='none' title='10'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e10' x='57.35' y='87.24' width='54.46' height='9.03' fill='#1A3855' fill-opacity='1' stroke='none' title='10'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e11' x='57.35' y='127.37' width='49.02' height='9.03' fill='#193753' fill-opacity='1' stroke='none' title='9'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e12' x='57.35' y='117.33' width='49.02' height='9.03' fill='#193753' fill-opacity='1' stroke='none' title='9'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e13' x='57.35' y='107.3' width='49.02' height='9.03' fill='#193753' fill-opacity='1' stroke='none' title='9'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e14' x='57.35' y='137.4' width='43.57' height='9.03' fill='#183551' fill-opacity='1' stroke='none' title='8'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e15' x='57.35' y='157.46' width='32.68' height='9.03' fill='#17324D' fill-opacity='1' stroke='none' title='6'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e16' x='57.35' y='147.43' width='32.68' height='9.03' fill='#17324D' fill-opacity='1' stroke='none' title='6'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e17' x='57.35' y='197.59' width='27.23' height='9.03' fill='#16314B' fill-opacity='1' stroke='none' title='5'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e18' x='57.35' y='187.56' width='27.23' height='9.03' fill='#16314B' fill-opacity='1' stroke='none' title='5'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e19' x='57.35' y='177.52' width='27.23' height='9.03' fill='#16314B' fill-opacity='1' stroke='none' title='5'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e20' x='57.35' y='167.49' width='27.23' height='9.03' fill='#16314B' fill-opacity='1' stroke='none' title='5'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e21' x='57.35' y='257.78' width='21.79' height='9.03' fill='#152F49' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e22' x='57.35' y='247.75' width='21.79' height='9.03' fill='#152F49' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e23' x='57.35' y='237.72' width='21.79' height='9.03' fill='#152F49' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e24' x='57.35' y='227.68' width='21.79' height='9.03' fill='#152F49' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e25' x='57.35' y='217.65' width='21.79' height='9.03' fill='#152F49' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e26' x='57.35' y='207.62' width='21.79' height='9.03' fill='#152F49' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e27' x='57.35' y='287.87' width='10.89' height='9.03' fill='#142C45' fill-opacity='1' stroke='none' title='2'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e28' x='57.35' y='277.84' width='10.89' height='9.03' fill='#142C45' fill-opacity='1' stroke='none' title='2'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e29' x='57.35' y='267.81' width='10.89' height='9.03' fill='#142C45' fill-opacity='1' stroke='none' title='2'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e30' x='57.35' y='317.97' width='5.45' height='9.03' fill='#132B43' fill-opacity='1' stroke='none' title='1'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e31' x='57.35' y='307.94' width='5.45' height='9.03' fill='#132B43' fill-opacity='1' stroke='none' title='1'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e32' x='57.35' y='297.91' width='5.45' height='9.03' fill='#132B43' fill-opacity='1' stroke='none' title='1'/>\n  <\/g>\n  <g clip-path='url(#svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_c1)'>\n   <polyline points='57.35,328.50 57.35,5.48' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='21.11' y='325.63' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>monday<\/text>\n   <text x='30.56' y='315.6' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>truffle<\/text>\n   <text x='28.95' y='305.57' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>winter<\/text>\n   <text x='36.28' y='295.54' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>club<\/text>\n   <text x='35.3' y='285.51' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>craft<\/text>\n   <text x='24.04' y='275.48' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>sunday<\/text>\n   <text x='19.16' y='265.44' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>clarence<\/text>\n   <text x='32.85' y='255.41' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>court<\/text>\n   <text x='27.96' y='245.38' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>easter<\/text>\n   <text x='40.68' y='235.35' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>gin<\/text>\n   <text x='28.94' y='225.32' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>napoli<\/text>\n   <text x='21.1' y='215.28' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>seafood<\/text>\n   <text x='9.37' y='205.25' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>experience<\/text>\n   <text x='26.49' y='195.22' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>tasting<\/text>\n   <text x='23.06' y='185.19' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>trentino<\/text>\n   <text x='34.33' y='175.16' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>wine<\/text>\n   <text x='28.95' y='165.13' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>amalfi<\/text>\n   <text x='30.89' y='155.09' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>pasta<\/text>\n   <text x='21.1' y='145.06' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>bologna<\/text>\n   <text x='33.37' y='135.03' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>sicily<\/text>\n   <text x='22.09' y='125' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>tuscany<\/text>\n   <text x='26.99' y='114.97' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>venice<\/text>\n   <text x='32.37' y='104.93' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>rome<\/text>\n   <text x='21.61' y='94.9' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>sardinia<\/text>\n   <text x='5.48' y='84.87' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>masterclass<\/text>\n   <text x='28.94' y='74.84' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>puglia<\/text>\n   <text x='26.49' y='64.81' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>edition<\/text>\n   <text x='27' y='54.78' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>limited<\/text>\n   <text x='20.63' y='44.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>morning<\/text>\n   <text x='32.38' y='34.71' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>class<\/text>\n   <text x='13.77' y='24.68' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>beginners<\/text>\n   <text x='33.34' y='14.65' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>taste<\/text>\n   <polyline points='54.62,322.48 57.35,322.48' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,312.45 57.35,312.45' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,302.42 57.35,302.42' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,292.39 57.35,292.39' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,282.36 57.35,282.36' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,272.33 57.35,272.33' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,262.29 57.35,262.29' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,252.26 57.35,252.26' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,242.23 57.35,242.23' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,232.20 57.35,232.20' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,222.17 57.35,222.17' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,212.13 57.35,212.13' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,202.10 57.35,202.10' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,192.07 57.35,192.07' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,182.04 57.35,182.04' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,172.01 57.35,172.01' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,161.98 57.35,161.98' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,151.94 57.35,151.94' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,141.91 57.35,141.91' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,131.88 57.35,131.88' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,121.85 57.35,121.85' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,111.82 57.35,111.82' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,101.78 57.35,101.78' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,91.75 57.35,91.75' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,81.72 57.35,81.72' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,71.69 57.35,71.69' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,61.66 57.35,61.66' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,51.63 57.35,51.63' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,41.59 57.35,41.59' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,31.56 57.35,31.56' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,21.53 57.35,21.53' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,11.50 57.35,11.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='57.35,328.50 498.52,328.50' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='57.35,331.24 57.35,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='166.28,331.24 166.28,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='275.21,331.24 275.21,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='384.14,331.24 384.14,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='493.07,331.24 493.07,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='54.91' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>0<\/text>\n   <text x='161.39' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>20<\/text>\n   <text x='270.32' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>40<\/text>\n   <text x='379.25' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>60<\/text>\n   <text x='488.18' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>80<\/text>\n   <text x='255' y='352.2' font-size='8.25pt' font-family='Arial'>Count (n)<\/text>\n  <\/g>\n <\/g>\n<\/svg>","js":null,"uid":"svg_71617804_9d2d_4fa3_a223_ac8465baa7ae","ratio":1.4,"settings":{"tooltip":{"css":".tooltip_SVGID_ { padding:5px;background:black;color:white;border-radius:2px;text-align:left; ; position:absolute;pointer-events:none;z-index:999;}","placement":"doc","opacity":0.9,"offx":10,"offy":10,"use_cursor_pos":true,"use_fill":false,"use_stroke":false,"delay_over":200,"delay_out":500},"hover":{"css":".hover_data_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_data_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_data_SVGID_ { fill:orange;stroke:black; }\nline.hover_data_SVGID_, polyline.hover_data_SVGID_ { fill:none;stroke:orange; }\nrect.hover_data_SVGID_, polygon.hover_data_SVGID_, path.hover_data_SVGID_ { fill:orange;stroke:none; }\nimage.hover_data_SVGID_ { stroke:orange; }","reactive":true,"nearest_distance":null},"hover_inv":{"css":""},"hover_key":{"css":".hover_key_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_key_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_key_SVGID_ { fill:orange;stroke:black; }\nline.hover_key_SVGID_, polyline.hover_key_SVGID_ { fill:none;stroke:orange; }\nrect.hover_key_SVGID_, polygon.hover_key_SVGID_, path.hover_key_SVGID_ { fill:orange;stroke:none; }\nimage.hover_key_SVGID_ { stroke:orange; }","reactive":true},"hover_theme":{"css":".hover_theme_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_theme_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_theme_SVGID_ { fill:orange;stroke:black; }\nline.hover_theme_SVGID_, polyline.hover_theme_SVGID_ { fill:none;stroke:orange; }\nrect.hover_theme_SVGID_, polygon.hover_theme_SVGID_, path.hover_theme_SVGID_ { fill:orange;stroke:none; }\nimage.hover_theme_SVGID_ { stroke:orange; }","reactive":true},"select":{"css":".select_data_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_data_SVGID_ { stroke:none;fill:red; }\ncircle.select_data_SVGID_ { fill:red;stroke:black; }\nline.select_data_SVGID_, polyline.select_data_SVGID_ { fill:none;stroke:red; }\nrect.select_data_SVGID_, polygon.select_data_SVGID_, path.select_data_SVGID_ { fill:red;stroke:none; }\nimage.select_data_SVGID_ { stroke:red; }","type":"multiple","only_shiny":true,"selected":[]},"select_inv":{"css":""},"select_key":{"css":".select_key_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_key_SVGID_ { stroke:none;fill:red; }\ncircle.select_key_SVGID_ { fill:red;stroke:black; }\nline.select_key_SVGID_, polyline.select_key_SVGID_ { fill:none;stroke:red; }\nrect.select_key_SVGID_, polygon.select_key_SVGID_, path.select_key_SVGID_ { fill:red;stroke:none; }\nimage.select_key_SVGID_ { stroke:red; }","type":"single","only_shiny":true,"selected":[]},"select_theme":{"css":".select_theme_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_theme_SVGID_ { stroke:none;fill:red; }\ncircle.select_theme_SVGID_ { fill:red;stroke:black; }\nline.select_theme_SVGID_, polyline.select_theme_SVGID_ { fill:none;stroke:red; }\nrect.select_theme_SVGID_, polygon.select_theme_SVGID_, path.select_theme_SVGID_ { fill:red;stroke:none; }\nimage.select_theme_SVGID_ { stroke:red; }","type":"single","only_shiny":true,"selected":[]},"zoom":{"min":1,"max":1,"duration":300},"toolbar":{"position":"topright","pngname":"diagram","tooltips":null,"hidden":[],"delay_over":200,"delay_out":500},"sizing":{"rescale":true,"width":1}}},"evals":[],"jsHooks":[]}</script><p></p><figcaption class="figure-caption">Figure&nbsp;2: Frequency of different words in Pasta Academy class names.</figcaption><p></p>
+<script type="application/json" data-for="htmlwidget-a10841024f5950ef0844">{"x":{"html":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='ggiraph-svg' role='img' id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae' viewBox='0 0 504 360'>\n <defs id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_defs'>\n  <clipPath id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_c1'>\n   <rect x='0' y='0' width='504' height='360'/>\n  <\/clipPath>\n  <clipPath id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_c2'>\n   <rect x='57.35' y='5.48' width='441.17' height='323.02'/>\n  <\/clipPath>\n <\/defs>\n <g id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_rootg' class='ggiraph-svg-rootg'>\n  <g clip-path='url(#svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_c1)'>\n   <rect x='0' y='0' width='504' height='360' fill='#FFFFFF' fill-opacity='1' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.75' stroke-linejoin='round' stroke-linecap='round' class='ggiraph-svg-bg'/>\n   <rect x='0' y='0' width='504' height='360' fill='#FFFFFF' fill-opacity='1' stroke='#FFFFFF' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='round'/>\n  <\/g>\n  <g clip-path='url(#svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_c2)'>\n   <rect x='57.35' y='5.48' width='441.17' height='323.02' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e1' x='57.35' y='6.98' width='441.17' height='9.03' fill='#56B1F7' fill-opacity='1' stroke='none' title='81'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e2' x='57.35' y='17.02' width='294.11' height='9.03' fill='#3E80B6' fill-opacity='1' stroke='none' title='54'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e3' x='57.35' y='27.05' width='152.5' height='9.03' fill='#28557B' fill-opacity='1' stroke='none' title='28'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e4' x='57.35' y='37.08' width='147.06' height='9.03' fill='#275379' fill-opacity='1' stroke='none' title='27'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e5' x='57.35' y='57.14' width='65.36' height='9.03' fill='#1B3B59' fill-opacity='1' stroke='none' title='12'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e6' x='57.35' y='47.11' width='65.36' height='9.03' fill='#1B3B59' fill-opacity='1' stroke='none' title='12'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e7' x='57.35' y='77.21' width='59.91' height='9.03' fill='#1B3A57' fill-opacity='1' stroke='none' title='11'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e8' x='57.35' y='67.18' width='59.91' height='9.03' fill='#1B3A57' fill-opacity='1' stroke='none' title='11'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e9' x='57.35' y='97.27' width='54.46' height='9.03' fill='#1A3855' fill-opacity='1' stroke='none' title='10'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e10' x='57.35' y='87.24' width='54.46' height='9.03' fill='#1A3855' fill-opacity='1' stroke='none' title='10'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e11' x='57.35' y='127.37' width='49.02' height='9.03' fill='#193753' fill-opacity='1' stroke='none' title='9'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e12' x='57.35' y='117.33' width='49.02' height='9.03' fill='#193753' fill-opacity='1' stroke='none' title='9'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e13' x='57.35' y='107.3' width='49.02' height='9.03' fill='#193753' fill-opacity='1' stroke='none' title='9'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e14' x='57.35' y='137.4' width='43.57' height='9.03' fill='#183551' fill-opacity='1' stroke='none' title='8'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e15' x='57.35' y='157.46' width='32.68' height='9.03' fill='#17324D' fill-opacity='1' stroke='none' title='6'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e16' x='57.35' y='147.43' width='32.68' height='9.03' fill='#17324D' fill-opacity='1' stroke='none' title='6'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e17' x='57.35' y='197.59' width='27.23' height='9.03' fill='#16314B' fill-opacity='1' stroke='none' title='5'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e18' x='57.35' y='187.56' width='27.23' height='9.03' fill='#16314B' fill-opacity='1' stroke='none' title='5'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e19' x='57.35' y='177.52' width='27.23' height='9.03' fill='#16314B' fill-opacity='1' stroke='none' title='5'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e20' x='57.35' y='167.49' width='27.23' height='9.03' fill='#16314B' fill-opacity='1' stroke='none' title='5'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e21' x='57.35' y='257.78' width='21.79' height='9.03' fill='#152F49' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e22' x='57.35' y='247.75' width='21.79' height='9.03' fill='#152F49' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e23' x='57.35' y='237.72' width='21.79' height='9.03' fill='#152F49' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e24' x='57.35' y='227.68' width='21.79' height='9.03' fill='#152F49' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e25' x='57.35' y='217.65' width='21.79' height='9.03' fill='#152F49' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e26' x='57.35' y='207.62' width='21.79' height='9.03' fill='#152F49' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e27' x='57.35' y='287.87' width='10.89' height='9.03' fill='#142C45' fill-opacity='1' stroke='none' title='2'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e28' x='57.35' y='277.84' width='10.89' height='9.03' fill='#142C45' fill-opacity='1' stroke='none' title='2'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e29' x='57.35' y='267.81' width='10.89' height='9.03' fill='#142C45' fill-opacity='1' stroke='none' title='2'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e30' x='57.35' y='317.97' width='5.45' height='9.03' fill='#132B43' fill-opacity='1' stroke='none' title='1'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e31' x='57.35' y='307.94' width='5.45' height='9.03' fill='#132B43' fill-opacity='1' stroke='none' title='1'/>\n   <rect id='svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_e32' x='57.35' y='297.91' width='5.45' height='9.03' fill='#132B43' fill-opacity='1' stroke='none' title='1'/>\n  <\/g>\n  <g clip-path='url(#svg_71617804_9d2d_4fa3_a223_ac8465baa7ae_c1)'>\n   <polyline points='57.35,328.50 57.35,5.48' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='21.11' y='325.63' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>monday<\/text>\n   <text x='30.56' y='315.6' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>truffle<\/text>\n   <text x='28.95' y='305.57' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>winter<\/text>\n   <text x='36.28' y='295.54' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>club<\/text>\n   <text x='35.3' y='285.51' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>craft<\/text>\n   <text x='24.04' y='275.48' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>sunday<\/text>\n   <text x='19.16' y='265.44' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>clarence<\/text>\n   <text x='32.85' y='255.41' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>court<\/text>\n   <text x='27.96' y='245.38' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>easter<\/text>\n   <text x='40.68' y='235.35' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>gin<\/text>\n   <text x='28.94' y='225.32' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>napoli<\/text>\n   <text x='21.1' y='215.28' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>seafood<\/text>\n   <text x='9.37' y='205.25' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>experience<\/text>\n   <text x='26.49' y='195.22' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>tasting<\/text>\n   <text x='23.06' y='185.19' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>trentino<\/text>\n   <text x='34.33' y='175.16' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>wine<\/text>\n   <text x='28.95' y='165.13' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>amalfi<\/text>\n   <text x='30.89' y='155.09' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>pasta<\/text>\n   <text x='21.1' y='145.06' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>bologna<\/text>\n   <text x='33.37' y='135.03' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>sicily<\/text>\n   <text x='22.09' y='125' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>tuscany<\/text>\n   <text x='26.99' y='114.97' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>venice<\/text>\n   <text x='32.37' y='104.93' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>rome<\/text>\n   <text x='21.61' y='94.9' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>sardinia<\/text>\n   <text x='5.48' y='84.87' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>masterclass<\/text>\n   <text x='28.94' y='74.84' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>puglia<\/text>\n   <text x='26.49' y='64.81' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>edition<\/text>\n   <text x='27' y='54.78' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>limited<\/text>\n   <text x='20.63' y='44.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>morning<\/text>\n   <text x='32.38' y='34.71' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>class<\/text>\n   <text x='13.77' y='24.68' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>beginners<\/text>\n   <text x='33.34' y='14.65' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>taste<\/text>\n   <polyline points='54.62,322.48 57.35,322.48' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,312.45 57.35,312.45' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,302.42 57.35,302.42' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,292.39 57.35,292.39' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,282.36 57.35,282.36' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,272.33 57.35,272.33' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,262.29 57.35,262.29' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,252.26 57.35,252.26' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,242.23 57.35,242.23' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,232.20 57.35,232.20' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,222.17 57.35,222.17' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,212.13 57.35,212.13' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,202.10 57.35,202.10' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,192.07 57.35,192.07' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,182.04 57.35,182.04' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,172.01 57.35,172.01' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,161.98 57.35,161.98' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,151.94 57.35,151.94' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,141.91 57.35,141.91' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,131.88 57.35,131.88' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,121.85 57.35,121.85' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,111.82 57.35,111.82' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,101.78 57.35,101.78' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,91.75 57.35,91.75' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,81.72 57.35,81.72' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,71.69 57.35,71.69' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,61.66 57.35,61.66' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,51.63 57.35,51.63' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,41.59 57.35,41.59' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,31.56 57.35,31.56' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,21.53 57.35,21.53' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,11.50 57.35,11.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='57.35,328.50 498.52,328.50' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='57.35,331.24 57.35,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='166.28,331.24 166.28,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='275.21,331.24 275.21,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='384.14,331.24 384.14,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='493.07,331.24 493.07,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='54.91' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>0<\/text>\n   <text x='161.39' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>20<\/text>\n   <text x='270.32' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>40<\/text>\n   <text x='379.25' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>60<\/text>\n   <text x='488.18' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>80<\/text>\n   <text x='255' y='352.2' font-size='8.25pt' font-family='Arial'>Count (n)<\/text>\n  <\/g>\n <\/g>\n<\/svg>","js":null,"uid":"svg_71617804_9d2d_4fa3_a223_ac8465baa7ae","ratio":1.4,"settings":{"tooltip":{"css":".tooltip_SVGID_ { padding:5px;background:black;color:white;border-radius:2px;text-align:left; ; position:absolute;pointer-events:none;z-index:999;}","placement":"doc","opacity":0.9,"offx":10,"offy":10,"use_cursor_pos":true,"use_fill":false,"use_stroke":false,"delay_over":200,"delay_out":500},"hover":{"css":".hover_data_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_data_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_data_SVGID_ { fill:orange;stroke:black; }\nline.hover_data_SVGID_, polyline.hover_data_SVGID_ { fill:none;stroke:orange; }\nrect.hover_data_SVGID_, polygon.hover_data_SVGID_, path.hover_data_SVGID_ { fill:orange;stroke:none; }\nimage.hover_data_SVGID_ { stroke:orange; }","reactive":true,"nearest_distance":null},"hover_inv":{"css":""},"hover_key":{"css":".hover_key_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_key_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_key_SVGID_ { fill:orange;stroke:black; }\nline.hover_key_SVGID_, polyline.hover_key_SVGID_ { fill:none;stroke:orange; }\nrect.hover_key_SVGID_, polygon.hover_key_SVGID_, path.hover_key_SVGID_ { fill:orange;stroke:none; }\nimage.hover_key_SVGID_ { stroke:orange; }","reactive":true},"hover_theme":{"css":".hover_theme_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_theme_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_theme_SVGID_ { fill:orange;stroke:black; }\nline.hover_theme_SVGID_, polyline.hover_theme_SVGID_ { fill:none;stroke:orange; }\nrect.hover_theme_SVGID_, polygon.hover_theme_SVGID_, path.hover_theme_SVGID_ { fill:orange;stroke:none; }\nimage.hover_theme_SVGID_ { stroke:orange; }","reactive":true},"select":{"css":".select_data_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_data_SVGID_ { stroke:none;fill:red; }\ncircle.select_data_SVGID_ { fill:red;stroke:black; }\nline.select_data_SVGID_, polyline.select_data_SVGID_ { fill:none;stroke:red; }\nrect.select_data_SVGID_, polygon.select_data_SVGID_, path.select_data_SVGID_ { fill:red;stroke:none; }\nimage.select_data_SVGID_ { stroke:red; }","type":"multiple","only_shiny":true,"selected":[]},"select_inv":{"css":""},"select_key":{"css":".select_key_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_key_SVGID_ { stroke:none;fill:red; }\ncircle.select_key_SVGID_ { fill:red;stroke:black; }\nline.select_key_SVGID_, polyline.select_key_SVGID_ { fill:none;stroke:red; }\nrect.select_key_SVGID_, polygon.select_key_SVGID_, path.select_key_SVGID_ { fill:red;stroke:none; }\nimage.select_key_SVGID_ { stroke:red; }","type":"single","only_shiny":true,"selected":[]},"select_theme":{"css":".select_theme_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_theme_SVGID_ { stroke:none;fill:red; }\ncircle.select_theme_SVGID_ { fill:red;stroke:black; }\nline.select_theme_SVGID_, polyline.select_theme_SVGID_ { fill:none;stroke:red; }\nrect.select_theme_SVGID_, polygon.select_theme_SVGID_, path.select_theme_SVGID_ { fill:red;stroke:none; }\nimage.select_theme_SVGID_ { stroke:red; }","type":"single","only_shiny":true,"selected":[]},"zoom":{"min":1,"max":1,"duration":300},"toolbar":{"position":"topright","pngname":"diagram","tooltips":null,"hidden":[],"delay_over":200,"delay_out":500},"sizing":{"rescale":true,"width":1}}},"evals":[],"jsHooks":[]}</script><p></p><figcaption aria-hidden="true" class="figure-caption">Figure 2: Frequency of different words in Pasta Academy class names.</figcaption><p></p>
 </figure>
 </div>
 </div>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+
+</section></main><!-- /main --><script type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -537,27 +473,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.blur();
     // flash "checked"
     button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
     setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
     // clear code selection
@@ -584,55 +500,35 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      let href = ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
     });
   }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
       });
-    }
+      return popup.innerHTML;
+    });
   }
 });
 </script>
 </div> <!-- /content -->
-
 
 
 </body></html>

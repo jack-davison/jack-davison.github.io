@@ -4,4 +4,5 @@ subtitle: Overview of research, consultancy and teaching experience.
 listing:
   contents: experience
   type: grid
+  sort-ui: false
 ---
