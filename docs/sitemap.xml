@@ -2,38 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://jack-davison.github.io/blog.html</loc>
-    <lastmod>2023-02-27T17:54:02.385Z</lastmod>
+    <lastmod>2023-02-27T19:49:23.240Z</lastmod>
   </url>
   <url>
     <loc>https://jack-davison.github.io/experience/dataviz.html</loc>
-    <lastmod>2023-02-27T17:54:03.390Z</lastmod>
+    <lastmod>2023-02-27T19:49:24.089Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jack-davison.github.io/experience/pkgdev.html</loc>
+    <lastmod>2023-02-27T19:49:24.839Z</lastmod>
   </url>
   <url>
     <loc>https://jack-davison.github.io/experience/reports.html</loc>
-    <lastmod>2023-02-27T17:54:04.320Z</lastmod>
+    <lastmod>2023-02-27T19:49:25.601Z</lastmod>
   </url>
   <url>
     <loc>https://jack-davison.github.io/experience/research.html</loc>
-    <lastmod>2023-02-27T17:54:05.392Z</lastmod>
+    <lastmod>2023-02-27T19:49:26.514Z</lastmod>
   </url>
   <url>
     <loc>https://jack-davison.github.io/experience/teaching.html</loc>
-    <lastmod>2023-02-27T17:54:06.211Z</lastmod>
+    <lastmod>2023-02-27T19:49:27.049Z</lastmod>
   </url>
   <url>
     <loc>https://jack-davison.github.io/experience.html</loc>
-    <lastmod>2023-02-27T17:54:07.028Z</lastmod>
+    <lastmod>2023-02-27T19:49:27.827Z</lastmod>
   </url>
   <url>
     <loc>https://jack-davison.github.io/index.html</loc>
-    <lastmod>2023-02-27T17:54:07.785Z</lastmod>
+    <lastmod>2023-02-27T19:49:28.377Z</lastmod>
   </url>
   <url>
     <loc>https://jack-davison.github.io/posts/2021-02-02-tidytuesday-2021-week-6-hbcu-enrollment-an-ode-to-data-cleaning/index.html</loc>
-    <lastmod>2023-02-27T17:54:13.918Z</lastmod>
+    <lastmod>2023-02-27T19:49:35.962Z</lastmod>
   </url>
   <url>
     <loc>https://jack-davison.github.io/posts/2022-11-13-pastaEvangelists/index.html</loc>
-    <lastmod>2023-02-27T17:54:20.883Z</lastmod>
+    <lastmod>2023-02-27T19:49:49.040Z</lastmod>
   </url>
 </urlset>

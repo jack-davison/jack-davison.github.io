@@ -14,6 +14,13 @@
     "text": "TidyTuesday\n#TidyTuesday is a weekly data challenge which tests the R community to tidy and visualise an unseen dataset, which could be related to anything from astronauts to zoo animals! Figure 1 is a collage of a few of my favourite contributions, with my full repo found at https://github.com/jack-davison/TidyTuesday.\n\n\n\nFigure 1: Some examples of my TidyTuesday contributions.\n\n\n\n\nDuBois Challenge\nThe DuBois Challenge is a challenge to recreate historic, hand drawn data visualisations using modern tools. The visualisations are specifically the work of data-viz pioneer W.E.B. DuBois, known for his subversive, geometric, ahead-of-his-time designs.\nI took part in the DuBois Challenge as part of #TidyTuesday (above), but my deepest examination of DuBois’ work was in my submission for the Posit Table Contest 2022, Tabulating DuBois, wherein I attempted to translate the work of DuBois to a more tabular medium with {gt}.\n\n\n\nFigure 2: An example table from Tabulating DuBois."
   },
   {
+    "objectID": "experience/pkgdev.html",
+    "href": "experience/pkgdev.html",
+    "title": "R Package Development",
+    "section": "",
+    "text": "Lead Developer\n\n{openairmaps}\n\n\n\nI am the lead developer on the {openairmaps} package, designed to combine the air quality analysis techniques of {openair} with the interactivity of {leaflet}. Any {openair} “polar” directional analysis plotting function can be used as a marker on a {leaflet} map, allowing for easier triangulation of potential pollutant sources. Other functionality includes visualising UK AQ networks, interactive mapping of HYSPLIT trajectories, and static equivalents of the polar maps powered using {ggmap}.\n\n\n{ggopenair}\n\n\n\nI am developing {ggopenair}, a {ggplot2} implementation of {openair}. {openair} is written in {lattice} which, unlike {ggplot2}, is no longer under active development. {ggopenair} will also allow users more power to modify their plots “after-the-fact”, and benefit from the extensive library of {ggplot2} extensions like {patchwork}.\n\n\n\nCollaborator\n\n{openair}\nThe {openair} package has been around for over a decade, and is used around the world in the public and private sectors to analyse air quality data.\n\n\n{worldmet}\nThe {worldmet} package gives easy access to world meteorological data via accessing NOAA databases."
+  },
+  {
     "objectID": "experience/reports.html",
     "href": "experience/reports.html",
     "title": "Dynamic Reporting",
@@ -39,7 +46,7 @@
     "href": "experience.html",
     "title": "Experience",
     "section": "",
-    "text": "Creating effective static and interactive data visualisation.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAuthoring dynamic documents using {quarto} and {rmarkdown}.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPhD research into the remote sensing of vehicle emissions.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExperience teaching R and reproducible data analysis.\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Creating effective static and interactive data visualisation.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAuthoring dynamic documents using {quarto} and {rmarkdown}.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeveloping open-source tools for the R community.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPhD research into the remote sensing of vehicle emissions.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExperience teaching R and reproducible data analysis.\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",

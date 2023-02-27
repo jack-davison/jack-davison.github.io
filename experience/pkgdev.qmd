@@ -1,0 +1,39 @@
+---
+title: R Package Development
+description: Developing open-source tools for the R community.
+image: https://davidcarslaw.github.io/openairmaps/logo.png
+execute: 
+  freeze: auto
+format:
+  html:
+    toc: false
+---
+
+As well as authoring many private R packages to streamline data analysis pipelines for myself and colleagues, I have also developed publicly available packages, many of which focused on air quality data analysis.
+
+### Lead Developer
+
+#### `{openairmaps}`
+
+:::{.column-margin}
+![](https://davidcarslaw.github.io/openairmaps/logo.png)
+:::
+
+I am the lead developer on the `{openairmaps}` package, designed to combine the air quality analysis techniques of `{openair}` with the interactivity of `{leaflet}`. Any `{openair}` "polar" directional analysis plotting function can be used as a marker on a `{leaflet}` map, allowing for easier triangulation of potential pollutant sources. Other functionality includes visualising UK AQ networks, interactive mapping of HYSPLIT trajectories, and static equivalents of the polar maps powered using `{ggmap}`.
+
+#### `{ggopenair}`
+
+:::{.column-margin}
+:::
+
+I am developing `{ggopenair}`, a `{ggplot2}` implementation of `{openair}`. `{openair}` is written in `{lattice}` which, unlike `{ggplot2}`, is no longer under active development. `{ggopenair}` will also allow users more power to modify their plots "after-the-fact", and benefit from the extensive library of `{ggplot2}` extensions like `{patchwork}`.
+
+### Collaborator
+
+#### `{openair}`
+
+The `{openair}` package has been around for over a decade, and is used around the world in the public and private sectors to analyse air quality data.
+
+#### `{worldmet}`
+
+The `{worldmet}` package gives easy access to world meteorological data via accessing NOAA databases.
