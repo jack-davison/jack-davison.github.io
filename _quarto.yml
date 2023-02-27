@@ -7,6 +7,7 @@ website:
   open-graph: true
   site-url: https://jack-davison.github.io/
   navbar:
+    logo: logo.png
     search: true
     right:
       - text: "About"

@@ -5,7 +5,7 @@ image: selfie-zoomed.jpg
 about:
   template: solana
   image-shape: rounded
-  image-width: "40%"
+  image-width: "30%"
   links:
     - icon: twitter
       text: Twitter
@@ -16,7 +16,9 @@ about:
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/jack-davison/
-
+format: 
+  html:
+    page-layout: full
 ---
 
 I am a data analyst and R developer working for an Environmental Consultancy in South Oxfordshire in the United Kingdom.

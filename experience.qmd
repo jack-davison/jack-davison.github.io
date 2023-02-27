@@ -5,4 +5,8 @@ listing:
   contents: experience
   type: grid
   sort-ui: false
+  grid-columns: 4
+format: 
+  html:
+    page-layout: full
 ---
