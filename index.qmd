@@ -19,6 +19,10 @@ about:
 
 ---
 
- 
+I am a data analyst and R developer working for an Environmental Consultancy in South Oxfordshire in the United Kingdom.
 
-Jack Davison is a data analyst and R developer working for an Environmental Consultancy in South Oxfordshire, United Kingdom. He was awarded a PhD in Atmospheric Chemistry from the [Wolfson Atmospheric Chemistry Laboratories](https://www.york.ac.uk/chemistry/research/wacl/) at the University of York, with research focusing on the calculating emission factors from large databases of road transport emissions. Jack is a collaborator on the [{openair} project](https://github.com/davidcarslaw/openair) and the lead developer on the [{openairmaps}](https://github.com/davidcarslaw/openairmaps) package. He is a [Posit (formerly RStudio) Certified Tidyverse Instructor](https://education.rstudio.com/trainers/) and has taught R for environmental data analysis to a wide range of audiences, including learners from Defra, the UK Environment Agency, and the UK Health Security Agency.
+I was awarded a PhD in Atmospheric Chemistry from the [Wolfson Atmospheric Chemistry Laboratories](https://www.york.ac.uk/chemistry/research/wacl/) at the University of York, with research focusing on the calculating emission factors from large databases of road transport emissions. 
+
+I'm a collaborator on the [{openair} project](https://github.com/davidcarslaw/openair) and the lead developer on the [{openairmaps}](https://github.com/davidcarslaw/openairmaps) R package. 
+
+I'm also a [Posit (formerly RStudio) Certified Tidyverse Instructor](https://education.rstudio.com/trainers/) and have taught R for environmental data analysis to a wide range of audiences, including learners from Defra, the UK Environment Agency, and the UK Health Security Agency.
