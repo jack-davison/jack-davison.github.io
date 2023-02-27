@@ -7,6 +7,13 @@
     "text": "rvest\n\n\nwebscraping\n\n\n\n\nOvercoming the lack of a “filter” option on an experience booking website through web scraping.\n\n\n\n\n\n\nNov 13, 2022\n\n\nJack Davison\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\ntidytuesday\n\n\n\n\nA disucssion on data tidying and cleaning, with applications to a messy, unfamiliar data set.\n\n\n\n\n\n\nFeb 2, 2021\n\n\nJack Davison\n\n\n\n\n\n\nNo matching items"
   },
   {
+    "objectID": "experience/dataviz.html",
+    "href": "experience/dataviz.html",
+    "title": "Data Visualisation",
+    "section": "",
+    "text": "TidyTuesday\n#TidyTuesday is a weekly data challenge which tests the R community to tidy and visualise an unseen dataset, which could be related to anything from astronauts to zoo animals! Figure 1 is a collage of a few of my favourite contributions, with my full repo found at https://github.com/jack-davison/TidyTuesday.\n\n\n\nFigure 1: Some examples of my TidyTuesday contributions.\n\n\n\n\nDuBois Challenge\nThe DuBois Challenge is a challenge to recreate historic, hand drawn data visualisations using modern tools. The visualisations are specifically the work of data-viz pioneer W.E.B. DuBois, known for his subversive, geometric, ahead-of-his-time designs.\nI took part in the DuBois Challenge as part of #TidyTuesday (above), but my deepest examination of DuBois’ work was in my submission for the Posit Table Contest 2022, Tabulating DuBois, wherein I attempted to translate the work of DuBois to a more tabular medium with {gt}.\n\n\n\nFigure 2: An example table from Tabulating DuBois."
+  },
+  {
     "objectID": "experience/reports.html",
     "href": "experience/reports.html",
     "title": "Dynamic Reporting",
@@ -32,7 +39,7 @@
     "href": "experience.html",
     "title": "Experience",
     "section": "",
-    "text": "Authoring dynamic documents using {quarto} and {rmarkdown}.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPhD research into the remote sensing of vehicle emissions.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExperience teaching R and reproducible data analysis.\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Creating effective static and interactive data visualisation.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAuthoring dynamic documents using {quarto} and {rmarkdown}.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPhD research into the remote sensing of vehicle emissions.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExperience teaching R and reproducible data analysis.\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
