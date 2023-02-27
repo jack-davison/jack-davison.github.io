@@ -2,152 +2,141 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.189">
+<meta name="generator" content="quarto-0.9.243">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Jack Davison">
 <meta name="dcterms.date" content="2021-02-02">
 <meta name="description" content="A disucssion on data tidying and cleaning, with applications to a messy, unfamiliar data set.">
-<title>R at Home - An Ode to Data Tidying (TidyTuesday 2021 Week 6: HBCU Enrolment)</title>
+<title>An Ode to Data Tidying (TidyTuesday 2021 Week 6: HBCU Enrolment)</title>
 <style>
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
-  vertical-align: middle;
-}
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 20,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
-  }
-}</script><script src="..%5C..%5Csite_libs/kePrint-0.0.1/kePrint.js"></script><link href="..%5C..%5Csite_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="R at Home - An Ode to Data Tidying (TidyTuesday 2021 Week 6: HBCU Enrolment)">
-<meta property="og:description" content="A disucssion on data tidying and cleaning, with applications to a messy, unfamiliar data set.">
-<meta property="og:image" content="https://jack-davison.github.io/posts\2021-02-02-tidytuesday-2021-week-6-hbcu-enrollment-an-ode-to-data-cleaning\students.jpg">
-<meta property="og:site-name" content="R at Home">
-<meta name="twitter:title" content="R at Home - An Ode to Data Tidying (TidyTuesday 2021 Week 6: HBCU Enrolment)">
-<meta name="twitter:description" content="A disucssion on data tidying and cleaning, with applications to a messy, unfamiliar data set.">
-<meta name="twitter:image" content="https://jack-davison.github.io/posts\2021-02-02-tidytuesday-2021-week-6-hbcu-enrollment-an-ode-to-data-cleaning\students.jgp">
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script><script src="../../site_libs/quarto-nav/headroom.min.js"></script><script src="../../site_libs/clipboard/clipboard.min.js"></script><meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script><script src="../../site_libs/quarto-search/fuse.min.js"></script><script src="../../site_libs/quarto-search/quarto-search.js"></script><script src="../../site_libs/quarto-html/quarto.js"></script><script src="../../site_libs/quarto-html/popper.min.js"></script><script src="../../site_libs/quarto-html/tippy.umd.min.js"></script><script src="../../site_libs/quarto-html/anchor.min.js"></script><link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link id="quarto-text-highlighting-styles" href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script><link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+    "location": "navbar",
+    "copy-button": false,
+    "collapse-after": 3,
+    "panel-placement": "end",
+    "type": "overlay",
+    "limit": 20,
+    "language": {
+      "search-no-results-text": "No results",
+      "search-matching-documents-text": "matching documents",
+      "search-copy-link-title": "Copy link to search",
+      "search-hide-matches-text": "Hide additional matches",
+      "search-more-match-text": "more match in this document",
+      "search-more-matches-text": "more matches in this document",
+      "search-clear-button-title": "Clear",
+      "search-detached-cancel-button-title": "Cancel",
+      "search-submit-button-title": "Submit"
+    }
+  }</script><script src="..%5C..%5Csite_libs/kePrint-0.0.1/kePrint.js"></script><link href="..%5C..%5Csite_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]--><link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="An Ode to Data Tidying (TidyTuesday 2021 Week 6: HBCU Enrolment)">
+<meta property="og:description" content="A disucssion on data tidying and cleaning, with applications to a messy, unfamiliar data set.
+">
+<meta property="og:image" content="https://jack-davison.github.io//posts\2021-02-02-tidytuesday-2021-week-6-hbcu-enrollment-an-ode-to-data-cleaning\students.jpg">
+<meta name="twitter:title" content="An Ode to Data Tidying (TidyTuesday 2021 Week 6: HBCU Enrolment)">
+<meta name="twitter:description" content="A disucssion on data tidying and cleaning, with applications to a messy, unfamiliar data set.
+">
+<meta name="twitter:image" content="https://jack-davison.github.io//posts\2021-02-02-tidytuesday-2021-week-6-hbcu-enrollment-an-ode-to-data-cleaning\students.jgp">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 <body class="floating nav-fixed">
-
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
-    <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">R at Home</span>
-    </a>
-  </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
 <li class="nav-item">
-    <a class="nav-link" href="../../index.html">Blog</a>
+    <a class="nav-link" href="../../index.html">About</a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html">About</a>
+    <a class="nav-link" href="../../experience.html">Experience</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html">Blog</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/jdavison_"><i class="bi bi-twitter" role="img">
+</i> 
+ </a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/jack-davison"><i class="bi bi-github" role="img">
@@ -155,7 +144,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  </a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/jdavison_"><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://www.linkedin.com/in/jack-davison/"><i class="bi bi-linkedin" role="img">
 </i> 
  </a>
   </li>  
@@ -163,60 +152,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full"><div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">An Ode to Data Tidying (TidyTuesday 2021 Week 6: HBCU Enrolment)</h1>
-                  <div>
-        <div class="description">
-          <p>A disucssion on data tidying and cleaning, with applications to a messy, unfamiliar data set.</p>
-        </div>
-      </div>
-                          <div class="quarto-categories">
-                <div class="quarto-category">tidytuesday</div>
-              </div>
-                  </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full">
 
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Jack Davison </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">February 2, 2021</p>
-      </div>
-    </div>
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+
+<div class="quarto-title-banner color-navbar page-columns page-full"><div class="quarto-title column-body"><h1 class="title display-7">An Ode to Data Tidying (TidyTuesday 2021 Week 6: HBCU Enrolment)</h1><div class="quarto-description"><p>A disucssion on data tidying and cleaning, with applications to a messy, unfamiliar data set.
+</p></div><div class="quarto-categories"><div class="quarto-category">tidytuesday</div></div></div></div><div class="quarto-title-meta"><div><div class="quarto-title-meta-heading">Author</div><div class="quarto-title-meta-contents"><div class="quarto-title-authors"><div><div>
+<p>Jack Davison</p>
+</div></div></div></div></div><div><div class="quarto-title-meta-heading">Published</div><div class="quarto-title-meta-contents"><p class="date">February 2, 2021</p></div></div></div></header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
-   
-  <ul>
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc"><h2 id="toc-title">On this page</h2>
+<ul>
 <li><a href="#introduction-or-what-do-we-mean-by-tidy" id="toc-introduction-or-what-do-we-mean-by-tidy" class="nav-link active" data-scroll-target="#introduction-or-what-do-we-mean-by-tidy">Introduction (or, “What do we mean by Tidy?”)</a></li>
-  <li>
+<li>
 <a href="#the-hbcu-data" id="toc-the-hbcu-data" class="nav-link" data-scroll-target="#the-hbcu-data">The HBCU Data</a>
-  <ul class="collapse">
+<ul class="collapse">
 <li><a href="#what-are-the-issues" id="toc-what-are-the-issues" class="nav-link" data-scroll-target="#what-are-the-issues">What are the issues?</a></li>
-  <li><a href="#cleaning-and-tidying" id="toc-cleaning-and-tidying" class="nav-link" data-scroll-target="#cleaning-and-tidying">Cleaning and Tidying</a></li>
-  <li><a href="#data-analysis" id="toc-data-analysis" class="nav-link" data-scroll-target="#data-analysis">Data Analysis</a></li>
-  </ul>
+<li><a href="#cleaning-and-tidying" id="toc-cleaning-and-tidying" class="nav-link" data-scroll-target="#cleaning-and-tidying">Cleaning and Tidying</a></li>
+<li><a href="#data-analysis" id="toc-data-analysis" class="nav-link" data-scroll-target="#data-analysis">Data Analysis</a></li>
+</ul>
 </li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
-  </ul></nav>
+<li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+</ul></nav>
 </nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content"><p><img src="students.jpg" class="img-fluid"></p>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><p data-sidebar-align="true"><img src="students.jpg" class="img-fluid"></p>
 <section id="introduction-or-what-do-we-mean-by-tidy" class="level1"><h1>Introduction (or, “What do we mean by Tidy?”)</h1>
 <p>This week’s TidyTuesday is related to HBCU Enrolment. I will have to start by admitting my ignorance - I had no real idea what “HBCU” actually meant, which I attribute to being from the UK. However, datasets on American culture or politics that I’m not very familiar with has never stopped me before! So I sat down to give it a look. To my horror - or, perhaps, delight - the dataset was not particularly tidy. I will admit, there is something delightful about tackling a particularly untidy data set and turning it into something beautiful and easy to work with.</p>
 <p>What do I mean by <em>tidy data</em>? The <a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html">tidyr vingette</a> defines it as follows:</p>
@@ -226,7 +186,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>A <em>variable</em> contains all values that measure some unique feature - height, weight, length, temperature. An <em>observation</em> ties together the different values into one observational unit - a date, an object, a person. For the sake of example, say we have a data set of secondary school children who have all sat their end of year exams in several subjects that are all scored out of 100. We may be tempted to lay the data out in a <em>wide</em> format, as I have below:</p>
 <div class="cell">
 <div class="cell-output-display">
-
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead><tr>
 <th style="text-align:left;"> student </th>
@@ -260,7 +219,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>However, is this <em>tidy</em>? Our <em>observations</em> are the students, yes, but our <em>variables</em> are not <strong>student</strong>, <strong>maths</strong>, <strong>english</strong> and <strong>history</strong>. The “real” variables should be <strong>student</strong>, <strong>subject</strong> and <strong>mark</strong>.</p>
 <div class="cell">
 <div class="cell-output-display">
-
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead><tr>
 <th style="text-align:left;"> student </th>
@@ -371,7 +329,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 #   `Standard Errors - Asian/Pacific Islander - Pacific Islander` &lt;dbl&gt;, …</code></pre>
 </div>
 </div>
-<p>We could be tempted now to run <code><a href="https://rdrr.io/pkg/janitor/man/clean_names.html">janitor::clean_names()</a></code>. For those unfamiliar, this function cleans the names of a data frame to make them easier to use - all lower-case, spaces replaced with underscores, and the like. Normally it’s a good idea to use it as soon as possible, but as I am going to restructure my data I am not going to use it right away. As <em>race</em> will be one of my columns, I’d probably want words like “White” and “Black” to remain capitalised, so if I reported them in a table or use them in a legend label they’d look more presentable.</p>
+<p>We could be tempted now to run <code><a href="https://sfirke.github.io/janitor/reference/clean_names.html">janitor::clean_names()</a></code>. For those unfamiliar, this function cleans the names of a data frame to make them easier to use - all lower-case, spaces replaced with underscores, and the like. Normally it’s a good idea to use it as soon as possible, but as I am going to restructure my data I am not going to use it right away. As <em>race</em> will be one of my columns, I’d probably want words like “White” and “Black” to remain capitalised, so if I reported them in a table or use them in a legend label they’d look more presentable.</p>
 <p>Next, we can start restructuring. A good trick with <code>pivot_longer()</code> is that it behaves much the same as functions like <code>select()</code> - if we list a column name preceded with a minus sign (<code>-</code>) it effectively tells the function “everything but this column, please!” I’m not going to specify column names for the names or values here as we’ll quickly get rid of them.</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">bach_students</span> <span class="op">%&gt;%</span></span>
@@ -566,7 +524,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span>  <span class="fu">mutate</span><span class="op">(</span>stat <span class="op">=</span> <span class="fu">replace_na</span><span class="op">(</span><span class="va">stat</span>, <span class="st">"Total"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">rename</span><span class="op">(</span>year <span class="op">=</span> <span class="va">Total</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">stat</span>, values_from <span class="op">=</span> <span class="va">value</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/janitor/man/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span></span>
 <span>    race <span class="op">=</span> <span class="fu">str_remove_all</span><span class="op">(</span></span>
 <span>      <span class="va">race</span>, </span>
@@ -648,14 +606,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">plot_data_2</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/janitor/man/remove_constant.html">remove_constant</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://sfirke.github.io/janitor/reference/remove_constant.html">remove_constant</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span><span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span></span>
 <span>    <span class="fu">where</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, <span class="op">~</span> <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html">glue</a></span><span class="op">(</span><span class="st">"{abs(.x) * 100} %"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>col.names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Race"</span>, <span class="st">"Total"</span>, <span class="st">"Std Err."</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">kableExtra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">kableExtra</span><span class="fu">::</span><span class="fu">kable_styling</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead><tr>
 <th style="text-align:left;"> Race </th>
@@ -714,26 +671,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Hopefully this post was interesting for newer R users, and I look forward to the visualisations that will come from this week’s TidyTuesday data sets!</p>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+
+</section></main><!-- /main --><script type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -753,10 +693,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.blur();
     // flash "checked"
     button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
     setTimeout(function() {
-      button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
     // clear code selection
@@ -783,8 +720,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   for (var i=0; i<noterefs.length; i++) {
     const ref = noterefs[i];
     tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      let href = ref.getAttribute('href');
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
@@ -813,7 +749,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-
 
 
 </body></html>

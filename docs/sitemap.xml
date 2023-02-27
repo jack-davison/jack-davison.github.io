@@ -1,19 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://jack-davison.github.io/about.html</loc>
-    <lastmod>2022-11-13T18:00:17.174Z</lastmod>
+    <loc>https://jack-davison.github.io/blog.html</loc>
+    <lastmod>2023-02-27T17:03:43.689Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jack-davison.github.io/experience/reports.html</loc>
+    <lastmod>2023-02-27T16:58:22.960Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jack-davison.github.io/experience/research.html</loc>
+    <lastmod>2023-02-27T16:58:24.001Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jack-davison.github.io/experience/teaching.html</loc>
+    <lastmod>2023-02-27T16:58:24.743Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jack-davison.github.io/experience.html</loc>
+    <lastmod>2023-02-27T16:58:25.679Z</lastmod>
   </url>
   <url>
     <loc>https://jack-davison.github.io/index.html</loc>
-    <lastmod>2022-11-13T18:00:17.964Z</lastmod>
+    <lastmod>2023-02-27T16:58:26.472Z</lastmod>
   </url>
   <url>
     <loc>https://jack-davison.github.io/posts/2021-02-02-tidytuesday-2021-week-6-hbcu-enrollment-an-ode-to-data-cleaning/index.html</loc>
-    <lastmod>2022-11-13T18:00:23.152Z</lastmod>
+    <lastmod>2023-02-27T16:58:33.963Z</lastmod>
   </url>
   <url>
     <loc>https://jack-davison.github.io/posts/2022-11-13-pastaEvangelists/index.html</loc>
-    <lastmod>2022-11-13T18:00:30.905Z</lastmod>
+    <lastmod>2023-02-27T17:03:55.769Z</lastmod>
   </url>
 </urlset>

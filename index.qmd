@@ -1,16 +1,24 @@
 ---
-title: "We've got R at home"
-subtitle: "Personal projects and 'real-life' applications of R."
-theme: litera
-listing:
-  contents: posts
-  sort: "date desc"
-  type: default
-  categories: true
-  sort-ui: false
-  filter-ui: false
-page-layout: full
-title-block-banner: true
+title: Jack Davison 
+subtitle: Air Quality Data Analyst & R Developer
+image: selfie-zoomed.jpg
+about:
+  template: solana
+  image-shape: rounded
+  image-width: "40%"
+  links:
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/jdavison_
+    - icon: github
+      text: Github
+      href: https://github.com/jack-davison
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/jack-davison/
+
 ---
 
+ 
 
+Jack Davison is a data analyst and R developer working for an Environmental Consultancy in South Oxfordshire, United Kingdom. He was awarded a PhD in Atmospheric Chemistry from the [Wolfson Atmospheric Chemistry Laboratories](https://www.york.ac.uk/chemistry/research/wacl/) at the University of York, with research focusing on the calculating emission factors from large databases of road transport emissions. Jack is a collaborator on the [{openair} project](https://github.com/davidcarslaw/openair) and the lead developer on the [{openairmaps}](https://github.com/davidcarslaw/openairmaps) package. He is a [Posit (formerly RStudio) Certified Tidyverse Instructor](https://education.rstudio.com/trainers/) and has taught R for environmental data analysis to a wide range of audiences, including learners from Defra, the UK Environment Agency, and the UK Health Security Agency.

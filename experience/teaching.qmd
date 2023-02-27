@@ -1,0 +1,44 @@
+---
+title: Teaching
+description: Experience teaching R and reproducible data analysis.
+image: experience_imgs/teaching.png
+execute: 
+  freeze: auto
+format:
+  html:
+    toc: false
+---
+
+I am a [Posit (formerly RStudio) Certified Tidyverse Instructor](https://education.rstudio.com/trainers/) with over 5 years experience teaching reproducible data analysis in R to a variety of audiences. Typically these courses centre around the analysis of environmental data, specifically long term monitoring data.
+
+I have delivered training to learners from organisations such as:
+
+* UK Department for the Environment, Food and Rural Afairs (Defra)
+
+* UK Health Security Agency (UKHSA)
+
+* UK Environment Agency (EA)
+
+* The Clean Air Society of Australia and New Zealand (CASANZ)
+
+* Port Talbot Local Authority
+
+* UK Centre for Ecology & Hydrology (UKCEH)
+
+* The Wolfson Atmospheric Chemistry Laboratories (WACL)
+
+### Approach
+
+I am a proponent of live coding in teaching, meaning that learners can see RStudio used in an authentic way. Authentic examples showing real-world applications of R are important to ensure that the content is relevant to learner's interests. Teaching is supported by extensive, reproducible learning materials written in `{quarto}` (formerly `{rmarkdown}`). Where possible on longer courses, case studies are written up using data provided by learners to get them started with their own data analysis projects.
+
+@fig-casestudy shows some example course materials produced for a recent course on using R for air quality modelling. An advanced lesson, it outlines a method to use `{readr}` and `{purrr}` to rapidly pull large amounts of kilometre grid-square modelled air quality data from the "UK AIR" website and then plot it using `{ggplot2}`. All of the content is reproducible, allowing learners to explore it further at a later date.
+
+:::{#fig-casestudy}
+
+```{=html}
+<iframe width="780" height="500" src="experience_imgs/accessing-PCM-data.html" title="Example Course Material"></iframe>
+```
+
+An example of reproducible course materials, commonly produced when teaching R.
+
+:::

@@ -1,9 +1,17 @@
 [
   {
-    "listing": "/index.html",
+    "listing": "/blog.html",
     "items": [
       "/posts/2022-11-13-pastaEvangelists/index.html",
       "/posts/2021-02-02-tidytuesday-2021-week-6-hbcu-enrollment-an-ode-to-data-cleaning/index.html"
+    ]
+  },
+  {
+    "listing": "/experience.html",
+    "items": [
+      "/experience/reports.html",
+      "/experience/research.html",
+      "/experience/teaching.html"
     ]
   }
 ]

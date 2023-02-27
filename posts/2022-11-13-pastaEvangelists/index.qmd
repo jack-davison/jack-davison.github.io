@@ -13,6 +13,7 @@ execute:
   warning: false
   message: false
   error: false
+  freeze: true
 editor_options: 
   chunk_output_type: console
 ---
@@ -190,28 +191,34 @@ potential_classes
 
 And there they are!
 
-Just as we now have the data to hand, lets see what some common themes are in the classes. Disregarding words that aren't particularly unique or descriptive like "taste", "beginners", "class", "morning", we can learn that there seems to be a lot of festive classes, and those inspired by the cuisines of Rome, Tuscany and Sardinia.
+Just as we now have the data to hand, lets see what some common themes are in the classes. Disregarding words that aren't particularly unique or descriptive like "taste", "beginners", "class", "morning", we can learn that there seems to be a lot inspired by the cuisines of Puglia, Rome, and Sardinia.
 
 ```{r}
-pasta |> 
+counts <-
+  pasta |> 
   tidytext::unnest_tokens(word, name) |> 
   anti_join(tidytext::get_stopwords()) |> 
   count(word, sort = T)
+
+counts
 ```
 
-@fig-themes reveals that (unsurprisingly) festive classes are all before January, but the other three common themes are spaced out regularly throughout the year.
+@fig-bars visualises the above data using `{ggiraph}`, showing the most and least common words in these pasta making class names. Hover over the bars to read the exact values!
 
 ```{r}
-#| label: fig-themes
-#| fig-cap: "Distribution of common classes throughout the year."
-pasta |>
-  tidytext::unnest_tokens(word, name) |>
-  filter(word %in% c("rome", "tuscany", "sardinia", "festive")) |>
-  ggplot(aes(x = date)) +
-  geom_histogram(aes(fill = word)) +
-  theme_bw() +
-  theme(legend.position = "top") +
-  labs(x = NULL, fill = NULL) +
-  scale_y_continuous(expand = expansion(mult = c(0, .1)))
+#| label: fig-bars
+#| fig-cap: "Frequency of different words in Pasta Academy class names."
+library(ggiraph)
+
+plt <-
+  counts |>
+  mutate(word = fct_reorder(word, n)) |>
+  ggplot(aes(y = word, x = n)) +
+  geom_col_interactive(aes(fill = n, tooltip = n), show.legend = FALSE) +
+  theme_classic() +
+  scale_x_continuous(expand = expansion()) +
+  labs(y = NULL, x = "Count (n)")
+
+girafe(ggobj = plt)
 ```
 

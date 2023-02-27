@@ -3,22 +3,24 @@ project:
   output-dir: docs
 
 website:
-  title: "R at Home"
-  description: "Applications of R for personal projects"
   repo-url: https://github.com/jack-davison/jack-davison.github.io
   open-graph: true
   site-url: https://jack-davison.github.io/
   navbar:
     search: true
     right:
-      - text: "Blog"
-        file: index.qmd
       - text: "About"
-        file: about.qmd
-      - icon: github
-        href: https://github.com/jack-davison
+        file: index.qmd
+      - text: "Experience"
+        file: experience.qmd
+      - text: "Blog"
+        file: blog.qmd
       - icon: twitter
         href: https://twitter.com/jdavison_
+      - icon: github
+        href: https://github.com/jack-davison
+      - icon: linkedin
+        href: https://www.linkedin.com/in/jack-davison/
 format:
   html:
     toc: true
@@ -26,11 +28,12 @@ format:
     code-link: true
     code-overflow: wrap
     anchor-sections: true
-    fig-cap-location: margin
-    reference-location: margin
     footnotes-hover: true
     fontsize: 1em
-    theme: yeti
+    theme: simplex
     css: styles.css
+
 execute:
   freeze: auto
+
+bibliography: references.bib

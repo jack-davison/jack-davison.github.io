@@ -1,0 +1,37 @@
+---
+title: Research
+description: PhD research into the remote sensing of vehicle emissions.
+image: experience_imgs/research.png
+execute: 
+  freeze: auto
+nocite: |
+  @davison2020,@davison2021,@davison2022,@Farren_2021,@Farren_2020,@Wagner_2021,@Grange_2020
+format:
+  html:
+    toc: false
+---
+
+My PhD thesis [@wreo31313] focused on the calculation of representative emission factors from vehicle emission remote sensing data. An emission factor is a value used to estimate a total emission from a sector (e.g., transport) from a more measurable activity (e.g., total kilometres driven).
+
+$Emission~Estimate~\left(g\right) = \textbf{Emission~Factor}~\left(g~km^{-1}\right) \times Measured~Activity~\left(km\right)$
+
+Typically these emission factors are based on data from a very limited range of vehicles, most commonly from lab tests but also from instrumented vehicles (Portable Emissions Monitoring Systems, PEMS). While these give good *journey* coverage, capturing everything from idling to bombing down the motorway, they give poor *fleet* coverage, only measuring a handful of "representative" vehicles.
+
+Vehicle emission remote sensing is a technique for measuring *a lot* of vehicles. Think of it as a bit like a speed camera with a spectrometer attached, that being an instrument capable of measuring pollutant concentrations in the atmosphere. While the use of remote sensing rapidly populates a database of hundreds of thousands of tailpipe concentration measurements, only measuring a dispersing plume (rather than the sum total of all tailpipe emissions) means some robust statistical modelling is required to calculate representative emission factors.
+
+One of the key outcomes from my research was the clear significance of the difference in emissions between vehicle manufacturers. @fig-pdf, taken from @davison2021, illustrates the distribution of different distance-specific emissions for different vehicle manufacturers and engine sizes. These differences are currently not directly accounted for in European emissions inventories.
+
+![Distance-specific CO~2~ and NO~x~ emissions (g km^-1^) for Euro 6 light duty vehicles. Each dot represents a unique manufacturer group-engine size combination, with size proportional to the number of observations included in its calculation. The diamonds represent the weighted mean for each engine size, and the horizontal lines the weighted mean for each vehicle category (Diesel Light Commercial Vehicle, Diesel Passenger Car, Gasoline Passenger Car). Taken from @davison2021.](experience_imgs/bubbles_new_legend.svg){#fig-pdf width="80%" height=400px}
+
+I also used statistical modelling techniques to examine other effects on vehicle emission concentrations. For example, quantile regression (via the `{quantreg}` package) was used to examine the skewed relationships between cumulative mileage and fuel-specific emissions in passenger cars. @fig-qslope, taken from @davison2022, shows that there are a small proportion of high-mileage gasoline Euro 3 passenger cars which are higher emitting than the average Euro 5/6 diesel cars.
+
+![Plot showing the modelled linear deterioration of passenger cars from 0 to 160,000~km of cumulative mileage (a vehicle's ``normal life'' under Euro 6 legislation. Taken from @davison2022.](experience_imgs/qslopes.svg){#fig-qslope width="80%" height=400px}
+
+### Academic Publications
+
+Publications I was involved in throughout my PhD are detailed below. The majority of these, not least my thesis [@wreo31313], are open source and therefore free to read for those outside of academia.
+
+---
+
+::: {#refs}
+:::

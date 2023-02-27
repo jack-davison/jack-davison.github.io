@@ -1,0 +1,47 @@
+---
+title: Dynamic Reporting
+description: Authoring dynamic documents using `{quarto}` and `{rmarkdown}`.
+image: experience_imgs/reports.png
+execute: 
+  freeze: auto
+format:
+  html:
+    toc: false
+---
+
+I have authored interactive documents for a wide range of projects and clients, from developing dynamic annual network summaries for the UK Government to efficiently writing up reports in response to unpredictable air pollution episodes.
+
+Some examples of my work include:
+
+* Annual Reports (e.g., [UK Hydrocarbons Network Annual Report](https://uk-air.defra.gov.uk/assets/documents/reports/cat09/2209290928_hc_annual_report_2021_2022-08-30.html))
+
+* Episode Reports (e.g., [2023 West London Particulate Episode Report](https://www.ricardo.com/media/c33dncxa/west-london-particulate-episode.html))
+
+Tools in which I am proficient that I use to develop these reports include:
+
+* `{quarto}` (and formerly `{rmarkdown}`) to render the documents.
+
+* `{plotly}` and `{ggiraph}` for interactive plots and figures.
+
+* `{leaflet}` for interactive maps.
+
+* `{ggplot2}` and various extensions for static figures/maps.
+
+* `{DT}` for interactive tables.
+
+* `{gt}` for static tables.
+
+* `mermaid` for flowcharts and other diagrams.
+
+Screenshots from a dynamic report are shown in @fig-examples.
+
+:::{#fig-examples layout="[[1,1], [1]]"}
+
+![`{ggplot2}` figure.](experience_imgs/report-plot.png)
+
+![Styled `{gt}` table.](experience_imgs/report-tbl.png)
+
+![Interactive `{leaflet}` map using the `{leaftime}` extension.](experience_imgs/report-map.png)
+
+Screenshots from the [2023 West London Particulate Episode Report](https://www.ricardo.com/media/c33dncxa/west-london-particulate-episode.html).
+:::

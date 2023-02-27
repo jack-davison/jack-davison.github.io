@@ -1,0 +1,16 @@
+---
+title: "Jack Davison"
+subtitle: "Personal projects and 'real-life' applications of R."
+theme: litera
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+page-layout: full
+title-block-banner: true
+---
+
+
