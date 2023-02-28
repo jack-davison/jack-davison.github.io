@@ -4,7 +4,7 @@
     "href": "blog.html",
     "title": "Jack Davison",
     "section": "",
-    "text": "Scraping the Pasta Academy\n\n\n\n\n\n\n\nrvest\n\n\nwebscraping\n\n\n\n\nOvercoming the lack of a “filter” option on an experience booking website through web scraping.\n\n\n\n\n\n\nNov 13, 2022\n\n\nJack Davison\n\n\n\n\n\n\n  \n\n\n\n\nAn Ode to Data Tidying (TidyTuesday 2021 Week 6: HBCU Enrolment)\n\n\n\n\n\n\n\ntidytuesday\n\n\n\n\nA disucssion on data tidying and cleaning, with applications to a messy, unfamiliar data set.\n\n\n\n\n\n\nFeb 2, 2021\n\n\nJack Davison\n\n\n\n\n\n\nNo matching items"
+    "text": "rvest\n\n\nwebscraping\n\n\n\n\nOvercoming the lack of a “filter” option on an experience booking website through web scraping.\n\n\n\n\n\n\nNov 13, 2022\n\n\nJack Davison\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\ntidytuesday\n\n\n\n\nA disucssion on data tidying and cleaning, with applications to a messy, unfamiliar data set.\n\n\n\n\n\n\nFeb 2, 2021\n\n\nJack Davison\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "experience/dataviz.html",
@@ -46,14 +46,14 @@
     "href": "experience.html",
     "title": "Experience",
     "section": "",
-    "text": "Data Visualisation\n\n\nCreating effective static and interactive data visualisation.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDynamic Reporting\n\n\nAuthoring dynamic documents using {quarto} and {rmarkdown}.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR Package Development\n\n\nDeveloping open-source tools for the R community.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nResearch\n\n\nPhD research into the remote sensing of vehicle emissions.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTeaching\n\n\nExperience teaching R and reproducible data analysis.\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Creating effective static and interactive data visualisation.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAuthoring dynamic documents using {quarto} and {rmarkdown}.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeveloping open-source tools for the R community.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPhD research into the remote sensing of vehicle emissions.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExperience teaching R and reproducible data analysis.\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Jack Davison",
     "section": "",
-    "text": "I am a data analyst and R developer working for an Environmental Consultancy in South Oxfordshire in the United Kingdom.\nI was awarded a PhD in Atmospheric Chemistry from the Wolfson Atmospheric Chemistry Laboratories at the University of York, with research focusing on the calculating emission factors from large databases of road transport emissions.\nI’m a collaborator on the {openair} project and the lead developer on the {openairmaps} R package.\nI’m also a Posit (formerly RStudio) Certified Tidyverse Instructor and have taught R for environmental data analysis to a wide range of audiences, including learners from Defra, the UK Environment Agency, and the UK Health Security Agency."
+    "text": "I was awarded a PhD in Atmospheric Chemistry from the Wolfson Atmospheric Chemistry Laboratories at the University of York, with research focusing on the calculating emission factors from large databases of road transport emissions.\nI’m a collaborator on the {openair} project and the lead developer on the {openairmaps} R package.\nI’m also a Posit (formerly RStudio) Certified Tidyverse Instructor and have taught R for environmental data analysis to a wide range of audiences, including learners from Defra, the UK Environment Agency, and the UK Health Security Agency."
   },
   {
     "objectID": "posts/2021-02-02-tidytuesday-2021-week-6-hbcu-enrollment-an-ode-to-data-cleaning/index.html#what-are-the-issues",
