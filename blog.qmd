@@ -1,7 +1,6 @@
 ---
-title: "Jack Davison"
-subtitle: "Personal projects and 'real-life' applications of R."
-theme: litera
+title: "Blog"
+subtitle: "Tutorials, data analysis, and 'real-life' applications of R."
 listing:
   contents: posts
   sort: "date desc"

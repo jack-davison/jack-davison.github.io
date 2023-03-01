@@ -13,12 +13,16 @@ execute:
   warning: false
   message: false
   error: false
-  freeze: true
+  freeze: auto
 editor_options: 
   chunk_output_type: console
 ---
 
 ![](pasta.jpg)
+
+::: {.callout-note}
+At time of writing this blog, the Pasta Academy did not have a filter on their website. They have since got their act together and implemented one, making much of this code no longer useful! It is, however, still interesting, and a nice introduction to applying `{rvest}` to solve a real (at the time) problem.
+:::
 
 # Purpose
 

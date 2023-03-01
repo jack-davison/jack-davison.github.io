@@ -118,7 +118,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit"
   }
-}</script><link rel="stylesheet" href="../../styles.css">
+}</script><script src="../../site_libs/htmlwidgets-1.6.1/htmlwidgets.js"></script><script src="../../site_libs/d3-bundle-5.16.0/d3-bundle.min.js"></script><script src="../../site_libs/d3-lasso-0.0.5/d3-lasso.min.js"></script><script src="../../site_libs/save-svg-as-png-1.4.17/save-svg-as-png.min.js"></script><script src="../../site_libs/flatbush-4.0.0/flatbush.min.js"></script><link href="../../site_libs/ggiraphjs-0.4.6/ggiraphjs.min.css" rel="stylesheet">
+<script src="../../site_libs/ggiraphjs-0.4.6/ggiraphjs.min.js"></script><script src="../../site_libs/girafe-binding-0.8.6/girafe.js"></script><link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="Scraping the Pasta Academy">
 <meta property="og:description" content="Overcoming the lack of a &quot;filter&quot; option on an experience booking website through web scraping.">
 <meta property="og:image" content="https://jack-davison.github.io/posts\2022-11-13-pastaEvangelists\pasta.jpg">
@@ -221,6 +222,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content"><p><img src="pasta.jpg" class="img-fluid"></p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>At time of writing this blog, the Pasta Academy did not have a filter on their website. They have since got their act together and implemented one, making much of this code no longer useful! It is, however, still interesting, and a nice introduction to applying <a href="https://rvest.tidyverse.org/">rvest</a> to solve a real (at the time) problem.</p>
+</div>
+</div>
 <section id="purpose" class="level1"><h1>Purpose</h1>
 <p>Recently, my partner and I were looking to book a cooking experience as a Christmas treat, and we settled on the excellently reviewed <a href="https://pastaevangelists.com/collections/pasta-academy">Pasta Academy</a> in London. We were looking for a beginner class in early 2023, but we were immediately met with an issue — there was no way to filter the booking list!</p>
 <p>We could have sat and go through the list manually, perhaps noting down each of the beginner classes when we found them. This sounded like a bit of a faff, so I instead thought I’d scrape all of the courses and put them into a table. Some might argue that writing an R script to do this is <em>even more</em> of a faff, but I did it anyway!</p>
@@ -246,18 +260,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span><span class="va">pasta_session</span>, <span class="st">".product-item-row__meta-title"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "TASTE OF CALABRIA | APERITIVO SPECIAL WITH ITALICUS |\r"                       
- [2] "PASTA ACADEMY™ | TASTE OF NAPOLI |\r"                                          
- [3] "PASTA ACADEMY™ | PASTA BEGINNERS CLASS |\r"                                    
- [4] "PASTA ACADEMY™ | TASTE OF ROME |\r"                                            
- [5] "PASTA ACADEMY™ | BEGINNERS FILLED PASTA with Sofia (as seen on Masterchef) |\r"
- [6] "PASTA ACADEMY™ | FESTIVE TASTE OF SARDINIA |\r"                                
- [7] "PASTA EVANGELISTS &amp; LAYLO WINES | PASTA MAKING &amp; WINE TASTING |\r"             
- [8] "PASTA ACADEMY™ | FESTIVE TASTE OF TUSCANY ?? |\r"                              
- [9] "PASTA ACADEMY™ | TASTE OF LIGURIA WITH HEAD CHEF ROBERTA|\r"                   
-[10] "PASTA ACADEMY™ | FESTIVE TASTE OF EMILIA-ROMAGNA |\r"                          
-[11] "PASTA ACADEMY™ | FESTIVE PASTA BEGINNERS CLASS |\r"                            
-[12] "PASTA ACADEMY™ | FESTIVE TASTE OF EMILIA-ROMAGNA |\r"                          </code></pre>
+<pre><code> [1] "PASTA ACADEMY™ | BEGINNERS CLASS |\r"                          
+ [2] "PASTA ACADEMY™ | TASTE OF PUGLIA |\r"                          
+ [3] "PASTA ACADEMY™ | MORNING BEGINNERS |\r"                        
+ [4] "PASTA ACADEMY™ | BEGINNERS CLASS |\r"                          
+ [5] "PASTA ACADEMY™ | TASTE OF VENICE |\r"                          
+ [6] "PASTA ACADEMY™ | MORNING BEGINNERS |\r"                        
+ [7] "PASTA ACADEMY™ | TASTE OF SARDINIA |\r"                        
+ [8] "PASTA ACADEMY™ | TASTE OF ROME |\r"                            
+ [9] "PASTA ACADEMY™ | TASTE OF BOLOGNA |\r"                         
+[10] "PASTA ACADEMY™ | LIMITED EDITION SEAFOOD PASTA MASTERCLASS |\r"
+[11] "PASTA ACADEMY™ | LIMITED EDITION SEAFOOD PASTA MASTERCLASS |\r"
+[12] "PASTA ACADEMY™ | MORNING BEGINNERS |\r"                        
+[13] "PASTA ACADEMY™ | LIMITED EDITION SEAFOOD PASTA MASTERCLASS |\r"
+[14] "PASTA ACADEMY™ | BEGINNERS CLASS |\r"                          
+[15] "PASTA ACADEMY™ | MORNING BEGINNERS |\r"                        
+[16] "PASTA ACADEMY™ | BEGINNERS CLASS |\r"                          
+[17] "PASTA ACADEMY™ | TASTE OF SARDINIA |\r"                        
+[18] "PASTA ACADEMY™ | TASTE OF TUSCANY |\r"                         
+[19] "PASTA ACADEMY™ | BEGINNERS CLASS |\r"                          
+[20] "PASTA ACADEMY™ | BEGINNERS CLASS |\r"                          </code></pre>
 </div>
 </div>
 <p>All we need to do is repeat this until we have all of the information we want. In this case, all I need is the course title, the date/time, the price, and whether or not it is sold out. The button text is a useful proxy for that last item, as it reads “SEE INFO” if a course is fully booked and “BOOK NOW” if there are spaces left.</p>
@@ -278,12 +300,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 12
+<pre><code>Rows: 20
 Columns: 4
-$ name   &lt;chr&gt; "TASTE OF CALABRIA | APERITIVO SPECIAL WITH ITALICUS |\r", "PAS…
-$ date   &lt;chr&gt; "\r Friday 11th November 2022, 18:30\r", "\r Saturday 12th Nove…
-$ price  &lt;chr&gt; "£60.00\r", "£50.00\r", "£50.00\r", "£50.00\r", "£60.00\r", "£6…
-$ button &lt;chr&gt; "SEE INFO", "SEE INFO", "BOOK NOW", "SEE INFO", "SEE INFO", "SE…</code></pre>
+$ name   &lt;chr&gt; "PASTA ACADEMY™ | BEGINNERS CLASS |\r", "PASTA ACADEMY™ | TASTE…
+$ date   &lt;chr&gt; "\r Wednesday March 1st, 2023, 18:30\r", "\r Friday March 3rd, …
+$ price  &lt;chr&gt; "£65.00\r", "£65.00\r", "£65.00\r", "£65.00\r", "£65.00\r", "£6…
+$ button &lt;chr&gt; "SEE INFO", "SEE INFO", "SEE INFO", "SEE INFO", "SEE INFO", "SE…</code></pre>
 </div>
 </div>
 <p>Now all four pieces of information can be scraped from one page, we can use <a href="https://purrr.tidyverse.org/">purrr</a> to scrape this information from <em>all</em> of the pages. We’ll write a function which takes one argument, <code>id</code>, which is used to select the specific page of the Pasta Academy website.</p>
@@ -313,20 +335,20 @@ $ button &lt;chr&gt; "SEE INFO", "SEE INFO", "BOOK NOW", "SEE INFO", "SEE INFO",
 <span>                  <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_trim.html">str_squish</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">pasta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 224 × 5
-   name                                              date  price fully…¹ page_id
-   &lt;chr&gt;                                             &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;     &lt;int&gt;
- 1 TASTE OF CALABRIA APERITIVO SPECIAL WITH ITALICUS Frid… £60.… SEE IN…       1
- 2 TASTE OF NAPOLI                                   Satu… £50.… SEE IN…       1
- 3 PASTA BEGINNERS CLASS                             Satu… £50.… BOOK N…       1
- 4 TASTE OF ROME                                     Sund… £50.… SEE IN…       1
- 5 BEGINNERS FILLED PASTA with Sofia (as seen on Ma… Sund… £60.… SEE IN…       1
- 6 FESTIVE TASTE OF SARDINIA                         Sund… £60.… SEE IN…       1
- 7 PASTA EVANGELISTS &amp; LAYLO WINES PASTA MAKING &amp; W… Tues… £60.… SEE IN…       1
- 8 FESTIVE TASTE OF TUSCANY                          Wedn… £60.… SEE IN…       1
- 9 TASTE OF LIGURIA WITH HEAD CHEF ROBERTA           Frid… £60.… SEE IN…       1
-10 FESTIVE TASTE OF EMILIA-ROMAGNA                   Satu… £60.… SEE IN…       1
-# … with 214 more rows, and abbreviated variable name ¹​fully_booked</code></pre>
+<pre><code># A tibble: 145 × 5
+   name                                      date          price fully…¹ page_id
+   &lt;chr&gt;                                     &lt;chr&gt;         &lt;chr&gt; &lt;chr&gt;     &lt;int&gt;
+ 1 BEGINNERS CLASS                           Wednesday Ma… £65.… SEE IN…       1
+ 2 TASTE OF PUGLIA                           Friday March… £65.… SEE IN…       1
+ 3 MORNING BEGINNERS                         Saturday Mar… £65.… SEE IN…       1
+ 4 BEGINNERS CLASS                           Saturday Mar… £65.… SEE IN…       1
+ 5 TASTE OF VENICE                           Saturday Mar… £65.… SEE IN…       1
+ 6 MORNING BEGINNERS                         Sunday March… £65.… SEE IN…       1
+ 7 TASTE OF SARDINIA                         Sunday March… £65.… SEE IN…       1
+ 8 TASTE OF ROME                             Sunday March… £65.… SEE IN…       1
+ 9 TASTE OF BOLOGNA                          Monday March… £65.… SEE IN…       1
+10 LIMITED EDITION SEAFOOD PASTA MASTERCLASS Tuesday Marc… £85.… BOOK N…       1
+# … with 135 more rows, and abbreviated variable name ¹​fully_booked</code></pre>
 </div>
 </div>
 <p>An easier step — lets format the <code>price</code> as numeric data, and <code>fully_booked</code> as logical. Lets also make <code>name</code> all lower-case.</p>
@@ -339,20 +361,20 @@ $ button &lt;chr&gt; "SEE INFO", "SEE INFO", "BOOK NOW", "SEE INFO", "SEE INFO",
 <span></span>
 <span><span class="va">pasta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 224 × 5
-   name                                              date  price fully…¹ page_id
-   &lt;chr&gt;                                             &lt;chr&gt; &lt;dbl&gt; &lt;lgl&gt;     &lt;int&gt;
- 1 taste of calabria aperitivo special with italicus Frid…    60 TRUE          1
- 2 taste of napoli                                   Satu…    50 TRUE          1
- 3 pasta beginners class                             Satu…    50 FALSE         1
- 4 taste of rome                                     Sund…    50 TRUE          1
- 5 beginners filled pasta with sofia (as seen on ma… Sund…    60 TRUE          1
- 6 festive taste of sardinia                         Sund…    60 TRUE          1
- 7 pasta evangelists &amp; laylo wines pasta making &amp; w… Tues…    60 TRUE          1
- 8 festive taste of tuscany                          Wedn…    60 TRUE          1
- 9 taste of liguria with head chef roberta           Frid…    60 TRUE          1
-10 festive taste of emilia-romagna                   Satu…    60 TRUE          1
-# … with 214 more rows, and abbreviated variable name ¹​fully_booked</code></pre>
+<pre><code># A tibble: 145 × 5
+   name                                      date          price fully…¹ page_id
+   &lt;chr&gt;                                     &lt;chr&gt;         &lt;dbl&gt; &lt;lgl&gt;     &lt;int&gt;
+ 1 beginners class                           Wednesday Ma…    65 TRUE          1
+ 2 taste of puglia                           Friday March…    65 TRUE          1
+ 3 morning beginners                         Saturday Mar…    65 TRUE          1
+ 4 beginners class                           Saturday Mar…    65 TRUE          1
+ 5 taste of venice                           Saturday Mar…    65 TRUE          1
+ 6 morning beginners                         Sunday March…    65 TRUE          1
+ 7 taste of sardinia                         Sunday March…    65 TRUE          1
+ 8 taste of rome                             Sunday March…    65 TRUE          1
+ 9 taste of bologna                          Monday March…    65 TRUE          1
+10 limited edition seafood pasta masterclass Tuesday Marc…    85 FALSE         1
+# … with 135 more rows, and abbreviated variable name ¹​fully_booked</code></pre>
 </div>
 </div>
 <p>It’d be useful to have the date as a properly formatted date-time column. Sadly, this column is not consistently formatted. The two issues are:</p>
@@ -400,20 +422,20 @@ $ button &lt;chr&gt; "SEE INFO", "SEE INFO", "BOOK NOW", "SEE INFO", "SEE INFO",
 <span></span>
 <span><span class="va">pasta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 224 × 5
+<pre><code># A tibble: 145 × 5
    name                                date                price fully…¹ page_id
    &lt;chr&gt;                               &lt;dttm&gt;              &lt;dbl&gt; &lt;lgl&gt;     &lt;int&gt;
- 1 taste of calabria aperitivo specia… 2022-11-11 18:30:00    60 TRUE          1
- 2 taste of napoli                     2022-11-12 13:00:00    50 TRUE          1
- 3 pasta beginners class               2022-11-12 18:30:00    50 FALSE         1
- 4 taste of rome                       2022-11-13 18:30:00    50 TRUE          1
- 5 beginners filled pasta with sofia … 2022-11-13 13:00:00    60 TRUE          1
- 6 festive taste of sardinia           2022-11-20 13:00:00    60 TRUE          1
- 7 pasta evangelists &amp; laylo wines pa… 2022-11-15 18:30:00    60 TRUE          1
- 8 festive taste of tuscany            2022-11-16 18:30:00    60 TRUE          1
- 9 taste of liguria with head chef ro… 2022-11-18 18:30:00    60 TRUE          1
-10 festive taste of emilia-romagna     2022-11-19 13:00:00    60 TRUE          1
-# … with 214 more rows, and abbreviated variable name ¹​fully_booked</code></pre>
+ 1 beginners class                     2023-03-01 18:30:00    65 TRUE          1
+ 2 taste of puglia                     2023-03-03 18:30:00    65 TRUE          1
+ 3 morning beginners                   2023-03-04 10:00:00    65 TRUE          1
+ 4 beginners class                     2023-03-04 13:00:00    65 TRUE          1
+ 5 taste of venice                     2023-03-04 18:30:00    65 TRUE          1
+ 6 morning beginners                   2023-03-05 10:00:00    65 TRUE          1
+ 7 taste of sardinia                   2023-03-05 13:00:00    65 TRUE          1
+ 8 taste of rome                       2023-03-05 18:30:00    65 TRUE          1
+ 9 taste of bologna                    2023-03-06 18:30:00    65 TRUE          1
+10 limited edition seafood pasta mast… 2023-03-07 18:30:00    85 FALSE         1
+# … with 135 more rows, and abbreviated variable name ¹​fully_booked</code></pre>
 </div>
 </div>
 </section><section id="using-the-data" class="level1"><h1>Using the data</h1>
@@ -427,63 +449,68 @@ $ button &lt;chr&gt; "SEE INFO", "SEE INFO", "BOOK NOW", "SEE INFO", "SEE INFO",
 <span></span>
 <span><span class="va">potential_classes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 22 × 5
-   name                           date                price fully_booked page_id
-   &lt;chr&gt;                          &lt;dttm&gt;              &lt;dbl&gt; &lt;lgl&gt;          &lt;int&gt;
- 1 pasta beginners class          2022-11-12 18:30:00    50 FALSE              1
- 2 beginners class                2022-12-18 18:30:00    65 FALSE              4
- 3 festive beginners filled pasta 2022-12-23 18:30:00    65 FALSE              5
- 4 beginners class                2022-12-29 18:30:00    65 FALSE              5
- 5 beginners class                2023-01-15 18:30:00    65 FALSE              6
- 6 beginners class                2023-01-31 18:30:00    65 FALSE              8
- 7 beginners class                2023-02-05 18:30:00    65 FALSE              8
- 8 beginners class                2023-02-17 18:30:00    65 FALSE              9
- 9 beginners class                2023-02-26 18:30:00    65 FALSE             10
-10 beginners class                2023-03-11 18:30:00    65 FALSE             11
-# … with 12 more rows</code></pre>
+<pre><code># A tibble: 12 × 5
+   name            date                price fully_booked page_id
+   &lt;chr&gt;           &lt;dttm&gt;              &lt;dbl&gt; &lt;lgl&gt;          &lt;int&gt;
+ 1 beginners class 2023-03-14 18:30:00    65 FALSE              1
+ 2 beginners class 2023-03-15 18:30:00    65 FALSE              1
+ 3 beginners class 2023-03-21 18:30:00    65 FALSE              2
+ 4 beginners class 2023-04-02 18:30:00    65 FALSE              3
+ 5 beginners class 2023-04-12 18:30:00    65 FALSE              3
+ 6 beginners class 2023-04-24 18:30:00    65 FALSE              4
+ 7 beginners class 2023-05-05 18:30:00    65 FALSE              5
+ 8 beginners class 2023-05-16 18:30:00    65 FALSE              5
+ 9 beginners class 2023-05-20 18:30:00    65 FALSE              6
+10 beginners class 2023-05-27 18:30:00    65 FALSE              6
+11 beginners class 2023-06-09 18:30:00    65 FALSE              7
+12 beginners class 2023-06-25 18:30:00    65 FALSE              8</code></pre>
 </div>
 </div>
 <p>And there they are!</p>
-<p>Just as we now have the data to hand, lets see what some common themes are in the classes. Disregarding words that aren’t particularly unique or descriptive like “taste”, “beginners”, “class”, “morning”, we can learn that there seems to be a lot of festive classes, and those inspired by the cuisines of Rome, Tuscany and Sardinia.</p>
+<p>Just as we now have the data to hand, lets see what some common themes are in the classes. Disregarding words that aren’t particularly unique or descriptive like “taste”, “beginners”, “class”, “morning”, we can learn that there seems to be a lot inspired by the cuisines of Puglia, Rome, and Sardinia.</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pasta</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">counts</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">pasta</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">tidytext</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tidytext/man/unnest_tokens.html">unnest_tokens</a></span><span class="op">(</span><span class="va">word</span>, <span class="va">name</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="fu">tidytext</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tidytext/man/get_stopwords.html">get_stopwords</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">word</span>, sort <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">word</span>, sort <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">counts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 49 × 2
-   word          n
-   &lt;chr&gt;     &lt;int&gt;
- 1 taste       135
- 2 beginners    78
- 3 class        45
- 4 morning      31
- 5 festive      29
- 6 pasta        23
- 7 rome         21
- 8 tuscany      18
- 9 chef         16
-10 sardinia     16
-# … with 39 more rows</code></pre>
+<pre><code># A tibble: 30 × 2
+   word            n
+   &lt;chr&gt;       &lt;int&gt;
+ 1 taste          77
+ 2 beginners      58
+ 3 morning        33
+ 4 class          26
+ 5 edition        11
+ 6 limited        11
+ 7 masterclass    10
+ 8 puglia         10
+ 9 sardinia       10
+10 rome            9
+# … with 20 more rows</code></pre>
 </div>
 </div>
-<p><a href="#fig-themes">Figure&nbsp;2</a> reveals that (unsurprisingly) festive classes are all before January, but the other three common themes are spaced out regularly throughout the year.</p>
+<p><a href="#fig-bars">Figure&nbsp;2</a> visualises the above data using <a href="https://davidgohel.github.io/ggiraph/">ggiraph</a>, showing the most and least common words in these pasta making class names. Hover over the bars to read the exact values!</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pasta</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">tidytext</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tidytext/man/unnest_tokens.html">unnest_tokens</a></span><span class="op">(</span><span class="va">word</span>, <span class="va">name</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">word</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"rome"</span>, <span class="st">"tuscany"</span>, <span class="st">"sardinia"</span>, <span class="st">"festive"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">word</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"top"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, fill <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html">expansion</a></span><span class="op">(</span>mult <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">.1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div id="fig-themes" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure"><p><img src="index_files/figure-html/fig-themes-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2: Distribution of common classes throughout the year.</figcaption><p></p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://davidgohel.github.io/ggiraph/">ggiraph</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plt</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">counts</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>word <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder</a></span><span class="op">(</span><span class="va">word</span>, <span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">word</span>, x <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://davidgohel.github.io/ggiraph/reference/geom_bar_interactive.html">geom_col_interactive</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">n</span>, tooltip <span class="op">=</span> <span class="va">n</span><span class="op">)</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/expansion.html">expansion</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="cn">NULL</span>, x <span class="op">=</span> <span class="st">"Count (n)"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://davidgohel.github.io/ggiraph/reference/girafe.html">girafe</a></span><span class="op">(</span>ggobj <span class="op">=</span> <span class="va">plt</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fig-bars" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><div class="girafe html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-f184566a724de07b8131" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-f184566a724de07b8131">{"x":{"html":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='ggiraph-svg' role='img' id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269' viewBox='0 0 504 360'>\n <defs id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_defs'>\n  <clipPath id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_c1'>\n   <rect x='0' y='0' width='504' height='360'/>\n  <\/clipPath>\n  <clipPath id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_c2'>\n   <rect x='57.35' y='5.48' width='441.17' height='323.02'/>\n  <\/clipPath>\n <\/defs>\n <g id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_rootg' class='ggiraph-svg-rootg'>\n  <g clip-path='url(#svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_c1)'>\n   <rect x='0' y='0' width='504' height='360' fill='#FFFFFF' fill-opacity='1' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.75' stroke-linejoin='round' stroke-linecap='round' class='ggiraph-svg-bg'/>\n   <rect x='0' y='0' width='504' height='360' fill='#FFFFFF' fill-opacity='1' stroke='#FFFFFF' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='round'/>\n  <\/g>\n  <g clip-path='url(#svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_c2)'>\n   <rect x='57.35' y='5.48' width='441.17' height='323.02' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e1' x='57.35' y='7.08' width='441.17' height='9.63' fill='#56B1F7' fill-opacity='1' stroke='none' title='77'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e2' x='57.35' y='17.78' width='332.31' height='9.63' fill='#448DC6' fill-opacity='1' stroke='none' title='58'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e3' x='57.35' y='28.48' width='189.07' height='9.63' fill='#2E608A' fill-opacity='1' stroke='none' title='33'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e4' x='57.35' y='39.17' width='148.97' height='9.63' fill='#27547A' fill-opacity='1' stroke='none' title='26'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e5' x='57.35' y='60.56' width='63.02' height='9.63' fill='#1B3B58' fill-opacity='1' stroke='none' title='11'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e6' x='57.35' y='49.87' width='63.02' height='9.63' fill='#1B3B58' fill-opacity='1' stroke='none' title='11'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e7' x='57.35' y='92.65' width='57.29' height='9.63' fill='#1A3956' fill-opacity='1' stroke='none' title='10'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e8' x='57.35' y='81.96' width='57.29' height='9.63' fill='#1A3956' fill-opacity='1' stroke='none' title='10'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e9' x='57.35' y='71.26' width='57.29' height='9.63' fill='#1A3956' fill-opacity='1' stroke='none' title='10'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e10' x='57.35' y='135.44' width='51.56' height='9.63' fill='#193754' fill-opacity='1' stroke='none' title='9'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e11' x='57.35' y='124.74' width='51.56' height='9.63' fill='#193754' fill-opacity='1' stroke='none' title='9'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e12' x='57.35' y='114.05' width='51.56' height='9.63' fill='#193754' fill-opacity='1' stroke='none' title='9'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e13' x='57.35' y='103.35' width='51.56' height='9.63' fill='#193754' fill-opacity='1' stroke='none' title='9'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e14' x='57.35' y='146.13' width='45.84' height='9.63' fill='#193652' fill-opacity='1' stroke='none' title='8'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e15' x='57.35' y='156.83' width='34.38' height='9.63' fill='#17334D' fill-opacity='1' stroke='none' title='6'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e16' x='57.35' y='210.31' width='28.65' height='9.63' fill='#16314B' fill-opacity='1' stroke='none' title='5'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e17' x='57.35' y='199.61' width='28.65' height='9.63' fill='#16314B' fill-opacity='1' stroke='none' title='5'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e18' x='57.35' y='188.92' width='28.65' height='9.63' fill='#16314B' fill-opacity='1' stroke='none' title='5'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e19' x='57.35' y='178.22' width='28.65' height='9.63' fill='#16314B' fill-opacity='1' stroke='none' title='5'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e20' x='57.35' y='167.53' width='28.65' height='9.63' fill='#16314B' fill-opacity='1' stroke='none' title='5'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e21' x='57.35' y='263.79' width='22.92' height='9.63' fill='#153049' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e22' x='57.35' y='253.1' width='22.92' height='9.63' fill='#153049' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e23' x='57.35' y='242.4' width='22.92' height='9.63' fill='#153049' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e24' x='57.35' y='231.7' width='22.92' height='9.63' fill='#153049' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e25' x='57.35' y='221.01' width='22.92' height='9.63' fill='#153049' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e26' x='57.35' y='274.49' width='17.19' height='9.63' fill='#152E47' fill-opacity='1' stroke='none' title='3'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e27' x='57.35' y='306.58' width='11.46' height='9.63' fill='#142D45' fill-opacity='1' stroke='none' title='2'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e28' x='57.35' y='295.88' width='11.46' height='9.63' fill='#142D45' fill-opacity='1' stroke='none' title='2'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e29' x='57.35' y='285.18' width='11.46' height='9.63' fill='#142D45' fill-opacity='1' stroke='none' title='2'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e30' x='57.35' y='317.27' width='5.73' height='9.63' fill='#132B43' fill-opacity='1' stroke='none' title='1'/>\n  <\/g>\n  <g clip-path='url(#svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_c1)'>\n   <polyline points='57.35,328.50 57.35,5.48' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='21.11' y='325.24' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>monday<\/text>\n   <text x='36.28' y='314.54' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>club<\/text>\n   <text x='35.3' y='303.84' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>craft<\/text>\n   <text x='24.04' y='293.15' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>sunday<\/text>\n   <text x='28.94' y='282.45' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>napoli<\/text>\n   <text x='19.16' y='271.76' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>clarence<\/text>\n   <text x='32.85' y='261.06' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>court<\/text>\n   <text x='27.96' y='250.36' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>easter<\/text>\n   <text x='40.68' y='239.67' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>gin<\/text>\n   <text x='21.1' y='228.97' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>seafood<\/text>\n   <text x='28.95' y='218.27' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>amalfi<\/text>\n   <text x='9.37' y='207.58' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>experience<\/text>\n   <text x='26.49' y='196.88' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>tasting<\/text>\n   <text x='23.06' y='186.19' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>trentino<\/text>\n   <text x='34.33' y='175.49' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>wine<\/text>\n   <text x='30.89' y='164.79' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>pasta<\/text>\n   <text x='21.1' y='154.1' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>bologna<\/text>\n   <text x='32.37' y='143.4' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>rome<\/text>\n   <text x='33.37' y='132.7' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>sicily<\/text>\n   <text x='22.09' y='122.01' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>tuscany<\/text>\n   <text x='26.99' y='111.31' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>venice<\/text>\n   <text x='5.48' y='100.62' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>masterclass<\/text>\n   <text x='28.94' y='89.92' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>puglia<\/text>\n   <text x='21.61' y='79.22' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>sardinia<\/text>\n   <text x='26.49' y='68.53' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>edition<\/text>\n   <text x='27' y='57.83' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>limited<\/text>\n   <text x='32.38' y='47.14' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>class<\/text>\n   <text x='20.63' y='36.44' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>morning<\/text>\n   <text x='13.77' y='25.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>beginners<\/text>\n   <text x='33.34' y='15.05' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>taste<\/text>\n   <polyline points='54.62,322.09 57.35,322.09' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,311.39 57.35,311.39' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,300.69 57.35,300.69' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,290.00 57.35,290.00' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,279.30 57.35,279.30' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,268.61 57.35,268.61' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,257.91 57.35,257.91' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,247.21 57.35,247.21' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,236.52 57.35,236.52' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,225.82 57.35,225.82' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,215.12 57.35,215.12' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,204.43 57.35,204.43' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,193.73 57.35,193.73' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,183.04 57.35,183.04' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,172.34 57.35,172.34' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,161.64 57.35,161.64' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,150.95 57.35,150.95' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,140.25 57.35,140.25' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,129.55 57.35,129.55' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,118.86 57.35,118.86' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,108.16 57.35,108.16' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,97.47 57.35,97.47' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,86.77 57.35,86.77' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,76.07 57.35,76.07' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,65.38 57.35,65.38' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,54.68 57.35,54.68' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,43.99 57.35,43.99' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,33.29 57.35,33.29' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,22.59 57.35,22.59' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,11.90 57.35,11.90' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='57.35,328.50 498.52,328.50' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='57.35,331.24 57.35,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='171.94,331.24 171.94,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='286.53,331.24 286.53,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='401.12,331.24 401.12,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='54.91' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>0<\/text>\n   <text x='167.05' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>20<\/text>\n   <text x='281.64' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>40<\/text>\n   <text x='396.22' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>60<\/text>\n   <text x='255' y='352.2' font-size='8.25pt' font-family='Arial'>Count (n)<\/text>\n  <\/g>\n <\/g>\n<\/svg>","js":null,"uid":"svg_ae696922_7b3b_43cf_a0d2_3882df3c2269","ratio":1.4,"settings":{"tooltip":{"css":".tooltip_SVGID_ { padding:5px;background:black;color:white;border-radius:2px;text-align:left; ; position:absolute;pointer-events:none;z-index:999;}","placement":"doc","opacity":0.9,"offx":10,"offy":10,"use_cursor_pos":true,"use_fill":false,"use_stroke":false,"delay_over":200,"delay_out":500},"hover":{"css":".hover_data_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_data_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_data_SVGID_ { fill:orange;stroke:black; }\nline.hover_data_SVGID_, polyline.hover_data_SVGID_ { fill:none;stroke:orange; }\nrect.hover_data_SVGID_, polygon.hover_data_SVGID_, path.hover_data_SVGID_ { fill:orange;stroke:none; }\nimage.hover_data_SVGID_ { stroke:orange; }","reactive":true,"nearest_distance":null},"hover_inv":{"css":""},"hover_key":{"css":".hover_key_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_key_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_key_SVGID_ { fill:orange;stroke:black; }\nline.hover_key_SVGID_, polyline.hover_key_SVGID_ { fill:none;stroke:orange; }\nrect.hover_key_SVGID_, polygon.hover_key_SVGID_, path.hover_key_SVGID_ { fill:orange;stroke:none; }\nimage.hover_key_SVGID_ { stroke:orange; }","reactive":true},"hover_theme":{"css":".hover_theme_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_theme_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_theme_SVGID_ { fill:orange;stroke:black; }\nline.hover_theme_SVGID_, polyline.hover_theme_SVGID_ { fill:none;stroke:orange; }\nrect.hover_theme_SVGID_, polygon.hover_theme_SVGID_, path.hover_theme_SVGID_ { fill:orange;stroke:none; }\nimage.hover_theme_SVGID_ { stroke:orange; }","reactive":true},"select":{"css":".select_data_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_data_SVGID_ { stroke:none;fill:red; }\ncircle.select_data_SVGID_ { fill:red;stroke:black; }\nline.select_data_SVGID_, polyline.select_data_SVGID_ { fill:none;stroke:red; }\nrect.select_data_SVGID_, polygon.select_data_SVGID_, path.select_data_SVGID_ { fill:red;stroke:none; }\nimage.select_data_SVGID_ { stroke:red; }","type":"multiple","only_shiny":true,"selected":[]},"select_inv":{"css":""},"select_key":{"css":".select_key_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_key_SVGID_ { stroke:none;fill:red; }\ncircle.select_key_SVGID_ { fill:red;stroke:black; }\nline.select_key_SVGID_, polyline.select_key_SVGID_ { fill:none;stroke:red; }\nrect.select_key_SVGID_, polygon.select_key_SVGID_, path.select_key_SVGID_ { fill:red;stroke:none; }\nimage.select_key_SVGID_ { stroke:red; }","type":"single","only_shiny":true,"selected":[]},"select_theme":{"css":".select_theme_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_theme_SVGID_ { stroke:none;fill:red; }\ncircle.select_theme_SVGID_ { fill:red;stroke:black; }\nline.select_theme_SVGID_, polyline.select_theme_SVGID_ { fill:none;stroke:red; }\nrect.select_theme_SVGID_, polygon.select_theme_SVGID_, path.select_theme_SVGID_ { fill:red;stroke:none; }\nimage.select_theme_SVGID_ { stroke:red; }","type":"single","only_shiny":true,"selected":[]},"zoom":{"min":1,"max":1,"duration":300},"toolbar":{"position":"topright","pngname":"diagram","tooltips":null,"hidden":[],"delay_over":200,"delay_out":500},"sizing":{"rescale":true,"width":1}}},"evals":[],"jsHooks":[]}</script><p></p><figcaption class="figure-caption">Figure&nbsp;2: Frequency of different words in Pasta Academy class names.</figcaption><p></p>
 </figure>
-</div>
 </div>
 </div>
 

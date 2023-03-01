@@ -2,13 +2,12 @@
 title: "Visualising Uncommon Factors"
 description: |
   Avoiding incomprehensible legend items in your proportion charts through tabulating, lumping or interactive visualisations.
-draft: true
-image: pasta.jpg
+image: banner.jpg
 categories: [visualisation, ggplot2, plotly, DT]
 author: "Jack Davison"
 date: 2023/02/20
 twitter-card:
-  image:  "pasta.jpg"
+  image:  "banner.jpg"
   card-style: summary_large_image
 execute: 
   warning: false
@@ -18,12 +17,13 @@ editor_options:
   chunk_output_type: console
 ---
 
-![](pasta.jpg)
+![](banner.jpg)
+
 ```{r}
-library(readr)
-library(dplyr)
-library(tidyr)
-library(ggplot2)
+library(readr) # read rectangular data
+library(dplyr) # data manipulation
+library(tidyr) # data tidying
+library(ggplot2) # plotting
 
 theme_set(theme_bw())
 ```
@@ -34,40 +34,73 @@ How often have you seen a "proportion chart" (e.g., a bar chart or pie chart) th
 
 ```{r}
 #| label: fig-default
+#| fig-cap: "A typical bar chart. Can you get information from every bar?"
 copper <-
+  # read data from online
   read_csv("https://naei.beis.gov.uk/downloads/naei_overview_2023022012422513.csv",
            skip = 1) |>
-  pivot_longer(-"Sectors", names_to = "year", names_transform = list(year = as.integer)) |>
+  # 'tidy' by putting years in one row
+  pivot_longer(-"Sectors",
+               names_to = "year",
+               names_transform = list(year = as.integer)) |>
+  # drop missing values
   drop_na(year)
 
+# make bar chart
 ggplot(copper, aes(x = year, y = value)) +
   geom_col(aes(fill = Sectors)) +
   coord_cartesian(expand = FALSE) +
-  labs(x = NULL, y = "Annual UK Copper (kt)")
+  labs(x = NULL, y = "Annual UK Copper Emissions (kt)", fill = NULL) +
+  scale_fill_brewer(palette = "Dark2") +
+  theme(legend.position = "top")
 ```
 
-On first glance, you might not think there's anything wrong with it and, to an extent, there's not! However, if your intention is to communicate.
+On first glance, you might not think there's anything wrong with it and, to an extent, there's not! However, some may argue that some of the legend items here are not overly useful. For example, can you tell me how much copper was emitted from the Transport sector in 2020? You might struggle!
 
-# Alternatives
+This blog post outlines some ways this data could be presented to make it easier to read, and reveal more of the underlying information than @fig-default does.
+
+# Strategies
 
 ## Normalise
 
+One way to overcome the unreadability of some of the smaller categories is to normalise them somehow. For example, we could normalise each of the sectors to their earliest value (in this case, their 1990 value) to have a better feel for the trend. We could have alternatively normalised them to their `max()` or `mean()` values.
+
+**Advantage:** All of the sectors are now readable.
+
+**Disadvantage:** We've lost the "absolute" values and can now only see the trend and "relative" values.
+
+**How:** We add an extra `mutate()` step which divides all of the values in each group by their `first()` value.
+
 ```{r}
+#| label: fig-normalise
+#| fig-cap: "Each of the sectors have been normalised relative to their first value in 1990."
 copper |>
   mutate(value = value / first(value), .by = Sectors) |>
   ggplot(aes(x = year, y = value, color = Sectors)) +
   geom_line() +
   geom_point() +
-  labs(x = NULL, y = "Change in Annual UK Copper,\nNormalised to 1990")
+  labs(x = NULL, y = "Change in Annual UK Copper Emissions,\nNormalised to 1990", color = NULL) +
+  scale_color_brewer(palette = "Dark2") +
+  theme(legend.position = "top")
 ```
 
 ## Lump
 
+To overcome the disadvantage above (and return to a bar chart) we could use `{forcats}` to "lump" some of the smaller categories together into one "Other" category.
+
+**Advantage:** Each of the legend items are now readable and distinct - no more tiny little bars that can't be discerned right at the bottom. Absolute values are shown.
+
+**Disadvantage:** Not all of the sectors have a legend item now. Some readers may skip the caption or body text and not acknowledge what "Other" is composed of. We've also lost the specific values for the individual "Other" sectors (not that they could really be read before!)
+
+**How:** We can use a function from the `forcats::fct_lump()` family to "lump" together the smaller sectors. In this case we use `forcats::fct_lump_lowfreq()`, which makes sure the "Other" category is always the smallest one. Optionally, we can extract the sectors that make up "Other" and list them in the plot caption (or the body of our report).
+
 ```{r}
+#| label: fig-lump
+#| fig-cap: "Lumping the small categories makes the plot easier to read, but we've lost the individual values from the 'Other' sectors."
 copper2 <-
   mutate(copper,
          sector_lumped = forcats::fct_lump_lowfreq(Sectors, w = value, other_level = "Other*"))
-  
+
 other_cats <-
   filter(copper2, sector_lumped == "Other*") |>
   distinct(Sectors) |>
@@ -78,40 +111,105 @@ ggplot(copper2, aes(x = year, y = value)) +
   geom_col(aes(fill = sector_lumped)) +
   coord_cartesian(expand = FALSE) +
   theme(legend.position = "top") +
-  labs(x = NULL, y = "Annual UK Copper (kt)",
-       fill = "Sector",
-       caption = stringr::str_wrap(paste0("*", other_cats)))
+  labs(x = NULL, y = "Annual UK Copper Emissions (kt)",
+       fill = NULL,
+       caption = stringr::str_wrap(paste0("*", other_cats))) +
+  scale_fill_brewer(palette = "Dark2") +
+  theme(legend.position = "top")
+```
+
+## Scale Transform
+
+If we want a bar chart *and* to retain all the individual sectors, we could choose to use a scale transform. A common scale transform is the log-transform, but there are plenty out there. For example, we could use a square-root axis.
+
+**Advantage:** Each of the individual sectors are now visually distinct from one another.
+
+**Disadvantage:** Scale transformed axes are harder to read. Many people aren't familiar with the concept at all - though some would question [if that always really matters](https://twitter.com/jburnmurdoch/status/1519215039491756034).
+
+**How:** `{ggplot2}` makes it easy to transform scales. All of the continuous `scales_*_*()` functions have the "trans" argument which can transform the axes however we like. There are even short-cuts for the `x` and `y` axes, like `scale_y_sqrt()` and `scale_y_log10()`.
+
+```{r}
+#| label: fig-scaletrans
+#| fig-cap: "The y-axis is now on a transformed scale; all the categories stand out, but it isn't necessarily easy to read."
+ggplot(copper, aes(x = year, y = value)) +
+  geom_col(aes(fill = Sectors)) +
+  coord_cartesian(expand = FALSE) +
+  labs(x = NULL, y = "Annual UK Copper Emissions (kt)", fill = NULL) +
+  scale_fill_brewer(palette = "Dark2") +
+  scale_y_sqrt(breaks = c(0, 0.1, 0.25, 0.5, 1, 2)) +
+  theme(legend.position = "top")
+```
+
+## Zoom
+
+If we're happy using a `{ggplot2}` extension package, `{ggforce}` allows us a different way to display smaller values. We could "zoom in" on specific parts of our chart, making it much easier to view those smaller bars in our stacked barchart.
+
+**Advantage:** "Best of both worlds" - we get our original plot as well as a version from which readers can see the smaller categories.
+
+**Disadvantage:** The plot is now nearly twice as big. We must also now make sure that readers are clear what each panel represents to avoid confusion.
+
+**How:** The `ggforce::facet_zoom()` function is a special faceting function which is designed to do exactly what we're after here.
+
+```{r}
+#| label: fig-zoom
+#| fig-cap: "Zooming in on a specific part of the plot lets us have the best of both worlds!"
+ggplot(copper, aes(x = year, y = value)) +
+  geom_col(aes(fill = Sectors)) +
+  labs(x = NULL, y = "Annual UK Copper Emissions (kt)", fill = NULL) +
+  theme(legend.position = "top") +
+  scale_fill_brewer(palette = "Dark2") +
+  ggforce::facet_zoom(y = value <= 0.02,
+                      zoom.size = .5,
+                      show.area = T)
+```
+
+## Interact
+
+If we're in the position to do so, we could create an interactive plot.
+
+**Advantage:** Smaller sectors can now be read by turning off the bigger ones, or "zooming in" on the plot. Tooltips can also reveal the precise value of each sector when the reader hovers over the corresponding bar.
+
+**Disadvantage:** Restricted to HTML; cannot be inserted into an academic article or powerpoint presentation. Needs an amount of explanation so readers are aware that they can interact with the figure.
+
+**How:** There are plenty of different ways to create interactive plots in R, including `{plotly}`, `{dygraphs}` and `{ggiraph}`. Below a `{plotly}` graphic is shown.
+
+```{r}
+#| label: fig-plotly
+#| fig-cap: "An interactive plot. Try clicking on the legend or dragging around the plot area."
+library(plotly)
+
+plot_ly(copper, colors = "Dark2") |>
+  add_bars(x = ~ year,
+           y = ~ value,
+           color = ~ Sectors) |>
+  layout(
+    barmode = "stack",
+    yaxis = list(title = "Annual UK Copper Emissions (kt)"),
+    legend = list(orientation = 'h')
+  )
 ```
 
 ## Tabulate
 
+A left-field alternative to everything we've done so far is to abandon creating a chart altogether and just tabulate our data! In a table, each value takes up the exact same amount of space, so there's no such thing as a sector too small to really make out.
+
+**Advantage:** Every single value can be read. With an interactive table the data is even searchable.
+
+**Disadvantage:** It's not a chart any more. It is also much harder to tell a story with a table like this (e.g., the trend is much harder to identify with a list of numbers).
+
+**How:** There are *a lot* of table packages in R, such as `{gt}`, `{reactable}` and `{DT}`. Here we use `{DT}` to create an interactive, searchable table.
+
 ```{r}
+#| label: fig-table
+#| fig-cap: "This isn't a plot any more, but it does the job!"
 copper |>
   mutate(Sectors = factor(Sectors)) |>
   DT::datatable(rownames = FALSE, filter = "top") |>
   DT::formatSignif(columns = 3, digits = 5)
 ```
 
-## Interactive
+# Conclusion
 
-```{r}
-library(plotly)
+In this post, I've briefly provided several different approaches for handling the situation where one or more categories in your bar chart (or similar chart showing proportion) are too small to make out. Hopefully you've learned some new approaches for visualising data like this, and can see there's not necessarily a "silver bullet" approach that'll tick every box!
 
-plot_ly(copper) |>
-  add_bars(x = ~ year,
-           y = ~ value,
-           color = ~ Sectors) |>
-  layout(barmode = "stack",
-         yaxis = list(title = "Annual UK Copper (kt)"))
-```
-
-## Zoom
-
-```{r}
-ggplot(copper, aes(x = year, y = value)) +
-  geom_col(aes(fill = Sectors)) +
-  labs(x = NULL, y = "Annual UK Copper (kt)") +
-  theme(legend.position = "top") +
-  ggforce::facet_zoom(y = value <= 0.02, zoom.size = .5, show.area = T)
-```
-
+Are there any techniques you use that I've missed out? If so, let me know on [Twitter](https://twitter.com/JDavison_)! 
