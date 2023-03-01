@@ -34,7 +34,4 @@ format:
     theme: simplex
     css: styles.css
 
-execute:
-  freeze: auto
-
 bibliography: references.bib

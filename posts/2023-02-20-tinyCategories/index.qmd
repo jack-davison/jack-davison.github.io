@@ -1,0 +1,117 @@
+---
+title: "Visualising Uncommon Factors"
+description: |
+  Avoiding incomprehensible legend items in your proportion charts through tabulating, lumping or interactive visualisations.
+draft: true
+image: pasta.jpg
+categories: [visualisation, ggplot2, plotly, DT]
+author: "Jack Davison"
+date: 2023/02/20
+twitter-card:
+  image:  "pasta.jpg"
+  card-style: summary_large_image
+execute: 
+  warning: false
+  message: false
+  error: false
+editor_options: 
+  chunk_output_type: console
+---
+
+![](pasta.jpg)
+```{r}
+library(readr)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+theme_set(theme_bw())
+```
+
+# Purpose
+
+How often have you seen a "proportion chart" (e.g., a bar chart or pie chart) that looks a little bit like @fig-default?
+
+```{r}
+#| label: fig-default
+copper <-
+  read_csv("https://naei.beis.gov.uk/downloads/naei_overview_2023022012422513.csv",
+           skip = 1) |>
+  pivot_longer(-"Sectors", names_to = "year", names_transform = list(year = as.integer)) |>
+  drop_na(year)
+
+ggplot(copper, aes(x = year, y = value)) +
+  geom_col(aes(fill = Sectors)) +
+  coord_cartesian(expand = FALSE) +
+  labs(x = NULL, y = "Annual UK Copper (kt)")
+```
+
+On first glance, you might not think there's anything wrong with it and, to an extent, there's not! However, if your intention is to communicate.
+
+# Alternatives
+
+## Normalise
+
+```{r}
+copper |>
+  mutate(value = value / first(value), .by = Sectors) |>
+  ggplot(aes(x = year, y = value, color = Sectors)) +
+  geom_line() +
+  geom_point() +
+  labs(x = NULL, y = "Change in Annual UK Copper,\nNormalised to 1990")
+```
+
+## Lump
+
+```{r}
+copper2 <-
+  mutate(copper,
+         sector_lumped = forcats::fct_lump_lowfreq(Sectors, w = value, other_level = "Other*"))
+  
+other_cats <-
+  filter(copper2, sector_lumped == "Other*") |>
+  distinct(Sectors) |>
+  pull() |>
+  paste(collapse = ", ")
+
+ggplot(copper2, aes(x = year, y = value)) +
+  geom_col(aes(fill = sector_lumped)) +
+  coord_cartesian(expand = FALSE) +
+  theme(legend.position = "top") +
+  labs(x = NULL, y = "Annual UK Copper (kt)",
+       fill = "Sector",
+       caption = stringr::str_wrap(paste0("*", other_cats)))
+```
+
+## Tabulate
+
+```{r}
+copper |>
+  mutate(Sectors = factor(Sectors)) |>
+  DT::datatable(rownames = FALSE, filter = "top") |>
+  DT::formatSignif(columns = 3, digits = 5)
+```
+
+## Interactive
+
+```{r}
+library(plotly)
+
+plot_ly(copper) |>
+  add_bars(x = ~ year,
+           y = ~ value,
+           color = ~ Sectors) |>
+  layout(barmode = "stack",
+         yaxis = list(title = "Annual UK Copper (kt)"))
+```
+
+## Zoom
+
+```{r}
+ggplot(copper, aes(x = year, y = value)) +
+  geom_col(aes(fill = Sectors)) +
+  labs(x = NULL, y = "Annual UK Copper (kt)") +
+  theme(legend.position = "top") +
+  ggforce::facet_zoom(y = value <= 0.02, zoom.size = .5, show.area = T)
+```
+
