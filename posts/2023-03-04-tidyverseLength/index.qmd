@@ -18,7 +18,9 @@ editor_options:
 ---
 
 ![](banner.jpg)
-:::{.callout-alert}
+<br>
+
+:::{.callout-note}
 None of this is meant as an insult to the `{tidyverse}` developers, of course, who have done excellent work making R one of the top languages for data analysis. This is all in good fun!
 :::
 
