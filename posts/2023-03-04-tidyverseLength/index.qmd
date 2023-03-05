@@ -1,5 +1,5 @@
 ---
-title: "Are `{tidyverse}` function lengths getting longer?"
+title: "Are `{tidyverse}` function names getting longer?"
 description: |
   Are we approaching sentence-length `{tidyverse}` functions? `quarto::read_blog_carefully_with_eyes()` to find out.
 image: banner.jpg
