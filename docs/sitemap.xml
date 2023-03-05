@@ -2,46 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://jack-davison.github.io/blog.html</loc>
-    <lastmod>2023-03-01T20:27:38.178Z</lastmod>
+    <lastmod>2023-03-05T10:51:35.238Z</lastmod>
   </url>
   <url>
     <loc>https://jack-davison.github.io/experience/dataviz.html</loc>
-    <lastmod>2023-03-01T20:27:38.625Z</lastmod>
+    <lastmod>2023-03-05T10:51:35.662Z</lastmod>
   </url>
   <url>
     <loc>https://jack-davison.github.io/experience/pkgdev.html</loc>
-    <lastmod>2023-03-01T20:27:39.075Z</lastmod>
+    <lastmod>2023-03-05T10:51:36.083Z</lastmod>
   </url>
   <url>
     <loc>https://jack-davison.github.io/experience/reports.html</loc>
-    <lastmod>2023-03-01T20:27:39.525Z</lastmod>
+    <lastmod>2023-03-05T10:51:36.527Z</lastmod>
   </url>
   <url>
     <loc>https://jack-davison.github.io/experience/research.html</loc>
-    <lastmod>2023-03-01T20:27:40.078Z</lastmod>
+    <lastmod>2023-03-05T10:51:37.088Z</lastmod>
   </url>
   <url>
     <loc>https://jack-davison.github.io/experience/teaching.html</loc>
-    <lastmod>2023-03-01T20:27:40.524Z</lastmod>
+    <lastmod>2023-03-05T10:51:37.505Z</lastmod>
   </url>
   <url>
     <loc>https://jack-davison.github.io/experience.html</loc>
-    <lastmod>2023-03-01T20:27:41.020Z</lastmod>
+    <lastmod>2023-03-05T10:51:37.972Z</lastmod>
   </url>
   <url>
     <loc>https://jack-davison.github.io/index.html</loc>
-    <lastmod>2023-03-01T20:27:41.438Z</lastmod>
+    <lastmod>2023-03-05T10:51:38.381Z</lastmod>
   </url>
   <url>
     <loc>https://jack-davison.github.io/posts/2021-02-02-tidytuesday-2021-week-6-hbcu-enrollment-an-ode-to-data-cleaning/index.html</loc>
-    <lastmod>2023-03-01T20:27:45.594Z</lastmod>
+    <lastmod>2023-03-05T10:51:43.297Z</lastmod>
   </url>
   <url>
     <loc>https://jack-davison.github.io/posts/2022-11-13-pastaEvangelists/index.html</loc>
-    <lastmod>2023-03-01T20:28:05.395Z</lastmod>
+    <lastmod>2023-03-05T10:51:50.857Z</lastmod>
   </url>
   <url>
     <loc>https://jack-davison.github.io/posts/2023-02-20-tinyCategories/index.html</loc>
-    <lastmod>2023-03-01T20:28:11.702Z</lastmod>
+    <lastmod>2023-03-05T10:51:57.393Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jack-davison.github.io/posts/2023-03-04-tidyverseLength/index.html</loc>
+    <lastmod>2023-03-05T10:52:19.345Z</lastmod>
   </url>
 </urlset>

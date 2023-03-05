@@ -1,0 +1,306 @@
+---
+title: "Are `{tidyverse}` function lengths getting longer?"
+description: |
+  Are we approaching sentence-length `{tidyverse}` functions? `quarto::read_blog_carefully_with_eyes()` to find out.
+image: banner.jpg
+categories: [tidyverse, plotly]
+author: "Jack Davison"
+date: 2023/03/04
+twitter-card:
+  image:  "banner.jpg"
+  card-style: summary_large_image
+execute: 
+  warning: false
+  message: false
+  error: false
+editor_options: 
+  chunk_output_type: console
+---
+
+![](banner.jpg)
+:::{.callout-alert}
+None of this is meant as an insult to the `{tidyverse}` developers, of course, who have done excellent work making R one of the top languages for data analysis. This is all in good fun!
+:::
+
+Scrolling through #rstats Twitter recently I noticed a lot of conversation about the recent `{tidyr}` deprecations being overly wordy. After all, `separate()` being superseded by `separate_wider_position()` does feel almost comically long!
+
+{{< tweet charliejhadley 1631040342299377664 >}}
+
+This made me think, however - which `{tidyverse}` packages have the wordiest functions? And are functions always shorter than the functions that supersede them? Let's use R to find out.
+
+# Data
+
+First, we need to load the whole `{tidyverse}`. I'm not talking about the "core" tidyverse - we need the whole thing!
+
+```{r}
+#| label: pkgs
+(pkgs <- tidyverse::tidyverse_packages(include_self = FALSE))
+```
+
+Let's use `{purrr}` to rapidly load them all. We'll also need `{plotly}` and `{ggiraph}` for data visualisation.
+
+```{r}
+#| label: walk
+purrr::walk(pkgs, ~ library(.x, character.only = TRUE))
+
+library(ggiraph)
+library(plotly)
+```
+
+We can now easily extract a list of functions in a package using the `ls()` function.
+
+```{r}
+#| label: list
+ls("package:broom")
+```
+
+The `{lifecycle}` package can even tell us which functions are superseded or not for many `{tidyverse}` packages.
+
+```{r}
+lifecycle::pkg_lifecycle_statuses(package = "ggplot2")
+```
+
+This process can then be tidied by writing a function and once again using `{purrr}`.
+
+```{r}
+#| label: function
+list_functions_tbl <- function(pkg){
+  life <- lifecycle::pkg_lifecycle_statuses(package = pkg) %>%
+    select(-package)
+  ls(str_glue("package:{pkg}")) %>%
+    tibble() %>%
+    set_names("fun") %>%
+    mutate(pkg = {{pkg}},
+           fun.len = str_length(fun)) %>%
+    left_join(life, by = join_by(fun))
+}
+
+functions <-
+  purrr::map(pkgs, list_functions_tbl) %>%
+  list_rbind() %>%
+  relocate(lifecycle, .after = pkg)
+
+slice_sample(functions, n = 10)
+```
+
+Here we have the function lengths, but it may also be interesting to see the number of constituent words that make up each function. For example, `separate()` is one word, whereas `separate_wider_position()` is three. We can achieve this using `{tidytext}`.
+
+```{r}
+#| label: words
+counts <-
+  functions %>%
+  mutate(fun2 = snakecase::to_snake_case(fun) %>% str_replace_all("_", " ")) %>%
+  tidytext::unnest_tokens(word, fun2, drop = FALSE) %>%
+  count(pkg, fun, name = "fun.words")
+
+functions <-
+  left_join(functions, counts, by = join_by(pkg, fun))
+```
+
+The last thing we'll do is mark the "core" tidyverse so we can easily distinguish a key package like `{dplyr}` from a more niche one like `{xml2}`. Note that I'm including `{lubridate}` in the "core" tidyverse as it is due to be added in an upcoming update.
+
+```{r}
+#| label: core
+functions <-
+  functions %>%
+  mutate(pkg.core = pkg %in% c("ggplot2", "dplyr", "tidyr", "readr", "purrr", "tibble", "stringr", "forcats", "lubridate"),
+         .after = pkg)
+```
+
+# Function Lengths
+
+Now we have our data in order, lets investigate the distributions of some of these data. First, let's consider the function character length distributions of the different packages in @fig-worddist.
+
+```{r}
+#| label: fig-worddist
+#| fig-cap: "The distributions of different function name lengths in `{tidyverse}` packages. Hover over each boxplot to see the summary statistics they represent."
+functions %>%
+  mutate(pkg = fct_reorder(pkg, fun.len, median),
+         color = if_else(pkg.core, "Core", "Non-Core")) %>%
+  plot_ly(x = ~pkg, y = ~fun.len, colors = "Dark2") %>%
+  add_boxplot(color = ~color) %>%
+  layout(yaxis = list(title = "Function Length"),
+         xaxis = list(title = "Package"))
+
+```
+
+The package with the longest median function length is `{rstudioapi}` with a median value of 14 characters. The shortest is `{crayon}` with a median of 7. Both of these packages are not "core" and, furthermore, they're not particularly common to call directly! Looking at just the "core" `{tidyverse}`, `{ggplot2}` has the highest median function length and `{lubridate}` has the lowest. Not particularly surprising when we compare mammoths like `scale_linewidth_continuous()` to small fries like `ymd()`!
+
+@tbl-longshort shows the longest and shortest 10 functions in the `{tidyverse}`. The longest functions are from `{googlesheets4}`, although these are exported internal `{vctrs}` methods. The longest named function that anyone is likely to call commonly is the aforementioned `scale_linewidth_continuous()` at a massive 26 characters long. On the other end, the shortest function in the tidyverse is `dplyr::n()` at only one character.
+
+```{r}
+#| label: tbl-longshort
+#| tbl-cap: "The longest and shortest function names in the `{tidyverse}` by characters."
+#| column: body-outset
+
+bind_rows(
+  "longest" = slice_max(functions, n = 10, order_by = fun.len),
+  "shortest" = slice_min(functions, n = 10, order_by = fun.len),
+  .id = "type"
+) %>%
+  knitr::kable()
+```
+
+Looking at the distribution of the number of words in @fig-words, we can see that most `{tidyverse}` functions are made up of 2 words (e.g., `separate_wider()`). The wordiest two functions, however, have a massive 5 words. These are the relatively new `fct_na_level_to_value()` and `fct_na_value_to_level()` from `{forcats}`, both of which superseded `fct_explicit_na()` which itself was three words long.
+
+The least wordy `{tidyverse}` functions actually have no words at all, those being: `r filter(functions, is.na(fun.words)) %>% pull(fun) %>% unique() %>% paste(collapse =  ", ")`. As you can tell, they're mostly `{magrittr}` pipes and `{rlang}` syntax stuff.
+
+```{r}
+#| label: fig-words
+#| fig-cap: "Counts of the number of words in `{tidyverse}` functions. A function with 0 words has no English characters (e.g., `%>%`)."
+functions %>%
+  count(fun.words, pkg.core) %>%
+  mutate(color = if_else(pkg.core, "Core", "Non-Core"),
+         fun.words = if_else(is.na(fun.words), 0, fun.words)) %>%
+  plot_ly(x = ~factor(fun.words), y = ~n, colors = "Dark2") %>%
+  add_bars(color = ~color) %>%
+  layout(xaxis = list(title = "Number of Words"))
+```
+
+# Superseded Functions
+
+All of that was interesting, but lets examine the original point of this post - are superseded functions shorter than new ones?
+
+First, lets make sure that we're only looking at packages that are actually classified using `{lifecycle}`. Of the remaining packages, all of the `NA` values represent stable functions.
+
+```{r}
+#| label: functions2
+functions2 <-
+  filter(functions, any(!is.na(lifecycle)), .by = pkg) %>%
+  mutate(lifecycle = replace_na(lifecycle, "stable"))
+```
+
+We'll visuaise all of the lifecycle stages available, although the three key ones we should be looking at are:
+
+* **Stable** - functions that are in current use,
+
+* **Superseded** - functions that have newer versions that are now recommended (e.g., `separate()`), and
+
+* **Experimental** - the newest functions that are in development (e.g., `separate_wider_delim()`).
+
+@fig-lifecycle shows the distributions of different function lengths, similar to @fig-worddist but with the function lifecycle instead of its package. Deprecated and superseded functions have similar mean lengths of around about 9.5, compared to stable functions' 11.2 and experimental functions' 14.2! This does imply that new functions are indeed getting longer - at least on average!
+
+```{r}
+#| label: fig-lifecycle
+#| fig-cap: "The distributions of function lengths at different lifecycle stages."
+functions2 %>%
+  mutate(lifecycle = fct_reorder(lifecycle, fun.len, mean)) %>%
+  mutate(fun.avglen = mean(fun.len, na.rm = TRUE), .by = lifecycle) %>%
+  plot_ly(x = ~ lifecycle, y = ~ fun.len) %>%
+  add_boxplot(name = "Boxplot", color = I("grey75")) %>%
+  add_lines(
+    y = ~ round(fun.avglen, 2),
+    legendgroup = "marker",
+    showlegend = FALSE,
+    color = I("red")
+  ) %>%
+  add_markers(
+    y = ~ round(fun.avglen, 2),
+    name = "Mean Marker",
+    legendgroup = "marker",
+    color = I("red")
+  ) %>%
+  layout(yaxis = list(title = "Function Length"))
+```
+
+A similar observation is seen in @fig-barscycle, which shows that a whopping 52% of experimental `{tidyverse}` experimental functions are three words long, plus an extra 12% at four words. Conversely, only 10% of superseded functions are three words long and none are four words.
+
+```{r}
+#| label: fig-barscycle
+#| fig-cap: "The percentage of `{tidyverse}` functions at different lifecycle stages and numbers of words."
+functions2 %>%
+  count(lifecycle, fun.words) %>%
+  mutate(fun.words = replace_na(fun.words, 0),
+         lifecycle = fct_reorder(lifecycle, fun.words, median)) %>%
+  mutate(n = n / sum(n), .by = lifecycle) %>%
+  plot_ly(x = ~ lifecycle, y = ~ n) %>%
+  add_bars(color = ~ factor(fun.words)) %>%
+  layout(barmode = "stack",
+         yaxis = list(tickformat = '.0%'))
+```
+
+Now to make this truly robust we should be comparing individual superseded functions with the functions that replaced them. To do this, I wrote out all of the superseded functions to a CSV and searched through the documentation to determine their replacements. A few notes before we continue:
+
+* Some superseded functions simply weren't replaced with anything in particular. For example, `dplyr::with_groups()` was replaced by the `by`/`.by` argument in functions like `summarise()` so won't be analysed here. *Many* `{dplyr}` functions were effectively replaced by `across()` so are also ignored.
+
+* A lot of `{readr}` functions were moved to `{meltr}` so aren't considered here.
+
+* The `purrr::map_dfr()` family was replaced by a combination of `map()` and `list_rbind()`. It wouldn't be fair to compare these because of course two functions will be longer than one!
+
+* `{tidyr}` possesses `unnest_legacy()` and `nest_legacy()` which are listed as superseded but, in reality, they were never labelled "legacy" originally, so these are discounted.
+
+* Some functions were also replaced by multiple functions. For example, `do()` is replaced by either `reframe()`, `nest_by()` or `pick()`. In that case, all three are used.
+
+```{r}
+#| label: readsupers
+supers <- 
+  read_csv(here::here("posts/2023-03-04-tidyverseLength/superseded.csv")) %>%
+  left_join(select(functions, -pkg.core, -lifecycle)) %>%
+  left_join(
+    select(functions, -pkg.core, -lifecycle),
+    by = join_by(oldfun == fun, pkg),
+    suffix = c("_new", "_old")
+  ) %>%
+  drop_na(fun) %>%
+  filter(fun != "across",
+         !str_detect(oldfun, "legacy"))
+
+slice_sample(supers, n = 10)
+```
+
+Now, finally, lets compare the old and new! @fig-change shows the function lengths of specific superseded functions and the functions they were replaced with. Most functions marked superseded that were directly replaced by one or more functions are in the `{dplyr}`, `{purrr}` and `{tidyr}` packages, and many of them do indeed get longer! The function that increased in length the most was `separate()`, which became the massive `separate_wider_position()`, gaining 15 additional characters. The function that decreased in length the most was `coord_quickmap()`, which was replaced by the petite `coord_sf()`, losing 6 characters. In this dataset, the median change between the old and new functions was an increase in 3 characters.
+
+```{r}
+#| label: fig-change
+#| fig-cap: "The change in the length of superseded function names. Hover over the lines to identify the specific functions."
+plt <- 
+  supers %>%
+  mutate(
+    id = row_number(),
+    diff = fun.len_new - fun.len_old,
+    diff = if_else(diff > 0, paste("+", diff, sep = ""), paste(diff)),
+    tooltip = str_glue("`{oldfun}()` to `{fun}()` ({diff})"),
+    color = if_else(fun.len_new > fun.len_old, "Increase", "Decrease")
+  ) %>%
+  pivot_longer(c(fun.len_new, fun.len_old)) %>%
+  mutate(
+    name = case_match(name,
+                      "fun.len_new" ~ "New",
+                      "fun.len_old" ~ "Old"),
+    name = factor(name, c("Old", "New"))
+  ) %>%
+  ggplot(aes(x = name, y = value, color = color)) +
+  geom_line_interactive(aes(
+    group = id,
+    tooltip = tooltip,
+    data_id = tooltip
+  ),
+  hover_nearest = TRUE) +
+  geom_point_interactive(
+    aes(data_id = tooltip),
+    shape = 21,
+    fill = "white",
+    stroke = 1
+  ) +
+  coord_cartesian(clip = "off") +
+  scale_x_discrete(expand = expansion()) +
+  expand_limits(y = 0) +
+  theme_minimal() +
+  theme(
+    panel.spacing = unit(.7, "cm"),
+    legend.position = "top",
+    aspect.ratio = 1
+  ) +
+  facet_wrap(vars(pkg), scales = "free_x") +
+  labs(x = NULL, y = "Function Length", color = NULL)
+
+girafe(ggobj = plt,
+       options = list(
+         opts_hover(""),
+         opts_hover_inv("opacity:0.25")
+       ))
+```
+
+# Conclusion
+
+This blog post was on a bit of a silly topic, but I'm hopeful that it was a useful demonstration of various `{tidyverse}` functions and the `{plotly}` package for interactive data visualisation. The key conclusion that I'm taking is that, while there is a lot of variation, superseded functions *do* tend to be shorter than the functions that replace them! Yesterday we had `separate()`, today we have `separate_wider_position()`, and tomorrow `separate_wider_integer_position_ignore_toofew_removecols()` may be on the cards!
