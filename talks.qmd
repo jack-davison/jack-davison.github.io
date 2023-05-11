@@ -1,0 +1,11 @@
+---
+title: Talks
+subtitle: Presenting data analysis to a variety of audiences.
+listing:
+  contents: talks
+  type: default
+  sort-ui: false
+page-layout: full
+title-block-banner: true
+---
+

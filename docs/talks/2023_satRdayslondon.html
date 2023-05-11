@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.340">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-<meta name="description" content="Creating effective static and interactive data visualisation.">
-
-<title>Data Visualisation</title>
+<meta name="author" content="SatRdays London">
+<meta name="dcterms.date" content="2023-04-23">
+<meta name="description" content="A public talk given as part of SatRdays London 2023.">
+<title>“Put it on a map!” Developments in air quality data analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +21,6 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 </style>
-
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
@@ -39,8 +37,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -58,27 +55,20 @@ ul.task-list li input[type="checkbox"] {
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit"
   }
-}</script>
-
-
-<link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Data Visualisation">
-<meta property="og:description" content="Creating effective static and interactive data visualisation.">
-<meta property="og:image" content="https://jack-davison.github.io/experience/experience_imgs/dataviz.png">
-<meta property="og:image:height" content="1958">
-<meta property="og:image:width" content="1957">
+}</script><link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="“Put it on a map!” Developments in air quality data analysis">
+<meta property="og:description" content="A public talk given as part of SatRdays London 2023.">
+<meta property="og:image" content="https://jack-davison.github.io/talks/2023_satRdayslondon.png">
+<meta property="og:image:height" content="720">
+<meta property="og:image:width" content="1280">
 </head>
-
-<body class="floating nav-fixed fullcontent">
+<body class="floating nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../logo.png" alt="" class="navbar-logo">
-    </a>
+    <img src="../logo.png" alt="" class="navbar-logo"></a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -86,7 +76,7 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../index.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
@@ -118,73 +108,71 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
+<div class="quarto-navbar-tools">
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-    
-</nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li><a href="#access" id="toc-access" class="nav-link active" data-scroll-target="#access">Access</a></li>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link" data-scroll-target="#abstract">Abstract</a></li>
+  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
+  </ul></nav>
+</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Data Visualisation</h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">“Put it on a map!” Developments in air quality data analysis</h1>
 </div>
 
 <div>
   <div class="description">
-    Creating effective static and interactive data visualisation.
+    A public talk given as part of SatRdays London 2023.
   </div>
 </div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Audience</div>
+    <div class="quarto-title-meta-contents">
+             <p>SatRdays London </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Presented</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 23, 2023</p>
+    </div>
+  </div>
   
     
   </div>
   
 
-</header>
-
-<p>I am passionate about data visualisation and communication in all of its forms. This page details some of the projects I’ve been part of.</p>
-<section id="tidytuesday" class="level3">
-<h3 class="anchored" data-anchor-id="tidytuesday">TidyTuesday</h3>
-<p>#TidyTuesday is a weekly data challenge which tests the R community to tidy and visualise an unseen dataset, which could be related to anything from astronauts to zoo animals! <a href="#fig-tt">Figure&nbsp;1</a> is a collage of a few of my favourite contributions, with my full repo found at <a href="https://github.com/jack-davison/TidyTuesday" class="uri">https://github.com/jack-davison/TidyTuesday</a>.</p>
-<div id="fig-tt" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="experience_imgs/tidytuesday.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;1: Some examples of my TidyTuesday contributions.</figcaption>
-</figure>
-</div>
-</section>
-<section id="dubois-challenge" class="level3">
-<h3 class="anchored" data-anchor-id="dubois-challenge">DuBois Challenge</h3>
-<p>The DuBois Challenge is a challenge to recreate historic, hand drawn data visualisations using modern tools. The visualisations are specifically the work of data-viz pioneer W.E.B. DuBois, known for his subversive, geometric, ahead-of-his-time designs.</p>
-<p>I took part in the DuBois Challenge as part of #TidyTuesday (above), but my deepest examination of DuBois’ work was in my submission for the Posit Table Contest 2022, <a href="https://jack-davison.quarto.pub/tabulating-dubois/">Tabulating DuBois</a>, wherein I attempted to translate the work of DuBois to a more tabular medium with <code>{gt}</code>.</p>
-<div id="fig-dubois" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="https://github.com/jack-davison/rstudio_table-contest_2022/raw/main/man/comparison.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2: An example table from <em>Tabulating DuBois</em>.</figcaption>
-</figure>
-</div>
+</header><section id="access" class="level3"><h3 class="anchored" data-anchor-id="access">Access</h3>
+<ul>
+<li><p>Slides are hosted at <a href="https://jack-davison.quarto.pub/satrdays-london-2023/#/section" class="uri">https://jack-davison.quarto.pub/satrdays-london-2023/#/section</a>.</p></li>
+<li><p>Slides were created using RevealJS/Quarto, with the source code found at <a href="https://github.com/jack-davison/satRdaysLondon2023-openairmaps" class="uri">https://github.com/jack-davison/satRdaysLondon2023-openairmaps</a>.</p></li>
+<li><p>A recording will soon be made available.</p></li>
+</ul></section><section id="abstract" class="level3"><h3 class="anchored" data-anchor-id="abstract">Abstract</h3>
+<blockquote class="blockquote">
+<p>An understanding of air quality is crucial as it can have significant public health, environmental and economic effects. However, air quality data is complex, constantly changing in space and time, and influenced by a myriad of factors such as meteorology and human activity. This makes air quality analysis challenging, and communicating the results of this analysis more challenging still!</p>
+<p>Just over a decade ago, the <a href="https://davidcarslaw.github.io/openair/">openair</a> package was authored to provide an open‐source toolkit to help air quality practitioners get the most out of their data, and is still used widely in academia, consultancy and industry today. While <a href="https://davidcarslaw.github.io/openair/">openair</a> itself has not changed hugely in recent years, much thought has been put into extending it through leveraging more recent tools and packages.</p>
+<p>In this talk I will discuss how we have recently married <a href="https://rstudio.github.io/leaflet/">leaflet</a> and <a href="https://davidcarslaw.github.io/openair/">openair</a> to create effective, interactive air quality maps. In particular, I’ll discuss the development of the <a href="https://davidcarslaw.github.io/openairmaps/">openairmaps</a> package – a toolset which makes it easy to create interactive “directional analysis” maps to help explore the geospatial context of pollution monitoring data.</p>
+</blockquote>
+</section><section id="context" class="level3"><h3 class="anchored" data-anchor-id="context">Context</h3>
+<p>“<a href="https://satrdays.org/">SatRdays</a>” is a low-cost, not-for-profit, locally organised R conference series. This talk was given at <a href="https://satrday-london-2023.jumpingrivers.com/">SatRdays London 2023</a>, and was mainly centred around the <a href="https://davidcarslaw.github.io/openairmaps/">openairmaps</a> R package, with wider framing around updating and using “legacy” packages.</p>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");

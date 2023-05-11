@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.3.340">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Jack Davison">
 <meta name="dcterms.date" content="2022-11-13">
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,43 +47,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -121,11 +92,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 }</script><script src="../../site_libs/htmlwidgets-1.6.1/htmlwidgets.js"></script><script src="../../site_libs/d3-bundle-5.16.0/d3-bundle.min.js"></script><script src="../../site_libs/d3-lasso-0.0.5/d3-lasso.min.js"></script><script src="../../site_libs/save-svg-as-png-1.4.17/save-svg-as-png.min.js"></script><script src="../../site_libs/flatbush-4.0.0/flatbush.min.js"></script><link href="../../site_libs/ggiraphjs-0.4.6/ggiraphjs.min.css" rel="stylesheet">
 <script src="../../site_libs/ggiraphjs-0.4.6/ggiraphjs.min.js"></script><script src="../../site_libs/girafe-binding-0.8.6/girafe.js"></script><link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="Scraping the Pasta Academy">
-<meta property="og:description" content="Overcoming the lack of a &quot;filter&quot; option on an experience booking website through web scraping.">
-<meta property="og:image" content="https://jack-davison.github.io/posts\2022-11-13-pastaEvangelists\pasta.jpg">
+<meta property="og:description" content="Overcoming the lack of a “filter” option on an experience booking website through web scraping.">
+<meta property="og:image" content="https://jack-davison.github.io/posts/2022-11-13-pastaEvangelists/pasta.jpg">
 <meta name="twitter:title" content="Scraping the Pasta Academy">
-<meta name="twitter:description" content="Overcoming the lack of a &quot;filter&quot; option on an experience booking website through web scraping.">
-<meta name="twitter:image" content="https://jack-davison.github.io/posts\2022-11-13-pastaEvangelists\pasta.jpg">
+<meta name="twitter:description" content="Overcoming the lack of a “filter” option on an experience booking website through web scraping.">
+<meta name="twitter:image" content="https://jack-davison.github.io/posts/2022-11-13-pastaEvangelists/pasta.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 <body class="floating nav-fixed">
@@ -136,40 +107,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
     <img src="../../logo.png" alt="" class="navbar-logo"></a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
 <li class="nav-item">
-    <a class="nav-link" href="../../index.html">
+    <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../experience.html">
+    <a class="nav-link" href="../../experience.html" rel="" target="">
  <span class="menu-text">Experience</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html">
+    <a class="nav-link" href="../../talks.html" rel="" target="">
+ <span class="menu-text">Talks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html" rel="" target="">
  <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/jdavison_"><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/jdavison_" rel="" target=""><i class="bi bi-twitter" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/jack-davison"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/jack-davison" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/jack-davison/"><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://www.linkedin.com/in/jack-davison/" rel="" target=""><i class="bi bi-linkedin" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-<div id="quarto-search" class="" title="Search"></div>
+<div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full"><div class="quarto-title-banner page-columns page-full">
@@ -210,7 +187,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
 <li><a href="#purpose" id="toc-purpose" class="nav-link active" data-scroll-target="#purpose">Purpose</a></li>
@@ -218,16 +195,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#tidying-data" id="toc-tidying-data" class="nav-link" data-scroll-target="#tidying-data">Tidying Data</a></li>
   <li><a href="#using-the-data" id="toc-using-the-data" class="nav-link" data-scroll-target="#using-the-data">Using the data</a></li>
   </ul></nav>
-</nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content"><p><img src="pasta.jpg" class="img-fluid"></p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -253,8 +232,7 @@ Note
 <p>We’ll now need to pull each individual element of interest from the Pasta Academy website. One of the easiest ways of finding the correct HTML at which to aim your <a href="https://rvest.tidyverse.org/">rvest</a> functions is by using Chrome’s developer tools (CTRL-SHIFT-I on Windows) or your browser’s equivalent.</p>
 <div id="fig-devtools" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="developer-tools.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: A screenshot of the use of Chrome’s developer tools.</figcaption><p></p>
-</figure>
+<figcaption class="figure-caption">Figure&nbsp;1: A screenshot of the use of Chrome’s developer tools.</figcaption></figure>
 </div>
 <p>Once we have identified the correct HTML tags to use, we can use <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code> to grab those items, and then <code><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2()</a></code> to extract the text from it. For example, the below line grabs each lesson title from the first page of the Pasta Academy website.</p>
 <div class="cell">
@@ -471,8 +449,8 @@ $ button &lt;chr&gt; "SEE INFO", "SEE INFO", "SEE INFO", "SEE INFO", "SEE INFO",
 <div class="cell">
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">counts</span> <span class="op">&lt;-</span></span>
 <span>  <span class="va">pasta</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">tidytext</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tidytext/man/unnest_tokens.html">unnest_tokens</a></span><span class="op">(</span><span class="va">word</span>, <span class="va">name</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="fu">tidytext</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tidytext/man/get_stopwords.html">get_stopwords</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">tidytext</span><span class="fu">::</span><span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">word</span>, <span class="va">name</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="fu">tidytext</span><span class="fu">::</span><span class="fu">get_stopwords</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">word</span>, sort <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">counts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -509,8 +487,7 @@ $ button &lt;chr&gt; "SEE INFO", "SEE INFO", "SEE INFO", "SEE INFO", "SEE INFO",
 <span><span class="fu"><a href="https://davidgohel.github.io/ggiraph/reference/girafe.html">girafe</a></span><span class="op">(</span>ggobj <span class="op">=</span> <span class="va">plt</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="fig-bars" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><div class="girafe html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-f184566a724de07b8131" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-f184566a724de07b8131">{"x":{"html":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='ggiraph-svg' role='img' id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269' viewBox='0 0 504 360'>\n <defs id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_defs'>\n  <clipPath id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_c1'>\n   <rect x='0' y='0' width='504' height='360'/>\n  <\/clipPath>\n  <clipPath id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_c2'>\n   <rect x='57.35' y='5.48' width='441.17' height='323.02'/>\n  <\/clipPath>\n <\/defs>\n <g id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_rootg' class='ggiraph-svg-rootg'>\n  <g clip-path='url(#svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_c1)'>\n   <rect x='0' y='0' width='504' height='360' fill='#FFFFFF' fill-opacity='1' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.75' stroke-linejoin='round' stroke-linecap='round' class='ggiraph-svg-bg'/>\n   <rect x='0' y='0' width='504' height='360' fill='#FFFFFF' fill-opacity='1' stroke='#FFFFFF' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='round'/>\n  <\/g>\n  <g clip-path='url(#svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_c2)'>\n   <rect x='57.35' y='5.48' width='441.17' height='323.02' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e1' x='57.35' y='7.08' width='441.17' height='9.63' fill='#56B1F7' fill-opacity='1' stroke='none' title='77'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e2' x='57.35' y='17.78' width='332.31' height='9.63' fill='#448DC6' fill-opacity='1' stroke='none' title='58'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e3' x='57.35' y='28.48' width='189.07' height='9.63' fill='#2E608A' fill-opacity='1' stroke='none' title='33'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e4' x='57.35' y='39.17' width='148.97' height='9.63' fill='#27547A' fill-opacity='1' stroke='none' title='26'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e5' x='57.35' y='60.56' width='63.02' height='9.63' fill='#1B3B58' fill-opacity='1' stroke='none' title='11'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e6' x='57.35' y='49.87' width='63.02' height='9.63' fill='#1B3B58' fill-opacity='1' stroke='none' title='11'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e7' x='57.35' y='92.65' width='57.29' height='9.63' fill='#1A3956' fill-opacity='1' stroke='none' title='10'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e8' x='57.35' y='81.96' width='57.29' height='9.63' fill='#1A3956' fill-opacity='1' stroke='none' title='10'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e9' x='57.35' y='71.26' width='57.29' height='9.63' fill='#1A3956' fill-opacity='1' stroke='none' title='10'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e10' x='57.35' y='135.44' width='51.56' height='9.63' fill='#193754' fill-opacity='1' stroke='none' title='9'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e11' x='57.35' y='124.74' width='51.56' height='9.63' fill='#193754' fill-opacity='1' stroke='none' title='9'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e12' x='57.35' y='114.05' width='51.56' height='9.63' fill='#193754' fill-opacity='1' stroke='none' title='9'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e13' x='57.35' y='103.35' width='51.56' height='9.63' fill='#193754' fill-opacity='1' stroke='none' title='9'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e14' x='57.35' y='146.13' width='45.84' height='9.63' fill='#193652' fill-opacity='1' stroke='none' title='8'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e15' x='57.35' y='156.83' width='34.38' height='9.63' fill='#17334D' fill-opacity='1' stroke='none' title='6'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e16' x='57.35' y='210.31' width='28.65' height='9.63' fill='#16314B' fill-opacity='1' stroke='none' title='5'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e17' x='57.35' y='199.61' width='28.65' height='9.63' fill='#16314B' fill-opacity='1' stroke='none' title='5'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e18' x='57.35' y='188.92' width='28.65' height='9.63' fill='#16314B' fill-opacity='1' stroke='none' title='5'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e19' x='57.35' y='178.22' width='28.65' height='9.63' fill='#16314B' fill-opacity='1' stroke='none' title='5'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e20' x='57.35' y='167.53' width='28.65' height='9.63' fill='#16314B' fill-opacity='1' stroke='none' title='5'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e21' x='57.35' y='263.79' width='22.92' height='9.63' fill='#153049' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e22' x='57.35' y='253.1' width='22.92' height='9.63' fill='#153049' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e23' x='57.35' y='242.4' width='22.92' height='9.63' fill='#153049' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e24' x='57.35' y='231.7' width='22.92' height='9.63' fill='#153049' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e25' x='57.35' y='221.01' width='22.92' height='9.63' fill='#153049' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e26' x='57.35' y='274.49' width='17.19' height='9.63' fill='#152E47' fill-opacity='1' stroke='none' title='3'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e27' x='57.35' y='306.58' width='11.46' height='9.63' fill='#142D45' fill-opacity='1' stroke='none' title='2'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e28' x='57.35' y='295.88' width='11.46' height='9.63' fill='#142D45' fill-opacity='1' stroke='none' title='2'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e29' x='57.35' y='285.18' width='11.46' height='9.63' fill='#142D45' fill-opacity='1' stroke='none' title='2'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e30' x='57.35' y='317.27' width='5.73' height='9.63' fill='#132B43' fill-opacity='1' stroke='none' title='1'/>\n  <\/g>\n  <g clip-path='url(#svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_c1)'>\n   <polyline points='57.35,328.50 57.35,5.48' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='21.11' y='325.24' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>monday<\/text>\n   <text x='36.28' y='314.54' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>club<\/text>\n   <text x='35.3' y='303.84' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>craft<\/text>\n   <text x='24.04' y='293.15' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>sunday<\/text>\n   <text x='28.94' y='282.45' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>napoli<\/text>\n   <text x='19.16' y='271.76' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>clarence<\/text>\n   <text x='32.85' y='261.06' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>court<\/text>\n   <text x='27.96' y='250.36' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>easter<\/text>\n   <text x='40.68' y='239.67' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>gin<\/text>\n   <text x='21.1' y='228.97' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>seafood<\/text>\n   <text x='28.95' y='218.27' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>amalfi<\/text>\n   <text x='9.37' y='207.58' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>experience<\/text>\n   <text x='26.49' y='196.88' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>tasting<\/text>\n   <text x='23.06' y='186.19' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>trentino<\/text>\n   <text x='34.33' y='175.49' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>wine<\/text>\n   <text x='30.89' y='164.79' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>pasta<\/text>\n   <text x='21.1' y='154.1' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>bologna<\/text>\n   <text x='32.37' y='143.4' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>rome<\/text>\n   <text x='33.37' y='132.7' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>sicily<\/text>\n   <text x='22.09' y='122.01' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>tuscany<\/text>\n   <text x='26.99' y='111.31' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>venice<\/text>\n   <text x='5.48' y='100.62' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>masterclass<\/text>\n   <text x='28.94' y='89.92' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>puglia<\/text>\n   <text x='21.61' y='79.22' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>sardinia<\/text>\n   <text x='26.49' y='68.53' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>edition<\/text>\n   <text x='27' y='57.83' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>limited<\/text>\n   <text x='32.38' y='47.14' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>class<\/text>\n   <text x='20.63' y='36.44' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>morning<\/text>\n   <text x='13.77' y='25.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>beginners<\/text>\n   <text x='33.34' y='15.05' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>taste<\/text>\n   <polyline points='54.62,322.09 57.35,322.09' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,311.39 57.35,311.39' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,300.69 57.35,300.69' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,290.00 57.35,290.00' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,279.30 57.35,279.30' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,268.61 57.35,268.61' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,257.91 57.35,257.91' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,247.21 57.35,247.21' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,236.52 57.35,236.52' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,225.82 57.35,225.82' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,215.12 57.35,215.12' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,204.43 57.35,204.43' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,193.73 57.35,193.73' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,183.04 57.35,183.04' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,172.34 57.35,172.34' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,161.64 57.35,161.64' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,150.95 57.35,150.95' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,140.25 57.35,140.25' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,129.55 57.35,129.55' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,118.86 57.35,118.86' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,108.16 57.35,108.16' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,97.47 57.35,97.47' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,86.77 57.35,86.77' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,76.07 57.35,76.07' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,65.38 57.35,65.38' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,54.68 57.35,54.68' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,43.99 57.35,43.99' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,33.29 57.35,33.29' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,22.59 57.35,22.59' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,11.90 57.35,11.90' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='57.35,328.50 498.52,328.50' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='57.35,331.24 57.35,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='171.94,331.24 171.94,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='286.53,331.24 286.53,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='401.12,331.24 401.12,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='54.91' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>0<\/text>\n   <text x='167.05' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>20<\/text>\n   <text x='281.64' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>40<\/text>\n   <text x='396.22' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>60<\/text>\n   <text x='255' y='352.2' font-size='8.25pt' font-family='Arial'>Count (n)<\/text>\n  <\/g>\n <\/g>\n<\/svg>","js":null,"uid":"svg_ae696922_7b3b_43cf_a0d2_3882df3c2269","ratio":1.4,"settings":{"tooltip":{"css":".tooltip_SVGID_ { padding:5px;background:black;color:white;border-radius:2px;text-align:left; ; position:absolute;pointer-events:none;z-index:999;}","placement":"doc","opacity":0.9,"offx":10,"offy":10,"use_cursor_pos":true,"use_fill":false,"use_stroke":false,"delay_over":200,"delay_out":500},"hover":{"css":".hover_data_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_data_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_data_SVGID_ { fill:orange;stroke:black; }\nline.hover_data_SVGID_, polyline.hover_data_SVGID_ { fill:none;stroke:orange; }\nrect.hover_data_SVGID_, polygon.hover_data_SVGID_, path.hover_data_SVGID_ { fill:orange;stroke:none; }\nimage.hover_data_SVGID_ { stroke:orange; }","reactive":true,"nearest_distance":null},"hover_inv":{"css":""},"hover_key":{"css":".hover_key_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_key_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_key_SVGID_ { fill:orange;stroke:black; }\nline.hover_key_SVGID_, polyline.hover_key_SVGID_ { fill:none;stroke:orange; }\nrect.hover_key_SVGID_, polygon.hover_key_SVGID_, path.hover_key_SVGID_ { fill:orange;stroke:none; }\nimage.hover_key_SVGID_ { stroke:orange; }","reactive":true},"hover_theme":{"css":".hover_theme_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_theme_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_theme_SVGID_ { fill:orange;stroke:black; }\nline.hover_theme_SVGID_, polyline.hover_theme_SVGID_ { fill:none;stroke:orange; }\nrect.hover_theme_SVGID_, polygon.hover_theme_SVGID_, path.hover_theme_SVGID_ { fill:orange;stroke:none; }\nimage.hover_theme_SVGID_ { stroke:orange; }","reactive":true},"select":{"css":".select_data_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_data_SVGID_ { stroke:none;fill:red; }\ncircle.select_data_SVGID_ { fill:red;stroke:black; }\nline.select_data_SVGID_, polyline.select_data_SVGID_ { fill:none;stroke:red; }\nrect.select_data_SVGID_, polygon.select_data_SVGID_, path.select_data_SVGID_ { fill:red;stroke:none; }\nimage.select_data_SVGID_ { stroke:red; }","type":"multiple","only_shiny":true,"selected":[]},"select_inv":{"css":""},"select_key":{"css":".select_key_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_key_SVGID_ { stroke:none;fill:red; }\ncircle.select_key_SVGID_ { fill:red;stroke:black; }\nline.select_key_SVGID_, polyline.select_key_SVGID_ { fill:none;stroke:red; }\nrect.select_key_SVGID_, polygon.select_key_SVGID_, path.select_key_SVGID_ { fill:red;stroke:none; }\nimage.select_key_SVGID_ { stroke:red; }","type":"single","only_shiny":true,"selected":[]},"select_theme":{"css":".select_theme_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_theme_SVGID_ { stroke:none;fill:red; }\ncircle.select_theme_SVGID_ { fill:red;stroke:black; }\nline.select_theme_SVGID_, polyline.select_theme_SVGID_ { fill:none;stroke:red; }\nrect.select_theme_SVGID_, polygon.select_theme_SVGID_, path.select_theme_SVGID_ { fill:red;stroke:none; }\nimage.select_theme_SVGID_ { stroke:red; }","type":"single","only_shiny":true,"selected":[]},"zoom":{"min":1,"max":1,"duration":300},"toolbar":{"position":"topright","pngname":"diagram","tooltips":null,"hidden":[],"delay_over":200,"delay_out":500},"sizing":{"rescale":true,"width":1}}},"evals":[],"jsHooks":[]}</script><p></p><figcaption class="figure-caption">Figure&nbsp;2: Frequency of different words in Pasta Academy class names.</figcaption><p></p>
-</figure>
+<script type="application/json" data-for="htmlwidget-f184566a724de07b8131">{"x":{"html":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='ggiraph-svg' role='img' id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269' viewBox='0 0 504 360'>\n <defs id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_defs'>\n  <clipPath id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_c1'>\n   <rect x='0' y='0' width='504' height='360'/>\n  <\/clipPath>\n  <clipPath id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_c2'>\n   <rect x='57.35' y='5.48' width='441.17' height='323.02'/>\n  <\/clipPath>\n <\/defs>\n <g id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_rootg' class='ggiraph-svg-rootg'>\n  <g clip-path='url(#svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_c1)'>\n   <rect x='0' y='0' width='504' height='360' fill='#FFFFFF' fill-opacity='1' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.75' stroke-linejoin='round' stroke-linecap='round' class='ggiraph-svg-bg'/>\n   <rect x='0' y='0' width='504' height='360' fill='#FFFFFF' fill-opacity='1' stroke='#FFFFFF' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='round'/>\n  <\/g>\n  <g clip-path='url(#svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_c2)'>\n   <rect x='57.35' y='5.48' width='441.17' height='323.02' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e1' x='57.35' y='7.08' width='441.17' height='9.63' fill='#56B1F7' fill-opacity='1' stroke='none' title='77'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e2' x='57.35' y='17.78' width='332.31' height='9.63' fill='#448DC6' fill-opacity='1' stroke='none' title='58'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e3' x='57.35' y='28.48' width='189.07' height='9.63' fill='#2E608A' fill-opacity='1' stroke='none' title='33'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e4' x='57.35' y='39.17' width='148.97' height='9.63' fill='#27547A' fill-opacity='1' stroke='none' title='26'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e5' x='57.35' y='60.56' width='63.02' height='9.63' fill='#1B3B58' fill-opacity='1' stroke='none' title='11'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e6' x='57.35' y='49.87' width='63.02' height='9.63' fill='#1B3B58' fill-opacity='1' stroke='none' title='11'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e7' x='57.35' y='92.65' width='57.29' height='9.63' fill='#1A3956' fill-opacity='1' stroke='none' title='10'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e8' x='57.35' y='81.96' width='57.29' height='9.63' fill='#1A3956' fill-opacity='1' stroke='none' title='10'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e9' x='57.35' y='71.26' width='57.29' height='9.63' fill='#1A3956' fill-opacity='1' stroke='none' title='10'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e10' x='57.35' y='135.44' width='51.56' height='9.63' fill='#193754' fill-opacity='1' stroke='none' title='9'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e11' x='57.35' y='124.74' width='51.56' height='9.63' fill='#193754' fill-opacity='1' stroke='none' title='9'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e12' x='57.35' y='114.05' width='51.56' height='9.63' fill='#193754' fill-opacity='1' stroke='none' title='9'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e13' x='57.35' y='103.35' width='51.56' height='9.63' fill='#193754' fill-opacity='1' stroke='none' title='9'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e14' x='57.35' y='146.13' width='45.84' height='9.63' fill='#193652' fill-opacity='1' stroke='none' title='8'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e15' x='57.35' y='156.83' width='34.38' height='9.63' fill='#17334D' fill-opacity='1' stroke='none' title='6'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e16' x='57.35' y='210.31' width='28.65' height='9.63' fill='#16314B' fill-opacity='1' stroke='none' title='5'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e17' x='57.35' y='199.61' width='28.65' height='9.63' fill='#16314B' fill-opacity='1' stroke='none' title='5'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e18' x='57.35' y='188.92' width='28.65' height='9.63' fill='#16314B' fill-opacity='1' stroke='none' title='5'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e19' x='57.35' y='178.22' width='28.65' height='9.63' fill='#16314B' fill-opacity='1' stroke='none' title='5'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e20' x='57.35' y='167.53' width='28.65' height='9.63' fill='#16314B' fill-opacity='1' stroke='none' title='5'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e21' x='57.35' y='263.79' width='22.92' height='9.63' fill='#153049' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e22' x='57.35' y='253.1' width='22.92' height='9.63' fill='#153049' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e23' x='57.35' y='242.4' width='22.92' height='9.63' fill='#153049' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e24' x='57.35' y='231.7' width='22.92' height='9.63' fill='#153049' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e25' x='57.35' y='221.01' width='22.92' height='9.63' fill='#153049' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e26' x='57.35' y='274.49' width='17.19' height='9.63' fill='#152E47' fill-opacity='1' stroke='none' title='3'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e27' x='57.35' y='306.58' width='11.46' height='9.63' fill='#142D45' fill-opacity='1' stroke='none' title='2'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e28' x='57.35' y='295.88' width='11.46' height='9.63' fill='#142D45' fill-opacity='1' stroke='none' title='2'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e29' x='57.35' y='285.18' width='11.46' height='9.63' fill='#142D45' fill-opacity='1' stroke='none' title='2'/>\n   <rect id='svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_e30' x='57.35' y='317.27' width='5.73' height='9.63' fill='#132B43' fill-opacity='1' stroke='none' title='1'/>\n  <\/g>\n  <g clip-path='url(#svg_ae696922_7b3b_43cf_a0d2_3882df3c2269_c1)'>\n   <polyline points='57.35,328.50 57.35,5.48' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='21.11' y='325.24' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>monday<\/text>\n   <text x='36.28' y='314.54' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>club<\/text>\n   <text x='35.3' y='303.84' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>craft<\/text>\n   <text x='24.04' y='293.15' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>sunday<\/text>\n   <text x='28.94' y='282.45' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>napoli<\/text>\n   <text x='19.16' y='271.76' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>clarence<\/text>\n   <text x='32.85' y='261.06' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>court<\/text>\n   <text x='27.96' y='250.36' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>easter<\/text>\n   <text x='40.68' y='239.67' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>gin<\/text>\n   <text x='21.1' y='228.97' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>seafood<\/text>\n   <text x='28.95' y='218.27' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>amalfi<\/text>\n   <text x='9.37' y='207.58' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>experience<\/text>\n   <text x='26.49' y='196.88' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>tasting<\/text>\n   <text x='23.06' y='186.19' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>trentino<\/text>\n   <text x='34.33' y='175.49' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>wine<\/text>\n   <text x='30.89' y='164.79' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>pasta<\/text>\n   <text x='21.1' y='154.1' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>bologna<\/text>\n   <text x='32.37' y='143.4' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>rome<\/text>\n   <text x='33.37' y='132.7' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>sicily<\/text>\n   <text x='22.09' y='122.01' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>tuscany<\/text>\n   <text x='26.99' y='111.31' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>venice<\/text>\n   <text x='5.48' y='100.62' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>masterclass<\/text>\n   <text x='28.94' y='89.92' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>puglia<\/text>\n   <text x='21.61' y='79.22' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>sardinia<\/text>\n   <text x='26.49' y='68.53' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>edition<\/text>\n   <text x='27' y='57.83' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>limited<\/text>\n   <text x='32.38' y='47.14' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>class<\/text>\n   <text x='20.63' y='36.44' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>morning<\/text>\n   <text x='13.77' y='25.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>beginners<\/text>\n   <text x='33.34' y='15.05' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>taste<\/text>\n   <polyline points='54.62,322.09 57.35,322.09' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,311.39 57.35,311.39' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,300.69 57.35,300.69' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,290.00 57.35,290.00' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,279.30 57.35,279.30' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,268.61 57.35,268.61' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,257.91 57.35,257.91' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,247.21 57.35,247.21' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,236.52 57.35,236.52' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,225.82 57.35,225.82' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,215.12 57.35,215.12' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,204.43 57.35,204.43' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,193.73 57.35,193.73' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,183.04 57.35,183.04' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,172.34 57.35,172.34' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,161.64 57.35,161.64' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,150.95 57.35,150.95' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,140.25 57.35,140.25' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,129.55 57.35,129.55' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,118.86 57.35,118.86' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,108.16 57.35,108.16' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,97.47 57.35,97.47' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,86.77 57.35,86.77' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,76.07 57.35,76.07' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,65.38 57.35,65.38' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,54.68 57.35,54.68' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,43.99 57.35,43.99' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,33.29 57.35,33.29' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,22.59 57.35,22.59' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,11.90 57.35,11.90' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='57.35,328.50 498.52,328.50' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='57.35,331.24 57.35,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='171.94,331.24 171.94,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='286.53,331.24 286.53,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='401.12,331.24 401.12,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='54.91' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>0<\/text>\n   <text x='167.05' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>20<\/text>\n   <text x='281.64' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>40<\/text>\n   <text x='396.22' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>60<\/text>\n   <text x='255' y='352.2' font-size='8.25pt' font-family='Arial'>Count (n)<\/text>\n  <\/g>\n <\/g>\n<\/svg>","js":null,"uid":"svg_ae696922_7b3b_43cf_a0d2_3882df3c2269","ratio":1.4,"settings":{"tooltip":{"css":".tooltip_SVGID_ { padding:5px;background:black;color:white;border-radius:2px;text-align:left; ; position:absolute;pointer-events:none;z-index:999;}","placement":"doc","opacity":0.9,"offx":10,"offy":10,"use_cursor_pos":true,"use_fill":false,"use_stroke":false,"delay_over":200,"delay_out":500},"hover":{"css":".hover_data_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_data_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_data_SVGID_ { fill:orange;stroke:black; }\nline.hover_data_SVGID_, polyline.hover_data_SVGID_ { fill:none;stroke:orange; }\nrect.hover_data_SVGID_, polygon.hover_data_SVGID_, path.hover_data_SVGID_ { fill:orange;stroke:none; }\nimage.hover_data_SVGID_ { stroke:orange; }","reactive":true,"nearest_distance":null},"hover_inv":{"css":""},"hover_key":{"css":".hover_key_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_key_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_key_SVGID_ { fill:orange;stroke:black; }\nline.hover_key_SVGID_, polyline.hover_key_SVGID_ { fill:none;stroke:orange; }\nrect.hover_key_SVGID_, polygon.hover_key_SVGID_, path.hover_key_SVGID_ { fill:orange;stroke:none; }\nimage.hover_key_SVGID_ { stroke:orange; }","reactive":true},"hover_theme":{"css":".hover_theme_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_theme_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_theme_SVGID_ { fill:orange;stroke:black; }\nline.hover_theme_SVGID_, polyline.hover_theme_SVGID_ { fill:none;stroke:orange; }\nrect.hover_theme_SVGID_, polygon.hover_theme_SVGID_, path.hover_theme_SVGID_ { fill:orange;stroke:none; }\nimage.hover_theme_SVGID_ { stroke:orange; }","reactive":true},"select":{"css":".select_data_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_data_SVGID_ { stroke:none;fill:red; }\ncircle.select_data_SVGID_ { fill:red;stroke:black; }\nline.select_data_SVGID_, polyline.select_data_SVGID_ { fill:none;stroke:red; }\nrect.select_data_SVGID_, polygon.select_data_SVGID_, path.select_data_SVGID_ { fill:red;stroke:none; }\nimage.select_data_SVGID_ { stroke:red; }","type":"multiple","only_shiny":true,"selected":[]},"select_inv":{"css":""},"select_key":{"css":".select_key_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_key_SVGID_ { stroke:none;fill:red; }\ncircle.select_key_SVGID_ { fill:red;stroke:black; }\nline.select_key_SVGID_, polyline.select_key_SVGID_ { fill:none;stroke:red; }\nrect.select_key_SVGID_, polygon.select_key_SVGID_, path.select_key_SVGID_ { fill:red;stroke:none; }\nimage.select_key_SVGID_ { stroke:red; }","type":"single","only_shiny":true,"selected":[]},"select_theme":{"css":".select_theme_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_theme_SVGID_ { stroke:none;fill:red; }\ncircle.select_theme_SVGID_ { fill:red;stroke:black; }\nline.select_theme_SVGID_, polyline.select_theme_SVGID_ { fill:none;stroke:red; }\nrect.select_theme_SVGID_, polygon.select_theme_SVGID_, path.select_theme_SVGID_ { fill:red;stroke:none; }\nimage.select_theme_SVGID_ { stroke:red; }","type":"single","only_shiny":true,"selected":[]},"zoom":{"min":1,"max":1,"duration":300},"toolbar":{"position":"topright","pngname":"diagram","tooltips":null,"hidden":[],"delay_over":200,"delay_out":500},"sizing":{"rescale":true,"width":1}}},"evals":[],"jsHooks":[]}</script><figcaption class="figure-caption">Figure&nbsp;2: Frequency of different words in Pasta Academy class names.</figcaption></figure>
 </div>
 </div>
 
@@ -542,9 +519,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -609,6 +600,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {

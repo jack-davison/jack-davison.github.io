@@ -5,4 +5,5 @@ listing:
   contents: experience
   type: grid
   sort-ui: false
+  image-height: "200px"
 ---

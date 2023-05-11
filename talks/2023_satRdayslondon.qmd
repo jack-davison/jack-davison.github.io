@@ -1,0 +1,44 @@
+---
+title: '"Put it on a map!" Developments in air quality data analysis'
+description: A public talk given as part of SatRdays London 2023.
+image: "2023_satRdayslondon.png"
+author: 
+- SatRdays London
+date: 2023/04/23
+language: 
+  title-block-author-single: "Audience"
+  title-block-author-plural: "Audience"
+  title-block-published: "Presented"
+format:
+  html:
+    code-link: true
+---
+
+```{r}
+#| label: loadpkg
+#| include: false
+#| cache-comments: false
+library(openair)
+library(openairmaps)
+library(leaflet)
+```
+
+### Access
+
+* Slides are hosted at <https://jack-davison.quarto.pub/satrdays-london-2023/#/section>.
+
+* Slides were created using RevealJS/Quarto, with the source code found at <https://github.com/jack-davison/satRdaysLondon2023-openairmaps>.
+
+* A recording will soon be made available.
+
+### Abstract 
+
+> An understanding of air quality is crucial as it can have significant public health, environmental and economic effects. However, air quality data is complex, constantly changing in space and time, and influenced by a myriad of factors such as meteorology and human activity. This makes air quality analysis challenging, and communicating the results of this analysis more challenging still!
+>
+> Just over a decade ago, the `{openair}` package was authored to provide an open‐source toolkit to help air quality practitioners get the most out of their data, and is still used widely in academia, consultancy and industry today. While `{openair}` itself has not changed hugely in recent years, much thought has been put into extending it through leveraging more recent tools and packages.
+>
+> In this talk I will discuss how we have recently married `{leaflet}` and `{openair}` to create effective, interactive air quality maps. In particular, I’ll discuss the development of the `{openairmaps}` package – a toolset which makes it easy to create interactive “directional analysis” maps to help explore the geospatial context of pollution monitoring data.
+
+### Context
+
+"[SatRdays](https://satrdays.org/)" is a low-cost, not-for-profit, locally organised R conference series. This talk was given at [SatRdays London 2023](https://satrday-london-2023.jumpingrivers.com/), and was mainly centred around the `{openairmaps}` R package, with wider framing around updating and using "legacy" packages.

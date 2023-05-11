@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Creating effective static and interactive data visualisation.">
 
-<title>Data Visualisation</title>
+<title>Talks</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,22 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -59,25 +60,56 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
 
-<link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Data Visualisation">
-<meta property="og:description" content="Creating effective static and interactive data visualisation.">
-<meta property="og:image" content="https://jack-davison.github.io/experience/experience_imgs/dataviz.png">
-<meta property="og:image:height" content="1958">
-<meta property="og:image:width" content="1957">
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Talks">
+<meta property="og:description" content="Presenting data analysis to a variety of audiences.">
+<meta property="og:image" content="https://jack-davison.github.io/talks/2023_satRdayslondon.png">
+<meta property="og:image:height" content="720">
+<meta property="og:image:width" content="1280">
 </head>
 
-<body class="floating nav-fixed fullcontent">
+<body class="floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../logo.png" alt="" class="navbar-logo">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./logo.png" alt="" class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -87,19 +119,19 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html" rel="" target="">
+    <a class="nav-link" href="./index.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../experience.html" rel="" target="">
+    <a class="nav-link" href="./experience.html" rel="" target="">
  <span class="menu-text">Experience</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../talks.html" rel="" target="">
+    <a class="nav-link active" href="./talks.html" rel="" target="" aria-current="page">
  <span class="menu-text">Talks</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../blog.html" rel="" target="">
+    <a class="nav-link" href="./blog.html" rel="" target="">
  <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item compact">
@@ -125,65 +157,103 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page">
+      <h1 class="title">Talks</h1>
+            <p class="subtitle lead">Presenting data analysis to a variety of audiences.</p>
+                      </div>
+  </div>
     
-</nav>
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-page" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Data Visualisation</h1>
+
+
+
+
+
+
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1682204400000" data-listing-file-modified-sort="1683788969866" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="thumbnail">
+<p><a href="./talks/2023_satRdayslondon.html"> <img src="./talks/2023_satRdayslondon.png" class="thumbnail-image"> </a></p>
 </div>
+<div class="body">
+<a href="./talks/2023_satRdayslondon.html">
+<h3 class="no-anchor listing-title">
+“Put it on a map!” Developments in air quality data analysis
+</h3>
+<div class="listing-subtitle">
 
-<div>
-  <div class="description">
-    Creating effective static and interactive data visualisation.
-  </div>
 </div>
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
-<p>I am passionate about data visualisation and communication in all of its forms. This page details some of the projects I’ve been part of.</p>
-<section id="tidytuesday" class="level3">
-<h3 class="anchored" data-anchor-id="tidytuesday">TidyTuesday</h3>
-<p>#TidyTuesday is a weekly data challenge which tests the R community to tidy and visualise an unseen dataset, which could be related to anything from astronauts to zoo animals! <a href="#fig-tt">Figure&nbsp;1</a> is a collage of a few of my favourite contributions, with my full repo found at <a href="https://github.com/jack-davison/TidyTuesday" class="uri">https://github.com/jack-davison/TidyTuesday</a>.</p>
-<div id="fig-tt" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="experience_imgs/tidytuesday.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;1: Some examples of my TidyTuesday contributions.</figcaption>
-</figure>
+<div class="listing-description">
+<p>A public talk given as part of SatRdays London 2023.</p>
 </div>
-</section>
-<section id="dubois-challenge" class="level3">
-<h3 class="anchored" data-anchor-id="dubois-challenge">DuBois Challenge</h3>
-<p>The DuBois Challenge is a challenge to recreate historic, hand drawn data visualisations using modern tools. The visualisations are specifically the work of data-viz pioneer W.E.B. DuBois, known for his subversive, geometric, ahead-of-his-time designs.</p>
-<p>I took part in the DuBois Challenge as part of #TidyTuesday (above), but my deepest examination of DuBois’ work was in my submission for the Posit Table Contest 2022, <a href="https://jack-davison.quarto.pub/tabulating-dubois/">Tabulating DuBois</a>, wherein I attempted to translate the work of DuBois to a more tabular medium with <code>{gt}</code>.</p>
-<div id="fig-dubois" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="https://github.com/jack-davison/rstudio_table-contest_2022/raw/main/man/comparison.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;2: An example table from <em>Tabulating DuBois</em>.</figcaption>
-</figure>
+</a>
 </div>
+<div class="metadata">
+<a href="./talks/2023_satRdayslondon.html">
+<div class="listing-date">
+Apr 23, 2023
+</div>
+<div class="listing-author">
+SatRdays London
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1633474800000" data-listing-file-modified-sort="1683788978940" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="thumbnail">
+<p><a href="./talks/2021_kmschemistry.html"> <img src="./talks/2021_kmschemistry.png" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./talks/2021_kmschemistry.html">
+<h3 class="no-anchor listing-title">
+New Approaches for Understanding Vehicle Emissions Using Remote Sensing
+</h3>
+<div class="listing-subtitle">
 
-
-</section>
-
-</main> <!-- /main -->
+</div>
+<div class="listing-description">
+<p>Presented as part of the Kathleen Mary Stott Prizewinners Seminar.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./talks/2021_kmschemistry.html">
+<div class="listing-date">
+Oct 6, 2021
+</div>
+<div class="listing-author">
+Department of Chemistry, University of York
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

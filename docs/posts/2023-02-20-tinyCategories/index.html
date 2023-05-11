@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.3.340">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Jack Davison">
 <meta name="dcterms.date" content="2023-02-20">
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,43 +47,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -128,10 +99,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/selectize-0.12.0/selectize.min.js"></script><link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="Visualising Uncommon Factors">
 <meta property="og:description" content="Avoiding incomprehensible legend items in your proportion charts through tabulating, lumping or interactive visualisations.">
-<meta property="og:image" content="https://jack-davison.github.io/posts\2023-02-20-tinyCategories\banner.jpg">
+<meta property="og:image" content="https://jack-davison.github.io/posts/2023-02-20-tinyCategories/banner.jpg">
 <meta name="twitter:title" content="Visualising Uncommon Factors">
 <meta name="twitter:description" content="Avoiding incomprehensible legend items in your proportion charts through tabulating, lumping or interactive visualisations.">
-<meta name="twitter:image" content="https://jack-davison.github.io/posts\2023-02-20-tinyCategories\banner.jpg">
+<meta name="twitter:image" content="https://jack-davison.github.io/posts/2023-02-20-tinyCategories/banner.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 <body class="floating nav-fixed">
@@ -142,40 +113,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
     <img src="../../logo.png" alt="" class="navbar-logo"></a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
 <li class="nav-item">
-    <a class="nav-link" href="../../index.html">
+    <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../experience.html">
+    <a class="nav-link" href="../../experience.html" rel="" target="">
  <span class="menu-text">Experience</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html">
+    <a class="nav-link" href="../../talks.html" rel="" target="">
+ <span class="menu-text">Talks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html" rel="" target="">
  <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/jdavison_"><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/jdavison_" rel="" target=""><i class="bi bi-twitter" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/jack-davison"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/jack-davison" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/jack-davison/"><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://www.linkedin.com/in/jack-davison/" rel="" target=""><i class="bi bi-linkedin" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-<div id="quarto-search" class="" title="Search"></div>
+<div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full"><div class="quarto-title-banner page-columns page-full">
@@ -218,7 +195,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
 <li><a href="#purpose" id="toc-purpose" class="nav-link active" data-scroll-target="#purpose">Purpose</a></li>
@@ -235,7 +212,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul></nav>
-</nav><!-- margin-sidebar --><div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content"><p><img src="banner.jpg" class="img-fluid"></p>
@@ -271,8 +250,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell-output-display">
 <div id="fig-default" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="index_files/figure-html/fig-default-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: A typical bar chart. Can you get information from every bar?</figcaption><p></p>
-</figure>
+<figcaption class="figure-caption">Figure&nbsp;1: A typical bar chart. Can you get information from every bar?</figcaption></figure>
 </div>
 </div>
 </div>
@@ -296,8 +274,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell-output-display">
 <div id="fig-normalise" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="index_files/figure-html/fig-normalise-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2: Each of the sectors have been normalised relative to their first value in 1990.</figcaption><p></p>
-</figure>
+<figcaption class="figure-caption">Figure&nbsp;2: Each of the sectors have been normalised relative to their first value in 1990.</figcaption></figure>
 </div>
 </div>
 </div>
@@ -329,8 +306,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell-output-display">
 <div id="fig-lump" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="index_files/figure-html/fig-lump-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3: Lumping the small categories makes the plot easier to read, but we’ve lost the individual values from the ‘Other’ sectors.</figcaption><p></p>
-</figure>
+<figcaption class="figure-caption">Figure&nbsp;3: Lumping the small categories makes the plot easier to read, but we’ve lost the individual values from the ‘Other’ sectors.</figcaption></figure>
 </div>
 </div>
 </div>
@@ -350,8 +326,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell-output-display">
 <div id="fig-scaletrans" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="index_files/figure-html/fig-scaletrans-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;4: The y-axis is now on a transformed scale; all the categories stand out, but it isn’t necessarily easy to read.</figcaption><p></p>
-</figure>
+<figcaption class="figure-caption">Figure&nbsp;4: The y-axis is now on a transformed scale; all the categories stand out, but it isn’t necessarily easy to read.</figcaption></figure>
 </div>
 </div>
 </div>
@@ -359,21 +334,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>If we’re happy using a <a href="https://ggplot2.tidyverse.org">ggplot2</a> extension package, <a href="https://ggforce.data-imaginist.com">ggforce</a> allows us a different way to display smaller values. We could “zoom in” on specific parts of our chart, making it much easier to view those smaller bars in our stacked barchart.</p>
 <p><strong>Advantage:</strong> “Best of both worlds” - we get our original plot as well as a version from which readers can see the smaller categories.</p>
 <p><strong>Disadvantage:</strong> The plot is now nearly twice as big. We must also now make sure that readers are clear what each panel represents to avoid confusion.</p>
-<p><strong>How:</strong> The <code><a href="https://ggforce.data-imaginist.com/reference/facet_zoom.html">ggforce::facet_zoom()</a></code> function is a special faceting function which is designed to do exactly what we’re after here.</p>
+<p><strong>How:</strong> The <code>ggforce::facet_zoom()</code> function is a special faceting function which is designed to do exactly what we’re after here.</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">copper</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">value</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">Sectors</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="st">"Annual UK Copper Emissions (kt)"</span>, fill <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"top"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Dark2"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">ggforce</span><span class="fu">::</span><span class="fu"><a href="https://ggforce.data-imaginist.com/reference/facet_zoom.html">facet_zoom</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">value</span> <span class="op">&lt;=</span> <span class="fl">0.02</span>,</span>
+<span>  <span class="fu">ggforce</span><span class="fu">::</span><span class="fu">facet_zoom</span><span class="op">(</span>y <span class="op">=</span> <span class="va">value</span> <span class="op">&lt;=</span> <span class="fl">0.02</span>,</span>
 <span>                      zoom.size <span class="op">=</span> <span class="fl">.5</span>,</span>
 <span>                      show.area <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div id="fig-zoom" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><p><img src="index_files/figure-html/fig-zoom-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;5: Zooming in on a specific part of the plot lets us have the best of both worlds!</figcaption><p></p>
-</figure>
+<figcaption class="figure-caption">Figure&nbsp;5: Zooming in on a specific part of the plot lets us have the best of both worlds!</figcaption></figure>
 </div>
 </div>
 </div>
@@ -396,8 +370,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="fig-plotly" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><div class="plotly html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-0511ef5c17b1d64d3447" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-0511ef5c17b1d64d3447">{"x":{"visdat":{"3c182fba3c45":["function () ","plotlyVisDat"]},"cur_data":"3c182fba3c45","attrs":{"3c182fba3c45":{"colors":"Dark2","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"type":"bar","color":{},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"barmode":"stack","yaxis":{"domain":[0,1],"automargin":true,"title":"Annual UK Copper Emissions (kt)"},"legend":{"orientation":"h"},"xaxis":{"domain":[0,1],"automargin":true,"title":"year"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020],"y":[0.245905902489295,0.247407457118729,0.245999945800942,0.246579043124372,0.251205685103417,0.255786959186153,0.261405433820678,0.265936818026412,0.270831938580481,0.275579897362759,0.275248079267203,0.27743452317128,0.283246736090811,0.28615144111332,0.289812061151139,0.289142531163387,0.292446248386196,0.295396407453821,0.290968752611179,0.285335939898056,0.284301907799403,0.284548788556071,0.283896292656334,0.286834550237021,0.296347124714007,0.302971981191811,0.30965417072068,0.315553938844563,0.319233479567054,0.324593683500469,0.266456402021674],"type":"bar","name":"Automobile tyre and brake wear","marker":{"color":"rgba(27,158,119,1)","line":{"color":"rgba(27,158,119,1)"}},"textfont":{"color":"rgba(27,158,119,1)"},"error_y":{"color":"rgba(27,158,119,1)"},"error_x":{"color":"rgba(27,158,119,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020],"y":[0.262108021684473,0.25398263586733,0.251811368739874,0.253245719285206,0.258941972863839,0.263962435353678,0.270611409297837,0.275195267560265,0.275573918395132,0.27900924689694,0.274141271866731,0.271331580318318,0.278855494616299,0.282757790542115,0.283876491260818,0.281010326887473,0.284374997898901,0.284959141206397,0.277838550786499,0.272194124496145,0.271833717509904,0.278157743029173,0.273673862066747,0.275900150816385,0.285190532012289,0.290635395493538,0.29544200059665,0.302242344161142,0.304748318684622,0.309719502846738,0.242671925056146],"type":"bar","name":"Production Processes","marker":{"color":"rgba(217,95,2,1)","line":{"color":"rgba(217,95,2,1)"}},"textfont":{"color":"rgba(217,95,2,1)"},"error_y":{"color":"rgba(217,95,2,1)"},"error_x":{"color":"rgba(217,95,2,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020],"y":[0.0508103944863888,0.0506970338963163,0.0481657757344588,0.0416966629116876,0.0378540328768784,0.0308211917954938,0.0289150906832473,0.0234066975606117,0.0255109886863161,0.0200603212691141,0.0201899691062781,0.0156453924132791,0.0087180039998327,0.0101875440935464,0.00969680969410981,0.00840405819586177,0.00777248830080524,0.00669759349371563,0.0112265155974999,0.00627693123299672,0.00659541213400548,0.00583250172089146,0.00667788756502847,0.00654567246310674,0.00626540027348108,0.00550868894459028,0.00486116320366669,0.00471487734082868,0.00512307321873103,0.00448830659929536,0.00409223592743145],"type":"bar","name":"Public Electricity Production / Industrial Combustion","marker":{"color":"rgba(117,112,179,1)","line":{"color":"rgba(117,112,179,1)"}},"textfont":{"color":"rgba(117,112,179,1)"},"error_y":{"color":"rgba(117,112,179,1)"},"error_x":{"color":"rgba(117,112,179,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020],"y":[0.0100971248541879,0.00968210628021968,0.00836916886414056,0.00774538145777797,0.00645830449012268,0.00506799311934801,0.00508268225176265,0.00497238943217721,0.00411859181290232,0.00405461889991155,0.00313013115607865,0.00308341875339607,0.00224379762166299,0.00201860659259164,0.00191029871964486,0.00198641763125084,0.00183593397863315,0.00176353784456737,0.00182178903896369,0.00195947952432559,0.00183993813711583,0.00178979252960436,0.00171245611459843,0.00178424028241964,0.00178809050822873,0.00112698250067888,0.00115809211539901,0.00117923443295718,0.00120327052084654,0.00112051630065221,0.00106481905527482],"type":"bar","name":"Residential / Commercial / Institutional","marker":{"color":"rgba(231,41,138,1)","line":{"color":"rgba(231,41,138,1)"}},"textfont":{"color":"rgba(231,41,138,1)"},"error_y":{"color":"rgba(231,41,138,1)"},"error_x":{"color":"rgba(231,41,138,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020],"y":[0.00603567778008986,0.00592548576064697,0.00601901693305507,0.00603431745760712,0.00643598457675314,0.00664404316637277,0.00684153730758905,0.00701227622022074,0.00730102434492843,0.00763942600711538,0.00755792420419087,0.00744894097819414,0.00741939971823923,0.00753200982723366,0.00784253838454019,0.00805663545042038,0.00798769652353768,0.00816716517871879,0.007901646993467,0.00739516042359607,0.00703617195111486,0.00706032914973175,0.00687242837632327,0.00677907567044185,0.00691575434957126,0.00699473483166614,0.00727047846925806,0.00741271813863326,0.0074721196009533,0.00751754075926813,0.00400996379341019],"type":"bar","name":"Transport","marker":{"color":"rgba(102,166,30,1)","line":{"color":"rgba(102,166,30,1)"}},"textfont":{"color":"rgba(102,166,30,1)"},"error_y":{"color":"rgba(102,166,30,1)"},"error_x":{"color":"rgba(102,166,30,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020],"y":[0.00640493651468424,0.00637333192057111,0.00634089900638242,0.00631404914799175,0.00637884352155262,0.00595582541324917,0.00619356926625228,0.00556294055896078,0.00595466759462108,0.00593699909087677,0.00590426886326424,0.00591113930978702,0.00587538891039503,0.00589088132758065,0.00591354359525052,0.00593404718112953,0.00591752585370686,0.00589250090764178,0.00580452152013784,0.0058542483336909,0.00596508696854518,0.00601524157590741,0.00599405332776578,0.00583846803647146,0.00582741330277393,0.00567648674277217,0.00582357709017657,0.00557785416196552,0.00543188310283964,0.00543407853041673,0.00522533808839026],"type":"bar","name":"Waste Incineration / Fireworks","marker":{"color":"rgba(230,171,2,1)","line":{"color":"rgba(230,171,2,1)"}},"textfont":{"color":"rgba(230,171,2,1)"},"error_y":{"color":"rgba(230,171,2,1)"},"error_x":{"color":"rgba(230,171,2,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><p></p><figcaption class="figure-caption">Figure&nbsp;6: An interactive plot. Try clicking on the legend or dragging around the plot area.</figcaption><p></p>
-</figure>
+<script type="application/json" data-for="htmlwidget-0511ef5c17b1d64d3447">{"x":{"visdat":{"3c182fba3c45":["function () ","plotlyVisDat"]},"cur_data":"3c182fba3c45","attrs":{"3c182fba3c45":{"colors":"Dark2","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"type":"bar","color":{},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"barmode":"stack","yaxis":{"domain":[0,1],"automargin":true,"title":"Annual UK Copper Emissions (kt)"},"legend":{"orientation":"h"},"xaxis":{"domain":[0,1],"automargin":true,"title":"year"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020],"y":[0.245905902489295,0.247407457118729,0.245999945800942,0.246579043124372,0.251205685103417,0.255786959186153,0.261405433820678,0.265936818026412,0.270831938580481,0.275579897362759,0.275248079267203,0.27743452317128,0.283246736090811,0.28615144111332,0.289812061151139,0.289142531163387,0.292446248386196,0.295396407453821,0.290968752611179,0.285335939898056,0.284301907799403,0.284548788556071,0.283896292656334,0.286834550237021,0.296347124714007,0.302971981191811,0.30965417072068,0.315553938844563,0.319233479567054,0.324593683500469,0.266456402021674],"type":"bar","name":"Automobile tyre and brake wear","marker":{"color":"rgba(27,158,119,1)","line":{"color":"rgba(27,158,119,1)"}},"textfont":{"color":"rgba(27,158,119,1)"},"error_y":{"color":"rgba(27,158,119,1)"},"error_x":{"color":"rgba(27,158,119,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020],"y":[0.262108021684473,0.25398263586733,0.251811368739874,0.253245719285206,0.258941972863839,0.263962435353678,0.270611409297837,0.275195267560265,0.275573918395132,0.27900924689694,0.274141271866731,0.271331580318318,0.278855494616299,0.282757790542115,0.283876491260818,0.281010326887473,0.284374997898901,0.284959141206397,0.277838550786499,0.272194124496145,0.271833717509904,0.278157743029173,0.273673862066747,0.275900150816385,0.285190532012289,0.290635395493538,0.29544200059665,0.302242344161142,0.304748318684622,0.309719502846738,0.242671925056146],"type":"bar","name":"Production Processes","marker":{"color":"rgba(217,95,2,1)","line":{"color":"rgba(217,95,2,1)"}},"textfont":{"color":"rgba(217,95,2,1)"},"error_y":{"color":"rgba(217,95,2,1)"},"error_x":{"color":"rgba(217,95,2,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020],"y":[0.0508103944863888,0.0506970338963163,0.0481657757344588,0.0416966629116876,0.0378540328768784,0.0308211917954938,0.0289150906832473,0.0234066975606117,0.0255109886863161,0.0200603212691141,0.0201899691062781,0.0156453924132791,0.0087180039998327,0.0101875440935464,0.00969680969410981,0.00840405819586177,0.00777248830080524,0.00669759349371563,0.0112265155974999,0.00627693123299672,0.00659541213400548,0.00583250172089146,0.00667788756502847,0.00654567246310674,0.00626540027348108,0.00550868894459028,0.00486116320366669,0.00471487734082868,0.00512307321873103,0.00448830659929536,0.00409223592743145],"type":"bar","name":"Public Electricity Production / Industrial Combustion","marker":{"color":"rgba(117,112,179,1)","line":{"color":"rgba(117,112,179,1)"}},"textfont":{"color":"rgba(117,112,179,1)"},"error_y":{"color":"rgba(117,112,179,1)"},"error_x":{"color":"rgba(117,112,179,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020],"y":[0.0100971248541879,0.00968210628021968,0.00836916886414056,0.00774538145777797,0.00645830449012268,0.00506799311934801,0.00508268225176265,0.00497238943217721,0.00411859181290232,0.00405461889991155,0.00313013115607865,0.00308341875339607,0.00224379762166299,0.00201860659259164,0.00191029871964486,0.00198641763125084,0.00183593397863315,0.00176353784456737,0.00182178903896369,0.00195947952432559,0.00183993813711583,0.00178979252960436,0.00171245611459843,0.00178424028241964,0.00178809050822873,0.00112698250067888,0.00115809211539901,0.00117923443295718,0.00120327052084654,0.00112051630065221,0.00106481905527482],"type":"bar","name":"Residential / Commercial / Institutional","marker":{"color":"rgba(231,41,138,1)","line":{"color":"rgba(231,41,138,1)"}},"textfont":{"color":"rgba(231,41,138,1)"},"error_y":{"color":"rgba(231,41,138,1)"},"error_x":{"color":"rgba(231,41,138,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020],"y":[0.00603567778008986,0.00592548576064697,0.00601901693305507,0.00603431745760712,0.00643598457675314,0.00664404316637277,0.00684153730758905,0.00701227622022074,0.00730102434492843,0.00763942600711538,0.00755792420419087,0.00744894097819414,0.00741939971823923,0.00753200982723366,0.00784253838454019,0.00805663545042038,0.00798769652353768,0.00816716517871879,0.007901646993467,0.00739516042359607,0.00703617195111486,0.00706032914973175,0.00687242837632327,0.00677907567044185,0.00691575434957126,0.00699473483166614,0.00727047846925806,0.00741271813863326,0.0074721196009533,0.00751754075926813,0.00400996379341019],"type":"bar","name":"Transport","marker":{"color":"rgba(102,166,30,1)","line":{"color":"rgba(102,166,30,1)"}},"textfont":{"color":"rgba(102,166,30,1)"},"error_y":{"color":"rgba(102,166,30,1)"},"error_x":{"color":"rgba(102,166,30,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020],"y":[0.00640493651468424,0.00637333192057111,0.00634089900638242,0.00631404914799175,0.00637884352155262,0.00595582541324917,0.00619356926625228,0.00556294055896078,0.00595466759462108,0.00593699909087677,0.00590426886326424,0.00591113930978702,0.00587538891039503,0.00589088132758065,0.00591354359525052,0.00593404718112953,0.00591752585370686,0.00589250090764178,0.00580452152013784,0.0058542483336909,0.00596508696854518,0.00601524157590741,0.00599405332776578,0.00583846803647146,0.00582741330277393,0.00567648674277217,0.00582357709017657,0.00557785416196552,0.00543188310283964,0.00543407853041673,0.00522533808839026],"type":"bar","name":"Waste Incineration / Fireworks","marker":{"color":"rgba(230,171,2,1)","line":{"color":"rgba(230,171,2,1)"}},"textfont":{"color":"rgba(230,171,2,1)"},"error_y":{"color":"rgba(230,171,2,1)"},"error_x":{"color":"rgba(230,171,2,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><figcaption class="figure-caption">Figure&nbsp;6: An interactive plot. Try clicking on the legend or dragging around the plot area.</figcaption></figure>
 </div>
 </div>
 </section><section id="tabulate" class="level2"><h2 class="anchored" data-anchor-id="tabulate">Tabulate</h2>
@@ -408,12 +381,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">copper</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>Sectors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">Sectors</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">DT</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/DT/man/datatable.html">datatable</a></span><span class="op">(</span>rownames <span class="op">=</span> <span class="cn">FALSE</span>, filter <span class="op">=</span> <span class="st">"top"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">DT</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/DT/man/formatCurrency.html">formatSignif</a></span><span class="op">(</span>columns <span class="op">=</span> <span class="fl">3</span>, digits <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">DT</span><span class="fu">::</span><span class="fu">datatable</span><span class="op">(</span>rownames <span class="op">=</span> <span class="cn">FALSE</span>, filter <span class="op">=</span> <span class="st">"top"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">DT</span><span class="fu">::</span><span class="fu">formatSignif</span><span class="op">(</span>columns <span class="op">=</span> <span class="fl">3</span>, digits <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div id="fig-table" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure"><div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-e58f1dff735b9aaf54a8" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-e58f1dff735b9aaf54a8">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;Automobile tyre and brake wear&quot;,&quot;Production Processes&quot;,&quot;Public Electricity Production / Industrial Combustion&quot;,&quot;Residential / Commercial / Institutional&quot;,&quot;Transport&quot;,&quot;Waste Incineration / Fireworks&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"integer\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1990\" data-max=\"2020\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0.001064819055274\" data-max=\"0.324593683500469\" data-scale=\"15\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","data":[["Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks"],[1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020],[0.245905902489295,0.247407457118729,0.245999945800942,0.246579043124372,0.251205685103417,0.255786959186153,0.261405433820678,0.265936818026412,0.270831938580481,0.275579897362759,0.275248079267203,0.27743452317128,0.283246736090811,0.28615144111332,0.289812061151139,0.289142531163387,0.292446248386196,0.295396407453821,0.290968752611179,0.285335939898056,0.284301907799403,0.284548788556071,0.283896292656334,0.286834550237021,0.296347124714007,0.302971981191811,0.30965417072068,0.315553938844563,0.319233479567054,0.324593683500469,0.266456402021674,0.262108021684473,0.25398263586733,0.251811368739874,0.253245719285206,0.258941972863839,0.263962435353678,0.270611409297837,0.275195267560265,0.275573918395132,0.27900924689694,0.274141271866731,0.271331580318318,0.278855494616299,0.282757790542115,0.283876491260818,0.281010326887473,0.284374997898901,0.284959141206397,0.277838550786499,0.272194124496145,0.271833717509904,0.278157743029173,0.273673862066747,0.275900150816385,0.285190532012289,0.290635395493538,0.29544200059665,0.302242344161142,0.304748318684622,0.309719502846738,0.242671925056146,0.0508103944863888,0.0506970338963163,0.0481657757344588,0.0416966629116876,0.0378540328768784,0.0308211917954938,0.0289150906832473,0.0234066975606117,0.0255109886863161,0.0200603212691141,0.0201899691062781,0.0156453924132791,0.0087180039998327,0.0101875440935464,0.00969680969410981,0.00840405819586177,0.00777248830080524,0.00669759349371563,0.0112265155974999,0.00627693123299672,0.00659541213400548,0.00583250172089146,0.00667788756502847,0.00654567246310674,0.00626540027348108,0.00550868894459028,0.00486116320366669,0.00471487734082868,0.00512307321873103,0.00448830659929536,0.00409223592743145,0.0100971248541879,0.00968210628021968,0.00836916886414056,0.00774538145777797,0.00645830449012268,0.00506799311934801,0.00508268225176265,0.00497238943217721,0.00411859181290232,0.00405461889991155,0.00313013115607865,0.00308341875339607,0.00224379762166299,0.00201860659259164,0.00191029871964486,0.00198641763125084,0.00183593397863315,0.00176353784456737,0.00182178903896369,0.00195947952432559,0.00183993813711583,0.00178979252960436,0.00171245611459843,0.00178424028241964,0.00178809050822873,0.00112698250067888,0.00115809211539901,0.00117923443295718,0.00120327052084654,0.00112051630065221,0.00106481905527482,0.00603567778008986,0.00592548576064697,0.00601901693305507,0.00603431745760712,0.00643598457675314,0.00664404316637277,0.00684153730758905,0.00701227622022074,0.00730102434492843,0.00763942600711538,0.00755792420419087,0.00744894097819414,0.00741939971823923,0.00753200982723366,0.00784253838454019,0.00805663545042038,0.00798769652353768,0.00816716517871879,0.007901646993467,0.00739516042359607,0.00703617195111486,0.00706032914973175,0.00687242837632327,0.00677907567044185,0.00691575434957126,0.00699473483166614,0.00727047846925806,0.00741271813863326,0.0074721196009533,0.00751754075926813,0.00400996379341019,0.00640493651468424,0.00637333192057111,0.00634089900638242,0.00631404914799175,0.00637884352155262,0.00595582541324917,0.00619356926625228,0.00556294055896078,0.00595466759462108,0.00593699909087677,0.00590426886326424,0.00591113930978702,0.00587538891039503,0.00589088132758065,0.00591354359525052,0.00593404718112953,0.00591752585370686,0.00589250090764178,0.00580452152013784,0.0058542483336909,0.00596508696854518,0.00601524157590741,0.00599405332776578,0.00583846803647146,0.00582741330277393,0.00567648674277217,0.00582357709017657,0.00557785416196552,0.00543188310283964,0.00543407853041673,0.00522533808839026]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Sectors<\/th>\n      <th>year<\/th>\n      <th>value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatSignif(data, 5, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[1,2]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true}},"evals":["options.columnDefs.0.render"],"jsHooks":[]}</script><p></p><figcaption class="figure-caption">Figure&nbsp;7: This isn’t a plot any more, but it does the job!</figcaption><p></p>
-</figure>
+<script type="application/json" data-for="htmlwidget-e58f1dff735b9aaf54a8">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;Automobile tyre and brake wear&quot;,&quot;Production Processes&quot;,&quot;Public Electricity Production / Industrial Combustion&quot;,&quot;Residential / Commercial / Institutional&quot;,&quot;Transport&quot;,&quot;Waste Incineration / Fireworks&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"integer\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"1990\" data-max=\"2020\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"0.001064819055274\" data-max=\"0.324593683500469\" data-scale=\"15\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","data":[["Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Automobile tyre and brake wear","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Production Processes","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Public Electricity Production / Industrial Combustion","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Residential / Commercial / Institutional","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Transport","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks","Waste Incineration / Fireworks"],[1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020],[0.245905902489295,0.247407457118729,0.245999945800942,0.246579043124372,0.251205685103417,0.255786959186153,0.261405433820678,0.265936818026412,0.270831938580481,0.275579897362759,0.275248079267203,0.27743452317128,0.283246736090811,0.28615144111332,0.289812061151139,0.289142531163387,0.292446248386196,0.295396407453821,0.290968752611179,0.285335939898056,0.284301907799403,0.284548788556071,0.283896292656334,0.286834550237021,0.296347124714007,0.302971981191811,0.30965417072068,0.315553938844563,0.319233479567054,0.324593683500469,0.266456402021674,0.262108021684473,0.25398263586733,0.251811368739874,0.253245719285206,0.258941972863839,0.263962435353678,0.270611409297837,0.275195267560265,0.275573918395132,0.27900924689694,0.274141271866731,0.271331580318318,0.278855494616299,0.282757790542115,0.283876491260818,0.281010326887473,0.284374997898901,0.284959141206397,0.277838550786499,0.272194124496145,0.271833717509904,0.278157743029173,0.273673862066747,0.275900150816385,0.285190532012289,0.290635395493538,0.29544200059665,0.302242344161142,0.304748318684622,0.309719502846738,0.242671925056146,0.0508103944863888,0.0506970338963163,0.0481657757344588,0.0416966629116876,0.0378540328768784,0.0308211917954938,0.0289150906832473,0.0234066975606117,0.0255109886863161,0.0200603212691141,0.0201899691062781,0.0156453924132791,0.0087180039998327,0.0101875440935464,0.00969680969410981,0.00840405819586177,0.00777248830080524,0.00669759349371563,0.0112265155974999,0.00627693123299672,0.00659541213400548,0.00583250172089146,0.00667788756502847,0.00654567246310674,0.00626540027348108,0.00550868894459028,0.00486116320366669,0.00471487734082868,0.00512307321873103,0.00448830659929536,0.00409223592743145,0.0100971248541879,0.00968210628021968,0.00836916886414056,0.00774538145777797,0.00645830449012268,0.00506799311934801,0.00508268225176265,0.00497238943217721,0.00411859181290232,0.00405461889991155,0.00313013115607865,0.00308341875339607,0.00224379762166299,0.00201860659259164,0.00191029871964486,0.00198641763125084,0.00183593397863315,0.00176353784456737,0.00182178903896369,0.00195947952432559,0.00183993813711583,0.00178979252960436,0.00171245611459843,0.00178424028241964,0.00178809050822873,0.00112698250067888,0.00115809211539901,0.00117923443295718,0.00120327052084654,0.00112051630065221,0.00106481905527482,0.00603567778008986,0.00592548576064697,0.00601901693305507,0.00603431745760712,0.00643598457675314,0.00664404316637277,0.00684153730758905,0.00701227622022074,0.00730102434492843,0.00763942600711538,0.00755792420419087,0.00744894097819414,0.00741939971823923,0.00753200982723366,0.00784253838454019,0.00805663545042038,0.00798769652353768,0.00816716517871879,0.007901646993467,0.00739516042359607,0.00703617195111486,0.00706032914973175,0.00687242837632327,0.00677907567044185,0.00691575434957126,0.00699473483166614,0.00727047846925806,0.00741271813863326,0.0074721196009533,0.00751754075926813,0.00400996379341019,0.00640493651468424,0.00637333192057111,0.00634089900638242,0.00631404914799175,0.00637884352155262,0.00595582541324917,0.00619356926625228,0.00556294055896078,0.00595466759462108,0.00593699909087677,0.00590426886326424,0.00591113930978702,0.00587538891039503,0.00589088132758065,0.00591354359525052,0.00593404718112953,0.00591752585370686,0.00589250090764178,0.00580452152013784,0.0058542483336909,0.00596508696854518,0.00601524157590741,0.00599405332776578,0.00583846803647146,0.00582741330277393,0.00567648674277217,0.00582357709017657,0.00557785416196552,0.00543188310283964,0.00543407853041673,0.00522533808839026]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Sectors<\/th>\n      <th>year<\/th>\n      <th>value<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatSignif(data, 5, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[1,2]}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true}},"evals":["options.columnDefs.0.render"],"jsHooks":[]}</script><figcaption class="figure-caption">Figure&nbsp;7: This isn’t a plot any more, but it does the job!</figcaption></figure>
 </div>
 </div>
 </section></section><section id="conclusion" class="level1"><h1>Conclusion</h1>
@@ -448,9 +420,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -515,6 +501,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {

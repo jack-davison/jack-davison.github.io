@@ -1,0 +1,27 @@
+---
+title: New Approaches for Understanding Vehicle Emissions Using Remote Sensing
+description: Presented as part of the Kathleen Mary Stott Prizewinners Seminar.
+image: "2021_kmschemistry.png"
+author: 
+- Department of Chemistry
+- University of York
+date: 2021/10/06
+language: 
+  title-block-author-single: "Audience"
+  title-block-author-plural: "Audience"
+  title-block-published: "Presented"
+---
+
+# Access
+
+* Slides were produced in PowerPoint and are available on request.
+
+* Content was centred around my PhD thesis [@wreo31313].
+
+# Abstract 
+
+N/A
+
+# Context
+
+I was one of three PhD student recipients of the 2021 Kathleen Mary Stott Prize, awarded by the Department of Chemistry, University of York. My research can be read about on my [research page](../experience/research.qmd) or in my publicly available thesis [@wreo31313].

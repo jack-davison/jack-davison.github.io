@@ -17,5 +17,12 @@
       "/experience/research.html",
       "/experience/teaching.html"
     ]
+  },
+  {
+    "listing": "/talks.html",
+    "items": [
+      "/talks/2023_satRdayslondon.html",
+      "/talks/2021_kmschemistry.html"
+    ]
   }
 ]
