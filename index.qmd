@@ -30,3 +30,5 @@ I was awarded a PhD in Atmospheric Chemistry from the [Wolfson Atmospheric Chemi
 I'm a collaborator on the [{openair} project](https://github.com/davidcarslaw/openair) and the lead developer on the [{openairmaps}](https://github.com/davidcarslaw/openairmaps) R package. 
 
 I'm also a [Posit (formerly RStudio) Certified Tidyverse Instructor](https://education.rstudio.com/trainers/) and have taught R for environmental data analysis to a wide range of audiences, including learners from Defra, the UK Environment Agency, and the UK Health Security Agency.
+
+Reach me on [Twitter](https://twitter.com/JDavison_) and <a rel="me" href="https://fosstodon.org/@jackdavison">Mastodon</a>.
