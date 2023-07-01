@@ -3,25 +3,27 @@ title: Jack Davison
 subtitle: Air Quality Data Analyst & R Developer
 image: selfie-zoomed.jpg
 about:
-  template: trestles
+  template: jolla
   image-shape: rounded
-  image-width: "30%"
   links:
     - icon: twitter
       text: Twitter
-      href: https://twitter.com/jdavison_
+      href: "https://twitter.com/jdavison_"
+    - icon: mastodon
+      text: Mastodon
+      href: "https://fosstodon.org/@jackdavison"
     - icon: github
       text: Github
-      href: https://github.com/jack-davison
+      href: "https://github.com/jack-davison"
     - icon: linkedin
       text: LinkedIn
-      href: https://www.linkedin.com/in/jack-davison/
+      href: "https://www.linkedin.com/in/jack-davison/"
 format: 
   html:
     page-layout: full
 ---
 
-I am a data analyst and R developer working for an Environmental Consultancy in South Oxfordshire in the United Kingdom.
+I am a senior consultant and data analyst working for an Environmental Consultancy in South Oxfordshire in the United Kingdom.
 
 I was awarded a PhD in Atmospheric Chemistry from the [Wolfson Atmospheric Chemistry Laboratories](https://www.york.ac.uk/chemistry/research/wacl/) at the University of York, with research focusing on the calculating emission factors from large databases of road transport emissions. 
 

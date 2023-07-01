@@ -1,7 +1,7 @@
 ---
 title: Teaching
 description: Experience teaching R and reproducible data analysis.
-image: experience_imgs/teaching.png
+image: experience_imgs/teaching.jpg
 execute: 
   freeze: auto
 format:

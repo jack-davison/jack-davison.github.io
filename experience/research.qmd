@@ -1,7 +1,7 @@
 ---
 title: Research
 description: PhD research into the remote sensing of vehicle emissions.
-image: experience_imgs/research.png
+image: experience_imgs/research.jpg
 execute: 
   freeze: auto
 nocite: |

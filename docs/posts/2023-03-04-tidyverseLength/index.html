@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.340">
+<meta name="generator" content="quarto-1.3.433">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Jack Davison">
 <meta name="dcterms.date" content="2023-03-04">
@@ -87,7 +87,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script><script src="../../site_libs/htmlwidgets-1.6.1/htmlwidgets.js"></script><script src="../../site_libs/plotly-binding-4.10.1/plotly.js"></script><script src="../../site_libs/typedarray-0.1/typedarray.min.js"></script><script src="../../site_libs/jquery-3.5.1/jquery.min.js"></script><link href="../../site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
 <script src="../../site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="../../site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
@@ -218,8 +219,8 @@ Note
 </div>
 <p>Scrolling through #rstats Twitter recently I noticed a lot of conversation about the recent <a href="https://tidyr.tidyverse.org">tidyr</a> deprecations being overly wordy. After all, <code>separate()</code> being superseded by <code>separate_wider_position()</code> does feel almost comically long!</p>
 <p></p>
-<div id="tweet-80634"></div>
-<script>tweet={"url":"https:\/\/twitter.com\/charliejhadley\/status\/1631040342299377664","author_name":"@charliejhadley@tech.lgbt","author_url":"https:\/\/twitter.com\/charliejhadley","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EBask in my narrowcast!\u003Cbr\u003E\u003Cbr\u003EChatGPT can now deprecate tidyverse functions for us! \u003Ca href=\"https:\/\/t.co\/MMwW7Jd87n\"\u003Epic.twitter.com\/MMwW7Jd87n\u003C\/a\u003E\u003C\/p\u003E&mdash; @charliejhadley@tech.lgbt (@charliejhadley) \u003Ca href=\"https:\/\/twitter.com\/charliejhadley\/status\/1631040342299377664?ref_src=twsrc%5Etfw\"\u003EMarch 1, 2023\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-80634").innerHTML = tweet["html"];</script><p>This made me think, however - which <a href="https://tidyverse.tidyverse.org">tidyverse</a> packages have the wordiest functions? And are functions always shorter than the functions that supersede them? Let’s use R to find out.</p>
+<div id="tweet-53167"></div>
+<script>tweet={"url":"https:\/\/twitter.com\/charliejhadley\/status\/1631040342299377664","author_name":"Charlie","author_url":"https:\/\/twitter.com\/charliejhadley","html":"\u003Cblockquote class=\"twitter-tweet\" align=\"center\"\u003E\u003Cp lang=\"en\" dir=\"ltr\"\u003EBask in my narrowcast!\u003Cbr\u003E\u003Cbr\u003EChatGPT can now deprecate tidyverse functions for us! \u003Ca href=\"https:\/\/t.co\/MMwW7Jd87n\"\u003Epic.twitter.com\/MMwW7Jd87n\u003C\/a\u003E\u003C\/p\u003E&mdash; Charlie (@charliejhadley) \u003Ca href=\"https:\/\/twitter.com\/charliejhadley\/status\/1631040342299377664?ref_src=twsrc%5Etfw\"\u003EMarch 1, 2023\u003C\/a\u003E\u003C\/blockquote\u003E\n\u003Cscript async src=\"https:\/\/platform.twitter.com\/widgets.js\" charset=\"utf-8\"\u003E\u003C\/script\u003E\n","width":550,"height":null,"type":"rich","cache_age":"3153600000","provider_name":"Twitter","provider_url":"https:\/\/twitter.com","version":"1.0"};document.getElementById("tweet-53167").innerHTML = tweet["html"];</script><p>This made me think, however - which <a href="https://tidyverse.tidyverse.org">tidyverse</a> packages have the wordiest functions? And are functions always shorter than the functions that supersede them? Let’s use R to find out.</p>
 <section id="data" class="level1"><h1>Data</h1>
 <p>First, we need to load the whole <a href="https://tidyverse.tidyverse.org">tidyverse</a>. I’m not talking about the “core” tidyverse - we need the whole thing!</p>
 <div class="cell">
@@ -711,7 +712,7 @@ Note
 </ul>
 <div class="cell">
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">supers</span> <span class="op">&lt;-</span> </span>
-<span>  <span class="fu">read_csv</span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu">here</span><span class="op">(</span><span class="st">"posts/2023-03-04-tidyverseLength/superseded.csv"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">read_csv</span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"posts/2023-03-04-tidyverseLength/superseded.csv"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu">left_join</span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">functions</span>, <span class="op">-</span><span class="va">pkg.core</span>, <span class="op">-</span><span class="va">lifecycle</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu">left_join</span><span class="op">(</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">functions</span>, <span class="op">-</span><span class="va">pkg.core</span>, <span class="op">-</span><span class="va">lifecycle</span><span class="op">)</span>,</span>

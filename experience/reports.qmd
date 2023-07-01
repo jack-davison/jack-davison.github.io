@@ -1,7 +1,7 @@
 ---
 title: Dynamic Reporting
 description: Authoring dynamic documents using `{quarto}` and `{rmarkdown}`.
-image: experience_imgs/reports.png
+image: experience_imgs/report.jpg
 execute: 
   freeze: auto
 format:

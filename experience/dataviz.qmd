@@ -1,7 +1,7 @@
 ---
 title: Data Visualisation
 description: Creating effective static and interactive data visualisation.
-image: experience_imgs/dataviz.png
+image: experience_imgs/dataviz.jpg
 execute: 
   freeze: auto
 format:
