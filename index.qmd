@@ -6,8 +6,8 @@ about:
   template: jolla
   image-shape: rounded
   links:
-    - icon: twitter
-      text: Twitter
+    - icon: twitter-x
+      text: X (twitter)
       href: "https://twitter.com/jdavison_"
     - icon: mastodon
       text: Mastodon
@@ -23,6 +23,15 @@ format:
     page-layout: full
 ---
 
+<style>
+#quarto-content>* {
+    padding-top: 0px;
+}
+element.style {
+    min-height: calc(50vh - 73px);
+}
+</style>
+
 I am a senior consultant and data analyst working for an Environmental Consultancy in South Oxfordshire in the United Kingdom.
 
 I was awarded a PhD in Atmospheric Chemistry from the [Wolfson Atmospheric Chemistry Laboratories](https://www.york.ac.uk/chemistry/research/wacl/) at the University of York, with research focusing on the calculating emission factors from large databases of road transport emissions. 
@@ -31,4 +40,4 @@ I'm a collaborator on the [{openair} project](https://github.com/davidcarslaw/op
 
 I'm also a [Posit (formerly RStudio) Certified Tidyverse Instructor](https://education.rstudio.com/trainers/) and have taught R for environmental data analysis to a wide range of audiences, including learners from Defra, the UK Environment Agency, and the UK Health Security Agency.
 
-Reach me on [Twitter](https://twitter.com/JDavison_) and <a rel="me" href="https://fosstodon.org/@jackdavison">Mastodon</a>.
+Reach me on [X (Twitter)](https://twitter.com/JDavison_) and <a rel="me" href="https://fosstodon.org/@jackdavison">Mastodon</a>.

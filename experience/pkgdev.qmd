@@ -7,7 +7,20 @@ execute:
 format:
   html:
     toc: false
+    code-link: true
 ---
+
+```{r}
+#| include: false
+library(openairmaps)
+library(openair)
+library(leaflet)
+library(ggmap)
+library(lattice)
+library(patchwork)
+library(ggopenair)
+library(worldmet)
+```
 
 As well as authoring many private R packages to streamline data analysis pipelines for myself and colleagues, I have also developed publicly available packages, many of which focused on air quality data analysis.
 

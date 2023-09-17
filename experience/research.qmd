@@ -9,7 +9,13 @@ nocite: |
 format:
   html:
     toc: false
+    code-link: true
 ---
+
+```{r}
+#| include: false
+library(quantreg)
+```
 
 My PhD thesis [@wreo31313] focused on the calculation of representative emission factors from vehicle emission remote sensing data. An emission factor is a value used to estimate a total emission from a sector (e.g., transport) from a more measurable activity (e.g., total kilometres driven).
 
