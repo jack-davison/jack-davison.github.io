@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Jack Davison">
+<meta name="dcterms.date" content="2023-07-03">
+<meta name="description" content="Creating smart, interactive, web-based time series in quarto reports.">
+<title>Air Quality Time Series in Observable Plot</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script><link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Air Quality Time Series in Observable Plot">
+<meta property="og:description" content="Creating smart, interactive, web-based time series in quarto reports.">
+<meta property="og:image" content="https://jack-davison.github.io/posts/2023-07-03-ojsTimePlot/banner.jpg">
+<meta name="twitter:title" content="Air Quality Time Series in Observable Plot">
+<meta name="twitter:description" content="Creating smart, interactive, web-based time series in quarto reports.">
+<meta name="twitter:image" content="https://jack-davison.github.io/posts/2023-07-03-ojsTimePlot/banner.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="floating nav-fixed slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../logo.png" alt="" class="navbar-logo"></a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../experience.html" rel="" target="">
+ <span class="menu-text">Experience</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../talks.html" rel="" target="">
+ <span class="menu-text">Talks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/jdavison_" rel="" target=""><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jack-davison" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/jack-davison/" rel="" target=""><i class="bi bi-linkedin" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+<div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full"><div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Air Quality Time Series in Observable Plot</h1>
+                  <div>
+        <div class="description">
+          <p>Creating smart, interactive, web-based time series in quarto reports.</p>
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">visualisation</div>
+                <div class="quarto-category">observable</div>
+                <div class="quarto-category">airquality</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Jack Davison </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 3, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li>
+<a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+<li><a href="#purpose" id="toc-purpose" class="nav-link" data-scroll-target="#purpose">Purpose</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#r-plotting" id="toc-r-plotting" class="nav-link" data-scroll-target="#r-plotting">R plotting</a>
+  <ul class="collapse">
+<li><a href="#dygraphs" id="toc-dygraphs" class="nav-link" data-scroll-target="#dygraphs"><code>{dygraphs}</code></a></li>
+  </ul>
+</li>
+  <li>
+<a href="#observable" id="toc-observable" class="nav-link" data-scroll-target="#observable">Observable</a>
+  <ul class="collapse">
+<li><a href="#data-tranfer-to-ojs" id="toc-data-tranfer-to-ojs" class="nav-link" data-scroll-target="#data-tranfer-to-ojs">Data Tranfer to OJS</a></li>
+  <li><a href="#plotting-in-ojs" id="toc-plotting-in-ojs" class="nav-link" data-scroll-target="#plotting-in-ojs">Plotting in OJS</a></li>
+  <li><a href="#whats-the-point" id="toc-whats-the-point" class="nav-link" data-scroll-target="#whats-the-point">What’s the point?</a></li>
+  <li><a href="#case-study-ozone-concentrations" id="toc-case-study-ozone-concentrations" class="nav-link" data-scroll-target="#case-study-ozone-concentrations">Case Study: Ozone Concentrations</a></li>
+  </ul>
+</li>
+  </ul></nav>
+</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content"><section id="introduction" class="level1"><h1>Introduction</h1>
+<section id="purpose" class="level2"><h2 class="anchored" data-anchor-id="purpose">Purpose</h2>
+<p>This blog post demonstrates plotting air quality time series for use in quarto documents. First we’ll do it in R, but then I’ll introduce Observable Plot, a JavaScript library for making high-quality, web-based plots of all shapes and sizes. While you may worry that you’re not a JavaScript programmer (spoilers: neither am I!) you’ll hopefully see that it is not too tricky to learn at all. Plus, it is built-in to <a href="https://quarto.org/">Quarto</a>, so if you’re an R, Python or Julia user it’s only a small leap to start creating interactive web graphics for your next data-driven report.</p>
+</section><section id="data" class="level2"><h2 class="anchored" data-anchor-id="data">Data</h2>
+<p>To plot some AQ time series, we first need some data. I’m going to use <a href="https://davidcarslaw.github.io/openair/">openair</a> to import NO<sub>x</sub> data from Marylebone Road in 2019. I’ll then average it to daily concentrations, and pivot it longer. You can see a summary of this data in <strong>?@tbl-info</strong>.</p>
+<div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-info</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "A summary of our `aq_data` dataframe."</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># import AQ data</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>aq_data <span class="ot">&lt;-</span> openair<span class="sc">::</span><span class="fu">importAURN</span>(<span class="st">"my1"</span>, <span class="at">year =</span> <span class="dv">2019</span>, <span class="at">pollutant =</span> <span class="fu">c</span>(<span class="st">"nox"</span>, <span class="st">"no2"</span>)) </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># average to daily</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>aq_data <span class="ot">&lt;-</span> openair<span class="sc">::</span><span class="fu">timeAverage</span>(aq_data, <span class="st">"day"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># tidy</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>aq_data_long <span class="ot">&lt;-</span> tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(aq_data, <span class="sc">-</span>date, <span class="at">names_to =</span> <span class="st">"pollutant"</span>, <span class="at">values_to =</span> <span class="st">"value"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># capitalise pollutants</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>aq_data_long<span class="sc">$</span>pollutant <span class="ot">&lt;-</span> <span class="fu">toupper</span>(aq_data_long<span class="sc">$</span>pollutant)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># view</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>gtsummary<span class="sc">::</span><span class="fu">tbl_summary</span>(aq_data_long, <span class="at">by =</span> <span class="st">"pollutant"</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-info" class="cell tbl-parent quarto-layout-panel anchored" data-tbl-cap="A summary of our `aq_data` dataframe.">
+<div class="panel-caption table-caption">
+<p><strong>?(caption)</strong></p>
+</div>
+</div>
+</div>
+</section></section><section id="r-plotting" class="level1"><h1>R plotting</h1>
+<p>Now, let’s briefly outline how we might make roughly the same air quality time series using four common packages - <a href="https://davidcarslaw.github.io/openair/">openair</a>, <a href="https://ggplot2.tidyverse.org">ggplot2</a>, <a href="https://plotly-r.com">plotly</a> and <a href="https://github.com/rstudio/dygraphs">dygraphs</a>. I’m going to try my best to ensure that they all look as similar as possible, to give a proper like-for-like comparison.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true"><code>{openair}</code> (<code>{lattice}</code>)</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><code>{ggplot2}</code></a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false"><code>{plotly}</code></a></li>
+</ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p><a href="https://davidcarslaw.github.io/openair/">openair</a> is the oldest package in this list and the most dedicated to air quality. When <code><a href="https://davidcarslaw.github.io/openair/reference/timePlot.html">openair::timePlot()</a></code> was first authored, <a href="https://lattice.r-forge.r-project.org/">lattice</a> was common, <a href="https://ggplot2.tidyverse.org">ggplot2</a> was slow and incomplete, and it was generally tricky to create a good looking time series in R. Nowadays that isn’t the case, but <a href="https://davidcarslaw.github.io/openair/">openair</a> has some key advantages, such as built-in time averaging and automatic formatting of common air quality pollutant names and units.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-openair</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "A timeseries built using `{openair}`."</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openair)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">timePlot</span>(</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  aq_data,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">"nox"</span>, <span class="st">"no2"</span>),</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"royalblue"</span>, <span class="st">"tomato"</span>),</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="fu">c</span>(<span class="st">"conc. (ug/m3)"</span>),</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">key.position =</span> <span class="st">"top"</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p><a href="https://ggplot2.tidyverse.org">ggplot2</a> needs no introduction. It is one of the most common methods of plotting in R, (almost!) endlessly extensible. It is much less prescriptive than <a href="https://davidcarslaw.github.io/openair/">openair</a>, which means users get much more control over their outputs, but equally have to work that bit harder! Plots are composed by adding (<code>+</code>) geometries, stats, themes, scales, etc. to a base <code>ggplot()</code> object, and by mapping dataframe columns to different aesthetics (x, y, color, size, alpha, etc.).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-ggplot2</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "A timeseries built using `{ggplot2}`."</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(aq_data_long, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> value, <span class="at">color =</span> pollutant)) <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>) <span class="sc">+</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"tomato"</span>, <span class="st">"royalblue"</span>)) <span class="sc">+</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> openair<span class="sc">::</span><span class="fu">quickText</span>(<span class="st">"conc. (ug/m3)"</span>),</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="cn">NULL</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<p><a href="https://plotly-r.com">plotly</a> is a wrapper around the javascript library of the same name. The R implementation uses similar syntax to <a href="https://ggplot2.tidyverse.org">ggplot2</a>, so its not too tricky to jump from one to the other. The key differences are that the base object, defined with <code>plot_ly()</code> is <em>piped into</em> functions rather than <em>added to</em> them, and the aesthetics are given using “formula syntax”. The key benefit of <a href="https://plotly-r.com">plotly</a> is it is inherently interactive, which means readers can easily learn more about the data by reading tooltips or zooming in on it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-plotly</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "A timeseries built using `{plotly}`."</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_ly</span>(</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  aq_data_long,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="sc">~</span> date,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="sc">~</span> value,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">color =</span> <span class="sc">~</span> pollutant,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"tomato"</span>, <span class="st">"royalblue"</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_lines</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layout</span>(<span class="at">xaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">""</span>),</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">yaxis =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">"conc. (μg m⁻³)"</span>),</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">legend =</span> <span class="fu">list</span>(<span class="at">orientation =</span> <span class="st">"h"</span>, <span class="at">y =</span> <span class="fl">1.2</span>))</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<section id="dygraphs" class="level2"><h2 class="anchored" data-anchor-id="dygraphs"><code>{dygraphs}</code></h2>
+<p>I’m going to be honest - I’m not a huge fan of how <a href="https://github.com/rstudio/dygraphs">dygraphs</a> outputs look! It can also be a bit of a pain to get your data in the right structure to keep the package happy. However, the key positives of this package is that its entirely dedicated to time series and can quite quickly put together an interactive plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-dygraphs</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "A timeseries built using `{dygraphs}`."</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dygraphs)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>aq_data <span class="sc">%&gt;%</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">rename_with</span>(toupper, <span class="sc">-</span>date) <span class="sc">%&gt;%</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dygraph</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dyAxis</span>(<span class="st">"y"</span>, <span class="st">"conc. (μg m⁻³)"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dyOptions</span>(<span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"royalblue"</span>, <span class="st">"tomato"</span>))</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section><section id="observable" class="level1 page-columns page-full"><h1>Observable</h1>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<div class="callout callout-style-simple callout-note callout-titled" title="ojs chunks">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+ojs chunks
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Notice that we’re now starting to write in {ojs} chunks. You can’t write R (or Python/Julia) code in these, nor can they be run interactively.</p>
+</div>
+</div>
+</div></div><section id="data-tranfer-to-ojs" class="level2"><h2 class="anchored" data-anchor-id="data-tranfer-to-ojs">Data Tranfer to OJS</h2>
+<p>First, we need to pass our data to observable using the built-in quarto <code>ojs_define()</code> functionality. Note that this won’t run interactively, but will be properly run when the document is compiled.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ojs_define</span>(<span class="at">aq_data_raw =</span> aq_data_long)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-output="all">
+<div class="sourceCode cell-code" id="cb7" data-startfrom="150" data-source-offset="9"><pre class="sourceCode java code-with-copy"><code class="sourceCode java" style="counter-reset: source-line 149;"><span id="cb7-150"><a href="#cb7-150" aria-hidden="true" tabindex="-1"></a>```<span class="op">{</span>ojs<span class="op">}</span></span>
+<span id="cb7-151"><a href="#cb7-151" aria-hidden="true" tabindex="-1"></a><span class="co">//| output: all</span></span>
+<span id="cb7-152"><a href="#cb7-152" aria-hidden="true" tabindex="-1"></a>aq_data_raw</span>
+<span id="cb7-153"><a href="#cb7-153" aria-hidden="true" tabindex="-1"></a>```</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-1" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<p>One issue that needs resolving is that <code>ojs_define()</code> changes R dates to character strings, meaning that we need to write the javascript to fix this. This next chunk is taken directly from <a href="https://stackoverflow.com/questions/76499928/passing-dates-from-r-chunk-to-ojs-chunk-using-ojs-define-in-quarto">this StackOverflow post</a>, but effectively is importing JavaScript libraries necessary to parse the “date” column as a “date”.</p>
+<ol type="1">
+<li><p>The first line is importing <a href="https://uwdata.github.io/arquero/">arquero</a>, a JavaScript data manipulation library similar to <a href="https://dplyr.tidyverse.org">dplyr</a>.</p></li>
+<li><p>The second line imports <a href="https://d3js.org/">d3</a>, the JavaScript library that Plot is built on. d3 is <em>a lot</em> more complicated to plot with, but all we need from it here is a datetime parser.</p></li>
+<li><p>The third line sets up a parser that is expecting a “YYYY-MM-DD HH:MM:SS” string to transform into a date.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" data-startfrom="163" data-source-offset="9"><pre class="sourceCode java code-with-copy"><code class="sourceCode java" style="counter-reset: source-line 162;"><span id="cb8-163"><a href="#cb8-163" aria-hidden="true" tabindex="-1"></a>```<span class="op">{</span>ojs<span class="op">}</span></span>
+<span id="cb8-164"><a href="#cb8-164" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="im">{ aq } from '@uwdata/arquero'</span></span>
+<span id="cb8-165"><a href="#cb8-165" aria-hidden="true" tabindex="-1"></a>d3 <span class="op">=</span> <span class="fu">require</span><span class="op">(</span><span class="st">"d3@7"</span><span class="op">)</span></span>
+<span id="cb8-166"><a href="#cb8-166" aria-hidden="true" tabindex="-1"></a>parser <span class="op">=</span> d3<span class="op">.</span><span class="fu">timeParse</span><span class="op">(</span><span class="st">"%Y-%m-%d"</span><span class="op">);</span></span>
+<span id="cb8-167"><a href="#cb8-167" aria-hidden="true" tabindex="-1"></a>```</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<p>The below chunk is then taking our <code>aq_data_raw</code> OJS object and formatting it properly for Observable Plot. There are two steps here:</p>
+<ol type="1">
+<li><p><code>transpose()</code> is turning the column-based R (or Python) dataframe into a row-based JavaScript data structure.</p></li>
+<li><p><code>derive()</code> is our <code>mutate()</code> equivalent from <code>arquero</code>, and is using the parser to transform the data.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" data-startfrom="175" data-source-offset="9"><pre class="sourceCode java code-with-copy"><code class="sourceCode java" style="counter-reset: source-line 174;"><span id="cb9-175"><a href="#cb9-175" aria-hidden="true" tabindex="-1"></a>```<span class="op">{</span>ojs<span class="op">}</span></span>
+<span id="cb9-176"><a href="#cb9-176" aria-hidden="true" tabindex="-1"></a>aq_data <span class="op">=</span> aq<span class="op">.</span><span class="fu">from</span><span class="op">(</span><span class="fu">transpose</span><span class="op">(</span>aq_data_raw<span class="op">))</span></span>
+<span id="cb9-177"><a href="#cb9-177" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">derive</span><span class="op">({</span> date<span class="op">:</span> aq<span class="op">.</span><span class="fu">escape</span><span class="op">(</span>d <span class="op">=&gt;</span> <span class="fu">parser</span><span class="op">(</span>d<span class="op">.</span><span class="fu">date</span><span class="op">))</span> <span class="op">})</span></span>
+<span id="cb9-178"><a href="#cb9-178" aria-hidden="true" tabindex="-1"></a>```</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell" data-output="all">
+<div class="sourceCode cell-code" id="cb10" data-startfrom="180" data-source-offset="9"><pre class="sourceCode java code-with-copy"><code class="sourceCode java" style="counter-reset: source-line 179;"><span id="cb10-180"><a href="#cb10-180" aria-hidden="true" tabindex="-1"></a>```<span class="op">{</span>ojs<span class="op">}</span></span>
+<span id="cb10-181"><a href="#cb10-181" aria-hidden="true" tabindex="-1"></a><span class="co">//| output: all</span></span>
+<span id="cb10-182"><a href="#cb10-182" aria-hidden="true" tabindex="-1"></a>aq_data</span>
+<span id="cb10-183"><a href="#cb10-183" aria-hidden="true" tabindex="-1"></a>```</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<p>Phew, we’re done! Don’t worry if that didn’t make 100% sense, it can be usefully used as a template to jump from your R data to an Observable-ready data structure in most cases.</p>
+</section><section id="plotting-in-ojs" class="level2"><h2 class="anchored" data-anchor-id="plotting-in-ojs">Plotting in OJS</h2>
+<p>Now we’re finally going to make our plot! The result of all this is <a href="#fig-ojs">Figure&nbsp;1</a>, seen below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" data-startfrom="191" data-source-offset="28"><pre class="sourceCode java code-with-copy"><code class="sourceCode java" style="counter-reset: source-line 190;"><span id="cb11-191"><a href="#cb11-191" aria-hidden="true" tabindex="-1"></a>```<span class="op">{</span>ojs<span class="op">}</span></span>
+<span id="cb11-192"><a href="#cb11-192" aria-hidden="true" tabindex="-1"></a><span class="co">//| label: fig-ojs</span></span>
+<span id="cb11-193"><a href="#cb11-193" aria-hidden="true" tabindex="-1"></a><span class="co">//| fig-cap: "A timeseries built using Observable Plot."</span></span>
+<span id="cb11-194"><a href="#cb11-194" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span><span class="op">({</span></span>
+<span id="cb11-195"><a href="#cb11-195" aria-hidden="true" tabindex="-1"></a>  y<span class="op">:</span> <span class="op">{</span>label<span class="op">:</span> <span class="st">"conc. (μg m⁻³)"</span><span class="op">,</span> grid<span class="op">:</span> <span class="kw">true</span><span class="op">},</span></span>
+<span id="cb11-196"><a href="#cb11-196" aria-hidden="true" tabindex="-1"></a>  color<span class="op">:</span> <span class="op">{</span></span>
+<span id="cb11-197"><a href="#cb11-197" aria-hidden="true" tabindex="-1"></a>    type<span class="op">:</span> <span class="st">"categorical"</span><span class="op">,</span></span>
+<span id="cb11-198"><a href="#cb11-198" aria-hidden="true" tabindex="-1"></a>    range<span class="op">:</span> <span class="op">[</span><span class="st">"#456ce4"</span><span class="op">,</span> <span class="st">"#fc6445"</span><span class="op">],</span></span>
+<span id="cb11-199"><a href="#cb11-199" aria-hidden="true" tabindex="-1"></a>    legend<span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb11-200"><a href="#cb11-200" aria-hidden="true" tabindex="-1"></a>  <span class="op">},</span></span>
+<span id="cb11-201"><a href="#cb11-201" aria-hidden="true" tabindex="-1"></a>  marks<span class="op">:</span> <span class="op">[</span></span>
+<span id="cb11-202"><a href="#cb11-202" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span><span class="op">(</span>aq_data<span class="op">,</span> <span class="op">{</span>x<span class="op">:</span> <span class="st">"date"</span><span class="op">,</span> y<span class="op">:</span> <span class="st">"value"</span><span class="op">,</span> stroke<span class="op">:</span> <span class="st">"pollutant"</span><span class="op">})</span></span>
+<span id="cb11-203"><a href="#cb11-203" aria-hidden="true" tabindex="-1"></a>  <span class="op">],</span></span>
+<span id="cb11-204"><a href="#cb11-204" aria-hidden="true" tabindex="-1"></a><span class="op">})</span></span>
+<span id="cb11-205"><a href="#cb11-205" aria-hidden="true" tabindex="-1"></a>```</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fig-ojs" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><div id="ojs-cell-5" data-nodetype="expression">
+
+</div>
+<figcaption class="figure-caption">Figure&nbsp;1: A timeseries built using Observable Plot.</figcaption></figure>
+</div>
+</div>
+<p>Let’s unpack the code above.</p>
+<ul>
+<li><p>We’re referring to the Observable Plot library using <code>Plot.fun()</code> syntax. This is similar to doing <code>pkg::fun()</code> in R or <code>lib.fun()</code> in Python.</p></li>
+<li><p><code>Plot.plot({})</code> is the bedrock on which we build our plot. This is not unlike starting a <a href="https://ggplot2.tidyverse.org">ggplot2</a> plot with <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot2::ggplot()</a></code>, or a <a href="https://plotly-r.com">plotly</a> plot with <code><a href="https://rdrr.io/pkg/plotly/man/plot_ly.html">plotly::plot_ly()</a></code>. Unlike these functions, however, <em>everything</em> goes inside of <code>Plot.plot({})</code> (unlike <code>ggplot()</code> which is added to, or <code>plot_ly()</code> which is piped into other functions).</p></li>
+<li><p>All of our geometries are added as an array ([square brackets]) after the <code>marks:</code> key. These are the equivalent of <code>ggplot2::geom_*()</code> or <code>plotly::add_*()</code> functions.</p></li>
+<li><p>The equivalents of <code>ggplot2::scale_*()</code> functions are additional key-value pairs within <code>Plot.plot({})</code>. For example, <code>y:</code> takes an object ({curly brackets}) where we can name our axes and add gridlines, and similarly <code>color:</code> lets us define our colour scale and whether to draw a legend.</p></li>
+</ul></section><section id="whats-the-point" class="level2"><h2 class="anchored" data-anchor-id="whats-the-point">What’s the point?</h2>
+<p>At this stage, we’ve successfully recreated the <strong>?@fig-openair</strong>, <strong>?@fig-ggplot2</strong> and so on in an entirely different programming language that we can’t easily run interactively and gives us no helpful popup messages as we type it. So far, the only real benefit is that <a href="#fig-ojs">Figure&nbsp;1</a> does look really smart!</p>
+<p>Well, Observable Plot does have some rather nice features we can exploit. For example, the <a href="https://observablehq.com/plot/features/markers">marker</a> and <a href="https://observablehq.com/plot/features/curves">curve</a> options make for rather nice looking non-jagged time series.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" data-startfrom="223" data-source-offset="34"><pre class="sourceCode java code-with-copy"><code class="sourceCode java" style="counter-reset: source-line 222;"><span id="cb12-223"><a href="#cb12-223" aria-hidden="true" tabindex="-1"></a>```<span class="op">{</span>ojs<span class="op">}</span></span>
+<span id="cb12-224"><a href="#cb12-224" aria-hidden="true" tabindex="-1"></a><span class="co">//| label: fig-ojssmooth</span></span>
+<span id="cb12-225"><a href="#cb12-225" aria-hidden="true" tabindex="-1"></a><span class="co">//| fig-cap: "A smooth time series"</span></span>
+<span id="cb12-226"><a href="#cb12-226" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span><span class="op">({</span></span>
+<span id="cb12-227"><a href="#cb12-227" aria-hidden="true" tabindex="-1"></a>  y<span class="op">:</span> <span class="op">{</span>label<span class="op">:</span> <span class="st">"conc. (μg m⁻³)"</span><span class="op">,</span> grid<span class="op">:</span> <span class="kw">true</span><span class="op">},</span></span>
+<span id="cb12-228"><a href="#cb12-228" aria-hidden="true" tabindex="-1"></a>  color<span class="op">:</span> <span class="op">{</span></span>
+<span id="cb12-229"><a href="#cb12-229" aria-hidden="true" tabindex="-1"></a>    type<span class="op">:</span> <span class="st">"categorical"</span><span class="op">,</span></span>
+<span id="cb12-230"><a href="#cb12-230" aria-hidden="true" tabindex="-1"></a>    range<span class="op">:</span> <span class="op">[</span><span class="st">"#456ce4"</span><span class="op">,</span> <span class="st">"#fc6445"</span><span class="op">],</span></span>
+<span id="cb12-231"><a href="#cb12-231" aria-hidden="true" tabindex="-1"></a>    legend<span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb12-232"><a href="#cb12-232" aria-hidden="true" tabindex="-1"></a>  <span class="op">},</span></span>
+<span id="cb12-233"><a href="#cb12-233" aria-hidden="true" tabindex="-1"></a>  marks<span class="op">:</span> <span class="op">[</span></span>
+<span id="cb12-234"><a href="#cb12-234" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span><span class="op">(</span></span>
+<span id="cb12-235"><a href="#cb12-235" aria-hidden="true" tabindex="-1"></a>      aq_data<span class="op">,</span> <span class="op">{</span></span>
+<span id="cb12-236"><a href="#cb12-236" aria-hidden="true" tabindex="-1"></a>        x<span class="op">:</span> <span class="st">"date"</span><span class="op">,</span> </span>
+<span id="cb12-237"><a href="#cb12-237" aria-hidden="true" tabindex="-1"></a>        y<span class="op">:</span> <span class="st">"value"</span><span class="op">,</span> </span>
+<span id="cb12-238"><a href="#cb12-238" aria-hidden="true" tabindex="-1"></a>        stroke<span class="op">:</span> <span class="st">"pollutant"</span><span class="op">,</span> </span>
+<span id="cb12-239"><a href="#cb12-239" aria-hidden="true" tabindex="-1"></a>        curve<span class="op">:</span> <span class="st">"basis"</span><span class="op">,</span> </span>
+<span id="cb12-240"><a href="#cb12-240" aria-hidden="true" tabindex="-1"></a>        tension<span class="op">:</span> <span class="dv">0</span></span>
+<span id="cb12-241"><a href="#cb12-241" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
+<span id="cb12-242"><a href="#cb12-242" aria-hidden="true" tabindex="-1"></a>    <span class="op">)</span></span>
+<span id="cb12-243"><a href="#cb12-243" aria-hidden="true" tabindex="-1"></a>  <span class="op">],</span></span>
+<span id="cb12-244"><a href="#cb12-244" aria-hidden="true" tabindex="-1"></a><span class="op">})</span></span>
+<span id="cb12-245"><a href="#cb12-245" aria-hidden="true" tabindex="-1"></a>```</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fig-ojssmooth" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><div id="ojs-cell-6" data-nodetype="expression">
+
+</div>
+<figcaption class="figure-caption">Figure&nbsp;2: A smooth time series</figcaption></figure>
+</div>
+</div>
+<p>Observable Plot also has a host of <a href="https://observablehq.com/plot/features/transforms">transforms</a> that can assist in changing our plot output. For air quality time series, we may want to have a rolling mean, maximum or minimum calculated for our data. For example, ozone air quality indices are often defined relative to an 8-hour maximum ozone concentration. This can be easily achieved in Observable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13" data-startfrom="249" data-source-offset="31"><pre class="sourceCode java code-with-copy"><code class="sourceCode java" style="counter-reset: source-line 248;"><span id="cb13-249"><a href="#cb13-249" aria-hidden="true" tabindex="-1"></a>```<span class="op">{</span>ojs<span class="op">}</span></span>
+<span id="cb13-250"><a href="#cb13-250" aria-hidden="true" tabindex="-1"></a><span class="co">//| label: fig-ojsavg</span></span>
+<span id="cb13-251"><a href="#cb13-251" aria-hidden="true" tabindex="-1"></a><span class="co">//| fig-cap: "A timeseries built using Observable Plot, averaged to 1 day, 7 days and 30 days."</span></span>
+<span id="cb13-252"><a href="#cb13-252" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span><span class="op">({</span></span>
+<span id="cb13-253"><a href="#cb13-253" aria-hidden="true" tabindex="-1"></a>  y<span class="op">:</span> <span class="op">{</span>label<span class="op">:</span> <span class="st">"conc. (μg m⁻³)"</span><span class="op">,</span> grid<span class="op">:</span> <span class="kw">true</span><span class="op">},</span></span>
+<span id="cb13-254"><a href="#cb13-254" aria-hidden="true" tabindex="-1"></a>  marks<span class="op">:</span> <span class="op">[</span></span>
+<span id="cb13-255"><a href="#cb13-255" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span><span class="op">(</span></span>
+<span id="cb13-256"><a href="#cb13-256" aria-hidden="true" tabindex="-1"></a>      aq_data<span class="op">,</span> </span>
+<span id="cb13-257"><a href="#cb13-257" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">windowY</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="op">{</span>x<span class="op">:</span> <span class="st">"date"</span><span class="op">,</span> y<span class="op">:</span> <span class="st">"value"</span><span class="op">,</span> z<span class="op">:</span> <span class="st">"pollutant"</span><span class="op">,</span> stroke<span class="op">:</span> <span class="st">"#DCDCDC"</span><span class="op">})</span></span>
+<span id="cb13-258"><a href="#cb13-258" aria-hidden="true" tabindex="-1"></a>    <span class="op">),</span></span>
+<span id="cb13-259"><a href="#cb13-259" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span><span class="op">(</span></span>
+<span id="cb13-260"><a href="#cb13-260" aria-hidden="true" tabindex="-1"></a>      aq_data<span class="op">,</span> </span>
+<span id="cb13-261"><a href="#cb13-261" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">windowY</span><span class="op">(</span><span class="dv">7</span><span class="op">,</span> <span class="op">{</span>x<span class="op">:</span> <span class="st">"date"</span><span class="op">,</span> y<span class="op">:</span> <span class="st">"value"</span><span class="op">,</span> z<span class="op">:</span> <span class="st">"pollutant"</span><span class="op">,</span> stroke<span class="op">:</span> <span class="st">"#808080"</span><span class="op">})</span></span>
+<span id="cb13-262"><a href="#cb13-262" aria-hidden="true" tabindex="-1"></a>    <span class="op">),</span></span>
+<span id="cb13-263"><a href="#cb13-263" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span><span class="op">(</span></span>
+<span id="cb13-264"><a href="#cb13-264" aria-hidden="true" tabindex="-1"></a>      aq_data<span class="op">,</span> </span>
+<span id="cb13-265"><a href="#cb13-265" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">windowY</span><span class="op">(</span><span class="dv">30</span><span class="op">,</span> <span class="op">{</span>x<span class="op">:</span> <span class="st">"date"</span><span class="op">,</span> y<span class="op">:</span> <span class="st">"value"</span><span class="op">,</span> z<span class="op">:</span> <span class="st">"pollutant"</span><span class="op">,</span> stroke<span class="op">:</span> <span class="st">"#000000"</span><span class="op">})</span></span>
+<span id="cb13-266"><a href="#cb13-266" aria-hidden="true" tabindex="-1"></a>    <span class="op">)</span></span>
+<span id="cb13-267"><a href="#cb13-267" aria-hidden="true" tabindex="-1"></a>  <span class="op">]</span></span>
+<span id="cb13-268"><a href="#cb13-268" aria-hidden="true" tabindex="-1"></a><span class="op">})</span></span>
+<span id="cb13-269"><a href="#cb13-269" aria-hidden="true" tabindex="-1"></a>```</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fig-ojsavg" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><div id="ojs-cell-7" data-nodetype="expression">
+
+</div>
+<figcaption class="figure-caption">Figure&nbsp;3: A timeseries built using Observable Plot, averaged to 1 day, 7 days and 30 days.</figcaption></figure>
+</div>
+</div>
+<p>This leads us nicely onto the most interesting feature of the lot; interactivity. The Observable <a href="https://observablehq.com/@observablehq/inputs">inputs</a> library gives access to a range of lightweight user interface components that can control plots. In the example below, the user can control the window width and statistic to explore aspects of the data which they are interested in.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14" data-startfrom="273" data-source-offset="9"><pre class="sourceCode java code-with-copy"><code class="sourceCode java" style="counter-reset: source-line 272;"><span id="cb14-273"><a href="#cb14-273" aria-hidden="true" tabindex="-1"></a>```<span class="op">{</span>ojs<span class="op">}</span></span>
+<span id="cb14-274"><a href="#cb14-274" aria-hidden="true" tabindex="-1"></a>viewof k <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">1</span><span class="op">,</span> <span class="dv">7</span><span class="op">],</span> <span class="op">{</span>value<span class="op">:</span> <span class="dv">2</span><span class="op">,</span> step<span class="op">:</span> <span class="dv">1</span><span class="op">,</span> label<span class="op">:</span> <span class="st">"Window"</span><span class="op">})</span></span>
+<span id="cb14-275"><a href="#cb14-275" aria-hidden="true" tabindex="-1"></a>viewof stat <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">radio</span><span class="op">([</span><span class="st">"min"</span><span class="op">,</span> <span class="st">"mean"</span><span class="op">,</span> <span class="st">"max"</span><span class="op">],</span> <span class="op">{</span>value<span class="op">:</span> <span class="st">"mean"</span><span class="op">,</span> label<span class="op">:</span> <span class="st">"Statistic"</span><span class="op">})</span></span>
+<span id="cb14-276"><a href="#cb14-276" aria-hidden="true" tabindex="-1"></a>```</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-8-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-8-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15" data-startfrom="278" data-source-offset="33"><pre class="sourceCode java code-with-copy"><code class="sourceCode java" style="counter-reset: source-line 277;"><span id="cb15-278"><a href="#cb15-278" aria-hidden="true" tabindex="-1"></a>```<span class="op">{</span>ojs<span class="op">}</span></span>
+<span id="cb15-279"><a href="#cb15-279" aria-hidden="true" tabindex="-1"></a><span class="co">//| label: fig-ojsinput</span></span>
+<span id="cb15-280"><a href="#cb15-280" aria-hidden="true" tabindex="-1"></a><span class="co">//| fig-cap: "A timeseries built using Observable Plot, where readers can define their own window widths and summary stats."</span></span>
+<span id="cb15-281"><a href="#cb15-281" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span><span class="op">({</span></span>
+<span id="cb15-282"><a href="#cb15-282" aria-hidden="true" tabindex="-1"></a>  y<span class="op">:</span> <span class="op">{</span>label<span class="op">:</span> <span class="st">"conc. (μg m⁻³)"</span><span class="op">,</span> grid<span class="op">:</span> <span class="kw">true</span><span class="op">,</span> domain<span class="op">:</span> <span class="op">[</span><span class="dv">0</span><span class="op">,</span> <span class="dv">500</span><span class="op">]},</span></span>
+<span id="cb15-283"><a href="#cb15-283" aria-hidden="true" tabindex="-1"></a>  color<span class="op">:</span> <span class="op">{</span></span>
+<span id="cb15-284"><a href="#cb15-284" aria-hidden="true" tabindex="-1"></a>    type<span class="op">:</span> <span class="st">"categorical"</span><span class="op">,</span></span>
+<span id="cb15-285"><a href="#cb15-285" aria-hidden="true" tabindex="-1"></a>    range<span class="op">:</span> <span class="op">[</span><span class="st">"#456ce4"</span><span class="op">,</span> <span class="st">"#fc6445"</span><span class="op">],</span></span>
+<span id="cb15-286"><a href="#cb15-286" aria-hidden="true" tabindex="-1"></a>    legend<span class="op">:</span> <span class="kw">true</span></span>
+<span id="cb15-287"><a href="#cb15-287" aria-hidden="true" tabindex="-1"></a>  <span class="op">},</span></span>
+<span id="cb15-288"><a href="#cb15-288" aria-hidden="true" tabindex="-1"></a>  marks<span class="op">:</span> <span class="op">[</span></span>
+<span id="cb15-289"><a href="#cb15-289" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span><span class="op">(</span></span>
+<span id="cb15-290"><a href="#cb15-290" aria-hidden="true" tabindex="-1"></a>      aq_data<span class="op">,</span> </span>
+<span id="cb15-291"><a href="#cb15-291" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">windowY</span><span class="op">({</span>k<span class="op">:</span> k<span class="op">,</span> reduce<span class="op">:</span> stat<span class="op">},</span> <span class="op">{</span>x<span class="op">:</span> <span class="st">"date"</span><span class="op">,</span> y<span class="op">:</span> <span class="st">"value"</span><span class="op">,</span> stroke<span class="op">:</span> <span class="st">"pollutant"</span><span class="op">})</span></span>
+<span id="cb15-292"><a href="#cb15-292" aria-hidden="true" tabindex="-1"></a>  <span class="op">)],</span></span>
+<span id="cb15-293"><a href="#cb15-293" aria-hidden="true" tabindex="-1"></a><span class="op">})</span></span>
+<span id="cb15-294"><a href="#cb15-294" aria-hidden="true" tabindex="-1"></a>```</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fig-ojsinput" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><div id="ojs-cell-9" data-nodetype="expression">
+
+</div>
+<figcaption class="figure-caption">Figure&nbsp;4: A timeseries built using Observable Plot, where readers can define their own window widths and summary stats.</figcaption></figure>
+</div>
+</div>
+</section><section id="case-study-ozone-concentrations" class="level2"><h2 class="anchored" data-anchor-id="case-study-ozone-concentrations">Case Study: Ozone Concentrations</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>meta <span class="ot">&lt;-</span> <span class="fu">importMeta</span>(<span class="at">all =</span> <span class="cn">TRUE</span>, <span class="at">year =</span> <span class="dv">2019</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>o3_london_meta <span class="ot">&lt;-</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(meta,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                variable <span class="sc">==</span> <span class="st">"O3"</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                agglomeration <span class="sc">==</span> <span class="st">"Greater London Urban Area"</span>)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>o3_london <span class="ot">&lt;-</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">importAURN</span>(o3_london_meta<span class="sc">$</span>code, <span class="at">year =</span> <span class="dv">2019</span>, <span class="at">pollutant =</span> <span class="st">"o3"</span>)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>o3_london <span class="ot">&lt;-</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">selectByDate</span>(o3_london, <span class="at">month =</span> <span class="dv">5</span>)</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ojs_define</span>(<span class="at">o3_raw =</span> o3_london)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ojs_define</span>(<span class="at">o3_sites =</span> <span class="fu">unique</span>(o3_london<span class="sc">$</span>site))</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb17" data-startfrom="318" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 317;"><span id="cb17-318"><a href="#cb17-318" aria-hidden="true" tabindex="-1"></a>parser_ymdhms <span class="op">=</span> d3<span class="op">.</span><span class="fu">timeParse</span>(<span class="st">"%Y-%m-%d %H:%M:%S"</span>)<span class="op">;</span></span>
+<span id="cb17-319"><a href="#cb17-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-320"><a href="#cb17-320" aria-hidden="true" tabindex="-1"></a>o3_data <span class="op">=</span> aq<span class="op">.</span><span class="fu">from</span>(<span class="fu">transpose</span>(o3_raw))</span>
+<span id="cb17-321"><a href="#cb17-321" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">derive</span>({ <span class="dt">date</span><span class="op">:</span> aq<span class="op">.</span><span class="fu">escape</span>(d <span class="kw">=&gt;</span> <span class="fu">parser_ymdhms</span>(d<span class="op">.</span><span class="at">date</span>)) })</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-10-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-10-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb18" data-startfrom="325" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 324;"><span id="cb18-325"><a href="#cb18-325" aria-hidden="true" tabindex="-1"></a>viewof chosen_site <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(o3_sites<span class="op">,</span> { <span class="dt">value</span><span class="op">:</span> [<span class="st">"London Bloomsbury"</span>]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Site:"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-11" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb19" data-startfrom="330" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 329;"><span id="cb19-330"><a href="#cb19-330" aria-hidden="true" tabindex="-1"></a>filtered <span class="op">=</span> o3_data<span class="op">.</span><span class="fu">filter</span>(aq<span class="op">.</span><span class="fu">escape</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">site</span> <span class="op">===</span> chosen_site))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-12" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb20" data-startfrom="337" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 336;"><span id="cb20-337"><a href="#cb20-337" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb20-338"><a href="#cb20-338" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"conc. (μg m⁻³)"</span>}<span class="op">,</span></span>
+<span id="cb20-339"><a href="#cb20-339" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb20-340"><a href="#cb20-340" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">frame</span>()<span class="op">,</span></span>
+<span id="cb20-341"><a href="#cb20-341" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(</span>
+<span id="cb20-342"><a href="#cb20-342" aria-hidden="true" tabindex="-1"></a>      filtered<span class="op">,</span> </span>
+<span id="cb20-343"><a href="#cb20-343" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">windowY</span>({<span class="dt">k</span><span class="op">:</span> <span class="dv">8</span><span class="op">,</span> <span class="dt">reduce</span><span class="op">:</span> <span class="st">"min"</span>}<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"date"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"o3"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#456ce4"</span>})</span>
+<span id="cb20-344"><a href="#cb20-344" aria-hidden="true" tabindex="-1"></a>    )<span class="op">,</span></span>
+<span id="cb20-345"><a href="#cb20-345" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(</span>
+<span id="cb20-346"><a href="#cb20-346" aria-hidden="true" tabindex="-1"></a>      filtered<span class="op">,</span> </span>
+<span id="cb20-347"><a href="#cb20-347" aria-hidden="true" tabindex="-1"></a>      Plot<span class="op">.</span><span class="fu">windowY</span>({<span class="dt">k</span><span class="op">:</span> <span class="dv">8</span><span class="op">,</span> <span class="dt">reduce</span><span class="op">:</span> <span class="st">"max"</span>}<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"date"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"o3"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"#fc6445"</span>})</span>
+<span id="cb20-348"><a href="#cb20-348" aria-hidden="true" tabindex="-1"></a>    )<span class="op">,</span></span>
+<span id="cb20-349"><a href="#cb20-349" aria-hidden="true" tabindex="-1"></a>  ]<span class="op">,</span></span>
+<span id="cb20-350"><a href="#cb20-350" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fig-o3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure"><div id="ojs-cell-13" data-nodetype="expression">
+
+</div>
+<figcaption class="figure-caption">Figure&nbsp;5: 8-hourly averaged ozone concentrations in Greater London.</figcaption></figure>
+</div>
+</div>
+
+
+</section></section></main><!-- /main --><script type="ojs-module-contents">
+{"contents":[{"methodName":"interpretQuiet","source":"shinyInput('k')"},{"methodName":"interpretQuiet","source":"shinyInput('stat')"},{"methodName":"interpretQuiet","source":"shinyInput('chosen_site')"}]}
+</script><script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../posts/2023-07-03-ojsTimePlot";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "../..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
