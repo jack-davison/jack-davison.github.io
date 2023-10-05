@@ -2,66 +2,70 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://jack-davison.github.io/talks.html</loc>
-    <lastmod>2023-09-17T11:00:52.656Z</lastmod>
+    <lastmod>2023-10-05T06:59:54.117Z</lastmod>
   </url>
   <url>
     <loc>https://jack-davison.github.io/talks/2021_kmschemistry.html</loc>
-    <lastmod>2023-09-17T11:00:47.904Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jack-davison.github.io/posts/2023-03-04-tidyverseLength/index.html</loc>
-    <lastmod>2023-09-17T11:00:34.921Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jack-davison.github.io/posts/2022-11-13-pastaEvangelists/index.html</loc>
-    <lastmod>2023-09-17T11:00:20.951Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jack-davison.github.io/index.html</loc>
-    <lastmod>2023-09-17T11:00:11.186Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jack-davison.github.io/experience/teaching.html</loc>
-    <lastmod>2023-09-17T11:00:10.056Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jack-davison.github.io/experience/reports.html</loc>
-    <lastmod>2023-09-17T11:00:04.129Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jack-davison.github.io/experience/dataviz.html</loc>
-    <lastmod>2023-09-17T10:59:55.876Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jack-davison.github.io/blog.html</loc>
-    <lastmod>2023-09-17T10:59:52.824Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jack-davison.github.io/experience/pkgdev.html</loc>
-    <lastmod>2023-09-17T11:00:00.580Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jack-davison.github.io/experience/research.html</loc>
-    <lastmod>2023-09-17T11:00:08.029Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jack-davison.github.io/experience.html</loc>
-    <lastmod>2023-09-17T11:00:10.763Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jack-davison.github.io/posts/2021-02-02-tidytuesday-2021-week-6-hbcu-enrollment-an-ode-to-data-cleaning/index.html</loc>
-    <lastmod>2023-09-17T11:00:15.564Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jack-davison.github.io/posts/2023-02-20-tinyCategories/index.html</loc>
-    <lastmod>2023-09-17T11:00:26.077Z</lastmod>
+    <lastmod>2023-10-05T06:59:48.822Z</lastmod>
   </url>
   <url>
     <loc>https://jack-davison.github.io/posts/2023-09-16-ILL-ShadeOut/index.html</loc>
-    <lastmod>2023-09-17T11:00:47.431Z</lastmod>
+    <lastmod>2023-10-05T06:59:37.619Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jack-davison.github.io/posts/2023-02-20-tinyCategories/index.html</loc>
+    <lastmod>2023-10-05T06:59:14.422Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jack-davison.github.io/posts/2021-02-02-tidytuesday-2021-week-6-hbcu-enrollment-an-ode-to-data-cleaning/index.html</loc>
+    <lastmod>2023-10-05T06:59:01.381Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jack-davison.github.io/experience.html</loc>
+    <lastmod>2023-10-05T06:58:55.907Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jack-davison.github.io/experience/research.html</loc>
+    <lastmod>2023-10-05T06:58:53.374Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jack-davison.github.io/experience/pkgdev.html</loc>
+    <lastmod>2023-10-05T06:58:49.124Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jack-davison.github.io/blog.html</loc>
+    <lastmod>2023-10-05T06:58:43.972Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jack-davison.github.io/experience/dataviz.html</loc>
+    <lastmod>2023-10-05T06:58:46.724Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jack-davison.github.io/experience/reports.html</loc>
+    <lastmod>2023-10-05T06:58:51.295Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jack-davison.github.io/experience/teaching.html</loc>
+    <lastmod>2023-10-05T06:58:55.112Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jack-davison.github.io/index.html</loc>
+    <lastmod>2023-10-05T06:58:56.517Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jack-davison.github.io/posts/2022-11-13-pastaEvangelists/index.html</loc>
+    <lastmod>2023-10-05T06:59:08.291Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jack-davison.github.io/posts/2023-03-04-tidyverseLength/index.html</loc>
+    <lastmod>2023-10-05T06:59:23.797Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jack-davison.github.io/posts/2023-09-26-ILL-PlotMarkers/index.html</loc>
+    <lastmod>2023-10-05T06:59:48.314Z</lastmod>
   </url>
   <url>
     <loc>https://jack-davison.github.io/talks/2023_satRdayslondon.html</loc>
-    <lastmod>2023-09-17T11:00:52.090Z</lastmod>
+    <lastmod>2023-10-05T06:59:53.538Z</lastmod>
   </url>
 </urlset>
