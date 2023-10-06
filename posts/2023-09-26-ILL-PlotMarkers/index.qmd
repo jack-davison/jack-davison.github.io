@@ -93,7 +93,7 @@ I find the winner in each constituency, join it to the shape file, and create @f
 ```{r}
 #| label: fig-default
 #| warning: false
-#| fig-cap: "A simple map of the constituencies in "
+#| fig-cap: "A simple map of the constituencies in Oxfordshire."
 
 # define colours
 colours <-
@@ -153,7 +153,7 @@ map <-
 map
 ```
 
-Now, @fig-default is a nice map, but we've lost a lot of data here. How big are the majorities? Who else did people vote for in each constituency? We could add all of this info to a popup, but then we can't see all of it at once, and it may not be immediately obvious to incurious readers to click on the map in the first place. Instead, lets encode all of this extra data as plots and overlay them on the map - it'll be immediately obvious, attractive.
+Now, @fig-default is a nice map, but we've lost a lot of data here. How big are the majorities? Who else did people vote for in each constituency? We could add all of this info to a popup, but then we can't see all of it at once, and it may not be immediately obvious to incurious readers to click on the map in the first place. Instead, lets encode all of this extra data as plots and overlay them on the map.
 
 ## Making the plots
 
@@ -250,6 +250,8 @@ t <- tempdir()
 results_plots <-
   results_plots |>
   dplyr::mutate(path = paste0(t, "/", snakecase::to_snake_case(constituency), ".png"))
+
+results_plots
 
 # save plots to the temp directory
 purrr::walk2(
