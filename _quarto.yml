@@ -7,7 +7,7 @@ website:
   open-graph: true
   site-url: https://jack-davison.github.io/
   navbar:
-    logo: logo.png
+    logo: style/logo.png
     search: true
     right:
       - text: "About"
@@ -34,6 +34,7 @@ format:
     footnotes-hover: true
     fontsize: 1em
     theme: simplex
-    css: styles.css
+    css: style/styles.css
 
 bibliography: references.bib
+
