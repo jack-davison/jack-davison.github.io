@@ -1,6 +1,5 @@
 ---
 title: "Blog"
-subtitle: "Tutorials, data analysis, and 'real-life' applications of R."
 listing:
   contents: posts
   sort: "date desc"
@@ -9,7 +8,6 @@ listing:
   sort-ui: false
   filter-ui: false
 page-layout: full
-title-block-banner: true
 ---
 
 

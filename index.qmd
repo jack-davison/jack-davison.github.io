@@ -3,7 +3,7 @@ title: Jack Davison
 subtitle: Air Quality Data Analyst & R Developer
 image: style/selfie-zoomed.jpg
 about:
-  template: jolla
+  template: trestles
   image-shape: rounded
   links:
     - icon: twitter-x
@@ -21,16 +21,9 @@ about:
 format: 
   html:
     page-layout: full
+    toc-location: right
+    toc: true
 ---
-
-<style>
-#quarto-content>* {
-    padding-top: 0px;
-}
-element.style {
-    min-height: calc(50vh - 73px);
-}
-</style>
 
 I am a senior consultant and data analyst working for an Environmental Consultancy in South Oxfordshire in the United Kingdom.
 

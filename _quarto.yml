@@ -7,11 +7,9 @@ website:
   open-graph: true
   site-url: https://jack-davison.github.io/
   navbar:
-    logo: style/logo.png
+    title: Jack Davison
     search: true
     right:
-      - text: "About"
-        file: index.qmd
       - text: "Experience"
         file: experience.qmd
       - text: "Talks"
@@ -24,6 +22,14 @@ website:
         href: https://github.com/jack-davison
       - icon: linkedin
         href: https://www.linkedin.com/in/jack-davison/
+  page-footer:
+    left: |
+      <span>Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/)</span>
+    center: |
+      <img src='style/logo.png' style='width:7.5%'>
+    right: |
+      <span>[View the source at {{< fa brands github >}} GitHub](https://github.com/jack-davison/jack-davison.github.io)</span>
+
 format:
   html:
     toc: true
@@ -33,7 +39,7 @@ format:
     anchor-sections: true
     footnotes-hover: true
     fontsize: 1em
-    theme: simplex
+    theme: [minty, style/styles.scss]
     css: style/styles.css
 
 bibliography: references.bib
