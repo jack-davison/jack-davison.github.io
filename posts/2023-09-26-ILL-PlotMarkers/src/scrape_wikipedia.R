@@ -27,14 +27,3 @@ tbl <-
   select(constituency, party = party_2, candidate, votes, percent)
 
 readr::write_csv(tbl, "posts/2023-09-26-ILL-PlotMarkers/data/election_results.csv")
-
-tbl |>
-  left_join(colours) |>
-  mutate(party_2 = forcats::fct_reorder(party_2, percent)) |>
-  ggplot(aes(y = "", x = percent, fill = party_2)) +
-  geom_col(show.legend = F) +
-  coord_polar() +
-  expand_limits(y = 0)  +
-  scale_fill_manual(values = cols) +
-  theme_void() +
-  facet_wrap(vars(constituency))

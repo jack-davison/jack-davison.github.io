@@ -17,6 +17,16 @@ editor_options:
   chunk_output_type: console
 ---
 
+```{r}
+#| label: setup
+#| include: false
+
+conflicted::conflicts_prefer(rlang::set_names)
+conflicted::conflicts_prefer(dplyr::filter)
+conflicted::conflicts_prefer(plotly::layout)
+```
+
+
 ![](banner.jpg)
 <br>
 
