@@ -26,7 +26,7 @@ website:
     left: |
       <span>Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/)</span>
     center: |
-      <img src='style/logo.png' style='width:7.5%'>
+      <img src='/style/logo.png' style='width:7.5%'>
     right: |
       <span>[View the source at {{< fa brands github >}} GitHub](https://github.com/jack-davison/jack-davison.github.io)</span>
 
@@ -42,6 +42,8 @@ format:
     theme: [minty, style/styles.scss]
     css: style/styles.css
     title-block-banner-color: white
+    mainfont: Poppins
+    monofont: JetBrains Mono
 
 bibliography: references.bib
 
