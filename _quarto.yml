@@ -41,6 +41,7 @@ format:
     fontsize: 1em
     theme: [minty, style/styles.scss]
     css: style/styles.css
+    title-block-banner-color: white
 
 bibliography: references.bib
 
