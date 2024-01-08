@@ -1,0 +1,40 @@
+- title: "{openair}"
+  description: |
+      `{openair}` is a long standing R package for atmospheric composition data
+      analysis. I was added as an author over a decade into its existence and
+      have made efforts to modernise some of the code, fix back-logs of issues,
+      and add features with a focus on making it easier to program
+      with `{openair}`.
+  author:
+  - David C. Carslaw
+  - Jack Davison
+  - Karl Ropkins
+  path: "https://github.com/davidcarslaw/openair"
+  categories: [r-package, openair-toolkit, air-quality]
+  image: "https://github.com/davidcarslaw/openair/blob/master/man/figures/logo.png?raw=true"
+
+- title: "{openairmaps}"
+  description: |
+      `{openairmaps}` combines `{openair}` analysis approaches with the `{leaflet}`
+      interactive mapping library. The headline feature is the ability to put
+      bivariate polar plots on interactive maps, which allows for pollutant
+      source triangulation. Other features include visualising UK monitoring
+      networks and HYSPLIT trajectory paths.
+  author:
+  - Jack Davison
+  - David C. Carslaw
+  path: "https://github.com/davidcarslaw/openairmaps"
+  categories: [r-package, openair-toolkit, air-quality]
+  image: "https://github.com/davidcarslaw/openairmaps/blob/master/man/figures/logo.png?raw=true"
+
+- title: "{lipsum}"
+  description: |
+      `{lipsum}` is a very simple package for calling a variety of Web APIs
+      from the awesome-lipsum list. It was mainly an exercise in playing with
+      the `{curl}` package, but could be useful for users to obtain a variety
+      of fun placeholder texts.
+  author:
+  - Jack Davison
+  path: "https://github.com/jack-davison/lipsum"
+  categories: [r-package]
+  image: "https://github.com/jack-davison/lipsum/blob/main/man/figures/logo.png?raw=true"

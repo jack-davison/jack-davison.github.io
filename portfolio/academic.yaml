@@ -1,0 +1,119 @@
+- title: "New Approaches For Understanding Vehicle Emissions Using Remote Sensing"
+  description: |
+      PhD thesis.
+  author:
+  - Jack Davison
+  date: 2022-09-14
+  path: "https://etheses.whiterose.ac.uk/31313/"
+  categories: [academic, thesis, air-quality]
+  image: https://etheses.whiterose.ac.uk/images/WR_York_500x225.jpg
+
+- title: "The impact on passenger car emissions associated with the promotion and demise of diesel fuel"
+  author:
+  - Samuel Wilson
+  - Naomi J. Farren
+  - Rebecca A. Rose
+  - Shona E. Wilde
+  - Jack Davison
+  - Jasmine V. Wareham
+  - James D. Lee
+  - David C. Carslaw
+  date: 2023-11-14
+  path: "https://doi.org/10.1016/j.envint.2023.108330"
+  categories: [academic, article, air-quality]
+  image: https://ars.els-cdn.com/content/image/1-s2.0-S0160412023006037-ga1.jpg
+
+- title: "Gasoline and diesel passenger car emissions deterioration using on-road emission measurements and measured mileage"
+  author:
+  - Jack Davison
+  - Rebecca A. Rose
+  - Naomi J. Farren
+  - Rebecca L. Wagner
+  - Shona E. Wilde
+  - Jasmine V. Wareham
+  - David C. Carslaw
+  date: 2022-03-11
+  path: "https://doi.org/10.1016/j.aeaoa.2022.100162"
+  categories: [academic, article, air-quality]
+  image: https://ars.els-cdn.com/content/image/1-s2.0-S2590162122000168-ga1.jpg
+
+- title: "Characterisation of ammonia emissions from gasoline and gasoline hybrid passenger cars"
+  author:
+  - Naomi J. Farren
+  - Jack Davison
+  - Rebecca A. Rose
+  - Rebecca L. Wagner
+  - David C. Carslaw
+  date: 2021-06-05
+  path: "https://doi.org/10.1016/j.aeaoa.2021.100117"
+  categories: [academic, article, air-quality]
+  image: https://ars.els-cdn.com/content/image/1-s2.0-S2590162121000174-ga1.jpg
+
+- title: "Application of a mobile laboratory using a selected-ion flow-tube mass spectrometer (SIFT-MS) for characterisation of volatile organic compounds and atmospheric trace gases"
+  author:
+  - Rebecca L. Wagner
+  - Naomi J. Farren
+  - Jack Davison
+  - Stuart Young
+  - James R. Hopkins
+  - Alastair C. Lewis
+  - David C. Carslaw
+  - Marvin D. Shaw
+  date: 2021-08-11
+  path: "https://doi.org/10.5194/amt-14-6083-2021"
+  categories: [academic, article, air-quality]
+  image: https://amt.copernicus.org/articles/14/6083/2021/amt-14-6083-2021-avatar-web.png
+
+- title: "Verification of a National Emission Inventory and Influence of On-road Vehicle Manufacturer-Level Emissions"
+  author:
+  - Jack Davison
+  - Rebecca A. Rose
+  - Naomi J. Farren
+  - Rebecca L. Wagner
+  - Tim P. Murrells
+  - David C. Carslaw
+  date: 2021-03-05
+  path: "https://doi.org/10.1021/acs.est.0c08363"
+  categories: [academic, article, air-quality]
+  image: https://pubs.acs.org/cms/10.1021/acs.est.0c08363/asset/images/medium/es0c08363_0006.gif
+
+- title: "Underestimated Ammonia Emissions from Road Vehicles"
+  author:
+  - Naomi J. Farren
+  - Jack Davison
+  - Rebecca A. Rose
+  - Rebecca L. Wagner
+  - David C. Carslaw
+  date: 2020-11-20
+  path: "https://doi.org/10.1021/acs.est.0c05839"
+  categories: [academic, article, air-quality]
+  image: https://pubs.acs.org/cms/10.1021/acs.est.0c05839/asset/images/medium/es0c05839_0005.gif
+
+- title: "Distance-based emission factors from vehicle emission remote sensing measurements"
+  author:
+  - Jack Davison
+  - Yoann Bernard
+  - Jens Borken-Kleefeld
+  - Naomi J. Farren
+  - Stefan Hausberger
+  - Åke Sjödin
+  - James E. Tate
+  - Adam R. Vaughan
+  - David C. Carslaw
+  date: 2020-05-23
+  path: "https://doi.org/10.1016/j.scitotenv.2020.139688"
+  categories: [academic, article, air-quality]
+  image: https://ars.els-cdn.com/content/image/1-s2.0-S0048969720332083-ga1.jpg
+
+- title: "Post-Dieselgate: Evidence of NOx Emission Reductions Using On-Road Remote Sensing"
+  author:
+  - Stuart K. Grange
+  - Naomi J. Farren
+  - Adam R. Vaughan
+  - Jack Davison
+  - David C. Carslaw
+  date: 2020-04-27
+  path: "https://doi.org/10.1021/acs.estlett.0c00188"
+  categories: [academic, article, air-quality]
+  image: https://pubs.acs.org/cms/10.1021/acs.estlett.0c00188/asset/images/medium/ez0c00188_0003.gif
+

@@ -1,0 +1,29 @@
+- title: "Tabulating DuBois: Recreating Historical Data Visualisations with `{gt}`"
+  description: |
+      This submission to the Posit (then RStudio) Table Contest 2022 takes the form
+      of eight tables which attempt to reflect the style and/or spirit of some
+      of W.E.B. DuBois 20th century visualisations. It effectively revisits
+      The #DuBois Challenge but using data tables as the medium instead of
+      graphs. Awarded "Runner Up".
+  author:
+  - Jack Davison
+  path: "https://jack-davison.quarto.pub/tabulating-dubois/"
+  categories: [quarto, contest, table-contest]
+  image: https://github.com/jack-davison/rstudio_table-contest_2022/blob/main/man/banner.png?raw=true
+
+- title: "Using `{gt}`, `{gtExtras}` and `{openair}` to present air quality monitoring data"
+  description: |
+      A submission to the Posit (then RStudio) Table Contest 2021; a tutorial
+      for presenting air quality monitoring data in summary tables using `{gt}`.
+      The most interesting aspect of this was combining `{openair}` with `{gt}`
+      to embed bivariate polar plots in the `{gt}` table itself. Awarded
+      "Honourable Mention".
+  author:
+  - Jack Davison
+  path: "https://jack-davison.quarto.pub/gt-openair/"
+  categories: [quarto, contest, table-contest]
+  image: https://github.com/jack-davison/rstudio_table-contest_2021/blob/main/man/final-table.png?raw=true
+
+
+
+

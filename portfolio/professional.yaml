@@ -1,0 +1,47 @@
+- title: "UK Hydrocarbons Network Annual Report for 2022"
+  author:
+  - Jack Davison
+  - Ricardo
+  date: 2023-08-22
+  path: "https://uk-air.defra.gov.uk/assets/documents/reports/cat09/2309281151_UK_Hydrocarbons_Network_Annual_Report_2022.html"
+  categories: [professional, quarto, air-quality]
+  image: "/portfolio/img-professional/hydrocarbon.png"
+  description: |
+      The UK Hydrocarbons Network comprises automatic and non-automatic
+      systems to measure benzene and other VOCs. This quarto report is
+      published annually to summarise measurements from this network and
+      track compliance to the European Directive 2008/50/EC (AQD).
+
+- title: "UK Summer 2023 Ozone"
+  author:
+  - Jack Davison
+  - Ricardo
+  date: 2023-10-19
+  path: "https://www.ricardo.com/media/zfcbzfuh/2023-summer-ozone-episode.html"
+  categories: [professional, quarto, air-quality]
+  image: "/portfolio/img-professional/daqi-plot.png"
+  description: |
+      Typically, during the hottest parts of summer, the UK will experience
+      episodes of elevated ozone which are associated with deleterious health
+      effects. This quarto report summarises a particularly protracted ozone
+      episode in 2023, and includes applications of then-new functionality
+      of `{gt}` and `{bslib}`.
+
+- title: "Air Quality on Bonfire Night 2023"
+  author:
+  - Jack Davison
+  - Ricardo
+  date: 2023-11-21
+  path: "https://www.ricardo.com/media/yssjq543/2023-bonfire-night.html"
+  categories: [professional, quarto, air-quality]
+  image: "/portfolio/img-professional/fireworks.jpg"
+  description: |
+      Perhaps unsurprisingly, measured concentrations of airborne particulates
+      typically peak on Bonfire Night in the UK. This quarto report examines
+      bonfire night on 2023 in particular, and provides commentary on the
+      utility of the "Daily Air Quality Index" (DAQI) as a framework for
+      short-lived events like a bonfire event.
+
+
+
+

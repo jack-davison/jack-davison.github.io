@@ -6,4 +6,6 @@ listing:
   type: grid
   sort-ui: false
   image-height: "200px"
+  grid-columns: 3
+page-layout: full
 ---

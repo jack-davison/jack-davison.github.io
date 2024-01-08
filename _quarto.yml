@@ -12,8 +12,8 @@ website:
     right:
       - text: "Experience"
         file: experience.qmd
-      - text: "Talks"
-        file: talks.qmd
+      - text: "Portfolio"
+        file: portfolio.qmd
       - text: "Blog"
         file: blog.qmd
       - icon: twitter
