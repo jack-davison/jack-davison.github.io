@@ -18,6 +18,8 @@ website:
         file: blog.qmd
       - icon: twitter
         href: https://twitter.com/jdavison_
+      - icon: mastodon
+        href: https://fosstodon.org/@jackdavison
       - icon: github
         href: https://github.com/jack-davison
       - icon: linkedin
