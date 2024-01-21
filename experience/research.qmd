@@ -10,6 +10,7 @@ format:
   html:
     toc: false
     code-link: true
+    toc-location: body
 ---
 
 ```{r}
@@ -35,7 +36,7 @@ I also used statistical modelling techniques to examine other effects on vehicle
 
 ### Academic Publications
 
-Publications I was involved in throughout my PhD are detailed below. The majority of these, not least my thesis [@wreo31313], are open source and therefore free to read for those outside of academia.
+Publications I was involved in throughout my PhD are detailed below. The majority of these, not least my thesis [@wreo31313], are open source and therefore free to read for those outside of academia. A more complete list of references can be found in my [portfolio](../portfolio.qmd).
 
 ---
 

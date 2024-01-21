@@ -8,6 +8,7 @@ format:
   html:
     toc: false
     code-link: true
+    toc-location: body
 ---
 
 ```{r}
@@ -57,3 +58,5 @@ Screenshots from a dynamic report are shown in @fig-examples.
 
 Screenshots from the [2023 West London Particulate Episode Report](https://www.ricardo.com/media/c33dncxa/west-london-particulate-episode.html).
 :::
+
+A collection of dynamic reports I have authored can be found in my [portfolio](../portfolio.qmd).

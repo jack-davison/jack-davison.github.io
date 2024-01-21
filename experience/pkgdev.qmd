@@ -1,5 +1,5 @@
 ---
-title: R Package Development
+title: R Package Authorship
 description: Developing open-source tools for the R community.
 image: experience_imgs/pkgdev.jpg
 execute: 
@@ -8,6 +8,7 @@ format:
   html:
     toc: false
     code-link: true
+    toc-location: body
 ---
 
 ```{r}
@@ -24,29 +25,45 @@ library(worldmet)
 
 As well as authoring many private R packages to streamline data analysis pipelines for myself and colleagues, I have also developed publicly available packages, many of which focused on air quality data analysis.
 
-### Lead Developer
+During my [PhD](research.qmd) I dabbled in package authorship to collect together personal, miscellaneous functions useful for my work. This experience led to creating several packages used throughout the group for reading awkward instrument data, scraping data from online databases, and perfoming statistical modelling of road transport emissions.
 
-#### `{openairmaps}`
+When I started working in consultancy and R development full-time I became involved in open-source package authorship by becoming an author for the `{openair}` project let by Professor David Carslaw. The `{openair}` toolkit is a collection of R packages for atmospheric data analysis, including:
 
-:::{.column-margin}
-![](https://davidcarslaw.github.io/openairmaps/logo.png)
+::: {.panel-tabset}
+
+## `{openair}`
+
+The original toolbox of plotting, analysis, and data access functions.
+
+```{r}
+#| label: fig-openair
+#| fig-cap: A polar plot, one of the most attractive features of `{openair}`.
+openair::polarPlot(openair::mydata, "nox")
+```
+
+## `{worldmet}`
+
+A tool for obtaining world meteorological data from the NOAA ISD database.
+
+```{r}
+#| label: fig-worldmet
+#| fig-cap: A map of NOAA ISD meteorological stations obtained using `{worldmet}`.
+worldmet::getMeta(returnMap = TRUE)
+```
+
+## `{openairmaps}`
+
+A package which combines `{openair}` with `{leaflet}` to create interactive air quality maps. I am the lead developer on this specific package.
+
+```{r}
+#| label: fig-openairmaps
+#| fig-cap: A map of `openair::polarPlot()`s, produced using `{openairmaps}`.
+openairmaps::polarMap(openairmaps::polar_data,
+                      "nox",
+                      latitude = "lat",
+                      longitude = "lon")
+```
+
 :::
 
-I am the lead developer on the `{openairmaps}` package, designed to combine the air quality analysis techniques of `{openair}` with the interactivity of `{leaflet}`. Any `{openair}` "polar" directional analysis plotting function can be used as a marker on a `{leaflet}` map, allowing for easier triangulation of potential pollutant sources. Other functionality includes visualising UK AQ networks, interactive mapping of HYSPLIT trajectories, and static equivalents of the polar maps powered using `{ggmap}`.
-
-#### `{ggopenair}`
-
-:::{.column-margin}
-:::
-
-I am developing `{ggopenair}`, a `{ggplot2}` implementation of `{openair}`. `{openair}` is written in `{lattice}` which, unlike `{ggplot2}`, is no longer under active development. `{ggopenair}` will also allow users more power to modify their plots "after-the-fact", and benefit from the extensive library of `{ggplot2}` extensions like `{patchwork}`.
-
-### Collaborator
-
-#### `{openair}`
-
-The `{openair}` package has been around for over a decade, and is used around the world in the public and private sectors to analyse air quality data.
-
-#### `{worldmet}`
-
-The `{worldmet}` package gives easy access to world meteorological data via accessing NOAA databases.
+Examples of R packages I have helped develop can be found in my [portfolio](../portfolio.qmd).

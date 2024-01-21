@@ -24,6 +24,27 @@
   categories: [quarto, contest, table-contest]
   image: https://github.com/jack-davison/rstudio_table-contest_2021/blob/main/man/final-table.png?raw=true
 
+- title: "Shiny App: UK Footballer Salary Dashboard"
+  description: |
+      As part of an exercise to learn `{bslib}` and `{shiny}` more widely,
+      I spent an afternoon coding a dashboard to visualise the salary
+      distribution of UK footballers.
+  author:
+  - Jack Davison
+  path: "https://github.com/jack-davison/Shiny-Footballer-Salaries"
+  categories: [shiny]
+  image: "/portfolio/img-shiny/shiny-football.png"
+
+- title: "Shiny App: Track the ISS"
+  description: |
+      The second app I authored to help learn `{bslib}` and `{shiny}`, but also
+      to get more comfortable talking to APIs with R. Using this app users can
+      track the current position of the International Space Station (ISS).
+  author:
+  - Jack Davison
+  path: "https://github.com/jack-davison/Shiny-ISS-Tracker"
+  categories: [shiny]
+  image: "/portfolio/img-shiny/shiny-iss.png"
 
 
 
