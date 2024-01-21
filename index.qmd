@@ -1,6 +1,6 @@
 ---
 title: Jack Davison 
-subtitle: Air Quality Data Analyst & R Developer
+subtitle: Senior Consultant, Data Analyst & R Developer
 image: style/selfie-zoomed.jpg
 about:
   template: trestles
@@ -25,9 +25,11 @@ format:
     toc: true
 ---
 
-I am a senior consultant and data analyst working for an Environmental Consultancy in South Oxfordshire in the United Kingdom.
+I am a senior consultant and data analyst working for an Environmental Consultancy in South Oxfordshire in the United Kingdom. 
 
-I was awarded a PhD in Atmospheric Chemistry from the [Wolfson Atmospheric Chemistry Laboratories](https://www.york.ac.uk/chemistry/research/wacl/) at the University of York, with research focusing on the calculating emission factors from large databases of road transport emissions. 
+My work typically involves writing [dynamic reports](experience/reports.qmd), creating effective [data visualisations](experience/dataviz.qmd), authoring Shiny web apps, writing and maintaining [R packages](experience/pkgdev.qmd), facilitating [training workshops](experience/teaching.qmd), and otherwise writing scripts to do interesting things with data.
+
+I was awarded a PhD in Atmospheric Chemistry from the [Wolfson Atmospheric Chemistry Laboratories](https://www.york.ac.uk/chemistry/research/wacl/) at the University of York, with [research](experience/research.qmd) focusing on the calculating emission factors from large databases of road transport emissions. 
 
 I'm a collaborator on the [{openair} project](https://github.com/davidcarslaw/openair) and the lead developer on the [{openairmaps}](https://github.com/davidcarslaw/openairmaps) R package. 
 

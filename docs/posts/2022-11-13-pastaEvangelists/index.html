@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.533">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Jack Davison">
 <meta name="dcterms.date" content="2022-11-13">
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -79,7 +79,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -88,6 +94,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -121,8 +128,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <body class="floating nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Jack Davison</span>
     </a>
@@ -134,36 +141,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
 <li class="nav-item">
-    <a class="nav-link" href="../../experience.html" rel="" target="">
- <span class="menu-text">Experience</span></a>
+    <a class="nav-link" href="../../experience.html"> 
+<span class="menu-text">Experience</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../talks.html" rel="" target="">
- <span class="menu-text">Talks</span></a>
+    <a class="nav-link" href="../../portfolio.html"> 
+<span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html" rel="" target="">
- <span class="menu-text">Blog</span></a>
+    <a class="nav-link" href="../../blog.html"> 
+<span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/jdavison_" rel="" target=""><i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://twitter.com/jdavison_"> <i class="bi bi-twitter-x" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/jack-davison" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://fosstodon.org/@jackdavison"> <i class="bi bi-mastodon" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/jack-davison/" rel="" target=""><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://github.com/jack-davison"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/jack-davison/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-<div class="quarto-navbar-tools">
+</div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
@@ -203,7 +215,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
 <li><a href="#purpose" id="toc-purpose" class="nav-link active" data-scroll-target="#purpose">Purpose</a></li>
@@ -211,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#tidying-data" id="toc-tidying-data" class="nav-link" data-scroll-target="#tidying-data">Tidying Data</a></li>
   <li><a href="#using-the-data" id="toc-using-the-data" class="nav-link" data-scroll-target="#using-the-data">Using the data</a></li>
   </ul></nav>
-</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
@@ -246,34 +258,38 @@ Note
 <span>  <span class="fu"><a href="https://rvest.tidyverse.org/reference/session.html">session</a></span><span class="op">(</span><span class="st">"https://pastaevangelists.com/collections/pasta-academy?page=1"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We’ll now need to pull each individual element of interest from the Pasta Academy website. One of the easiest ways of finding the correct HTML at which to aim your <a href="https://rvest.tidyverse.org/">rvest</a> functions is by using Chrome’s developer tools (CTRL-SHIFT-I on Windows) or your browser’s equivalent.</p>
-<div id="fig-devtools" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure"><p><img src="developer-tools.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figure&nbsp;1: A screenshot of the use of Chrome’s developer tools.</figcaption></figure>
+<div id="fig-devtools" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-devtools-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="developer-tools.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-devtools-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: A screenshot of the use of Chrome’s developer tools.
+</figcaption></figure>
 </div>
 <p>Once we have identified the correct HTML tags to use, we can use <code><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements()</a></code> to grab those items, and then <code><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2()</a></code> to extract the text from it. For example, the below line grabs each lesson title from the first page of the Pasta Academy website.</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rvest.tidyverse.org/reference/html_element.html">html_elements</a></span><span class="op">(</span><span class="va">pasta_session</span>, <span class="st">".product-item-row__meta-title"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rvest.tidyverse.org/reference/html_text.html">html_text2</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "PASTA ACADEMY™ FARRINGDON | NEW YEAR'S EVE BEGINNERS CLASS |\r"
- [2] "PASTA ACADEMY™ FARRINGDON | NEW YEAR'S EVE BEGINNERS CLASS |\r"
- [3] "PASTA ACADEMY™ FARRINGDON | TASTE OF ROME |\r"                 
- [4] "PASTA ACADEMY™ FARRINGDON | TASTE OF SARDINIA |\r"             
- [5] "PASTA ACADEMY™ FARRINGDON | FRESH PASTA &amp; PESTO |\r"           
- [6] "PASTA ACADEMY™ BONHILL STREET| BEGINNERS CLASS |\r"            
- [7] "PASTA ACADEMY™ FARRINGDON | TASTE OF VENICE |\r"               
- [8] "PASTA ACADEMY™ - BONHILL STREET | TASTE OF BOLOGNA |\r"        
- [9] "PASTA ACADEMY™ FARRINGDON | BEGINNERS CLASS |\r"               
-[10] "PASTA ACADEMY™ FARRINGDON | MORNING BEGINNERS |\r"             
-[11] "PASTA ACADEMY™ FARRINGDON | TASTE OF TUSCANY |\r"              
-[12] "PASTA ACADEMY™ FARRINGDON | TASTE OF ROME |\r"                 
-[13] "PASTA ACADEMY™ FARRINGDON | BEGINNERS CLASS |\r"               
-[14] "PASTA ACADEMY™ FARRINGDON | MORNING BEGINNERS |\r"             
-[15] "PASTA ACADEMY™ FARRINGDON | TASTE OF NAPOLI |\r"               
-[16] "PASTA ACADEMY™ BONHILL STREET | TASTE OF NAPOLI |\r"           
-[17] "PASTA ACADEMY™ 14 BONHILL STREET | TASTE OF ROME |\r"          
-[18] "PASTA ACADEMY™ FARRINGDON | BEGINNERS CLASS |\r"               
-[19] "PASTA ACADEMY™ FARRINGDON | TASTE OF TUSCANY |\r"              
-[20] "PASTA ACADEMY™ FARRINGDON | FRESH PASTA &amp; PESTO |\r"           </code></pre>
+<pre><code> [1] "PASTA ACADEMY™ FARRINGDON | TASTE OF VENICE |\r"       
+ [2] "PASTA ACADEMY™ - BONHILL STREET | TASTE OF BOLOGNA |\r"
+ [3] "PASTA ACADEMY™ FARRINGDON | BEGINNERS CLASS |\r"       
+ [4] "PASTA ACADEMY™ FARRINGDON | MORNING BEGINNERS |\r"     
+ [5] "PASTA ACADEMY™ FARRINGDON | TASTE OF TUSCANY |\r"      
+ [6] "PASTA ACADEMY™ FARRINGDON | TASTE OF ROME |\r"         
+ [7] "PASTA ACADEMY™ FARRINGDON | BEGINNERS CLASS |\r"       
+ [8] "PASTA ACADEMY™ FARRINGDON | MORNING BEGINNERS |\r"     
+ [9] "PASTA ACADEMY™ FARRINGDON | TASTE OF NAPOLI |\r"       
+[10] "PASTA ACADEMY™ BONHILL STREET | TASTE OF NAPOLI |\r"   
+[11] "PASTA ACADEMY™ 14 BONHILL STREET | TASTE OF ROME |\r"  
+[12] "PASTA ACADEMY™ FARRINGDON | BEGINNERS CLASS |\r"       
+[13] "PASTA ACADEMY™ FARRINGDON | TASTE OF TUSCANY |\r"      
+[14] "PASTA ACADEMY™ FARRINGDON | FRESH PASTA &amp; PESTO |\r"   
+[15] "PASTA ACADEMY™ - FARRINGDON | TASTE OF AMALFI |\r"     
+[16] "PASTA ACADEMY™ FARRINGDON | TASTE OF NAPOLI |\r"       
+[17] "PASTA ACADEMY™ BONHILL STREET | TASTE OF TUSCANY |\r"  
+[18] "PASTA ACADEMY™ FARRINGDON | BEGINNERS CLASS |\r"       
+[19] "PASTA ACADEMY™ FARRINGDON | MORNING BEGINNERS |\r"     
+[20] "PASTA ACADEMY™ FARRINGDON | TASTE OF PUGLIA |\r"       </code></pre>
 </div>
 </div>
 <p>All we need to do is repeat this until we have all of the information we want. In this case, all I need is the course title, the date/time, the price, and whether or not it is sold out. The button text is a useful proxy for that last item, as it reads “SEE INFO” if a course is fully booked and “BOOK NOW” if there are spaces left.</p>
@@ -296,10 +312,10 @@ Note
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 20
 Columns: 4
-$ name   &lt;chr&gt; "PASTA ACADEMY™ FARRINGDON | NEW YEAR'S EVE BEGINNERS CLASS |\r…
-$ date   &lt;chr&gt; "\r Sunday December 31st, 2023, 13:30\r", "\r Sunday December 3…
-$ price  &lt;chr&gt; "£80.00\r", "£80.00\r", "£68.00\r", "£68.00\r", "£85.00\r", "£6…
-$ button &lt;chr&gt; "SEE INFO", "BOOK NOW", "BOOK NOW", "BOOK NOW", "BOOK NOW", "BO…</code></pre>
+$ name   &lt;chr&gt; "PASTA ACADEMY™ FARRINGDON | TASTE OF VENICE |\r", "PASTA ACADE…
+$ date   &lt;chr&gt; "\r Friday January 5th, 2024, 17:00\r", "\r Friday January 5th,…
+$ price  &lt;chr&gt; "£68.00\r", "£68.00\r", "£68.00\r", "£68.00\r", "£68.00\r", "£6…
+$ button &lt;chr&gt; "BOOK NOW", "SEE INFO", "BOOK NOW", "SEE INFO", "SEE INFO", "SE…</code></pre>
 </div>
 </div>
 <p>Now all four pieces of information can be scraped from one page, we can use <a href="https://purrr.tidyverse.org/">purrr</a> to scrape this information from <em>all</em> of the pages. We’ll write a function which takes one argument, <code>id</code>, which is used to select the specific page of the Pasta Academy website.</p>
@@ -329,20 +345,20 @@ $ button &lt;chr&gt; "SEE INFO", "BOOK NOW", "BOOK NOW", "BOOK NOW", "BOOK NOW",
 <span>                  <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_trim.html">str_squish</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">pasta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 223 × 5
-   name                                      date     price fully_booked page_id
-   &lt;chr&gt;                                     &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;          &lt;int&gt;
- 1 FARRINGDON NEW YEAR'S EVE BEGINNERS CLASS Sunday … £80.… SEE INFO           1
- 2 FARRINGDON NEW YEAR'S EVE BEGINNERS CLASS Sunday … £80.… BOOK NOW           1
- 3 FARRINGDON TASTE OF ROME                  Tuesday… £68.… BOOK NOW           1
- 4 FARRINGDON TASTE OF SARDINIA              Wednesd… £68.… BOOK NOW           1
- 5 FARRINGDON FRESH PASTA &amp; PESTO            Thursda… £85.… BOOK NOW           1
- 6 BONHILL STREET BEGINNERS CLASS            Thursda… £68.… BOOK NOW           1
- 7 FARRINGDON TASTE OF VENICE                Friday … £68.… BOOK NOW           1
- 8 - BONHILL STREET TASTE OF BOLOGNA         Friday … £68.… BOOK NOW           1
- 9 FARRINGDON BEGINNERS CLASS                Friday … £68.… BOOK NOW           1
-10 FARRINGDON MORNING BEGINNERS              Saturda… £68.… BOOK NOW           1
-# ℹ 213 more rows</code></pre>
+<pre><code># A tibble: 237 × 5
+   name                              date             price fully_booked page_id
+   &lt;chr&gt;                             &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt;          &lt;int&gt;
+ 1 FARRINGDON TASTE OF VENICE        Friday January … £68.… BOOK NOW           1
+ 2 - BONHILL STREET TASTE OF BOLOGNA Friday January … £68.… SEE INFO           1
+ 3 FARRINGDON BEGINNERS CLASS        Friday January … £68.… BOOK NOW           1
+ 4 FARRINGDON MORNING BEGINNERS      Saturday 6th Ja… £68.… SEE INFO           1
+ 5 FARRINGDON TASTE OF TUSCANY       Saturday 6th Ja… £68.… SEE INFO           1
+ 6 FARRINGDON TASTE OF ROME          Saturday Januar… £68.… SEE INFO           1
+ 7 FARRINGDON BEGINNERS CLASS        Saturday Januar… £68.… SEE INFO           1
+ 8 FARRINGDON MORNING BEGINNERS      Sunday 7th Janu… £68.… BOOK NOW           1
+ 9 FARRINGDON TASTE OF NAPOLI        Sunday January … £68.… SEE INFO           1
+10 BONHILL STREET TASTE OF NAPOLI    Sunday January … £68.… BOOK NOW           1
+# ℹ 227 more rows</code></pre>
 </div>
 </div>
 <p>An easier step — lets format the <code>price</code> as numeric data, and <code>fully_booked</code> as logical. Lets also make <code>name</code> all lower-case.</p>
@@ -355,20 +371,20 @@ $ button &lt;chr&gt; "SEE INFO", "BOOK NOW", "BOOK NOW", "BOOK NOW", "BOOK NOW",
 <span></span>
 <span><span class="va">pasta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 223 × 5
-   name                                      date     price fully_booked page_id
-   &lt;chr&gt;                                     &lt;chr&gt;    &lt;dbl&gt; &lt;lgl&gt;          &lt;int&gt;
- 1 farringdon new year's eve beginners class Sunday …    80 TRUE               1
- 2 farringdon new year's eve beginners class Sunday …    80 FALSE              1
- 3 farringdon taste of rome                  Tuesday…    68 FALSE              1
- 4 farringdon taste of sardinia              Wednesd…    68 FALSE              1
- 5 farringdon fresh pasta &amp; pesto            Thursda…    85 FALSE              1
- 6 bonhill street beginners class            Thursda…    68 FALSE              1
- 7 farringdon taste of venice                Friday …    68 FALSE              1
- 8 - bonhill street taste of bologna         Friday …    68 FALSE              1
- 9 farringdon beginners class                Friday …    68 FALSE              1
-10 farringdon morning beginners              Saturda…    68 FALSE              1
-# ℹ 213 more rows</code></pre>
+<pre><code># A tibble: 237 × 5
+   name                              date             price fully_booked page_id
+   &lt;chr&gt;                             &lt;chr&gt;            &lt;dbl&gt; &lt;lgl&gt;          &lt;int&gt;
+ 1 farringdon taste of venice        Friday January …    68 FALSE              1
+ 2 - bonhill street taste of bologna Friday January …    68 TRUE               1
+ 3 farringdon beginners class        Friday January …    68 FALSE              1
+ 4 farringdon morning beginners      Saturday 6th Ja…    68 TRUE               1
+ 5 farringdon taste of tuscany       Saturday 6th Ja…    68 TRUE               1
+ 6 farringdon taste of rome          Saturday Januar…    68 TRUE               1
+ 7 farringdon beginners class        Saturday Januar…    68 TRUE               1
+ 8 farringdon morning beginners      Sunday 7th Janu…    68 FALSE              1
+ 9 farringdon taste of napoli        Sunday January …    68 TRUE               1
+10 bonhill street taste of napoli    Sunday January …    68 FALSE              1
+# ℹ 227 more rows</code></pre>
 </div>
 </div>
 <p>It’d be useful to have the date as a properly formatted date-time column. Sadly, this column is not consistently formatted. The two issues are:</p>
@@ -416,20 +432,20 @@ $ button &lt;chr&gt; "SEE INFO", "BOOK NOW", "BOOK NOW", "BOOK NOW", "BOOK NOW",
 <span></span>
 <span><span class="va">pasta</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 223 × 5
+<pre><code># A tibble: 237 × 5
    name                           date                price fully_booked page_id
    &lt;chr&gt;                          &lt;dttm&gt;              &lt;dbl&gt; &lt;lgl&gt;          &lt;int&gt;
- 1 farringdon new year's eve beg… 2023-12-31 13:30:00    80 TRUE               1
- 2 farringdon new year's eve beg… 2023-12-31 18:30:00    80 FALSE              1
- 3 farringdon taste of rome       2024-01-02 18:30:00    68 FALSE              1
- 4 farringdon taste of sardinia   2024-01-03 18:30:00    68 FALSE              1
- 5 farringdon fresh pasta &amp; pesto 2024-01-04 18:30:00    85 FALSE              1
- 6 bonhill street beginners class 2024-01-04 18:30:00    68 FALSE              1
- 7 farringdon taste of venice     2024-01-05 17:00:00    68 FALSE              1
- 8 - bonhill street taste of bol… 2024-01-05 18:30:00    68 FALSE              1
- 9 farringdon beginners class     2024-01-05 20:30:00    68 FALSE              1
-10 farringdon morning beginners   2024-01-06 10:00:00    68 FALSE              1
-# ℹ 213 more rows</code></pre>
+ 1 farringdon taste of venice     2024-01-05 17:00:00    68 FALSE              1
+ 2 - bonhill street taste of bol… 2024-01-05 18:30:00    68 TRUE               1
+ 3 farringdon beginners class     2024-01-05 20:30:00    68 FALSE              1
+ 4 farringdon morning beginners   2024-01-06 10:00:00    68 TRUE               1
+ 5 farringdon taste of tuscany    2024-01-06 13:30:00    68 TRUE               1
+ 6 farringdon taste of rome       2024-01-06 17:00:00    68 TRUE               1
+ 7 farringdon beginners class     2024-01-06 20:30:00    68 TRUE               1
+ 8 farringdon morning beginners   2024-01-07 10:00:00    68 FALSE              1
+ 9 farringdon taste of napoli     2024-01-07 13:30:00    68 TRUE               1
+10 bonhill street taste of napoli 2024-01-07 13:30:00    68 FALSE              1
+# ℹ 227 more rows</code></pre>
 </div>
 </div>
 </section><section id="using-the-data" class="level1"><h1>Using the data</h1>
@@ -446,16 +462,16 @@ $ button &lt;chr&gt; "SEE INFO", "BOOK NOW", "BOOK NOW", "BOOK NOW", "BOOK NOW",
 <pre><code># A tibble: 40 × 5
    name                           date                price fully_booked page_id
    &lt;chr&gt;                          &lt;dttm&gt;              &lt;dbl&gt; &lt;lgl&gt;          &lt;int&gt;
- 1 farringdon new year's eve beg… 2023-12-31 18:30:00    80 FALSE              1
- 2 bonhill street beginners class 2024-01-04 18:30:00    68 FALSE              1
- 3 farringdon beginners class     2024-01-05 20:30:00    68 FALSE              1
- 4 farringdon beginners class     2024-01-06 20:30:00    68 FALSE              1
- 5 farringdon beginners class     2024-01-17 18:30:00    68 FALSE              2
- 6 farringdon beginners class     2024-01-20 20:30:00    68 FALSE              3
- 7 farringdon beginners class     2024-01-25 18:30:00    68 FALSE              3
- 8 farringdon beginners class     2024-01-26 20:30:00    68 FALSE              3
- 9 farringdon beginners class     2024-01-27 20:30:00    68 FALSE              3
-10 farringdon beginners class     2024-02-02 20:30:00    68 FALSE              4
+ 1 farringdon beginners class     2024-01-05 20:30:00    68 FALSE              1
+ 2 farringdon beginners class     2024-01-17 18:30:00    68 FALSE              2
+ 3 farringdon beginners class     2024-01-20 20:30:00    68 FALSE              2
+ 4 farringdon beginners class     2024-01-25 18:30:00    68 FALSE              3
+ 5 farringdon beginners class     2024-01-26 20:30:00    68 FALSE              3
+ 6 farringdon beginners class     2024-01-27 20:30:00    68 FALSE              3
+ 7 farringdon beginners class     2024-02-02 20:30:00    68 FALSE              4
+ 8 farringdon beginners class     2024-02-03 20:30:00    68 FALSE              4
+ 9 - bonhill street beginners cl… 2024-02-09 18:30:00    68 FALSE              4
+10 farringdon beginners class     2024-02-10 20:30:00    68 FALSE              5
 # ℹ 30 more rows</code></pre>
 </div>
 </div>
@@ -470,23 +486,23 @@ $ button &lt;chr&gt; "SEE INFO", "BOOK NOW", "BOOK NOW", "BOOK NOW", "BOOK NOW",
 <span></span>
 <span><span class="va">counts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 41 × 2
+<pre><code># A tibble: 38 × 2
    word           n
    &lt;chr&gt;      &lt;int&gt;
- 1 farringdon   158
- 2 taste        114
- 3 beginners     77
- 4 bonhill       62
- 5 class         62
- 6 street        56
- 7 pasta         32
- 8 morning       28
- 9 fresh         15
-10 pesto         15
-# ℹ 31 more rows</code></pre>
+ 1 farringdon   167
+ 2 taste        121
+ 3 beginners     81
+ 4 bonhill       67
+ 5 class         66
+ 6 street        60
+ 7 pasta         35
+ 8 morning       31
+ 9 advanced      16
+10 fresh         15
+# ℹ 28 more rows</code></pre>
 </div>
 </div>
-<p><a href="#fig-bars">Figure&nbsp;2</a> visualises the above data using <a href="https://davidgohel.github.io/ggiraph/">ggiraph</a>, showing the most and least common words in these pasta making class names. Hover over the bars to read the exact values!</p>
+<p><a href="#fig-bars" class="quarto-xref">Figure&nbsp;2</a> visualises the above data using <a href="https://davidgohel.github.io/ggiraph/">ggiraph</a>, showing the most and least common words in these pasta making class names. Hover over the bars to read the exact values!</p>
 <div class="cell">
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://davidgohel.github.io/ggiraph/">ggiraph</a></span><span class="op">)</span></span>
 <span></span>
@@ -500,9 +516,14 @@ $ button &lt;chr&gt; "SEE INFO", "BOOK NOW", "BOOK NOW", "BOOK NOW", "BOOK NOW",
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="cn">NULL</span>, x <span class="op">=</span> <span class="st">"Count (n)"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://davidgohel.github.io/ggiraph/reference/girafe.html">girafe</a></span><span class="op">(</span>ggobj <span class="op">=</span> <span class="va">plt</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="fig-bars" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure"><div class="girafe html-widget html-fill-item" id="htmlwidget-b46feb6bf42ed9e9c964" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-b46feb6bf42ed9e9c964">{"x":{"html":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='ggiraph-svg' role='img' id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f' viewBox='0 0 504 360'>\n <defs id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_defs'>\n  <clipPath id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_c1'>\n   <rect x='0' y='0' width='504' height='360'/>\n  <\/clipPath>\n  <clipPath id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_c2'>\n   <rect x='57.35' y='5.48' width='441.17' height='323.02'/>\n  <\/clipPath>\n <\/defs>\n <g id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_rootg' class='ggiraph-svg-rootg'>\n  <g clip-path='url(#svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_c1)'>\n   <rect x='0' y='0' width='504' height='360' fill='#FFFFFF' fill-opacity='1' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.75' stroke-linejoin='round' stroke-linecap='round' class='ggiraph-svg-bg'/>\n   <rect x='0' y='0' width='504' height='360' fill='#FFFFFF' fill-opacity='1' stroke='#FFFFFF' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='round'/>\n  <\/g>\n  <g clip-path='url(#svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_c2)'>\n   <rect x='57.35' y='5.48' width='441.17' height='323.02' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e1' x='57.35' y='6.66' width='441.17' height='7.06' fill='#56B1F7' fill-opacity='1' stroke='none' title='158'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e2' x='57.35' y='14.5' width='318.31' height='7.06' fill='#4288C1' fill-opacity='1' stroke='none' title='114'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e3' x='57.35' y='22.34' width='215' height='7.06' fill='#326895' fill-opacity='1' stroke='none' title='77'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e4' x='57.35' y='38.02' width='173.12' height='7.06' fill='#2B5B84' fill-opacity='1' stroke='none' title='62'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e5' x='57.35' y='30.18' width='173.12' height='7.06' fill='#2B5B84' fill-opacity='1' stroke='none' title='62'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e6' x='57.35' y='45.86' width='156.36' height='7.06' fill='#29567D' fill-opacity='1' stroke='none' title='56'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e7' x='57.35' y='53.7' width='89.35' height='7.06' fill='#1F4363' fill-opacity='1' stroke='none' title='32'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e8' x='57.35' y='61.54' width='78.18' height='7.06' fill='#1D405F' fill-opacity='1' stroke='none' title='28'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e9' x='57.35' y='77.22' width='41.88' height='7.06' fill='#183651' fill-opacity='1' stroke='none' title='15'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e10' x='57.35' y='69.38' width='41.88' height='7.06' fill='#183651' fill-opacity='1' stroke='none' title='15'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e11' x='57.35' y='85.06' width='39.09' height='7.06' fill='#183550' fill-opacity='1' stroke='none' title='14'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e12' x='57.35' y='100.74' width='36.3' height='7.06' fill='#18344F' fill-opacity='1' stroke='none' title='13'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e13' x='57.35' y='92.9' width='36.3' height='7.06' fill='#18344F' fill-opacity='1' stroke='none' title='13'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e14' x='57.35' y='116.42' width='33.51' height='7.06' fill='#17334E' fill-opacity='1' stroke='none' title='12'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e15' x='57.35' y='108.58' width='33.51' height='7.06' fill='#17334E' fill-opacity='1' stroke='none' title='12'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e16' x='57.35' y='132.1' width='30.71' height='7.06' fill='#17324D' fill-opacity='1' stroke='none' title='11'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e17' x='57.35' y='124.26' width='30.71' height='7.06' fill='#17324D' fill-opacity='1' stroke='none' title='11'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e18' x='57.35' y='147.78' width='27.92' height='7.06' fill='#16324C' fill-opacity='1' stroke='none' title='10'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e19' x='57.35' y='139.94' width='27.92' height='7.06' fill='#16324C' fill-opacity='1' stroke='none' title='10'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e20' x='57.35' y='155.62' width='25.13' height='7.06' fill='#16314B' fill-opacity='1' stroke='none' title='9'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e21' x='57.35' y='171.3' width='22.34' height='7.06' fill='#16304A' fill-opacity='1' stroke='none' title='8'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e22' x='57.35' y='163.46' width='22.34' height='7.06' fill='#16304A' fill-opacity='1' stroke='none' title='8'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e23' x='57.35' y='179.14' width='19.55' height='7.06' fill='#152F49' fill-opacity='1' stroke='none' title='7'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e24' x='57.35' y='194.82' width='16.75' height='7.06' fill='#152F48' fill-opacity='1' stroke='none' title='6'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e25' x='57.35' y='186.98' width='16.75' height='7.06' fill='#152F48' fill-opacity='1' stroke='none' title='6'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e26' x='57.35' y='202.67' width='11.17' height='7.06' fill='#142D46' fill-opacity='1' stroke='none' title='4'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e27' x='57.35' y='249.71' width='8.38' height='7.06' fill='#142C45' fill-opacity='1' stroke='none' title='3'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e28' x='57.35' y='241.87' width='8.38' height='7.06' fill='#142C45' fill-opacity='1' stroke='none' title='3'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e29' x='57.35' y='234.03' width='8.38' height='7.06' fill='#142C45' fill-opacity='1' stroke='none' title='3'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e30' x='57.35' y='226.19' width='8.38' height='7.06' fill='#142C45' fill-opacity='1' stroke='none' title='3'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e31' x='57.35' y='218.35' width='8.38' height='7.06' fill='#142C45' fill-opacity='1' stroke='none' title='3'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e32' x='57.35' y='210.51' width='8.38' height='7.06' fill='#142C45' fill-opacity='1' stroke='none' title='3'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e33' x='57.35' y='273.23' width='5.58' height='7.06' fill='#132C44' fill-opacity='1' stroke='none' title='2'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e34' x='57.35' y='265.39' width='5.58' height='7.06' fill='#132C44' fill-opacity='1' stroke='none' title='2'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e35' x='57.35' y='257.55' width='5.58' height='7.06' fill='#132C44' fill-opacity='1' stroke='none' title='2'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e36' x='57.35' y='320.27' width='2.79' height='7.06' fill='#132B43' fill-opacity='1' stroke='none' title='1'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e37' x='57.35' y='312.43' width='2.79' height='7.06' fill='#132B43' fill-opacity='1' stroke='none' title='1'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e38' x='57.35' y='304.59' width='2.79' height='7.06' fill='#132B43' fill-opacity='1' stroke='none' title='1'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e39' x='57.35' y='296.75' width='2.79' height='7.06' fill='#132B43' fill-opacity='1' stroke='none' title='1'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e40' x='57.35' y='288.91' width='2.79' height='7.06' fill='#132B43' fill-opacity='1' stroke='none' title='1'/>\n   <rect id='svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_e41' x='57.35' y='281.07' width='2.79' height='7.06' fill='#132B43' fill-opacity='1' stroke='none' title='1'/>\n  <\/g>\n  <g clip-path='url(#svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f_c1)'>\n   <polyline points='57.35,328.50 57.35,5.48' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='19.16' y='326.95' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>casolare<\/text>\n   <text x='48.52' y='319.11' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>il<\/text>\n   <text x='24.06' y='311.27' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>making<\/text>\n   <text x='43.63' y='303.43' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>oil<\/text>\n   <text x='34.33' y='295.59' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>olive<\/text>\n   <text x='26.49' y='287.75' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>tasting<\/text>\n   <text x='38.23' y='279.91' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>eve<\/text>\n   <text x='36.28' y='272.07' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>new<\/text>\n   <text x='29.23' y='264.23' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>year's<\/text>\n   <text x='42.63' y='256.39' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>14<\/text>\n   <text x='35.78' y='248.55' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>knot<\/text>\n   <text x='36.28' y='240.71' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>love<\/text>\n   <text x='5.48' y='232.86' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>masterclass<\/text>\n   <text x='38.23' y='225.02' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>san<\/text>\n   <text x='17.19' y='217.18' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>valentino<\/text>\n   <text x='27' y='209.34' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>simple<\/text>\n   <text x='21.1' y='201.5' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>bologna<\/text>\n   <text x='45.58' y='193.66' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>st<\/text>\n   <text x='33.37' y='185.82' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>sicily<\/text>\n   <text x='36.28' y='177.98' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>alps<\/text>\n   <text x='29.43' y='170.14' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>italian<\/text>\n   <text x='34.33' y='162.3' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>filled<\/text>\n   <text x='28.94' y='154.46' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>puglia<\/text>\n   <text x='21.61' y='146.62' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>sardinia<\/text>\n   <text x='22.09' y='138.78' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>tuscany<\/text>\n   <text x='26.99' y='130.94' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>venice<\/text>\n   <text x='28.95' y='123.1' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>amalfi<\/text>\n   <text x='28.94' y='115.26' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>napoli<\/text>\n   <text x='14.25' y='107.42' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>advanced<\/text>\n   <text x='25.52' y='99.58' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>umbria<\/text>\n   <text x='32.37' y='91.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>rome<\/text>\n   <text x='32.85' y='83.9' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>fresh<\/text>\n   <text x='30.89' y='76.06' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>pesto<\/text>\n   <text x='20.63' y='68.22' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>morning<\/text>\n   <text x='30.89' y='60.38' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>pasta<\/text>\n   <text x='30.41' y='52.54' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>street<\/text>\n   <text x='26.99' y='44.7' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>bonhill<\/text>\n   <text x='32.38' y='36.85' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>class<\/text>\n   <text x='13.77' y='29.01' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>beginners<\/text>\n   <text x='33.34' y='21.17' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>taste<\/text>\n   <text x='12.79' y='13.33' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>farringdon<\/text>\n   <polyline points='54.62,323.80 57.35,323.80' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,315.96 57.35,315.96' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,308.12 57.35,308.12' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,300.28 57.35,300.28' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,292.44 57.35,292.44' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,284.60 57.35,284.60' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,276.76 57.35,276.76' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,268.92 57.35,268.92' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,261.08 57.35,261.08' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,253.24 57.35,253.24' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,245.40 57.35,245.40' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,237.56 57.35,237.56' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,229.71 57.35,229.71' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,221.87 57.35,221.87' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,214.03 57.35,214.03' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,206.19 57.35,206.19' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,198.35 57.35,198.35' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,190.51 57.35,190.51' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,182.67 57.35,182.67' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,174.83 57.35,174.83' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,166.99 57.35,166.99' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,159.15 57.35,159.15' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,151.31 57.35,151.31' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,143.47 57.35,143.47' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,135.63 57.35,135.63' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,127.79 57.35,127.79' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,119.95 57.35,119.95' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,112.11 57.35,112.11' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,104.27 57.35,104.27' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,96.43 57.35,96.43' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,88.59 57.35,88.59' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,80.75 57.35,80.75' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,72.91 57.35,72.91' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,65.07 57.35,65.07' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,57.23 57.35,57.23' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,49.39 57.35,49.39' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,41.55 57.35,41.55' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,33.70 57.35,33.70' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,25.86 57.35,25.86' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,18.02 57.35,18.02' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,10.18 57.35,10.18' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='57.35,328.50 498.52,328.50' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='57.35,331.24 57.35,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='169.04,331.24 169.04,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='280.73,331.24 280.73,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='392.42,331.24 392.42,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='54.91' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>0<\/text>\n   <text x='164.15' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>40<\/text>\n   <text x='275.83' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>80<\/text>\n   <text x='385.07' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>120<\/text>\n   <text x='255' y='352.2' font-size='8.25pt' font-family='Arial'>Count (n)<\/text>\n  <\/g>\n <\/g>\n<\/svg>","js":null,"uid":"svg_ad53ffde_a8d1_4e48_8648_e2db7020ef5f","ratio":1.4,"settings":{"tooltip":{"css":".tooltip_SVGID_ { padding:5px;background:black;color:white;border-radius:2px;text-align:left; ; position:absolute;pointer-events:none;z-index:999;}","placement":"doc","opacity":0.9,"offx":10,"offy":10,"use_cursor_pos":true,"use_fill":false,"use_stroke":false,"delay_over":200,"delay_out":500},"hover":{"css":".hover_data_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_data_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_data_SVGID_ { fill:orange;stroke:black; }\nline.hover_data_SVGID_, polyline.hover_data_SVGID_ { fill:none;stroke:orange; }\nrect.hover_data_SVGID_, polygon.hover_data_SVGID_, path.hover_data_SVGID_ { fill:orange;stroke:none; }\nimage.hover_data_SVGID_ { stroke:orange; }","reactive":true,"nearest_distance":null},"hover_inv":{"css":""},"hover_key":{"css":".hover_key_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_key_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_key_SVGID_ { fill:orange;stroke:black; }\nline.hover_key_SVGID_, polyline.hover_key_SVGID_ { fill:none;stroke:orange; }\nrect.hover_key_SVGID_, polygon.hover_key_SVGID_, path.hover_key_SVGID_ { fill:orange;stroke:none; }\nimage.hover_key_SVGID_ { stroke:orange; }","reactive":true},"hover_theme":{"css":".hover_theme_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_theme_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_theme_SVGID_ { fill:orange;stroke:black; }\nline.hover_theme_SVGID_, polyline.hover_theme_SVGID_ { fill:none;stroke:orange; }\nrect.hover_theme_SVGID_, polygon.hover_theme_SVGID_, path.hover_theme_SVGID_ { fill:orange;stroke:none; }\nimage.hover_theme_SVGID_ { stroke:orange; }","reactive":true},"select":{"css":".select_data_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_data_SVGID_ { stroke:none;fill:red; }\ncircle.select_data_SVGID_ { fill:red;stroke:black; }\nline.select_data_SVGID_, polyline.select_data_SVGID_ { fill:none;stroke:red; }\nrect.select_data_SVGID_, polygon.select_data_SVGID_, path.select_data_SVGID_ { fill:red;stroke:none; }\nimage.select_data_SVGID_ { stroke:red; }","type":"multiple","only_shiny":true,"selected":[]},"select_inv":{"css":""},"select_key":{"css":".select_key_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_key_SVGID_ { stroke:none;fill:red; }\ncircle.select_key_SVGID_ { fill:red;stroke:black; }\nline.select_key_SVGID_, polyline.select_key_SVGID_ { fill:none;stroke:red; }\nrect.select_key_SVGID_, polygon.select_key_SVGID_, path.select_key_SVGID_ { fill:red;stroke:none; }\nimage.select_key_SVGID_ { stroke:red; }","type":"single","only_shiny":true,"selected":[]},"select_theme":{"css":".select_theme_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_theme_SVGID_ { stroke:none;fill:red; }\ncircle.select_theme_SVGID_ { fill:red;stroke:black; }\nline.select_theme_SVGID_, polyline.select_theme_SVGID_ { fill:none;stroke:red; }\nrect.select_theme_SVGID_, polygon.select_theme_SVGID_, path.select_theme_SVGID_ { fill:red;stroke:none; }\nimage.select_theme_SVGID_ { stroke:red; }","type":"single","only_shiny":true,"selected":[]},"zoom":{"min":1,"max":1,"duration":300},"toolbar":{"position":"topright","pngname":"diagram","tooltips":null,"hidden":[],"delay_over":200,"delay_out":500},"sizing":{"rescale":true,"width":1}}},"evals":[],"jsHooks":[]}</script><figcaption class="figure-caption">Figure&nbsp;2: Frequency of different words in Pasta Academy class names.</figcaption></figure>
+<div id="fig-bars" class="cell-output-display quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-bars-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="girafe html-widget html-fill-item" id="htmlwidget-61cf8a86e3778d364943" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-61cf8a86e3778d364943">{"x":{"html":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='ggiraph-svg' role='img' id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f' viewBox='0 0 504 360'>\n <defs id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_defs'>\n  <clipPath id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_c1'>\n   <rect x='0' y='0' width='504' height='360'/>\n  <\/clipPath>\n  <clipPath id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_c2'>\n   <rect x='57.35' y='5.48' width='441.17' height='323.02'/>\n  <\/clipPath>\n <\/defs>\n <g id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_rootg' class='ggiraph-svg-rootg'>\n  <g clip-path='url(#svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_c1)'>\n   <rect x='0' y='0' width='504' height='360' fill='#FFFFFF' fill-opacity='1' stroke='#FFFFFF' stroke-opacity='1' stroke-width='0.75' stroke-linejoin='round' stroke-linecap='round' class='ggiraph-svg-bg'/>\n   <rect x='0' y='0' width='504' height='360' fill='#FFFFFF' fill-opacity='1' stroke='#FFFFFF' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='round'/>\n  <\/g>\n  <g clip-path='url(#svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_c2)'>\n   <rect x='57.35' y='5.48' width='441.17' height='323.02' fill='#FFFFFF' fill-opacity='1' stroke='none'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e1' x='57.35' y='6.75' width='441.17' height='7.61' fill='#56B1F7' fill-opacity='1' stroke='none' title='167'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e2' x='57.35' y='15.2' width='319.65' height='7.61' fill='#4289C1' fill-opacity='1' stroke='none' title='121'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e3' x='57.35' y='23.66' width='213.98' height='7.61' fill='#326895' fill-opacity='1' stroke='none' title='81'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e4' x='57.35' y='32.12' width='176.99' height='7.61' fill='#2C5C86' fill-opacity='1' stroke='none' title='67'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e5' x='57.35' y='40.57' width='174.35' height='7.61' fill='#2C5C85' fill-opacity='1' stroke='none' title='66'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e6' x='57.35' y='49.03' width='158.5' height='7.61' fill='#29577E' fill-opacity='1' stroke='none' title='60'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e7' x='57.35' y='57.48' width='92.46' height='7.61' fill='#204464' fill-opacity='1' stroke='none' title='35'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e8' x='57.35' y='65.94' width='81.89' height='7.61' fill='#1E4160' fill-opacity='1' stroke='none' title='31'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e9' x='57.35' y='74.4' width='42.27' height='7.61' fill='#183651' fill-opacity='1' stroke='none' title='16'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e10' x='57.35' y='91.31' width='39.63' height='7.61' fill='#183550' fill-opacity='1' stroke='none' title='15'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e11' x='57.35' y='82.85' width='39.63' height='7.61' fill='#183550' fill-opacity='1' stroke='none' title='15'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e12' x='57.35' y='99.77' width='36.98' height='7.61' fill='#18344F' fill-opacity='1' stroke='none' title='14'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e13' x='57.35' y='116.68' width='34.34' height='7.61' fill='#17344E' fill-opacity='1' stroke='none' title='13'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e14' x='57.35' y='108.22' width='34.34' height='7.61' fill='#17344E' fill-opacity='1' stroke='none' title='13'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e15' x='57.35' y='142.05' width='31.7' height='7.61' fill='#17334E' fill-opacity='1' stroke='none' title='12'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e16' x='57.35' y='133.59' width='31.7' height='7.61' fill='#17334E' fill-opacity='1' stroke='none' title='12'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e17' x='57.35' y='125.13' width='31.7' height='7.61' fill='#17334E' fill-opacity='1' stroke='none' title='12'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e18' x='57.35' y='150.5' width='29.06' height='7.61' fill='#17324D' fill-opacity='1' stroke='none' title='11'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e19' x='57.35' y='184.33' width='26.42' height='7.61' fill='#16314C' fill-opacity='1' stroke='none' title='10'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e20' x='57.35' y='175.87' width='26.42' height='7.61' fill='#16314C' fill-opacity='1' stroke='none' title='10'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e21' x='57.35' y='167.41' width='26.42' height='7.61' fill='#16314C' fill-opacity='1' stroke='none' title='10'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e22' x='57.35' y='158.96' width='26.42' height='7.61' fill='#16314C' fill-opacity='1' stroke='none' title='10'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e23' x='57.35' y='209.7' width='18.49' height='7.61' fill='#152F49' fill-opacity='1' stroke='none' title='7'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e24' x='57.35' y='201.24' width='18.49' height='7.61' fill='#152F49' fill-opacity='1' stroke='none' title='7'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e25' x='57.35' y='192.78' width='18.49' height='7.61' fill='#152F49' fill-opacity='1' stroke='none' title='7'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e26' x='57.35' y='218.15' width='15.85' height='7.61' fill='#152F48' fill-opacity='1' stroke='none' title='6'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e27' x='57.35' y='268.89' width='7.93' height='7.61' fill='#142C45' fill-opacity='1' stroke='none' title='3'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e28' x='57.35' y='260.43' width='7.93' height='7.61' fill='#142C45' fill-opacity='1' stroke='none' title='3'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e29' x='57.35' y='251.98' width='7.93' height='7.61' fill='#142C45' fill-opacity='1' stroke='none' title='3'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e30' x='57.35' y='243.52' width='7.93' height='7.61' fill='#142C45' fill-opacity='1' stroke='none' title='3'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e31' x='57.35' y='235.06' width='7.93' height='7.61' fill='#142C45' fill-opacity='1' stroke='none' title='3'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e32' x='57.35' y='226.61' width='7.93' height='7.61' fill='#142C45' fill-opacity='1' stroke='none' title='3'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e33' x='57.35' y='319.62' width='2.64' height='7.61' fill='#132B43' fill-opacity='1' stroke='none' title='1'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e34' x='57.35' y='311.17' width='2.64' height='7.61' fill='#132B43' fill-opacity='1' stroke='none' title='1'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e35' x='57.35' y='302.71' width='2.64' height='7.61' fill='#132B43' fill-opacity='1' stroke='none' title='1'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e36' x='57.35' y='294.26' width='2.64' height='7.61' fill='#132B43' fill-opacity='1' stroke='none' title='1'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e37' x='57.35' y='285.8' width='2.64' height='7.61' fill='#132B43' fill-opacity='1' stroke='none' title='1'/>\n   <rect id='svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_e38' x='57.35' y='277.34' width='2.64' height='7.61' fill='#132B43' fill-opacity='1' stroke='none' title='1'/>\n  <\/g>\n  <g clip-path='url(#svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f_c1)'>\n   <polyline points='57.35,328.50 57.35,5.48' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='19.16' y='326.58' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>casolare<\/text>\n   <text x='48.52' y='318.12' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>il<\/text>\n   <text x='24.06' y='309.67' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>making<\/text>\n   <text x='43.63' y='301.21' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>oil<\/text>\n   <text x='34.33' y='292.76' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>olive<\/text>\n   <text x='26.49' y='284.3' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>tasting<\/text>\n   <text x='42.63' y='275.84' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>14<\/text>\n   <text x='35.78' y='267.39' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>knot<\/text>\n   <text x='36.28' y='258.93' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>love<\/text>\n   <text x='5.48' y='250.47' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>masterclass<\/text>\n   <text x='38.23' y='242.02' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>san<\/text>\n   <text x='17.19' y='233.56' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>valentino<\/text>\n   <text x='27' y='225.11' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>simple<\/text>\n   <text x='21.1' y='216.65' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>bologna<\/text>\n   <text x='33.37' y='208.19' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>sicily<\/text>\n   <text x='45.58' y='199.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>st<\/text>\n   <text x='36.28' y='191.28' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>alps<\/text>\n   <text x='34.33' y='182.83' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>filled<\/text>\n   <text x='29.43' y='174.37' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>italian<\/text>\n   <text x='21.61' y='165.91' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>sardinia<\/text>\n   <text x='28.94' y='157.46' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>puglia<\/text>\n   <text x='28.95' y='149' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>amalfi<\/text>\n   <text x='22.09' y='140.55' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>tuscany<\/text>\n   <text x='26.99' y='132.09' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>venice<\/text>\n   <text x='28.94' y='123.63' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>napoli<\/text>\n   <text x='32.37' y='115.18' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>rome<\/text>\n   <text x='25.52' y='106.72' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>umbria<\/text>\n   <text x='32.85' y='98.26' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>fresh<\/text>\n   <text x='30.89' y='89.81' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>pesto<\/text>\n   <text x='14.25' y='81.35' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>advanced<\/text>\n   <text x='20.63' y='72.9' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>morning<\/text>\n   <text x='30.89' y='64.44' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>pasta<\/text>\n   <text x='30.41' y='55.98' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>street<\/text>\n   <text x='32.38' y='47.53' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>class<\/text>\n   <text x='26.99' y='39.07' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>bonhill<\/text>\n   <text x='13.77' y='30.62' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>beginners<\/text>\n   <text x='33.34' y='22.16' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>taste<\/text>\n   <text x='12.79' y='13.7' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>farringdon<\/text>\n   <polyline points='54.62,323.43 57.35,323.43' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,314.97 57.35,314.97' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,306.52 57.35,306.52' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,298.06 57.35,298.06' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,289.61 57.35,289.61' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,281.15 57.35,281.15' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,272.69 57.35,272.69' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,264.24 57.35,264.24' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,255.78 57.35,255.78' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,247.32 57.35,247.32' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,238.87 57.35,238.87' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,230.41 57.35,230.41' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,221.96 57.35,221.96' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,213.50 57.35,213.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,205.04 57.35,205.04' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,196.59 57.35,196.59' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,188.13 57.35,188.13' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,179.68 57.35,179.68' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,171.22 57.35,171.22' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,162.76 57.35,162.76' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,154.31 57.35,154.31' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,145.85 57.35,145.85' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,137.40 57.35,137.40' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,128.94 57.35,128.94' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,120.48 57.35,120.48' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,112.03 57.35,112.03' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,103.57 57.35,103.57' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,95.11 57.35,95.11' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,86.66 57.35,86.66' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,78.20 57.35,78.20' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,69.75 57.35,69.75' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,61.29 57.35,61.29' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,52.83 57.35,52.83' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,44.38 57.35,44.38' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,35.92 57.35,35.92' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,27.47 57.35,27.47' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,19.01 57.35,19.01' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='54.62,10.55 57.35,10.55' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='57.35,328.50 498.52,328.50' fill='none' stroke='#000000' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='57.35,331.24 57.35,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='163.02,331.24 163.02,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='268.69,331.24 268.69,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='374.36,331.24 374.36,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <polyline points='480.03,331.24 480.03,328.50' fill='none' stroke='#333333' stroke-opacity='1' stroke-width='1.07' stroke-linejoin='round' stroke-linecap='butt'/>\n   <text x='54.91' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>0<\/text>\n   <text x='158.13' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>40<\/text>\n   <text x='263.8' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>80<\/text>\n   <text x='367.02' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>120<\/text>\n   <text x='472.68' y='339.74' font-size='6.6pt' font-family='Arial' fill='#4D4D4D' fill-opacity='1'>160<\/text>\n   <text x='255' y='352.2' font-size='8.25pt' font-family='Arial'>Count (n)<\/text>\n  <\/g>\n <\/g>\n<\/svg>","js":null,"uid":"svg_43cbf9c6_bd4a_43b5_afaf_ad7559a6604f","ratio":1.4,"settings":{"tooltip":{"css":".tooltip_SVGID_ { padding:5px;background:black;color:white;border-radius:2px;text-align:left; ; position:absolute;pointer-events:none;z-index:999;}","placement":"doc","opacity":0.9,"offx":10,"offy":10,"use_cursor_pos":true,"use_fill":false,"use_stroke":false,"delay_over":200,"delay_out":500},"hover":{"css":".hover_data_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_data_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_data_SVGID_ { fill:orange;stroke:black; }\nline.hover_data_SVGID_, polyline.hover_data_SVGID_ { fill:none;stroke:orange; }\nrect.hover_data_SVGID_, polygon.hover_data_SVGID_, path.hover_data_SVGID_ { fill:orange;stroke:none; }\nimage.hover_data_SVGID_ { stroke:orange; }","reactive":true,"nearest_distance":null},"hover_inv":{"css":""},"hover_key":{"css":".hover_key_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_key_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_key_SVGID_ { fill:orange;stroke:black; }\nline.hover_key_SVGID_, polyline.hover_key_SVGID_ { fill:none;stroke:orange; }\nrect.hover_key_SVGID_, polygon.hover_key_SVGID_, path.hover_key_SVGID_ { fill:orange;stroke:none; }\nimage.hover_key_SVGID_ { stroke:orange; }","reactive":true},"hover_theme":{"css":".hover_theme_SVGID_ { fill:orange;stroke:black;cursor:pointer; }\ntext.hover_theme_SVGID_ { stroke:none;fill:orange; }\ncircle.hover_theme_SVGID_ { fill:orange;stroke:black; }\nline.hover_theme_SVGID_, polyline.hover_theme_SVGID_ { fill:none;stroke:orange; }\nrect.hover_theme_SVGID_, polygon.hover_theme_SVGID_, path.hover_theme_SVGID_ { fill:orange;stroke:none; }\nimage.hover_theme_SVGID_ { stroke:orange; }","reactive":true},"select":{"css":".select_data_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_data_SVGID_ { stroke:none;fill:red; }\ncircle.select_data_SVGID_ { fill:red;stroke:black; }\nline.select_data_SVGID_, polyline.select_data_SVGID_ { fill:none;stroke:red; }\nrect.select_data_SVGID_, polygon.select_data_SVGID_, path.select_data_SVGID_ { fill:red;stroke:none; }\nimage.select_data_SVGID_ { stroke:red; }","type":"multiple","only_shiny":true,"selected":[]},"select_inv":{"css":""},"select_key":{"css":".select_key_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_key_SVGID_ { stroke:none;fill:red; }\ncircle.select_key_SVGID_ { fill:red;stroke:black; }\nline.select_key_SVGID_, polyline.select_key_SVGID_ { fill:none;stroke:red; }\nrect.select_key_SVGID_, polygon.select_key_SVGID_, path.select_key_SVGID_ { fill:red;stroke:none; }\nimage.select_key_SVGID_ { stroke:red; }","type":"single","only_shiny":true,"selected":[]},"select_theme":{"css":".select_theme_SVGID_ { fill:red;stroke:black;cursor:pointer; }\ntext.select_theme_SVGID_ { stroke:none;fill:red; }\ncircle.select_theme_SVGID_ { fill:red;stroke:black; }\nline.select_theme_SVGID_, polyline.select_theme_SVGID_ { fill:none;stroke:red; }\nrect.select_theme_SVGID_, polygon.select_theme_SVGID_, path.select_theme_SVGID_ { fill:red;stroke:none; }\nimage.select_theme_SVGID_ { stroke:red; }","type":"single","only_shiny":true,"selected":[]},"zoom":{"min":1,"max":1,"duration":300},"toolbar":{"position":"topright","pngname":"diagram","tooltips":null,"hidden":[],"delay_over":200,"delay_out":500},"sizing":{"rescale":true,"width":1}}},"evals":[],"jsHooks":[]}</script>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bars-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Frequency of different words in Pasta Academy class names.
+</figcaption></figure>
 </div>
 </div>
 
@@ -586,10 +607,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -599,8 +619,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -613,6 +642,120 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -656,6 +799,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -681,6 +825,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -742,9 +912,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">
-    <div class="nav-footer-left"><span>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span></div>   
-    <div class="nav-footer-center"><img src="../../style/logo.png" style="width:7.5%"></div>
-    <div class="nav-footer-right"><span><a href="https://github.com/jack-davison/jack-davison.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></div>
+    <div class="nav-footer-left">
+<p><span>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span></p>
+</div>   
+    <div class="nav-footer-center">
+<p><img src="../../style/logo.png" style="width:7.5%"></p>
+</div>
+    <div class="nav-footer-right">
+<p><span><a href="https://github.com/jack-davison/jack-davison.github.io">View the source at <i class="fa-brands fa-github" aria-label="github"></i> GitHub</a></span></p>
+</div>
   </div>
 </footer>
 

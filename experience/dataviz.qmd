@@ -8,6 +8,7 @@ format:
   html:
     toc: false
     code-link: true
+    toc-location: body
 ---
 
 ```{r}

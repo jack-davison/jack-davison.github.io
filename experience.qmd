@@ -6,4 +6,8 @@ listing:
   type: grid
   sort-ui: false
   image-height: "200px"
+  grid-columns: 3
+page-layout: full
 ---
+
+Select any of the below headings to learn more about my experience as a data analyst and environmental consultant. Selected examples of my work can be seen in my [portfolio](portfolio.qmd).

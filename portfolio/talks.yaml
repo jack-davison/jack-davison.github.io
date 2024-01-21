@@ -1,0 +1,26 @@
+- title: '"Put it on a map!" Developments in air quality data analysis'
+  description: |
+      "SatRdays is a low-cost, not-for-profit, locally organised R conference
+      series. This talk was given at SatRdays London 2023, and was mainly
+      centred around the `{openairmaps}` R package, with wider framing around
+      updating and using "legacy" packages."
+  author:
+  - Jack Davison
+  date: 2023-04-23
+  path: "https://github.com/jack-davison/satRdaysLondon2023-openairmaps"
+  categories: [talk, conference, air-quality, r-package]
+  image: "/portfolio/img-talks/2023_satRdayslondon.png"
+
+- title: 'New Approaches for Understanding Vehicle Emissions Using Remote Sensing'
+  description: |
+      "I was one of three PhD student recipients of the 2021 Kathleen Mary
+      Stott Prize, awarded by the Department of Chemistry, University of
+      York. Part of this was delivering a talk at the Prizewinners Seminar.
+      PowerPoint slides available on request. My research can be read about on
+      my 'research experience' page, my thesis, or in my academic articles"
+  author:
+  - Jack Davison
+  date: 2021-10-06
+  path: "https://www.york.ac.uk/chemistry/events/seminars/2021/kmsprizewinners06-10-21/"
+  categories: [talk, seminar, air-quality, academic]
+  image: "/portfolio/img-talks/2021_kmschemistry.png"

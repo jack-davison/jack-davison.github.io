@@ -12,12 +12,14 @@ website:
     right:
       - text: "Experience"
         file: experience.qmd
-      - text: "Talks"
-        file: talks.qmd
+      - text: "Portfolio"
+        file: portfolio.qmd
       - text: "Blog"
         file: blog.qmd
-      - icon: twitter
+      - icon: twitter-x
         href: https://twitter.com/jdavison_
+      - icon: mastodon
+        href: https://fosstodon.org/@jackdavison
       - icon: github
         href: https://github.com/jack-davison
       - icon: linkedin

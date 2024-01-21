@@ -1,0 +1,38 @@
+---
+title: Shiny App Development
+description: Developing interactive dashboards and web applications in Shiny.
+image: experience_imgs/shiny.jpg
+execute: 
+  freeze: auto
+format:
+  html:
+    toc: false
+    code-link: true
+    toc-location: body
+---
+
+```{r}
+#| include: false
+library(shiny)
+library(bslib)
+```
+
+`{shiny}` is a platform for building web applications in R (and, more recently, Python). I've produced `{shiny}` applications for clients, for internal dashboards/tools, and for personal projects. One of the key benefits of `{shiny}`, in my opinion, is it allows you to rapidly put together a data dashboard or application that looks good, *without* having to know loads of HTML or CSS. This makes it perfect for development at pace, or creating minimum viable products to show to clients.
+
+Naturally, a lot of these shiny apps can't be more widely shared, but @fig-shiny shows some screenshots of public applications I've made. These specific apps were written very quickly as an exercise to learn `{shiny}` and `{bslib}`, but I'm broadly happy with how they turned out!
+
+:::: {.column-page}
+
+::: {#fig-shiny layout-ncol=2}
+
+![See Footballer Salaries](../portfolio/img-shiny/shiny-football.png){#fig-shiny-football}
+
+![Track the ISS](../portfolio/img-shiny/shiny-iss.png){#fig-shiny-iss}
+
+Some personal projects built in `{shiny}`.
+
+:::
+
+::::
+
+Links to the source code of these apps and others can be found in my [portfolio](../portfolio.qmd).
