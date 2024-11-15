@@ -14,12 +14,8 @@ website:
         file: experience.qmd
       - text: "Portfolio"
         file: portfolio.qmd
-      - text: "Blog"
-        file: blog.qmd
-      - icon: twitter-x
-        href: https://twitter.com/jdavison_
-      - icon: mastodon
-        href: https://fosstodon.org/@jackdavison
+      - icon: chat
+        href: https://bsky.app/profile/jack-davison.bsky.social
       - icon: github
         href: https://github.com/jack-davison
       - icon: linkedin
@@ -41,10 +37,10 @@ format:
     anchor-sections: true
     footnotes-hover: true
     fontsize: 1em
-    theme: [minty, style/styles.scss]
+    theme: [flatly, style/styles.scss]
     css: style/styles.css
-    title-block-banner-color: white
-    mainfont: Poppins
+    title-block-banner-color: black
+    mainfont: Krub
     monofont: JetBrains Mono
 
 bibliography: references.bib

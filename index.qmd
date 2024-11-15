@@ -1,17 +1,14 @@
 ---
 title: Jack Davison 
 subtitle: Senior Consultant, Data Analyst & R Developer
-image: style/selfie-zoomed.jpg
+image: style/heatshot-whitebg.jpg
 about:
   template: trestles
   image-shape: rounded
   links:
-    - icon: twitter-x
-      text: X (twitter)
-      href: "https://twitter.com/jdavison_"
-    - icon: mastodon
-      text: Mastodon
-      href: "https://fosstodon.org/@jackdavison"
+    - icon: chat
+      text: Bluesky
+      href: https://bsky.app/profile/jack-davison.bsky.social
     - icon: github
       text: Github
       href: "https://github.com/jack-davison"
@@ -24,6 +21,12 @@ format:
     toc-location: right
     toc: true
 ---
+
+```{r}
+#| include: false
+library(downlit)
+library(xml2)
+```
 
 I am a senior consultant and data analyst working for an Environmental Consultancy in South Oxfordshire in the United Kingdom. 
 
