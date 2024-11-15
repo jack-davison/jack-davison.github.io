@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.32">
+<meta name="generator" content="quarto-1.5.57">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
 <meta name="description" content="Authoring dynamic documents using {quarto} and {rmarkdown}.">
+
 <title>Dynamic Reporting</title>
 <style>
 code{white-space: pre-wrap;}
@@ -20,6 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 </style>
 
+
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
@@ -32,12 +36,13 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2486e1f0a3ee9ee1fc393803a1361cdb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-b936ac486e03692c5649d836d72a22cb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -63,15 +68,21 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><link rel="stylesheet" href="../style/styles.css">
+}</script>
+
+
+<link rel="stylesheet" href="../style/styles.css">
 <meta property="og:title" content="Dynamic Reporting">
-<meta property="og:description" content="Authoring dynamic documents using quarto and rmarkdown.">
+<meta property="og:description" content="Authoring dynamic documents using {quarto} and {rmarkdown}.">
 <meta property="og:image" content="https://jack-davison.github.io/experience/experience_imgs/report.jpg">
 </head>
+
 <body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Jack Davison</span>
@@ -83,7 +94,7 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-<li class="nav-item">
+  <li class="nav-item">
     <a class="nav-link" href="../experience.html"> 
 <span class="menu-text">Experience</span></a>
   </li>  
@@ -107,22 +118,28 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-</div> <!-- /navcollapse -->
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
-    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
 <h1 class="title">Dynamic Reporting</h1>
 </div>
 
 <div>
   <div class="description">
-    Authoring dynamic documents using <a href="https://github.com/quarto-dev/quarto-r">quarto</a> and <a href="https://github.com/rstudio/rmarkdown">rmarkdown</a>.
+    Authoring dynamic documents using <code>{quarto}</code> and <code>{rmarkdown}</code>.
   </div>
 </div>
 
@@ -136,7 +153,10 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header><p>I have authored interactive documents for a wide range of projects and clients, from developing dynamic annual network summaries for the UK Government to efficiently writing up reports in response to unpredictable air pollution episodes.</p>
+</header>
+
+
+<p>I have authored interactive documents for a wide range of projects and clients, from developing dynamic annual network summaries for the UK Government to efficiently writing up reports in response to unpredictable air pollution episodes.</p>
 <p>Some examples of my work include:</p>
 <ul>
 <li><p>Annual Reports (e.g., <a href="https://uk-air.defra.gov.uk/assets/documents/reports/cat09/2209290928_hc_annual_report_2021_2022-08-30.html">UK Hydrocarbons Network Annual Report</a>)</p></li>
@@ -144,48 +164,57 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>Tools in which I am proficient that I use to develop these reports include:</p>
 <ul>
-<li><p><a href="https://github.com/quarto-dev/quarto-r">quarto</a> (and formerly <a href="https://github.com/rstudio/rmarkdown">rmarkdown</a>) to render the documents.</p></li>
-<li><p><a href="https://plotly-r.com">plotly</a> and <a href="https://davidgohel.github.io/ggiraph/">ggiraph</a> for interactive plots and figures.</p></li>
-<li><p><a href="https://rstudio.github.io/leaflet/">leaflet</a> for interactive maps.</p></li>
-<li><p><a href="https://ggplot2.tidyverse.org">ggplot2</a> and various extensions for static figures/maps.</p></li>
-<li><p><a href="https://gt.rstudio.com">gt</a> for interactive and static tables, and <a href="https://github.com/rstudio/DT">DT</a> for interactive tables.</p></li>
+<li><p><code>{quarto}</code> (and formerly <code>{rmarkdown}</code>) to render the documents.</p></li>
+<li><p><code>{plotly}</code> and <code>{ggiraph}</code> for interactive plots and figures.</p></li>
+<li><p><code>{leaflet}</code> for interactive maps.</p></li>
+<li><p><code>{ggplot2}</code> and various extensions for static figures/maps.</p></li>
+<li><p><code>{gt}</code> for interactive and static tables, and <code>{DT}</code> for interactive tables.</p></li>
 <li><p><code>mermaid</code> for flowcharts and other diagrams.</p></li>
 </ul>
 <p>Screenshots from a dynamic report are shown in <a href="#fig-examples" class="quarto-xref">Figure&nbsp;1</a>.</p>
 <div id="fig-examples" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-examples-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-examples-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="experience_imgs/report-plot.png" class="img-fluid figure-img"></p>
-<figcaption><a href="https://ggplot2.tidyverse.org">ggplot2</a> figure.</figcaption></figure>
+<figure class="figure">
+<p><img src="experience_imgs/report-plot.png" class="img-fluid figure-img"></p>
+<figcaption><code>{ggplot2}</code> figure.</figcaption>
+</figure>
 </div>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="experience_imgs/report-tbl.png" class="img-fluid figure-img"></p>
-<figcaption>Styled <a href="https://gt.rstudio.com">gt</a> table.</figcaption></figure>
+<figure class="figure">
+<p><img src="experience_imgs/report-tbl.png" class="img-fluid figure-img"></p>
+<figcaption>Styled <code>{gt}</code> table.</figcaption>
+</figure>
 </div>
 </div>
 </div>
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="experience_imgs/report-map.png" class="img-fluid figure-img"></p>
-<figcaption>Interactive <a href="https://rstudio.github.io/leaflet/">leaflet</a> map using the <a href="https://github.com/timelyportfolio/leaftime">leaftime</a> extension.</figcaption></figure>
+<figure class="figure">
+<p><img src="experience_imgs/report-map.png" class="img-fluid figure-img"></p>
+<figcaption>Interactive <code>{leaflet}</code> map using the <code>{leaftime}</code> extension.</figcaption>
+</figure>
 </div>
 </div>
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-examples-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Screenshots from the <a href="https://www.ricardo.com/media/c33dncxa/west-london-particulate-episode.html">2023 West London Particulate Episode Report</a>.
-</figcaption></figure>
+</figcaption>
+</figure>
 </div>
 <p>A collection of dynamic reports I have authored can be found in my <a href="../portfolio.html">portfolio</a>.</p>
 
 
 
-</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -606,7 +635,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
 <p><span>Made with <i class="fa-brands fa-r-project" aria-label="r-project"></i> and <a href="https://quarto.org/">Quarto</a></span></p>
 </div>   
@@ -618,6 +648,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
+
+
 
 
 </body></html>

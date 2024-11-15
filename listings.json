@@ -1,9 +1,5 @@
 [
   {
-    "listing": "/portfolio.html",
-    "items": []
-  },
-  {
     "listing": "/experience.html",
     "items": [
       "/experience/dataviz.html",
@@ -13,5 +9,9 @@
       "/experience/shiny.html",
       "/experience/teaching.html"
     ]
+  },
+  {
+    "listing": "/portfolio.html",
+    "items": []
   }
 ]
