@@ -11,15 +11,6 @@ format:
     toc-location: body
 ---
 
-```{r}
-#| include: false
-library(quarto)
-library(rmarkdown)
-library(readr)
-library(purrr)
-library(ggplot2)
-```
-
 I am a [Posit (formerly RStudio) Certified Tidyverse Instructor](https://education.rstudio.com/trainers/) with over 5 years experience teaching reproducible data analysis in R to a variety of audiences. Typically these courses centre around the analysis of environmental data, specifically long term monitoring data.
 
 I have delivered training to learners from organisations such as:

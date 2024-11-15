@@ -11,12 +11,6 @@ format:
     toc-location: body
 ---
 
-```{r}
-#| include: false
-library(gt)
-library(ggplot2)
-```
-
 I am passionate about data visualisation and communication in all of its forms. This page details some of the projects I've been part of.
 
 ### TidyTuesday

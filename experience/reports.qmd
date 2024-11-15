@@ -11,19 +11,6 @@ format:
     toc-location: body
 ---
 
-```{r}
-#| include: false
-library(quarto)
-library(rmarkdown)
-library(plotly)
-library(ggiraph)
-library(leaflet)
-library(ggplot2)
-library(gt)
-library(DT)
-library(leaftime)
-```
-
 I have authored interactive documents for a wide range of projects and clients, from developing dynamic annual network summaries for the UK Government to efficiently writing up reports in response to unpredictable air pollution episodes.
 
 Some examples of my work include:
