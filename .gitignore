@@ -3,3 +3,5 @@
 _freeze/
 *.shp
 docs/*
+
+**/*.quarto_ipynb
