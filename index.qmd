@@ -22,12 +22,6 @@ format:
     toc: true
 ---
 
-```{r}
-#| include: false
-library(downlit)
-library(xml2)
-```
-
 I am a senior consultant and data analyst working for an Environmental Consultancy in South Oxfordshire in the United Kingdom. 
 
 My work typically involves writing [dynamic reports](experience/reports.qmd), creating effective [data visualisations](experience/dataviz.qmd), authoring Shiny web apps, writing and maintaining [R packages](experience/pkgdev.qmd), facilitating [training workshops](experience/teaching.qmd), and otherwise writing scripts to do interesting things with data.

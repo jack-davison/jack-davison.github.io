@@ -32,7 +32,6 @@ format:
   html:
     toc: true
     toc-location: "left"
-    code-link: true
     code-overflow: wrap
     anchor-sections: true
     footnotes-hover: true
