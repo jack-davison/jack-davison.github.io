@@ -30,7 +30,7 @@
 - title: "{worldmet}"
   description: |
     Co-maintainer. Downloads and tidies global surface meteorological
-    observations from NOAA's meteorology database, ready for use
+    observations from NOAA's meteorology databases, ready for use
     with openair.
   path: https://openair-project.github.io/worldmet/
   image: img/worldmet.png
@@ -40,7 +40,7 @@
 
 - title: "{deweather}"
   description: |
-    Co-maintainer. Uses statistical models to remove the influence of
+    Co-maintainer. Uses machine learning models to remove the influence of
     meteorology from air quality time series, revealing underlying trends.
   path: https://openair-project.github.io/deweather/
   image: img/deweather.png
@@ -174,7 +174,7 @@
 
 - title: "The openair book"
   description: |
-    Co-author, with David Carslaw, of the free online guide to analysing air
+    Co-author, with Prof David Carslaw, of the free online guide to analysing air
     pollution data with R and the openair packages.
   path: https://openair-project.github.io/book/
   image: img/openair-book.png
@@ -189,6 +189,16 @@
   path: https://www.emaq.uk/
   image: img/openair-course.png
   image-alt: "A blue title card reading Air quality data analysis with openair"
+  categories: [Teaching & talks]
+  section: teaching
+
+- title: "University of Gibraltar R workshop"
+  description: |
+    A two-day R workshop for environmental science master's students at the
+    University of Gibraltar, covering ggplot2, dplyr and R Markdown.
+  path: https://lnkd.in/p/eBasiYuk
+  image: img/gibraltar-workshop.png
+  image-alt: "A blue title card reading R for environmental scientists, University of Gibraltar"
   categories: [Teaching & talks]
   section: teaching
 

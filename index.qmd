@@ -73,9 +73,9 @@ Get in touch about data, R development or training.
 :::
 
 ::: {.lede}
-I work across the whole data workflow: turning messy data into clean pipelines, building R packages and Shiny apps, writing reproducible reports, and teaching other people to do the same.
+I work across the whole data workflow: scraping and cleaning messy data, building R packages and Shiny apps, writing reproducible reports, and teaching other people to do the same.
 
-Most of that work has been in air quality and environmental analytics. At WSP (formerly Ricardo) I build reporting, tooling and training for UK government clients, and I'm a core maintainer of the [openair](https://openair-project.github.io/openair/) family of open-source R packages. Before that I did a PhD at the University of York, building statistical models from hundreds of thousands of real-world vehicle measurements.
+Most of that work has been in air quality and environmental analytics. At WSP (formerly Ricardo) I build reporting, tooling and training for public and private sector clients, and I'm a core maintainer of the [openair](https://openair-project.github.io/openair/) family of open-source R packages. Before that I did a PhD at the University of York, building statistical models from hundreds of thousands of real-world vehicle measurements.
 :::
 
 ::: {.stats}
@@ -109,19 +109,19 @@ Most of that work has been in air quality and environmental analytics. At WSP (f
 
   [R · Git & GitHub · devtools · pkgdown · CRAN releases]{.skill-tools}
 
-- **Reproducible reporting** Quarto reports that go from raw monitoring data to published output, including annual network reports for Defra.
+- **Reproducible reporting** Quarto reports that turn raw data into a polished output, whether 'dynamic' HTML dashboards or 'static' Typst-powered PDFs.
 
-  [Quarto · R Markdown]{.skill-tools}
+  [Quarto · R Markdown · Typst]{.skill-tools}
 
-- **Data visualisation** Static and interactive graphics with ggplot2, plotnine, leaflet and gt. Runner-up and honourable mention in Posit Table Contests.
+- **Data visualisation** Static and interactive graphics with ggplot2, plotnine, leaflet and gt. Runner-up and honourable mention in Posit Table and Data Visualisation Contests.
 
   [R · Python]{.skill-tools}
 
 - **Shiny apps** Dashboards and internal tools for clients and colleagues.
 
-  [Shiny · bslib]{.skill-tools}
+  [Shiny for R · bslib]{.skill-tools}
 
-- **Teaching** Posit Certified Tidyverse Instructor. I've taught data analysis to learners from Defra, the Environment Agency, UKHSA, CASANZ, and the University of Gibraltar.
+- **Teaching** Posit Certified Tidyverse Instructor. I've designed workshops for and taught data analysis to learners from Defra, the Environment Agency, UKHSA, CASANZ, and the University of Gibraltar.
 
   [R · tidyverse]{.skill-tools}
 :::
