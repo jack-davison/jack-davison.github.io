@@ -1,6 +1,7 @@
 ---
 title: Work
 subtitle: Software, apps, reports, data visualisation, teaching and talks.
+description: Open-source R packages, Shiny apps, Quarto reports, data visualisation, teaching and publications by Jack Davison.
 aliases:
   - portfolio.html
   - experience.html
@@ -25,6 +26,9 @@ listing:
 page-layout: full
 bibliography: references.bib
 nocite: "@*"
+csl: _scripts/apa.csl
+filters:
+  - _scripts/publications.lua
 ---
 
 Much of my client work isn't public, so this is a selection of what is. Use the categories to filter.

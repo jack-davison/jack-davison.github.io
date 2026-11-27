@@ -220,3 +220,6 @@ img.hero-photo {
   .stat:nth-child(odd) { padding-left: 0; border-left: none; }
   .stat:nth-child(n+3) { border-top: 1px solid var(--jd-rule); }
 }
+
+/* Page `description:` is for search engines and link previews; don't repeat it under the title */
+#title-block-header .description { display: none; }

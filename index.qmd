@@ -1,5 +1,5 @@
 ---
-pagetitle: Jack Davison
+pagetitle: Data specialist & open-source R developer
 description: Data specialist, open-source developer and technical educator.
 image: style/social-card.png
 listing:
@@ -78,7 +78,7 @@ Most of that work has been in air quality and environmental analytics. At WSP (f
 
 - **Reproducible reporting.** Quarto reports that go from raw monitoring data to published output, including annual network reports for Defra.
 
-- **Data visualisation.** Static and interactive graphics with ggplot2, plotnine, leaflet, gt and Observable. Runner-up and honourable mention in the Posit Table Contest.
+- **Data visualisation.** Static and interactive graphics with ggplot2, plotnine, leaflet and gt. Runner-up and honourable mention in the Posit Table Contest.
 
 - **Shiny apps.** Dashboards and internal tools for clients and colleagues.
 
