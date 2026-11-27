@@ -1,35 +1,77 @@
 ---
-title: Jack Davison 
-subtitle: Senior Consultant, Data Analyst & R Developer
+title: Jack Davison
+subtitle: Data scientist and R developer specialising in air quality and environmental data
+pagetitle: Jack Davison
 image: style/heatshot-whitebg.jpg
+image-alt: Photo of Jack Davison
 about:
+  id: about
   template: trestles
   image-shape: rounded
+  image-width: 14em
   links:
-    - icon: chat
-      text: Bluesky
-      href: https://bsky.app/profile/jack-davison.bsky.social
     - icon: github
-      text: Github
-      href: "https://github.com/jack-davison"
+      text: GitHub
+      href: https://github.com/jack-davison
     - icon: linkedin
       text: LinkedIn
-      href: "https://www.linkedin.com/in/jack-davison/"
-format: 
-  html:
-    page-layout: full
-    toc-location: right
-    toc: true
+      href: https://www.linkedin.com/in/jack-davison/
+    - icon: bluesky
+      text: Bluesky
+      href: https://bsky.app/profile/jack-davison.bsky.social
+listing:
+  id: featured
+  contents: work.yaml
+  include:
+    featured: "yes"
+  type: grid
+  grid-columns: 3
+  image-height: 160px
+  fields: [image, title, description]
+  sort: false
+page-layout: full
 ---
 
-I am a senior consultant and data analyst working for an Environmental Consultancy in South Oxfordshire in the United Kingdom. 
+:::{#about}
 
-My work typically involves writing [dynamic reports](experience/reports.qmd), creating effective [data visualisations](experience/dataviz.qmd), authoring Shiny web apps, writing and maintaining [R packages](experience/pkgdev.qmd), facilitating [training workshops](experience/teaching.qmd), and otherwise writing scripts to do interesting things with data.
+I build the tools, reports and analysis pipelines that turn environmental monitoring data into decisions.
 
-I was awarded a PhD in Atmospheric Chemistry from the [Wolfson Atmospheric Chemistry Laboratories](https://www.york.ac.uk/chemistry/research/wacl/) at the University of York, with [research](experience/research.qmd) focusing on the calculating emission factors from large databases of road transport emissions. 
+I'm a senior consultant at WSP (formerly Ricardo), where I write reproducible reports for UK government clients, build Shiny apps and internal R packages, and train analysts. Outside of client work I'm a core maintainer of the [openair](https://openair-project.github.io/openair/) family of open-source R packages, used by air quality professionals around the world.
 
-I'm a collaborator on the [{openair} project](https://github.com/davidcarslaw/openair) and the lead developer on the [{openairmaps}](https://github.com/davidcarslaw/openairmaps) R package. 
+Before consultancy I did a PhD in atmospheric chemistry at the University of York, using statistical modelling on hundreds of thousands of on-road vehicle measurements to calculate emission factors.
 
-I'm also a [Posit (formerly RStudio) Certified Tidyverse Instructor](https://education.rstudio.com/trainers/) and have taught R for environmental data analysis to a wide range of audiences, including learners from Defra, the UK Environment Agency, and the UK Health Security Agency.
+:::
 
-Reach me on [Bluesky](https://bsky.app/profile/jack-davison.bsky.social) or [LinkedIn](https://www.linkedin.com/in/jack-davison/).
+## What I do
+
+- **R package development.** I maintain {openair}, {openairmaps}, {worldmet} and {deweather}. I also wrote {ukaq}, {euroaq} and {leaf.magic}, and I've had features merged into open source projects like {leaflet}, {dygraphs} and {prismatic}.
+
+- **Reproducible reporting.** Quarto reports that go from raw monitoring data to published output, including annual network reports for Defra.
+
+- **Data visualisation.** Static and interactive graphics with ggplot2, plotnine, leaflet, gt and Observable. Runner-up and honourable mention in the Posit Table Contest.
+
+- **Shiny apps.** Dashboards and internal tools for clients and colleagues.
+
+- **Teaching.** Posit Certified Tidyverse Instructor. I've taught R to analysts from Defra, the Environment Agency, UKHSA, UKCEH and CASANZ.
+
+## Selected work
+
+:::{#featured}
+:::
+
+[See all work →](work.qmd){.btn .btn-outline-primary}
+
+## Experience
+
+**Senior Data Analyst & Consultant, WSP**\
+2026 – Today
+
+**Senior Data Analyst & Consultant, Ricardo**\
+2023 – 2026
+
+**Air Quality Measurements Data Analyst, Ricardo**\
+2022 – 2023
+
+**PhD, Atmospheric Chemistry, University of York**\
+Wolfson Atmospheric Chemistry Laboratories, 2018 – 2022.
+Thesis: [*New Approaches for Understanding Vehicle Emissions Using Remote Sensing*](https://etheses.whiterose.ac.uk/31313/). Kathleen Mary Stott Prize, 2021.

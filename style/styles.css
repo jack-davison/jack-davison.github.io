@@ -1,8 +1,17 @@
-/* css styles */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Krub:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Krub:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;700&display=swap');
 
 .navbar {
   box-shadow: 1px 2px 5px #cdcdcd;
+}
+
+/* Show whole images (hex logos, banners) in listing cards rather than cropping them */
+.quarto-grid-item .card-img-top img,
+.quarto-grid-item .card-img-top .card-img {
+  object-fit: contain;
+  background: #f8f9fa;
+  padding: 0.5rem;
+}
+
+.quarto-grid-item .card-text.listing-description {
+  font-size: 0.9rem;
 }

@@ -1,0 +1,140 @@
+# Everything shown on the Work page, in display order.
+# `featured: "yes"` also puts an item in "Selected work" on the home page.
+
+# --- Software -----------------------------------------------------------------
+
+- title: "{openair}"
+  description: |
+    The long-standing R toolkit for air quality analysis. Core maintainer and
+    second-largest contributor, modernising its code and API.
+  path: https://openair-project.github.io/openair/
+  image: img/openair.png
+  categories: [Software]
+  featured: "yes"
+
+- title: "{openairmaps}"
+  description: |
+    Lead developer. Combines openair's analysis with interactive leaflet maps,
+    most notably putting bivariate polar plots on maps for source
+    triangulation.
+  path: https://openair-project.github.io/openairmaps/
+  image: img/openairmaps.png
+  categories: [Software]
+  featured: "yes"
+
+- title: "{worldmet}"
+  description: |
+    Co-maintainer. Downloads and tidies global surface meteorological
+    observations from NOAA's meteorology database, ready for use
+    with openair.
+  path: https://openair-project.github.io/worldmet/
+  image: img/worldmet.png
+  categories: [Software]
+
+- title: "{deweather}"
+  description: |
+    Co-maintainer. Uses statistical models to remove the influence of
+    meteorology from air quality time series, revealing underlying trends.
+  path: https://openair-project.github.io/deweather/
+  image: img/deweather.png
+  categories: [Software]
+
+- title: "{ukaq} and {euroaq}"
+  description: |
+    Author. Lightweight R packages for accessing UK and European Environment
+    Agency air quality data.
+  path: https://openair-project.github.io/ukaq/
+  image: img/ukaq.png
+  categories: [Software]
+
+- title: "{leaf.magic}"
+  description: |
+    Author. Builds customisable leaflet markers from modern icon libraries
+    (Font Awesome, Bootstrap, Lucide, Ionicons) in any colour and size, with
+    matching legends.
+  path: https://jack-davison.github.io/leaf.magic/
+  image: img/leaf.magic.png
+  categories: [Software]
+  featured: "yes"
+
+# --- Reports ------------------------------------------------------------------
+
+- title: "UK Hydrocarbons Network Annual Report 2024"
+  description: |
+    A Quarto report published by Defra each year, summarising
+    measurements of benzene and other VOCs and tracking compliance with
+    the Air Quality Directive.
+  path: https://uk-air.defra.gov.uk/assets/documents/reports/cat05/2509300440_UK_Hydrocarbons_Network_Annual_Report_2024.html
+  image: img/hydrocarbons-2022.png
+  categories: [Reports]
+
+- title: "UK Summer 2023 Ozone Episode"
+  description: |
+    A rapid-turnaround report on a protracted summer ozone episode, using
+    then-new features in {gt} and {bslib}.
+  path: https://www.ricardo.com/media/zfcbzfuh/2023-summer-ozone-episode.html
+  image: img/ozone-2023.png
+  categories: [Reports]
+
+- title: "Air Quality on Bonfire Night 2023"
+  description: |
+    Particulate pollution on Bonfire Night, and how well the Daily Air Quality
+    Index works for short-lived events.
+  path: https://www.ricardo.com/media/yssjq543/2023-bonfire-night.html
+  image: img/bonfire-2023.jpg
+  categories: [Reports]
+
+- title: "West London Particulate Episode 2023"
+  description: |
+    An episode report with interactive leaflet maps, styled {gt} tables and
+    {ggplot2} figures.
+  path: https://www.ricardo.com/media/c33dncxa/west-london-particulate-episode.html
+  image: img/west-london-2023.png
+  categories: [Reports]
+
+# --- Data visualisation -------------------------------------------------------
+
+- title: "YouGov Visualisations in Python"
+  description: |
+    Posit plotnine Contest 2025 entry: one-to-one recreations of YouGov
+    political favourability graphics in Python with plotnine.
+  path: https://jack-davison.github.io/posit-plotnine-contest-2025/
+  image: img/plotnine.png
+  categories: [Data viz]
+  featured: "yes"
+
+- title: "Tabulating DuBois"
+  description: |
+    Runner-up, Posit Table Contest 2022. Eight {gt} tables recreating the
+    style and spirit of W.E.B. DuBois' data visualisations.
+  path: https://jack-davison.quarto.pub/tabulating-dubois/
+  image: img/dubois.png
+  categories: [Data viz]
+  featured: "yes"
+
+- title: "Air quality tables with {gt} and {openair}"
+  description: |
+    Honourable mention, Posit Table Contest 2021. A tutorial on summarising
+    monitoring data in {gt}, with polar plots embedded in the table.
+  path: https://jack-davison.quarto.pub/gt-openair/
+  image: img/gt-openair.png
+  categories: [Data viz]
+  featured: "yes"
+
+- title: "#TidyTuesday"
+  description: |
+    Entries to the weekly R data visualisation challenge, collected in one
+    repository.
+  path: https://github.com/jack-davison/TidyTuesday
+  image: img/tidytuesday.png
+  categories: [Data viz]
+
+# --- Talks --------------------------------------------------------------------
+
+- title: '"Put it on a map!" Developments in air quality data analysis'
+  description: |
+    satRdays London 2023. On {openairmaps}, and on modernising "legacy" R
+    packages.
+  path: https://jack-davison.quarto.pub/satrdays-london-2023
+  image: img/satrdays-2023.png
+  categories: [Talks]
