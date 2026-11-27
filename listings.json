@@ -1,17 +1,10 @@
 [
   {
-    "listing": "/experience.html",
-    "items": [
-      "/experience/dataviz.html",
-      "/experience/reports.html",
-      "/experience/pkgdev.html",
-      "/experience/research.html",
-      "/experience/shiny.html",
-      "/experience/teaching.html"
-    ]
+    "listing": "/index.html",
+    "items": []
   },
   {
-    "listing": "/portfolio.html",
+    "listing": "/work.html",
     "items": []
   }
 ]

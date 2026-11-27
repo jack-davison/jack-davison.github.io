@@ -1,39 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://jack-davison.github.io/experience.html</loc>
-    <lastmod>2024-11-15T16:07:28.347Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jack-davison.github.io/portfolio.html</loc>
-    <lastmod>2024-11-15T16:07:28.491Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jack-davison.github.io/experience/pkgdev.html</loc>
-    <lastmod>2024-11-15T16:07:28.491Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jack-davison.github.io/experience/dataviz.html</loc>
-    <lastmod>2024-11-15T16:07:28.347Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jack-davison.github.io/experience/research.html</loc>
-    <lastmod>2024-11-15T16:07:28.491Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jack-davison.github.io/experience/teaching.html</loc>
-    <lastmod>2024-11-15T16:07:28.491Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jack-davison.github.io/experience/shiny.html</loc>
-    <lastmod>2024-11-15T16:07:28.491Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jack-davison.github.io/experience/reports.html</loc>
-    <lastmod>2024-11-15T16:07:28.491Z</lastmod>
-  </url>
-  <url>
     <loc>https://jack-davison.github.io/index.html</loc>
-    <lastmod>2024-11-15T16:07:28.491Z</lastmod>
+    <lastmod>2026-11-27T10:37:21.356Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jack-davison.github.io/work.html</loc>
+    <lastmod>2026-11-27T10:37:21.358Z</lastmod>
   </url>
 </urlset>
