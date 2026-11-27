@@ -74,7 +74,7 @@ Most of that work has been in air quality and environmental analytics. At WSP (f
 ## What I do
 
 ::: {.skills}
-- **R package development.** I maintain `{openair}`, `{openairmaps}`, `{worldmet}` and `{deweather}`. I also wrote `{ukaq}`, `{euroaq}` and `{leaf.magic}`, and I've had features merged into open source projects like `{leaflet}`, `{dygraphs}` and `{prismatic}`.
+- **R package development.** I maintain `{openair}`, `{openairmaps}`, `{worldmet}` and `{deweather}`, and led the move of `{openair}` from lattice to ggplot2 in version 3.0. I also wrote `{ukaq}`, `{euroaq}` and `{leaf.magic}`, and I've had features merged into open source projects like `{leaflet}`, `{dygraphs}` and `{prismatic}`.
 
 - **Reproducible reporting.** Quarto reports that go from raw monitoring data to published output, including annual network reports for Defra.
 

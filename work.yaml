@@ -5,8 +5,8 @@
 
 - title: "{openair}"
   description: |
-    The long-standing R toolkit for air quality analysis. Core maintainer and
-    second-largest contributor, modernising its code and API.
+    The long-standing R toolkit for air quality analysis. Core maintainer;
+    led openair 3.0, moving every plot from lattice to ggplot2.
   path: https://openair-project.github.io/openair/
   image: img/openair.png
   categories: [Software]
@@ -62,8 +62,7 @@
 - title: "UK AIR Local Air Quality Dashboard"
   description: |
     A public Shiny dashboard for Defra. Enter a postcode to see local
-    monitoring data, compliance, Air Quality Management Areas and council
-    action plans for any UK local authority.
+    monitoring, compliance and council action plans for any UK local authority.
   path: https://uk-air.defra.gov.uk/local-authorities-dashboard/
   image: img/la-dashboard.png
   categories: [Apps]
@@ -140,12 +139,29 @@
   image: img/tidytuesday.png
   categories: [Data viz]
 
-# --- Talks --------------------------------------------------------------------
+# --- Teaching & talks ---------------------------------------------------------
+
+- title: "The openair book"
+  description: |
+    Co-author, with David Carslaw, of the free online guide to analysing air
+    pollution data with R and the openair packages.
+  path: https://openair-project.github.io/book/
+  image: img/openair-book.png
+  categories: [Teaching & talks]
+
+- title: "openair training courses"
+  description: |
+    Co-tutor, with David Carslaw, of WSP's online courses teaching air
+    quality analysis in R to beginners.
+  path: https://www.emaq.uk/
+  image: img/openair-course.png
+  categories: [Teaching & talks]
 
 - title: '"Put it on a map!" Developments in air quality data analysis'
   description: |
-    satRdays London 2023. On {openairmaps}, and on modernising "legacy" R
-    packages.
-  path: https://jack-davison.quarto.pub/satrdays-london-2023
+    A talk on {openairmaps} and modernising "legacy" R packages, given at
+    satRdays London and the Oxford R User Group in 2023. Links to the
+    recording.
+  path: https://media.kcl.ac.uk/media/%22Put+it+on+a+map%21%22+-+Developments+in+Air+Quality+Data+Analysis+-+Jack+Davison/1_ei5ohga6
   image: img/satrdays-2023.png
-  categories: [Talks]
+  categories: [Teaching & talks]

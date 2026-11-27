@@ -1,6 +1,6 @@
 ---
 title: Work
-subtitle: Software, reports, data visualisation, apps and talks.
+subtitle: Software, apps, reports, data visualisation, teaching and talks.
 aliases:
   - portfolio.html
   - experience.html
@@ -21,6 +21,7 @@ listing:
   sort: false
   sort-ui: false
   filter-ui: false
+  page-size: 100
 page-layout: full
 bibliography: references.bib
 nocite: "@*"
