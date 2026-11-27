@@ -57,6 +57,10 @@ Data specialist, [open-source]{.nowrap} developer and technical educator.
 Senior Data Analyst & Consultant at WSP. PhD, University of York.
 :::
 
+::: {.hero-cta}
+Get in touch about data, R development or training.
+:::
+
 ::: {.hero-links}
 [GitHub](https://github.com/jack-davison)
 [LinkedIn](https://www.linkedin.com/in/jack-davison/)
@@ -110,6 +114,26 @@ Most of that work has been in air quality and environmental analytics. At WSP (f
 - **Shiny apps.** Dashboards and internal tools for clients and colleagues.
 
 - **Teaching.** Posit Certified Tidyverse Instructor. I've taught R to analysts from Defra, the Environment Agency, UKHSA, UKCEH and CASANZ.
+:::
+
+::: {.tools}
+::: {.tools-row}
+[Languages]{.tools-label}
+
+R, Python
+:::
+
+::: {.tools-row}
+[Apps & reporting]{.tools-label}
+
+Shiny, bslib, Quarto, R Markdown
+:::
+
+::: {.tools-row}
+[Engineering]{.tools-label}
+
+R package development, Git & GitHub, CRAN releases
+:::
 :::
 
 ## Selected work

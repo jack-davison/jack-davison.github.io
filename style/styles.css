@@ -223,3 +223,27 @@ img.hero-photo {
 
 /* Page `description:` is for search engines and link previews; don't repeat it under the title */
 #title-block-header .description { display: none; }
+
+/* Contact prompt above the hero links */
+.hero-cta { font-size: 0.95rem; margin-bottom: 0.6rem; }
+
+/* ---- Tools: label column + comma-separated list ------------------------- */
+
+.tools { margin-top: 2.5rem; border-top: 1px solid var(--jd-rule); }
+.tools-row {
+  display: grid;
+  grid-template-columns: 14rem 1fr;
+  gap: 1.5rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--jd-rule);
+}
+.tools-row p { margin: 0; }
+.tools-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--jd-muted);
+  padding-top: 0.2rem;
+}
+@media (max-width: 576px) { .tools-row { grid-template-columns: 1fr; gap: 0.2rem; } }
