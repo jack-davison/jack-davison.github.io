@@ -1,6 +1,7 @@
 project:
   type: website
   output-dir: docs
+  pre-render: _scripts/cran-downloads.ts
 
 website:
   title: Jack Davison

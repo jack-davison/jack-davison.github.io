@@ -1,0 +1,7 @@
+# Written by _scripts/cran-downloads.ts on each render. Do not edit by hand.
+downloads:
+  openair: "686k"
+  openairmaps: "37k"
+  worldmet: "77k"
+  total: "801k"
+  updated: "November 2026"

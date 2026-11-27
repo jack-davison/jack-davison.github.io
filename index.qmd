@@ -47,6 +47,30 @@ I work across the whole data workflow: turning messy data into clean pipelines, 
 Most of that work has been in air quality and environmental analytics. At WSP (formerly Ricardo) I build reporting, tooling and training for UK government clients, and I'm a core maintainer of the [openair](https://openair-project.github.io/openair/) family of open-source R packages. Before that I did a PhD at the University of York, building statistical models from hundreds of thousands of real-world vehicle measurements.
 :::
 
+::: {.stats}
+::: {.stat}
+[{{< var downloads.total >}}]{.stat-num}
+[CRAN downloads of packages I maintain]{.stat-label}
+:::
+
+::: {.stat}
+[{{< var downloads.openair >}}]{.stat-num}
+[`{openair}`]{.stat-label}
+:::
+
+::: {.stat}
+[{{< var downloads.worldmet >}}]{.stat-num}
+[`{worldmet}`]{.stat-label}
+:::
+
+::: {.stat}
+[{{< var downloads.openairmaps >}}]{.stat-num}
+[`{openairmaps}`]{.stat-label}
+:::
+:::
+
+[All-time downloads from Posit's CRAN mirror since 2012, as of {{< var downloads.updated >}}. Other mirrors aren't counted, so real totals are higher.]{.stats-note}
+
 ## What I do
 
 ::: {.skills}
