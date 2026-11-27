@@ -245,3 +245,6 @@ img.hero-photo {
   font-size: 0.8rem;
   color: var(--jd-muted);
 }
+
+/* Work page: row of links to each section */
+.jump-links { display: block; margin-top: 0.5rem; font-size: 0.95rem; color: var(--jd-muted); }

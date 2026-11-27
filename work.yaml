@@ -1,5 +1,6 @@
 # Everything shown on the Work page, in display order.
 # `featured: "yes"` also puts an item in "Selected work" on the home page.
+# `section:` picks which heading an entry appears under on the Work page.
 
 # --- Software -----------------------------------------------------------------
 
@@ -11,6 +12,7 @@
   image: img/openair.png
   image-alt: "The openair hex logo: a pollution plume beside the words open source"
   categories: [Software]
+  section: software
   featured: "yes"
 
 - title: "{openairmaps}"
@@ -22,6 +24,7 @@
   image: img/openairmaps.png
   image-alt: "The openairmaps hex logo: a map pin over a polar plot"
   categories: [Software]
+  section: software
   featured: "yes"
 
 - title: "{worldmet}"
@@ -33,6 +36,7 @@
   image: img/worldmet.png
   image-alt: "The worldmet hex logo: a weathervane cockerel over a world map"
   categories: [Software]
+  section: software
 
 - title: "{deweather}"
   description: |
@@ -42,6 +46,7 @@
   image: img/deweather.png
   image-alt: "The deweather hex logo: weather symbols filtering through a funnel"
   categories: [Software]
+  section: software
 
 - title: "{ukaq} and {euroaq}"
   description: |
@@ -51,6 +56,7 @@
   image: img/ukaq.png
   image-alt: "The ukaq hex logo: a map of the UK with connected monitoring points"
   categories: [Software]
+  section: software
 
 - title: "{leaf.magic}"
   description: |
@@ -61,6 +67,7 @@
   image: img/leaf.magic.png
   image-alt: "The leaf.magic hex logo: a wizard's hat on a map marker"
   categories: [Software]
+  section: software
   featured: "yes"
 
 # --- Apps ---------------------------------------------------------------------
@@ -73,6 +80,7 @@
   image: img/la-dashboard.png
   image-alt: "The landing page of the UK AIR Local Air Quality Dashboard, with a postcode search"
   categories: [Apps]
+  section: reports
   featured: "yes"
 
 # --- Reports ------------------------------------------------------------------
@@ -86,6 +94,7 @@
   image: img/hydrocarbons-2022.png
   image-alt: "A time series chart of hydrocarbon concentrations from the annual report"
   categories: [Reports]
+  section: reports
 
 - title: "UK Summer 2023 Ozone Episode"
   description: |
@@ -95,6 +104,7 @@
   image: img/ozone-2023.png
   image-alt: "A chart of daily air quality index values during the summer 2023 ozone episode"
   categories: [Reports]
+  section: reports
 
 - title: "Air Quality on Bonfire Night 2023"
   description: |
@@ -104,6 +114,7 @@
   image: img/bonfire-2023.jpg
   image-alt: "Fireworks exploding against a night sky"
   categories: [Reports]
+  section: reports
 
 - title: "West London Particulate Episode 2023"
   description: |
@@ -113,6 +124,7 @@
   image: img/west-london-2023.png
   image-alt: "A report page with a chart of particulate concentrations during the episode"
   categories: [Reports]
+  section: reports
 
 # --- Data visualisation -------------------------------------------------------
 
@@ -124,6 +136,7 @@
   image: img/plotnine.png
   image-alt: "Three recreated YouGov charts of political favourability ratings"
   categories: [Data viz]
+  section: dataviz
   featured: "yes"
 
 - title: "Tabulating DuBois"
@@ -134,6 +147,7 @@
   image: img/dubois.png
   image-alt: "A row of historical W.E.B. DuBois charts alongside his portrait"
   categories: [Data viz]
+  section: dataviz
   featured: "yes"
 
 - title: "Air quality tables with {gt} and {openair}"
@@ -144,6 +158,7 @@
   image: img/gt-openair.png
   image-alt: "A summary table of air quality statistics with small polar plots in each row"
   categories: [Data viz]
+  section: dataviz
 
 - title: "#TidyTuesday"
   description: |
@@ -153,6 +168,7 @@
   image: img/tidytuesday.png
   image-alt: "A collage of colourful TidyTuesday data visualisations"
   categories: [Data viz]
+  section: dataviz
 
 # --- Teaching & talks ---------------------------------------------------------
 
@@ -164,6 +180,7 @@
   image: img/openair-book.png
   image-alt: "The homepage of the openair book, with its plume logo and table of contents"
   categories: [Teaching & talks]
+  section: teaching
 
 - title: "openair training courses"
   description: |
@@ -173,6 +190,7 @@
   image: img/openair-course.png
   image-alt: "A blue title card reading Air quality data analysis with openair"
   categories: [Teaching & talks]
+  section: teaching
 
 - title: '"Put it on a map!" Developments in air quality data analysis'
   description: |
@@ -183,3 +201,4 @@
   image: img/satrdays-2023.png
   image-alt: "The title slide of the talk, beside a map of London with pollution plots"
   categories: [Teaching & talks]
+  section: teaching

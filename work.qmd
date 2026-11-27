@@ -1,5 +1,6 @@
 ---
 title: Work
+pagetitle: Software, reports & publications
 subtitle: Software, apps, reports, data visualisation, teaching and talks.
 description: Open-source R packages, Shiny apps, Quarto reports, data visualisation, teaching and publications by Jack Davison.
 aliases:
@@ -11,18 +12,48 @@ aliases:
   - experience/research.html
   - experience/shiny.html
   - experience/teaching.html
+# One listing per section, each pulling its entries from work.yaml by `section:`
 listing:
-  id: work
-  contents: work.yaml
-  type: grid
-  grid-columns: 3
-  image-height: 160px
-  fields: [image, title, description, categories]
-  categories: true
-  sort: false
-  sort-ui: false
-  filter-ui: false
-  page-size: 100
+  - id: software-list
+    contents: work.yaml
+    include:
+      section: software
+    type: grid
+    grid-columns: 3
+    image-height: 160px
+    fields: [image, title, description]
+    sort: false
+    page-size: 100
+  - id: reports-list
+    contents: work.yaml
+    include:
+      section: reports
+    type: grid
+    grid-columns: 3
+    image-height: 160px
+    fields: [image, title, description]
+    sort: false
+    page-size: 100
+  - id: dataviz-list
+    contents: work.yaml
+    include:
+      section: dataviz
+    type: grid
+    grid-columns: 3
+    image-height: 160px
+    fields: [image, title, description]
+    sort: false
+    page-size: 100
+  - id: teaching-list
+    contents: work.yaml
+    include:
+      section: teaching
+    type: grid
+    grid-columns: 3
+    image-height: 160px
+    fields: [image, title, description]
+    sort: false
+    page-size: 100
 page-layout: full
 bibliography: references.bib
 nocite: "@*"
@@ -31,12 +62,31 @@ filters:
   - _scripts/publications.lua
 ---
 
-Much of my client work isn't public, so this is a selection of what is. Use the categories to filter.
+Much of my client work isn't public, so this is a selection of what is.
 
-:::{#work}
+[[Software](#software) · [Reports & apps](#reports) · [Data visualisation](#dataviz) · [Teaching & talks](#teaching) · [Publications](#publications)]{.jump-links}
+
+## Software {#software}
+
+:::{#software-list}
 :::
 
-## Publications
+## Reports & apps {#reports}
+
+:::{#reports-list}
+:::
+
+## Data visualisation {#dataviz}
+
+:::{#dataviz-list}
+:::
+
+## Teaching & talks {#teaching}
+
+:::{#teaching-list}
+:::
+
+## Publications {#publications}
 
 Peer-reviewed research from my PhD and since, on vehicle emissions and atmospheric measurement. My ORCID iD is [0000-0003-2653-6615](https://orcid.org/0000-0003-2653-6615).
 
