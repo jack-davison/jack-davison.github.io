@@ -105,35 +105,25 @@ Most of that work has been in air quality and environmental analytics. At WSP (f
 ## What I do
 
 ::: {.skills}
-- **R package development.** I maintain `{openair}`, `{openairmaps}`, `{worldmet}` and `{deweather}`, and led the move of `{openair}` from lattice to ggplot2 in version 3.0. I also wrote `{ukaq}`, `{euroaq}` and `{leaf.magic}`, and I've had features merged into open source projects like `{leaflet}`, `{dygraphs}` and `{prismatic}`.
+- **R package development** I maintain `{openair}`, `{openairmaps}`, `{worldmet}` and `{deweather}`, and led the move of `{openair}` from lattice to ggplot2 in version 3.0. I also wrote `{ukaq}`, `{euroaq}` and `{leaf.magic}`, and I've had features merged into open source projects like `{leaflet}`, `{dygraphs}` and `{prismatic}`.
 
-- **Reproducible reporting.** Quarto reports that go from raw monitoring data to published output, including annual network reports for Defra.
+  [R · Git & GitHub · devtools · pkgdown · CRAN releases]{.skill-tools}
 
-- **Data visualisation.** Static and interactive graphics with ggplot2, plotnine, leaflet and gt. Runner-up and honourable mention in the Posit Table Contest.
+- **Reproducible reporting** Quarto reports that go from raw monitoring data to published output, including annual network reports for Defra.
 
-- **Shiny apps.** Dashboards and internal tools for clients and colleagues.
+  [Quarto · R Markdown]{.skill-tools}
 
-- **Teaching.** Posit Certified Tidyverse Instructor. I've taught R to analysts from Defra, the Environment Agency, UKHSA, UKCEH and CASANZ.
-:::
+- **Data visualisation** Static and interactive graphics with ggplot2, plotnine, leaflet and gt. Runner-up and honourable mention in Posit Table Contests.
 
-::: {.tools}
-::: {.tools-row}
-[Languages]{.tools-label}
+  [R · Python]{.skill-tools}
 
-R, Python
-:::
+- **Shiny apps** Dashboards and internal tools for clients and colleagues.
 
-::: {.tools-row}
-[Apps & reporting]{.tools-label}
+  [Shiny · bslib]{.skill-tools}
 
-Shiny, bslib, Quarto, R Markdown
-:::
+- **Teaching** Posit Certified Tidyverse Instructor. I've taught data analysis to learners from Defra, the Environment Agency, UKHSA, CASANZ, and the University of Gibraltar.
 
-::: {.tools-row}
-[Engineering]{.tools-label}
-
-R package development, Git & GitHub, CRAN releases
-:::
+  [R · tidyverse]{.skill-tools}
 :::
 
 ## Selected work

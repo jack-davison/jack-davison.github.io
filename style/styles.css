@@ -86,20 +86,30 @@ img.hero-photo {
 
 .lede { max-width: 64ch; font-size: 1.05rem; }
 
-/* ---- "What I do": two-column list without bullets ----------------------- */
+/* ---- "What I do": ruled rows, heading on the left (matches Tools/Experience) */
 
 .skills ul {
   list-style: none;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem 2.5rem;
+  margin: 0;
+  border-top: 1px solid var(--jd-rule);
 }
-.skills li strong {
-  display: block;
+.skills li {
+  position: relative;
+  padding: 1rem 0 1rem 15.5rem;  /* left space for the heading column */
+  border-bottom: 1px solid var(--jd-rule);
+}
+.skills li strong:first-child {
+  position: absolute;
+  left: 0;
+  width: 14rem;
   font-family: "Space Grotesk", sans-serif;
   font-weight: 600;
-  margin-bottom: 0.2rem;
+}
+.skills li > p { max-width: 70ch; }
+@media (max-width: 768px) {
+  .skills li { padding-left: 0; }
+  .skills li strong:first-child { position: static; display: block; width: auto; margin-bottom: 0.2rem; }
 }
 
 /* ---- Experience: year column + role -------------------------------------- */
@@ -227,23 +237,11 @@ img.hero-photo {
 /* Contact prompt above the hero links */
 .hero-cta { font-size: 0.95rem; margin-bottom: 0.6rem; }
 
-/* ---- Tools: label column + comma-separated list ------------------------- */
 
-.tools { margin-top: 2.5rem; border-top: 1px solid var(--jd-rule); }
-.tools-row {
-  display: grid;
-  grid-template-columns: 14rem 1fr;
-  gap: 1.5rem;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--jd-rule);
-}
-.tools-row p { margin: 0; }
-.tools-label {
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+/* Tools line under each "What I do" row */
+.skills li > p + p { margin-top: 0.45rem; }
+.skill-tools {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.8rem;
   color: var(--jd-muted);
-  padding-top: 0.2rem;
 }
-@media (max-width: 576px) { .tools-row { grid-template-columns: 1fr; gap: 0.2rem; } }
