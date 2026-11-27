@@ -1,0 +1,13 @@
+---
+pagetitle: Page not found · Jack Davison
+---
+
+::: {.hero-name}
+404
+:::
+
+::: {.hero-statement}
+This page doesn't exist.
+:::
+
+It may have moved when the site was reorganised. Try the [home page](/) or the list of [work](/work.html).

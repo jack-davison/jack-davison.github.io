@@ -1,24 +1,7 @@
 ---
-title: Jack Davison
-subtitle: Data scientist and R developer specialising in air quality and environmental data
 pagetitle: Jack Davison
-image: style/heatshot-whitebg.jpg
-image-alt: Photo of Jack Davison
-about:
-  id: about
-  template: trestles
-  image-shape: rounded
-  image-width: 14em
-  links:
-    - icon: github
-      text: GitHub
-      href: https://github.com/jack-davison
-    - icon: linkedin
-      text: LinkedIn
-      href: https://www.linkedin.com/in/jack-davison/
-    - icon: bluesky
-      text: Bluesky
-      href: https://bsky.app/profile/jack-davison.bsky.social
+description: Data specialist, open-source developer and technical educator.
+image: style/social-card.png
 listing:
   id: featured
   contents: work.yaml
@@ -26,25 +9,48 @@ listing:
     featured: "yes"
   type: grid
   grid-columns: 3
-  image-height: 160px
-  fields: [image, title, description]
+  image-height: 170px
+  fields: [image, title, categories, description]
   sort: false
 page-layout: full
 ---
 
-:::{#about}
+::: {.hero}
 
-I build the tools, reports and analysis pipelines that turn environmental monitoring data into decisions.
+::: {.hero-text}
+::: {.hero-name}
+Jack Davison
+:::
 
-I'm a senior consultant at WSP (formerly Ricardo), where I write reproducible reports for UK government clients, build Shiny apps and internal R packages, and train analysts. Outside of client work I'm a core maintainer of the [openair](https://openair-project.github.io/openair/) family of open-source R packages, used by air quality professionals around the world.
+::: {.hero-statement}
+Data specialist, [open-source]{.nowrap} developer and technical educator.
+:::
 
-Before consultancy I did a PhD in atmospheric chemistry at the University of York, using statistical modelling on hundreds of thousands of on-road vehicle measurements to calculate emission factors.
+::: {.hero-role}
+Senior Data Analyst & Consultant at WSP. PhD, University of York.
+:::
 
+::: {.hero-links}
+[GitHub](https://github.com/jack-davison)
+[LinkedIn](https://www.linkedin.com/in/jack-davison/)
+[Bluesky](https://bsky.app/profile/jack-davison.bsky.social)
+:::
+:::
+
+![](style/heatshot-whitebg.jpg){.hero-photo fig-alt="Photo of Jack Davison"}
+
+:::
+
+::: {.lede}
+I work across the whole data workflow: turning messy data into clean pipelines, building R packages and Shiny apps, writing reproducible reports, and teaching other people to do the same.
+
+Most of that work has been in air quality and environmental analytics. At WSP (formerly Ricardo) I build reporting, tooling and training for UK government clients, and I'm a core maintainer of the [openair](https://openair-project.github.io/openair/) family of open-source R packages. Before that I did a PhD at the University of York, building statistical models from hundreds of thousands of real-world vehicle measurements.
 :::
 
 ## What I do
 
-- **R package development.** I maintain {openair}, {openairmaps}, {worldmet} and {deweather}. I also wrote {ukaq}, {euroaq} and {leaf.magic}, and I've had features merged into open source projects like {leaflet}, {dygraphs} and {prismatic}.
+::: {.skills}
+- **R package development.** I maintain `{openair}`, `{openairmaps}`, `{worldmet}` and `{deweather}`. I also wrote `{ukaq}`, `{euroaq}` and `{leaf.magic}`, and I've had features merged into open source projects like `{leaflet}`, `{dygraphs}` and `{prismatic}`.
 
 - **Reproducible reporting.** Quarto reports that go from raw monitoring data to published output, including annual network reports for Defra.
 
@@ -53,25 +59,46 @@ Before consultancy I did a PhD in atmospheric chemistry at the University of Yor
 - **Shiny apps.** Dashboards and internal tools for clients and colleagues.
 
 - **Teaching.** Posit Certified Tidyverse Instructor. I've taught R to analysts from Defra, the Environment Agency, UKHSA, UKCEH and CASANZ.
+:::
 
 ## Selected work
 
 :::{#featured}
 :::
 
-[See all work →](work.qmd){.btn .btn-outline-primary}
+[See all work →](work.qmd){.more-link}
 
 ## Experience
 
-**Senior Data Analyst & Consultant, WSP**\
-2026 – Today
+::: {.cv-row}
+[2026 – today]{.cv-when}
 
-**Senior Data Analyst & Consultant, Ricardo**\
-2023 – 2026
+::: {.cv-what}
+**Senior Data Analyst & Consultant, WSP**
+:::
+:::
 
-**Air Quality Measurements Data Analyst, Ricardo**\
-2022 – 2023
+::: {.cv-row}
+[2023 – 2026]{.cv-when}
 
+::: {.cv-what}
+**Senior Data Analyst & Consultant, Ricardo**
+:::
+:::
+
+::: {.cv-row}
+[2022 – 2023]{.cv-when}
+
+::: {.cv-what}
+**Air Quality Measurements Data Analyst, Ricardo**
+:::
+:::
+
+::: {.cv-row}
+[2018 – 2022]{.cv-when}
+
+::: {.cv-what}
 **PhD, Atmospheric Chemistry, University of York**\
-Wolfson Atmospheric Chemistry Laboratories, 2018 – 2022.
-Thesis: [*New Approaches for Understanding Vehicle Emissions Using Remote Sensing*](https://etheses.whiterose.ac.uk/31313/). Kathleen Mary Stott Prize, 2021.
+Wolfson Atmospheric Chemistry Laboratories. Thesis: [*New Approaches for Understanding Vehicle Emissions Using Remote Sensing*](https://etheses.whiterose.ac.uk/31313/). Kathleen Mary Stott Prize, 2021.
+:::
+:::

@@ -1,0 +1,30 @@
+/*-- scss:defaults --*/
+$body-bg:      #121214;
+$body-color:   #ecebe7;
+$primary:      #7aa7ff;
+$secondary:    #a3a19b;
+$link-color:   $primary;
+$link-color-hover: #a9c5ff;
+$border-color: #2d2d32;
+$navbar-bg:    $body-bg;
+$navbar-fg:    $body-color;
+$navbar-hl:    $primary;
+$footer-bg:    $body-bg;
+$footer-fg:    #a3a19b;
+
+$font-family-sans-serif: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+$headings-font-family:   "Space Grotesk", "Manrope", system-ui, sans-serif;
+$font-family-monospace:  "JetBrains Mono", ui-monospace, monospace;
+$headings-font-weight:   600;
+$font-size-root: 17px;
+$code-color: $body-color;
+$code-bg: #222227;
+
+/*-- scss:rules --*/
+:root {
+  --jd-ink:    #ecebe7;
+  --jd-muted:  #a3a19b;
+  --jd-rule:   #2d2d32;
+  --jd-accent: #7aa7ff;
+  --jd-plate:  #1c1c20;
+}

@@ -57,6 +57,18 @@
   categories: [Software]
   featured: "yes"
 
+# --- Apps ---------------------------------------------------------------------
+
+- title: "UK AIR Local Air Quality Dashboard"
+  description: |
+    A public Shiny dashboard for Defra. Enter a postcode to see local
+    monitoring data, compliance, Air Quality Management Areas and council
+    action plans for any UK local authority.
+  path: https://uk-air.defra.gov.uk/local-authorities-dashboard/
+  image: img/la-dashboard.png
+  categories: [Apps]
+  featured: "yes"
+
 # --- Reports ------------------------------------------------------------------
 
 - title: "UK Hydrocarbons Network Annual Report 2024"
@@ -110,7 +122,6 @@
   path: https://jack-davison.quarto.pub/tabulating-dubois/
   image: img/dubois.png
   categories: [Data viz]
-  featured: "yes"
 
 - title: "Air quality tables with {gt} and {openair}"
   description: |
